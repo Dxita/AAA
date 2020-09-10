@@ -49,6 +49,23 @@
     <string name="margin_40dp">40dp</string>
     <string name="select_finincial_year">Select Financial Year</string>
     <string name="generate_salary_slip">Generate Salary Slip</string>
+    <string name="employment_status">Employment Status</string>
+    <string name="doj_text">Date of Joining</string>
+    <string name="designation">Designation</string>
+    <string name="payslab_amount">Payslab Amount</string>
+    <string name="qualification">Qualification</string>
+    <string name="branch_code">Branch Code</string>
+    <string name="branch_name">Branch Name</string>
+    <string name="ifsc_code">IFSC Code</string>
+    <string name="branch_address">Branch Address</string>
+    <string name="bank_ac_no">Bank Account Number</string>
+    <string name="aadhar_acc_no">Aadhar Attached Bank Account Number</string>
+    <string name="pan_card_no">PAN Card Number</string>
+    <string name="bhamasha_no">Bhamashah Number</string>
+    <string name="aadhar_no">Aadhar Number</string>
+    <string name="asha_id">Asha ID</string>
+    <string name="janaadhar_no">Janaadhar Number</string>
+    <string name="janaadhar_self_no">Janaadhar Self Number</string>
 
 
 </resources>

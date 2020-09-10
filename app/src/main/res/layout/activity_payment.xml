@@ -50,7 +50,7 @@
                 android:layout_marginBottom="@dimen/margin_08"
                 android:layout_marginEnd="@dimen/margin_08"
                 android:layout_marginStart="@dimen/margin_08"
-                android:background="@drawable/button_stroke"
+                android:background="@drawable/otpbg"
                 android:layout_marginRight="@dimen/margin_08"
                 android:layout_marginLeft="@dimen/margin_08" />
 

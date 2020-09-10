@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.activity.BankActivity;
+import cdac.org.anganvadistaffutility.activity.CardActivity;
 import cdac.org.anganvadistaffutility.activity.HomeActivity;
 import cdac.org.anganvadistaffutility.activity.JobActivity;
 import cdac.org.anganvadistaffutility.activity.PaymentActivity;
@@ -31,6 +33,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     EmployeeDetails.Profile profileDetails;
     EmployeeDetails.Job jobDetails;
+    EmployeeDetails.Card cardDetails;
+    EmployeeDetails.Bank bankDetails;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,6 +92,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         cardView.setOnClickListener(this);
         job_card.setOnClickListener(this);
         payment_card.setOnClickListener(this);
+        bank_card.setOnClickListener(this);
+        card.setOnClickListener(this);
 
 
         return root;
@@ -111,11 +117,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                     EmployeeDetails.Data data = body.getData();
                      profileDetails = data.getProfile();
-                    EmployeeDetails.Card cardDetails = data.getCard();
-                    jobDetails = data.getJob();
-                    EmployeeDetails.Bank bankDetails = data.getBank();
-
-
+                     cardDetails = data.getCard();
+                     jobDetails = data.getJob();
+                     bankDetails = data.getBank();
 
                 }
             }
@@ -140,6 +144,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.payment_card:
                 startActivity(new Intent(getActivity(), PaymentActivity.class));
+                break;
+
+            case R.id.bank_card:
+                startActivity(new Intent(getActivity(), BankActivity.class).putExtra("bank_details",bankDetails));
+                break;
+
+            case R.id.card:
+                startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details",cardDetails));
                 break;
         }
 

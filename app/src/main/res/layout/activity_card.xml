@@ -29,21 +29,59 @@
 
 
 
+            <androidx.appcompat.widget.AppCompatTextView
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_08"
+                android:text="@string/pan_card_no"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp">
 
+            </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/pan_card_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey" />
+            <androidx.appcompat.widget.AppCompatTextView
+
+                android:text="@string/bhamasha_no"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/employment_status"
+                android:layout_marginTop="@dimen/margin_08"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/margin_15">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/employment_status"
+                android:id="@+id/bhamasha_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aadhar_no"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/margin_15">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/aadhar_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="05dp"
@@ -56,14 +94,14 @@
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
-                android:text="@string/doj_text"
+                android:text="@string/asha_id"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/doj"
+                android:id="@+id/asha_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_05"
@@ -72,19 +110,18 @@
                 android:textColor="@color/grey"  />
 
             <androidx.appcompat.widget.AppCompatTextView
-
-                android:text="@string/designation"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
+                android:layout_marginTop="08dp"
+                android:text="@string/janaadhar_no"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
+                android:textSize="@dimen/textsize_15sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/designation"
+                android:id="@+id/janaadhar_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_05"
@@ -97,42 +134,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
-                android:text="@string/payslab_amount"
+                android:text="@string/janaadhar_self_no"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/payslab_amount"
+                android:id="@+id/janaadhar_self_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_05"
                 android:background="@color/sky"
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/margin_08"
-                android:text="@string/qualification"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/qualification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
-                android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
-
 
         </LinearLayout>
 

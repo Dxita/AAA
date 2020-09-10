@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".activity.PaymentActivity"></activity>
+        <activity android:name=".activity.CardActivity"></activity>
+        <activity android:name=".activity.BankActivity" />
+        <activity android:name=".activity.PaymentActivity" />
         <activity android:name=".activity.JobActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.UserTypeActivity" />
