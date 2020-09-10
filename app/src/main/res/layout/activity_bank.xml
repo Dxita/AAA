@@ -33,7 +33,6 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/margin_08"
                 android:text="@string/bank_ac_no"
                 android:textColor="@color/blue"
@@ -52,7 +51,6 @@
             <androidx.appcompat.widget.AppCompatTextView
 
                 android:text="@string/ifsc_code"
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
@@ -71,7 +69,6 @@
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/branch_code"
@@ -84,14 +81,13 @@
                 android:id="@+id/branch_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="05dp"
+                android:layout_marginTop="@dimen/margin_05"
                 android:background="@color/sky"
-                android:padding="10dp"
+                android:padding="@dimen/margin_10"
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
                 android:text="@string/branch_name"
@@ -109,7 +105,6 @@
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey"  />
             <androidx.appcompat.widget.AppCompatTextView
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
@@ -129,10 +124,9 @@
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="08dp"
+                android:layout_marginTop="@dimen/margin_08"
                 android:text="@string/aadhar_acc_no"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">

@@ -48,7 +48,7 @@
                     android:text="@string/otp_txt"
                     android:textColor="@color/grey"
                     android:textSize="@dimen/textsize_22"
-                    android:textStyle="bold" />
+                     />
 
 
             </LinearLayout>
