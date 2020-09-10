@@ -28,7 +28,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img"
                 android:layout_marginTop="@dimen/margin_30"
-                android:src="@mipmap/mobileverfi"
+                android:src="@drawable/mobileverfi"
                 android:padding="@dimen/margin_05"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_150" />

@@ -58,9 +58,9 @@ public class EmployeeDetails {
         @SerializedName("employee status")
         @Expose
         private String employeeStatus;
-        @SerializedName("date of birth")
+        @SerializedName("date_of_joining")
         @Expose
-        private String dateOfBirth;
+        private String dateOfJoining;
         @SerializedName("designation name english")
         @Expose
         private String designationNameEnglish;
@@ -76,7 +76,7 @@ public class EmployeeDetails {
 
         protected Job(Parcel in) {
             employeeStatus = in.readString();
-            dateOfBirth = in.readString();
+            dateOfJoining = in.readString();
             designationNameEnglish = in.readString();
             payslabAmount = in.readString();
             educationalQualification = in.readString();
@@ -102,12 +102,12 @@ public class EmployeeDetails {
             this.employeeStatus = employeeStatus;
         }
 
-        public String getDateOfBirth() {
-            return dateOfBirth;
+        public String getDateOfJoining() {
+            return dateOfJoining;
         }
 
-        public void setDateOfBirth(String dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
+        public void setDateOfJoining(String dateOfJoining) {
+            this.dateOfJoining = dateOfJoining;
         }
 
         public String getDesignationNameEnglish() {
@@ -151,7 +151,7 @@ public class EmployeeDetails {
         public void writeToParcel(Parcel parcel, int i) {
 
             parcel.writeString(employeeStatus);
-            parcel.writeString(dateOfBirth);
+            parcel.writeString(dateOfJoining);
             parcel.writeString(designationNameEnglish);
             parcel.writeString(payslabAmount);
             parcel.writeString(educationalQualification);

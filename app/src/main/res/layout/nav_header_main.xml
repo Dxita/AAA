@@ -18,14 +18,14 @@
         android:layout_height="85dp"
         android:layout_marginTop="05dp"
         android:contentDescription="@string/nav_header_desc"
-        app:srcCompat="@mipmap/logos" />
+        app:srcCompat="@drawable/logos" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginLeft="2dp"
-        android:text="RajPoshan"
+        android:text="@string/app_name"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />

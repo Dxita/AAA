@@ -27,4 +27,5 @@
     <dimen name="margin_08">08dp</dimen>
     <dimen name="margin_02">02dp</dimen>
     <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_70">70dp</dimen>
 </resources>

@@ -60,6 +60,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
 
 
+
     }
 
     @Override
@@ -124,9 +125,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             HomeFragment homeFragment = new HomeFragment();
             setMyFragment(homeFragment);        }
 
-        else if (id == R.id.nav_account) {
+                else if (id == R.id.nav_account) {
 
-            //startActivity(new Intent(context, ProfileActivity.class).putExtra("profile_details", profileDetails));
+           // startActivity(new Intent(context, ProfileActivity.class).putExtra("profile_details", profileDetails));
             // Handle the camera action
         } else if (id == R.id.nav_job) {
             JobFragment jobFragment=new JobFragment();

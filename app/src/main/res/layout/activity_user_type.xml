@@ -14,22 +14,22 @@
         tools:context=".Login.NewSplashActivity">
 
         <LinearLayout
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/margin_15"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:src="@mipmap/logos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@drawable/logos"
+                android:layout_width="@dimen/margin_70"
+                android:layout_height="@dimen/margin_70"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:padding="10sp"
-                android:textSize="18dp"
+                android:textSize="@dimen/textsize_22"
                 android:gravity="center"
                 android:textAllCaps="true"
                 android:text="@string/welcome_text"
@@ -47,7 +47,7 @@
                 android:elevation="10dp"
                 android:id="@+id/c1"
                 app:cardBackgroundColor="@color/skyblue"
-                android:layout_margin="18dp"
+                android:layout_margin="@dimen/margin_15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -59,7 +59,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:padding="10dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_lock_24"
+                        app:srcCompat="@drawable/ic_baseline_lock_24"
                         android:layout_width="80dp"
                         android:layout_height="90dp" />
 
@@ -83,7 +83,7 @@
                 android:layout_below="@+id/c1"
                 android:id="@+id/c2"
                 app:cardBackgroundColor="@color/peach"
-                android:layout_margin="18dp"
+                android:layout_margin="@dimen/margin_15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -95,7 +95,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:padding="08dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_person_24"
+                        app:srcCompat="@drawable/ic_baseline_person_24"
                         android:layout_width="80dp"
                         android:layout_height="90dp" />
 
@@ -120,7 +120,7 @@
                 android:id="@+id/c3"
                 android:layout_below="@+id/c2"
                 app:cardBackgroundColor="@color/lightgreen"
-                android:layout_margin="18dp"
+                android:layout_margin="@dimen/margin_15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -132,7 +132,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:padding="10dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_public_24"
+                        app:srcCompat="@drawable/ic_baseline_public_24"
                         android:layout_width="80dp"
                         android:layout_height="80dp" />
 
@@ -150,40 +150,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c4"
-                android:layout_below="@+id/c3"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/yellow"
-                android:layout_margin="18dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:padding="10dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_lock_24"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:textColor="@color/white"
-                        android:padding="10sp"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        android:text="Help/Support"
-                        android:textStyle="bold"
-                        android:textSize="17dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
 

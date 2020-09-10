@@ -14,7 +14,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 
 public class JobActivity extends AppCompatActivity {
-    TextView employment_status, doj,designation,payslab_amount,qualification;
+    TextView employment_status, doj,designation, payslab_amount,qualification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class JobActivity extends AppCompatActivity {
         EmployeeDetails.Job jobDetails= getIntent().getParcelableExtra("job_details");
         if (jobDetails != null) {
             employment_status.setText(jobDetails.getEmployeeStatus());
-            doj.setText(jobDetails.getDateOfBirth());
+            doj.setText(jobDetails.getDateOfJoining());
             payslab_amount.setText(jobDetails.getPayslabAmount());
             qualification.setText(jobDetails.getEducationalQualification());
             designation.setText(jobDetails.getDesignationNameEnglish());
