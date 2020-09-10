@@ -1,20 +1,18 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 
-public class CardActivity extends AppCompatActivity {
-    TextView pan_card_no, bhamasha_no,aadhar_no,asha_id, janaadhar_no,janaadhar_self_no;
+public class CardActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,36 +24,29 @@ public class CardActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        pan_card_no=findViewById(R.id.pan_card_no);
-        bhamasha_no=findViewById(R.id.bhamasha_no);
-        aadhar_no=findViewById(R.id.aadhar_no);
-        asha_id=findViewById(R.id.asha_id);
-        janaadhar_no=findViewById(R.id.janaadhar_no);
-        janaadhar_self_no=findViewById(R.id.janaadhar_self_no);
-
+        TextView pan_card_no = findViewById(R.id.pan_card_no);
+        TextView bhamashah_no = findViewById(R.id.bhamasha_no);
+        TextView aadhar_no = findViewById(R.id.aadhar_no);
+        TextView asha_id = findViewById(R.id.asha_id);
+        TextView janaadhar_no = findViewById(R.id.janaadhar_no);
+        TextView janaadhar_self_no = findViewById(R.id.janaadhar_self_no);
 
         EmployeeDetails.Card cardDetails = (EmployeeDetails.Card) getIntent().getParcelableExtra("card_details");
         if (cardDetails != null) {
             pan_card_no.setText(cardDetails.getPanNumber());
-            bhamasha_no.setText(cardDetails.getBhamashahNumber());
+            bhamashah_no.setText(cardDetails.getBhamashahNumber());
             aadhar_no.setText(cardDetails.getAadharNumber());
             asha_id.setText(cardDetails.getAshaid());
-            janaadhar_no.setText((Integer) cardDetails.getJanaadharNumber());
-            janaadhar_self_no.setText((Integer) cardDetails.getJanaadharSelfNumber());
-
-            //  AppUtils.showToast(context, "" + profileDetails.getEmployeeNameEnglish() + "\n\n" + profileDetails.getEmployeeNameHindi());
+            janaadhar_no.setText(cardDetails.getJanaadharNumber());
+            janaadhar_self_no.setText(cardDetails.getJanaadharSelfNumber());
         }
-
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==android.R.id.home){
-
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
-
         }
         return true;
-
     }
 }

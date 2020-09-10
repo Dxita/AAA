@@ -1,9 +1,5 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,13 +8,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 
-public class PaymentActivity extends AppCompatActivity  implements  AdapterView.OnItemSelectedListener {
-        String[] financial_year = { "2019", "2018", "2017", "2016", "2015","2014"};
-
+public class PaymentActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
+    String[] financial_year = {"2019", "2018", "2017", "2016", "2015", "2014"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +28,11 @@ public class PaymentActivity extends AppCompatActivity  implements  AdapterView.
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-
         Spinner spin = (Spinner) findViewById(R.id.spinner);
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,financial_year);
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, financial_year);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
@@ -44,23 +41,19 @@ public class PaymentActivity extends AppCompatActivity  implements  AdapterView.
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-        Toast.makeText(getApplicationContext(),financial_year[i] , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), financial_year[i], Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         }
         return true;
-
     }
-
 }

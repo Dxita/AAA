@@ -10,7 +10,7 @@ import android.view.View;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.VerifyUser;
 
-public class UserTypeActivity extends AppCompatActivity {
+public class UserTypeActivity extends BaseActivity {
     CardView c1, c2, c3;
 
     @Override

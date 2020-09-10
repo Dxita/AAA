@@ -42,7 +42,7 @@ public class BankActivity extends AppCompatActivity {
             branch_code.setText(bankDetails.getBranchCode());
             branch_name.setText(bankDetails.getBankName());
             branch_address.setText(bankDetails.getBranchAddress());
-            aadhar_acc_no.setText((Integer) bankDetails.getAadharAttachedBankAccountNumber());
+            aadhar_acc_no.setText(bankDetails.getAadharAttachedBankAccountNumber());
 
             //  AppUtils.showToast(context, "" + profileDetails.getEmployeeNameEnglish() + "\n\n" + profileDetails.getEmployeeNameHindi());
         }

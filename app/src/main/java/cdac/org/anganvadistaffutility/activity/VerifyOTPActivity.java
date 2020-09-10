@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.Credentials;
@@ -24,7 +23,6 @@ import com.google.android.gms.tasks.Task;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.callback.OtpReceivedInterface;
-import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.receiver.SmsBroadcastReceiver;
 import cdac.org.anganvadistaffutility.utils.AppUtils;
 
@@ -63,7 +61,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
         btnVerifyOtp.setOnClickListener(view -> {
             if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {
-               startActivity(new Intent(context,HomeActivity.class));
+                startActivity(new Intent(context, HomeActivity.class));
             }
         });
     }

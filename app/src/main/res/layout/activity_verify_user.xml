@@ -1,101 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:background="@color/offwhite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/offwhite">
 
-      <!--  <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/backspace"
-            android:layout_margin="@dimen/margin_12"
-            app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"
-            android:layout_width="@dimen/margin_30"
-            android:layout_height="@dimen/margin_30" />-->
+        <!--  <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/backspace"
+              android:layout_margin="@dimen/margin_12"
+              app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"
+              android:layout_width="@dimen/margin_30"
+              android:layout_height="@dimen/margin_30" />-->
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_above="@+id/card"
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/card"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img"
-                android:layout_marginTop="@dimen/margin_30"
-                android:src="@drawable/mobileverfi"
-                android:padding="@dimen/margin_05"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_150" />
+                android:layout_height="@dimen/margin_150"
+                android:layout_marginTop="@dimen/margin_30"
+                android:padding="@dimen/margin_05"
+                android:src="@drawable/mobileverfi" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:padding="@dimen/margin_10"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:textSize="@dimen/textsize_22"
-                android:text="@string/phone_verification"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/phone_verification"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_22"
+                android:textStyle="bold" />
         </LinearLayout>
 
-
-
-
-
         <androidx.cardview.widget.CardView
-            app:cardElevation="@dimen/margin_10"
             android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="@dimen/margin_15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:cardElevation="@dimen/margin_10">
+
             <RelativeLayout
-                android:layout_margin="@dimen/margin_10"
-                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/margin_10">
 
 
                 <LinearLayout
-                    android:layout_margin="@dimen/margin_10"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_10"
+                    android:orientation="vertical">
 
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtxt"
-                        android:singleLine="true"
-
-                        android:inputType="number"
-                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_45"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/margin_12"
                         android:background="@drawable/button_stroke"
                         android:gravity="center"
-                        android:textSize="@dimen/margin_14"
-                        android:layout_margin="@dimen/margin_12"
-                        android:layout_gravity="center"
                         android:hint="Enter mobile number here"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/margin_45" />
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/margin_14" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_verify_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_12"
                         android:background="@drawable/buttonbg"
                         android:text="@string/continue_text"
-                        android:layout_margin="@dimen/margin_12"
-                        android:textColor="@color/white"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

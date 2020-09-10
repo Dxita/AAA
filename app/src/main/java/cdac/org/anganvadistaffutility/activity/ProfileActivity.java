@@ -1,45 +1,35 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.EmployeeDetails;
-import cdac.org.anganvadistaffutility.utils.AppUtils;
 
-public class ProfileActivity extends BaseActivity  {
+public class ProfileActivity extends BaseActivity {
 
-    TextView name, dob,mobile_no,awc_id, category,father_husband_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-
-        name=findViewById(R.id.name);
-        dob=findViewById(R.id.dob);
-        category=findViewById(R.id.category);
-        father_husband_name=findViewById(R.id.father_husband_name);
-        mobile_no=findViewById(R.id.mobile_no);
-        awc_id=findViewById(R.id.awc_id);
+        TextView name = findViewById(R.id.name);
+        TextView dob = findViewById(R.id.dob);
+        TextView category = findViewById(R.id.category);
+        TextView father_husband_name = findViewById(R.id.father_husband_name);
+        TextView mobile_no = findViewById(R.id.mobile_no);
+        TextView awc_id = findViewById(R.id.awc_id);
 
         EmployeeDetails.Profile profileDetails = (EmployeeDetails.Profile) getIntent().getParcelableExtra("profile_details");
         if (profileDetails != null) {
@@ -49,19 +39,14 @@ public class ProfileActivity extends BaseActivity  {
             awc_id.setText(profileDetails.getAwcid());
             mobile_no.setText(profileDetails.getMoblieNumber());
             father_husband_name.setText(profileDetails.getHusbandFatherName());
-
-          //  AppUtils.showToast(context, "" + profileDetails.getEmployeeNameEnglish() + "\n\n" + profileDetails.getEmployeeNameHindi());
         }
-
-
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         }
         return true;
-
     }
 }

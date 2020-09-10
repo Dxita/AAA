@@ -2,7 +2,6 @@ package cdac.org.anganvadistaffutility.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,19 +16,17 @@ import cdac.org.anganvadistaffutility.utils.AppUtils;
 import retrofit2.Call;
 
 public class VerifyUserActivity extends BaseActivity implements View.OnClickListener {
-EditText edtx;
+    EditText edtx;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_user);
-        edtx=findViewById(R.id.edtxt);
+
+        edtx = findViewById(R.id.edtxt);
 
         AppCompatButton btn_verify_user = findViewById(R.id.btn_verify_user);
         btn_verify_user.setOnClickListener(this);
-
-
-
-
     }
 
     private void verifyUser() {
@@ -56,15 +53,14 @@ EditText edtx;
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_verify_user) {
-
-            String edit_text=edtx.getText().toString();
-          if (edit_text.isEmpty())
-          {
-              edtx.requestFocus();
-              edtx.setError("This field is required");
-          }
-          else if (AppUtils.isNetworkConnected(context)) {
-                verifyUser();
+            String edit_text = edtx.getText().toString();
+            if (edit_text.isEmpty()) {
+                edtx.requestFocus();
+                edtx.setError("This field is required");
+            } else {
+                if (AppUtils.isNetworkConnected(context)) {
+                    verifyUser();
+                }
             }
         }
     }
