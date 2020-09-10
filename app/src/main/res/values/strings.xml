@@ -47,6 +47,8 @@
     <string name="name">Name</string>
     <string name="dob_text">Date of birth</string>
     <string name="margin_40dp">40dp</string>
+    <string name="select_finincial_year">Select Financial Year</string>
+    <string name="generate_salary_slip">Generate Salary Slip</string>
 
 
 </resources>
