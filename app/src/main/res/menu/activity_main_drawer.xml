@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="@string/menu_profile" />
+        <item
+            android:id="@+id/nav_job"
+            android:icon="@drawable/ic_baseline_work_24"
+            android:title="@string/menu_job" />
+        <item
+            android:id="@+id/nav_bank"
+            android:icon="@drawable/ic_baseline_account_balance_24"
+            android:title="@string/menu_bank" />
+
+        <item
+            android:id="@+id/nav_payments"
+            android:icon="@drawable/ic_baseline_money_24"
+            android:title="@string/menu_payments" />
+        <item
+            android:id="@+id/nav_cards"
+            android:icon="@drawable/ic_baseline_credit_card_24"
+            android:title="@string/menu_cards" />
+    </group>
+</menu>
