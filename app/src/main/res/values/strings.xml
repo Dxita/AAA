@@ -66,6 +66,7 @@
     <string name="asha_id">Asha ID</string>
     <string name="janaadhar_no">Janaadhar Number</string>
     <string name="janaadhar_self_no">Janaadhar Self Number</string>
+    <string name="enter_number">Enter mobile number here</string>
 
 
 </resources>

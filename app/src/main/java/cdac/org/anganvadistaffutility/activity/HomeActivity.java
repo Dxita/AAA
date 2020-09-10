@@ -78,12 +78,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             super.onBackPressed();
         }
     }
-    @Override
+
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
         return true;
     }
+*/
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -95,7 +98,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     private void setMyFragment(Fragment fragment)

@@ -28,7 +28,6 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_gravity="center"
                 android:textColor="@color/black"
-                android:padding="10sp"
                 android:textSize="@dimen/textsize_22"
                 android:gravity="center"
                 android:textAllCaps="true"
@@ -150,7 +149,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-        </RelativeLayout>
+o        </RelativeLayout>
 
 
     </RelativeLayout>

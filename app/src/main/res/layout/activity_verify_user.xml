@@ -71,7 +71,7 @@
                         android:layout_margin="@dimen/margin_12"
                         android:background="@drawable/button_stroke"
                         android:gravity="center"
-                        android:hint="Enter mobile number here"
+                        android:hint="@string/enter_number"
                         android:inputType="number"
                         android:maxLength="10"
                         android:singleLine="true"

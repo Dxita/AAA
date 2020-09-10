@@ -13,7 +13,7 @@ import java.util.Objects;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 
-public class BankActivity extends AppCompatActivity {
+public class BankActivity extends BaseActivity {
     TextView bank_ac_no, ifsc_code,branch_code,branch_name, branch_address,aadhar_acc_no;
 
     @Override
@@ -35,7 +35,7 @@ public class BankActivity extends AppCompatActivity {
         aadhar_acc_no=findViewById(R.id.aadhar_acc_no);
 
 
-        EmployeeDetails.Bank bankDetails = (EmployeeDetails.Bank) getIntent().getParcelableExtra("bank_details");
+        EmployeeDetails.Bank bankDetails = getIntent().getParcelableExtra("bank_details");
         if (bankDetails != null) {
             bank_ac_no.setText(bankDetails.getBankAccountNumber());
             ifsc_code.setText(bankDetails.getIfscCode());
