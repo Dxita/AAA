@@ -16,7 +16,7 @@ import java.util.Objects;
 import cdac.org.anganvadistaffutility.R;
 
 public class PaymentActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-    String[] financial_year = {"2019", "2018", "2017", "2016", "2015", "2014"};
+    String[] financial_year = {"2019-20", "2018-19", "2017-18", "2016-17", "2015-16", "2014-15"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
