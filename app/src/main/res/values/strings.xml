@@ -24,15 +24,8 @@
     <string name="father_name">Father Name</string>
     <string name="husband_name">Husband Name</string>
     <string name="address">Address</string>
-    <string name="phone_verification">Phone Verification</string>
-    <string name="continue_text">Continue</string>
     <string name="welcome_text">" Welcome to Rajposhan"</string>
-    <string name="admin_text">Admin</string>
-    <string name="user_text">User</string>
     <string name="public_text">Public</string>
-    <string name="otp_txt">OTP Verification</string>
-    <string name="validate_text">Validate OTP</string>
-    <string name="getotp">Get OTP</string>
 
     <string name="setup_text">Set up Password</string>
     <string name="enter_text">Enter password</string>
@@ -68,6 +61,24 @@
     <string name="janaadhar_self_no">Janaadhar Self Number</string>
     <string name="enter_number">Enter mobile number here</string>
     <string name="required_field">Required Field</string>
+
+    <string name="phone_verification">Let\'s get your Mobile Verified</string>
+    <string name="phone_verification_text">Enter your phone number to recieve the code</string>
+    <string name="continue_text">Continue</string>
+    <string name="admin_text">Admin</string>
+    <string name="user_text">User</string>
+    <string name="otp_txt">Verifying your code</string>
+    <string name="validate_text">Validate OTP</string>
+    <string name="getotp">Get OTP</string>
+    <string name="country_code">+91</string>
+
+    <string name="your_info_is_safe_text">Your information is safe with us</string>
+    <string name="preferred_language">Choose your preferred language</string>
+    <string name="english">English</string>
+    <string name="hindi">हिन्दी</string>
+    <string name="you_can_change_text">You can change the language later on</string>
+    <string name="sms_code_sent_text">SMS Verification code has been sent to +91 82XXXXX499</string>
+
 
 
 </resources>

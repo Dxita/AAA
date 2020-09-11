@@ -20,7 +20,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, UserTypeActivity.class));
+            startActivity(new Intent(SplashActivity.this, SelectLanguageActivity.class));
             finish();
         }, 2000);
     }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@drawable/custom_app_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/margin_15"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                app:srcCompat="@drawable/logo_splash"
+                android:layout_gravity="center"
+
+                android:layout_width="@dimen/margin_150"
+                android:layout_height="@dimen/margin_150">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/margin_22"
+                android:textSize="@dimen/textsize_18"
+                android:text="@string/preferred_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/english_text"
+               android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/button_stroke"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_25"
+                android:layout_margin="@dimen/margin_18"
+                android:text="@string/english"
+                android:layout_width="@dimen/margin_150"
+                android:padding="@dimen/margin_10"
+                android:layout_height="@dimen/margin_60">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hindi_text"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_25"
+                android:background="@drawable/button_stroke"
+                android:text="@string/hindi"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_width="@dimen/margin_150"
+                android:padding="@dimen/margin_10"
+                android:layout_height="@dimen/margin_60">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_above="@id/continue_button"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_14sp"
+            android:text="@string/you_can_change_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:textColor="@color/white"
+            android:id="@+id/continue_button"
+            android:text="@string/continue_text"
+            android:background="@drawable/buttonbg"
+            android:layout_margin="@dimen/margin_18"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

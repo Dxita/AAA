@@ -52,30 +52,29 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         getApplicationContext().registerReceiver(mSmsBroadcastReceiver, intentFilter);
         getHintPhoneNumber();
 
-        btnGetOtp.setOnClickListener(v -> {
+      /*  btnGetOtp.setOnClickListener(v -> {
             // Call server API for requesting OTP and when you got success start
             // SMS Listener for listing auto read message listener
             appPreferences.setOtpGenerated(AppUtils.getRandomNumberString());
-            layoutInput.setVisibility(View.GONE);
-            layoutVerify.setVisibility(View.VISIBLE);
+
             inputOtp.setText(appPreferences.getOtpGenerated());
             //   startSMSListener();
-        });
+        });*/
 
         btnVerifyOtp.setOnClickListener(view -> {
-            if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {
-                startActivity(new Intent(context, HomeActivity.class));
-            }
+         /*   if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {
+
+            }*/
+
+            startActivity(new Intent(context, HomeActivity.class));
         });
     }
 
     private void initViews() {
         inputMobileNumber = findViewById(R.id.editTextInputMobile);
-        inputOtp = findViewById(R.id.editTextOTP);
-        btnGetOtp = findViewById(R.id.buttonGetOTP);
+
         btnVerifyOtp = findViewById(R.id.buttonVerify);
-        layoutInput = findViewById(R.id.getOTPLayout);
-        layoutVerify = findViewById(R.id.verifyOTPLayout);
+
     }
 
     @Override
