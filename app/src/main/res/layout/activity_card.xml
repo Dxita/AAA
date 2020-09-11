@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
+
     android:background="@color/offwhite"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
@@ -47,7 +47,7 @@
                 android:layout_marginTop="@dimen/margin_05"
                 android:background="@color/sky"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"/>
             <androidx.appcompat.widget.AppCompatTextView
 
                 android:text="@string/bhamasha_no"
@@ -103,7 +103,7 @@
                 android:layout_marginTop="@dimen/margin_05"
                 android:background="@color/sky"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey"  />
+                android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -112,7 +112,6 @@
                 android:text="@string/janaadhar_no"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">
-
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView

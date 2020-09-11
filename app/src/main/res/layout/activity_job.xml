@@ -33,7 +33,7 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:textStyle="bold"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/employment_status"
@@ -53,7 +53,6 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
                 android:text="@string/doj_text"
@@ -74,7 +73,6 @@
             <androidx.appcompat.widget.AppCompatTextView
 
                 android:text="@string/designation"
-                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
@@ -93,7 +91,7 @@
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:textStyle="bold"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
@@ -116,7 +114,6 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/margin_08"
                 android:text="@string/qualification"
                 android:textColor="@color/blue"
