@@ -67,6 +67,7 @@
     <string name="janaadhar_no">Janaadhar Number</string>
     <string name="janaadhar_self_no">Janaadhar Self Number</string>
     <string name="enter_number">Enter mobile number here</string>
+    <string name="required_field">Required Field</string>
 
 
 </resources>

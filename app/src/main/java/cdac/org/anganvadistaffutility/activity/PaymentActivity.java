@@ -31,12 +31,9 @@ public class PaymentActivity extends BaseActivity implements AdapterView.OnItemS
         Spinner spin = (Spinner) findViewById(R.id.spinner);
         spin.setOnItemSelectedListener(this);
 
-        //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, financial_year);
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, financial_year);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
-
     }
 
     @Override
@@ -47,7 +44,6 @@ public class PaymentActivity extends BaseActivity implements AdapterView.OnItemS
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

@@ -1,65 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    android:background="@color/offwhite"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
-
+    android:background="@drawable/custom_app_bg">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:background="@color/colorPrimaryDark" />
 
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_15"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
-
             <androidx.appcompat.widget.AppCompatTextView
-
-                android:textSize="@dimen/textsize_15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_10"
                 android:padding="@dimen/margin_02"
-                android:textColor="@color/blue"
                 android:text="@string/select_finincial_year"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
             <Spinner
-                android:padding="@dimen/margin_02"
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
-                android:prompt="@string/category"
                 android:layout_height="@dimen/margin_40"
-                android:layout_marginBottom="@dimen/margin_08"
-                android:layout_marginEnd="@dimen/margin_08"
                 android:layout_marginStart="@dimen/margin_08"
-                android:background="@drawable/otpbg"
+                android:layout_marginLeft="@dimen/margin_08"
+                android:layout_marginEnd="@dimen/margin_08"
                 android:layout_marginRight="@dimen/margin_08"
-                android:layout_marginLeft="@dimen/margin_08" />
+                android:layout_marginBottom="@dimen/margin_08"
+                android:background="@drawable/otpbg"
+                android:padding="@dimen/margin_02"
+                android:prompt="@string/category" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:textColor="@color/white"
-                android:text="@string/generate_salary_slip"
-                android:background="@drawable/buttonbg"
-                android:layout_margin="@dimen/margin_08"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_08"
+                android:background="@drawable/buttonbg"
+                android:text="@string/generate_salary_slip"
+                android:textColor="@color/white">
 
             </androidx.appcompat.widget.AppCompatButton>
 

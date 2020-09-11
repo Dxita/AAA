@@ -9,20 +9,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/offwhite"
+        android:background="@drawable/custom_app_bg"
         android:visibility="visible">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <!--
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/backspace"
-                            android:layout_margin="@dimen/margin_12"
-                            app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"
-                            android:layout_width="@dimen/margin_30"
-                            android:layout_height="@dimen/margin_30" />-->
-
 
             <LinearLayout
                 android:id="@+id/otp_layout"
@@ -31,9 +23,7 @@
                 android:layout_marginTop="@dimen/margin_45"
                 android:orientation="vertical">
 
-
                 <androidx.appcompat.widget.AppCompatImageView
-
                     android:layout_width="@dimen/margin_100"
                     android:layout_height="@dimen/margin_110"
                     android:layout_gravity="center"
@@ -47,10 +37,7 @@
                     android:padding="@dimen/margin_10"
                     android:text="@string/otp_txt"
                     android:textColor="@color/grey"
-                    android:textSize="@dimen/textsize_22"
-                     />
-
-
+                    android:textSize="@dimen/textsize_22" />
             </LinearLayout>
 
             <RelativeLayout
@@ -62,7 +49,6 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_15"
                     app:cardElevation="@dimen/margin_10">
@@ -84,8 +70,9 @@
                             android:id="@+id/editTextInputMobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:maxLength="10"
-                            android:layout_margin="@dimen/margin_12" />
+                            android:layout_margin="@dimen/margin_12"
+                            android:inputType="number"
+                            android:maxLength="6" />
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/buttonGetOTP"
@@ -115,7 +102,6 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_15"
                     app:cardElevation="@dimen/margin_10">
@@ -134,7 +120,6 @@
                             android:textSize="@dimen/textsize_14sp" />
 
                         <androidx.appcompat.widget.AppCompatEditText
-
                             android:id="@+id/editTextOTP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -156,8 +141,6 @@
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
-
-
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -11,11 +11,10 @@ import java.util.Random;
 public class AppUtils {
 
     public static final String successStatus = "true";
-
     public static final String empMobileNumber = "9982471586";
 
     //public static final String empID = "109626";
-   // public static final String empID = "109567";
+    // public static final String empID = "109567";
     public static final String empID = "4";
 
     public static boolean isNetworkConnected(Context context) {

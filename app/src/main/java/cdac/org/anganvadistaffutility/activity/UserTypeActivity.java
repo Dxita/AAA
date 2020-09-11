@@ -1,58 +1,43 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+
+import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.data.VerifyUser;
 
-public class UserTypeActivity extends BaseActivity {
-    CardView c1, c2, c3;
+public class UserTypeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_type);
 
+        CardView user_type_admin = findViewById(R.id.user_type_admin);
+        CardView user_type_employee = findViewById(R.id.user_type_employee);
+        CardView user_type_public = findViewById(R.id.user_type_public);
 
-        c1 = findViewById(R.id.c1);
-        c2 = findViewById(R.id.c2);
-        c3 = findViewById(R.id.c3);
+        user_type_admin.setOnClickListener(this);
+        user_type_employee.setOnClickListener(this);
+        user_type_public.setOnClickListener(this);
+    }
 
-        c1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Toast.makeText(NewSplashActivity.this, "Working on this", Toast.LENGTH_SHORT).show();
-              /*  Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);*/
-            }
-        });
-
-        c2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //       Toast.makeText(NewSplashActivity.this, "Working on this", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getApplicationContext(), VerifyUserActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        c3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-/*
-                Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);*/
-
-
-            }
-        });
-
-
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.user_type_admin:
+                break;
+            case R.id.user_type_employee:
+                startActivity(new Intent(context, VerifyUserActivity.class));
+                break;
+            case R.id.user_type_public:
+                break;
+        }
     }
 }

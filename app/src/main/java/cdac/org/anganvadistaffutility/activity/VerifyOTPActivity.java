@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -37,10 +38,12 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_otp);
 
         initViews();
-
         mSmsBroadcastReceiver = new SmsBroadcastReceiver();
         mSmsBroadcastReceiver.setOnOtpListeners(this);
 
@@ -73,8 +76,6 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         btnVerifyOtp = findViewById(R.id.buttonVerify);
         layoutInput = findViewById(R.id.getOTPLayout);
         layoutVerify = findViewById(R.id.verifyOTPLayout);
-
-
     }
 
     @Override

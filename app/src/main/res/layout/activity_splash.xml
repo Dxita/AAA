@@ -6,15 +6,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradienttwo">
+        android:background="@drawable/custom_app_bg">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/giphy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/logoraj" />
+            android:src="@drawable/logo_splash" />
 
     </RelativeLayout>
 

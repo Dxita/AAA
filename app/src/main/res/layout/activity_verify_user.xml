@@ -7,14 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/offwhite">
-
-        <!--  <androidx.appcompat.widget.AppCompatImageView
-              android:id="@+id/backspace"
-              android:layout_margin="@dimen/margin_12"
-              app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"
-              android:layout_width="@dimen/margin_30"
-              android:layout_height="@dimen/margin_30" />-->
+        android:background="@drawable/custom_app_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,8 +30,7 @@
                 android:padding="@dimen/margin_10"
                 android:text="@string/phone_verification"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_22"
-                />
+                android:textSize="@dimen/textsize_22" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -55,16 +47,14 @@
                 android:layout_centerInParent="true"
                 android:layout_margin="@dimen/margin_10">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_10"
                     android:orientation="vertical">
 
-
                     <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/edtxt"
+                        android:id="@+id/edt_user_mobile_no"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/margin_45"
                         android:layout_gravity="center"
@@ -76,7 +66,7 @@
                         android:maxLength="10"
                         android:singleLine="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/margin_14" />
+                        android:textSize="@dimen/font_16" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_verify_user"
@@ -86,6 +76,7 @@
                         android:background="@drawable/buttonbg"
                         android:text="@string/continue_text"
                         android:textColor="@color/white" />
+
                 </LinearLayout>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
