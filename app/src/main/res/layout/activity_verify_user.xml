@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,107 +9,90 @@
         android:background="@drawable/custom_app_bg">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/margin_200"
-            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_gravity="center"
-                android:layout_width="@dimen/margin_250"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:padding="@dimen/margin_10"
                 android:text="@string/phone_verification"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_30sp"
-                />
-        </LinearLayout>
-
-
-
-
-
-
-        <LinearLayout
-            android:layout_below="@id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                android:textSize="@dimen/textsize_30sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_gravity="center"
-                android:layout_width="@dimen/margin_190"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:gravity="center"
-                android:layout_marginRight="@dimen/margin_15"
-                android:layout_marginLeft="@dimen/margin_15"
                 android:text="@string/phone_verification_text"
                 android:textColor="@color/grey"
-                android:padding="@dimen/margin_05"
-                android:textSize="@dimen/textsize_15sp"
-                />
+                android:textSize="@dimen/font_16" />
+
             <LinearLayout
-                android:layout_margin="@dimen/margin_18"
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="?attr/actionBarSize"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/margin_45"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:inputType="number"
                     android:clickable="false"
-                    android:text="@string/country_code"
+                    android:enabled="false"
+                    android:gravity="center"
                     android:maxLength="10"
-                    android:padding="@dimen/margin_08"
-                    android:layout_margin="@dimen/margin_05"
+                    android:padding="@dimen/margin_10"
                     android:singleLine="true"
+                    android:text="@string/country_code"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize_18" />
+                    android:textSize="@dimen/font_16" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edt_user_mobile_no"
-                    android:layout_width="@dimen/margin_250"
-                    android:layout_margin="@dimen/margin_05"
-                    android:layout_height="@dimen/margin_45"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
                     android:gravity="center"
                     android:hint="@string/enter_number"
                     android:inputType="number"
                     android:maxLength="10"
+                    android:padding="@dimen/margin_10"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize_18" />
+                    android:textSize="@dimen/font_16" />
             </LinearLayout>
-
-
-
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_above="@id/btn_verify_user"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginRight="@dimen/margin_15"
+            android:layout_above="@id/btn_verify_user"
+            android:layout_gravity="center"
             android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:gravity="center"
             android:text="@string/your_info_is_safe_text"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_14sp"
-            />
+            android:textSize="@dimen/textsize_14sp" />
+
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_alignParentBottom="true"
             android:id="@+id/btn_verify_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_18"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@drawable/buttonbg"
+            android:padding="@dimen/activity_horizontal_margin"
             android:text="@string/continue_text"
+            android:textSize="@dimen/font_16"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textColor="@color/white" />
 
     </RelativeLayout>
