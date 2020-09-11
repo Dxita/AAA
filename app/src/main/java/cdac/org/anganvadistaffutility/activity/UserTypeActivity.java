@@ -30,6 +30,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+
         switch (view.getId()) {
             case R.id.user_type_admin:
                 break;
