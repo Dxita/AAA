@@ -43,7 +43,8 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             public void onSuccess(VerifyUser body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getMessage());
-                    startActivity(new Intent(VerifyUserActivity.this, VerifyOTPActivity.class).putExtra("mobile_number",mobile));
+                    startActivity(new Intent(VerifyUserActivity.this, VerifyOTPActivity.class)
+                            .putExtra("mobile_number", mobile));
                 } else {
                     AppUtils.showToast(context, body.getMessage());
                 }
@@ -59,7 +60,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_verify_user) {
-             mobile = edt_user_mobile_no.getText().toString();
+            mobile = edt_user_mobile_no.getText().toString();
             if (mobile.isEmpty()) {
                 edt_user_mobile_no.requestFocus();
                 edt_user_mobile_no.setError(getResources().getString(R.string.required_field));

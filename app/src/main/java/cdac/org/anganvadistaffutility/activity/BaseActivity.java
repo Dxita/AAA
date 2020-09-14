@@ -47,10 +47,12 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void setNewLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
+    public void setAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
-        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(new Intent(context, SplashActivity.class));
+        finishAffinity();
     }
 
     @Override

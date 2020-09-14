@@ -36,7 +36,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="?attr/actionBarSize"
+                android:layout_marginTop="?attr/actionBarSize"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -89,11 +89,11 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@drawable/buttonbg"
+            android:foreground="?android:attr/selectableItemBackground"
             android:padding="@dimen/activity_horizontal_margin"
             android:text="@string/continue_text"
-            android:textSize="@dimen/font_16"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16" />
 
     </RelativeLayout>
 

@@ -21,8 +21,8 @@ public class LocaleManager {
         String[] SUPPORTED_LOCALES = {ENGLISH, HINDI};
     }
 
-    static final String ENGLISH = "en";
-    static final String HINDI = "hi";
+    public static final String ENGLISH = "en";
+    public static final String HINDI = "hi";
     private static final String LANGUAGE_KEY = "language_key";
 
     public static Context setLocale(Context mContext) {

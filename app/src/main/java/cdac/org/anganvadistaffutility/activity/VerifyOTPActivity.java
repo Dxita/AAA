@@ -1,6 +1,5 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -27,7 +26,6 @@ import com.google.android.gms.tasks.Task;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.callback.OtpReceivedInterface;
 import cdac.org.anganvadistaffutility.receiver.SmsBroadcastReceiver;
-import cdac.org.anganvadistaffutility.utils.AppUtils;
 
 public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterface {
 
@@ -36,8 +34,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
     EditText inputMobileNumber, inputOtp;
     Button btnGetOtp, btnVerifyOtp;
     RelativeLayout layoutInput, layoutVerify;
-
-    TextView moboile_number_text;
+    private TextView mobile_number_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
         initViews();
 
-        moboile_number_text=findViewById(R.id.mobile_number_text);
+        mobile_number_text = findViewById(R.id.mobile_number_text);
         mSmsBroadcastReceiver = new SmsBroadcastReceiver();
         mSmsBroadcastReceiver.setOnOtpListeners(this);
 
@@ -66,13 +63,12 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
             inputOtp.setText(appPreferences.getOtpGenerated());
             //   startSMSListener();
         });*/
-        Intent iin= getIntent();
-        Bundle b = iin.getExtras();
 
-        if(b!=null)
-        {
-            String j =(String) b.get("mobile_number");
-            moboile_number_text.setText("+91"+j+" "+getString(R.string.sms_code_sent_text));
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            String mobileNumber = (String) bundle.get("mobile_number");
+            mobile_number_text.setText(getResources().getString(R.string.sms_code_sent_text) + " +91" + mobileNumber);
         }
 
         btnVerifyOtp.setOnClickListener(view -> {
