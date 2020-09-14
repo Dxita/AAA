@@ -21,7 +21,6 @@
             <androidx.appcompat.widget.AppCompatImageView
                 app:srcCompat="@drawable/logo_splash"
                 android:layout_gravity="center"
-
                 android:layout_width="@dimen/margin_150"
                 android:layout_height="@dimen/margin_150">
 
@@ -40,14 +39,14 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/english_text"
+                android:id="@+id/hindi_text"
                android:layout_gravity="center"
                 android:gravity="center"
-                android:background="@drawable/button_stroke"
-                android:textColor="@color/black"
+                android:background="@drawable/white_stroke"
+                android:textColor="@color/white"
                 android:textSize="@dimen/textsize_25"
                 android:layout_margin="@dimen/margin_18"
-                android:text="@string/english"
+                android:text="@string/hindi"
                 android:layout_width="@dimen/margin_150"
                 android:padding="@dimen/margin_10"
                 android:layout_height="@dimen/margin_60">
@@ -55,13 +54,13 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/hindi_text"
+                android:id="@+id/english_text"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_25"
                 android:background="@drawable/button_stroke"
-                android:text="@string/hindi"
+                android:text="@string/english"
                 android:layout_marginBottom="@dimen/margin_10"
                 android:layout_width="@dimen/margin_150"
                 android:padding="@dimen/margin_10"

@@ -1,6 +1,8 @@
 package cdac.org.anganvadistaffutility.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import cdac.org.anganvadistaffutility.R;
+
+import static cdac.org.anganvadistaffutility.R.drawable.button_stroke;
+import static cdac.org.anganvadistaffutility.R.drawable.white_stroke;
 
 public class SelectLanguageActivity extends AppCompatActivity  {
 
@@ -33,17 +38,26 @@ public class SelectLanguageActivity extends AppCompatActivity  {
            @Override
            public void onClick(View view) {
 
-               Intent intent=new Intent(getApplicationContext(), VerifyUserActivity.class);
+               Intent intent=new Intent(getApplicationContext(), UserTypeActivity.class);
                startActivity(intent);
                finish();
            }
        });
 
-       english_text.setOnClickListener(new View.OnClickListener() {
+       hindi_text.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
 
-
+               TextView textView = (TextView) view;
+               if (textView.isSelected()) {
+                   textView.setTextColor(Color.WHITE);
+                   textView.setBackgroundResource(white_stroke);
+                   view.setSelected(false);
+               } else {
+                   textView.setTextColor(Color.BLACK);
+                   textView.setBackgroundResource(button_stroke);
+                   view.setSelected(true);
+               }
            }
        });
 
