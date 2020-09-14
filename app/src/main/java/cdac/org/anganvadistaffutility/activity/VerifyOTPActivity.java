@@ -72,7 +72,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         if(b!=null)
         {
             String j =(String) b.get("mobile_number");
-            moboile_number_text.setText(getString(R.string.sms_code_sent_text)+j);
+            moboile_number_text.setText("+91"+j+" "+getString(R.string.sms_code_sent_text));
         }
 
         btnVerifyOtp.setOnClickListener(view -> {

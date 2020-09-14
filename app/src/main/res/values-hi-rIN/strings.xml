@@ -77,7 +77,7 @@
   <string name="english">अंग्रेज़ी</string>
   <string name="hindi">हिन्दी</string>
   <string name="you_can_change_text">आप बाद में भाषा बदल सकते हैं</string>
-  <string name="sms_code_sent_text">एसएमएस सत्यापन कोड +91 पर भेजा गया है</string>
+  <string name="sms_code_sent_text"> पर एसएमएस सत्यापन कोड भेजा गया है</string>
 
   <string name="profile_details">प्रोफ़ाइल विवरण </string>
   <string name="job_details">नौकरी विवरण</string>

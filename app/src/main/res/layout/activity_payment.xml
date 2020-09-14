@@ -38,22 +38,9 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/from_year"
-                android:inputType="number"
-                android:layout_marginRight="@dimen/margin_08"
-                android:layout_marginLeft="@dimen/margin_08"
-                android:background="@drawable/otpbg"
-                android:singleLine="true"
-                android:padding="@dimen/margin_10"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatEditText>
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/to_year"
-                    android:enabled="false"
-                    android:clickable="false"
+                    android:id="@+id/from_year"
                     android:inputType="number"
                     android:layout_marginRight="@dimen/margin_08"
                     android:layout_marginLeft="@dimen/margin_08"
@@ -62,7 +49,19 @@
                     android:padding="@dimen/margin_10"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatEditText>
+                    android:layout_height="wrap_content" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/to_year"
+                    android:inputType="number"
+                    android:layout_marginRight="@dimen/margin_08"
+                    android:layout_marginLeft="@dimen/margin_08"
+                    android:background="@drawable/otpbg"
+                    android:singleLine="true"
+                    android:padding="@dimen/margin_10"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 <!--
             <Spinner
