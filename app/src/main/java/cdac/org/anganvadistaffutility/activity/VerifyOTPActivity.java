@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -35,6 +37,8 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
     Button btnGetOtp, btnVerifyOtp;
     RelativeLayout layoutInput, layoutVerify;
 
+    TextView moboile_number_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,8 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         setContentView(R.layout.activity_verify_otp);
 
         initViews();
+
+        moboile_number_text=findViewById(R.id.mobile_number_text);
         mSmsBroadcastReceiver = new SmsBroadcastReceiver();
         mSmsBroadcastReceiver.setOnOtpListeners(this);
 
@@ -60,6 +66,14 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
             inputOtp.setText(appPreferences.getOtpGenerated());
             //   startSMSListener();
         });*/
+        Intent iin= getIntent();
+        Bundle b = iin.getExtras();
+
+        if(b!=null)
+        {
+            String j =(String) b.get("mobile_number");
+            moboile_number_text.setText(getString(R.string.sms_code_sent_text)+j);
+        }
 
         btnVerifyOtp.setOnClickListener(view -> {
          /*   if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {

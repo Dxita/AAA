@@ -19,7 +19,7 @@
                 android:id="@+id/profile_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
@@ -31,24 +31,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_margin="@dimen/margin_12"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:padding="10dp"
+                        android:layout_width="@dimen/margin_90"
+                        android:layout_height="@dimen/margin_90"
+                        android:padding="@dimen/margin_10"
                         android:src="@drawable/profile" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="05dp"
-                        android:text="Profile Details"
+                        android:padding="@dimen/margin_05"
+                        android:text="@string/profile_details"
                         android:textColor="@color/blue"
-                        android:textSize="17dp"
+                        android:textSize="@dimen/textsize_17sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -60,7 +60,7 @@
                 android:id="@+id/job_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@android:color/white"
@@ -70,14 +70,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_margin="@dimen/margin_12"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:padding="10dp"
+                        android:layout_width="@dimen/margin_90"
+                        android:layout_height="@dimen/margin_90"
+                        android:padding="@dimen/margin_10"
                         android:src="@drawable/job">
 
                     </androidx.appcompat.widget.AppCompatImageView>
@@ -86,10 +86,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="05dp"
-                        android:text="Job Details"
+                        android:padding="5dp"
+                        android:text="@string/job_details"
                         android:textColor="@color/blue"
-                        android:textSize="17dp"
+                        android:textSize="@dimen/textsize_17sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -109,7 +109,7 @@
                 android:id="@+id/bank_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@android:color/white"
@@ -119,14 +119,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_margin="@dimen/margin_12"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:padding="10dp"
+                        android:layout_width="@dimen/margin_90"
+                        android:layout_height="@dimen/margin_90"
+                        android:padding="@dimen/margin_10"
                         android:src="@drawable/bank">
 
                     </androidx.appcompat.widget.AppCompatImageView>
@@ -135,10 +135,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="05dp"
-                        android:text="Bank Details"
+                        android:padding="@dimen/margin_05"
+                        android:text="@string/bank_details"
                         android:textColor="@color/blue"
-                        android:textSize="17dp"
+                        android:textSize="@dimen/textsize_17sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -150,7 +150,7 @@
                 android:id="@+id/card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@android:color/white"
@@ -161,14 +161,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_margin="@dimen/margin_12"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:padding="10dp"
+                        android:layout_width="@dimen/margin_90"
+                        android:layout_height="@dimen/margin_90"
+                        android:padding="@dimen/margin_10"
                         android:src="@drawable/cards">
 
                     </androidx.appcompat.widget.AppCompatImageView>
@@ -177,10 +177,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="05dp"
-                        android:text="Card Details"
+                        android:padding="@dimen/margin_05"
+                        android:text="@string/card_details"
                         android:textColor="@color/blue"
-                        android:textSize="17dp"
+                        android:textSize="@dimen/textsize_17sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -201,7 +201,7 @@
                 android:id="@+id/payment_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@android:color/white"
@@ -211,24 +211,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
+                    android:layout_margin="@dimen/margin_12"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:padding="10dp"
+                        android:layout_width="@dimen/margin_90"
+                        android:layout_height="@dimen/margin_90"
+                        android:padding="@dimen/margin_10"
                         android:src="@drawable/payment" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="05dp"
-                        android:text="Payment Details"
+                        android:padding="@dimen/margin_05"
+                        android:text="@string/payment_details"
                         android:textColor="@color/blue"
-                        android:textSize="17dp"
+                        android:textSize="@dimen/textsize_17sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>

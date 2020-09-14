@@ -17,7 +17,7 @@ import cdac.org.anganvadistaffutility.R;
 import static cdac.org.anganvadistaffutility.R.drawable.button_stroke;
 import static cdac.org.anganvadistaffutility.R.drawable.white_stroke;
 
-public class SelectLanguageActivity extends AppCompatActivity  {
+public class SelectLanguageActivity extends BaseActivity  {
 
     TextView english_text, hindi_text;
     Button continue_button;
@@ -51,7 +51,7 @@ public class SelectLanguageActivity extends AppCompatActivity  {
                TextView textView = (TextView) view;
                if (textView.isSelected()) {
                    textView.setTextColor(Color.WHITE);
-                   textView.setBackgroundResource(white_stroke);
+                  textView.setBackgroundColor(Color.GRAY);
                    view.setSelected(false);
                } else {
                    textView.setTextColor(Color.BLACK);

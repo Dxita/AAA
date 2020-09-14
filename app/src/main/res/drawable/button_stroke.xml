@@ -6,13 +6,10 @@
 
     <solid android:color="@android:color/transparent" />
     <corners
-        android:bottomLeftRadius="8dp"
-        android:bottomRightRadius="8dp"
-        android:topLeftRadius="8dp"
-        android:topRightRadius="8dp" />
+   android:radius="2dp"/>
 
     <stroke
         android:color="@color/grey"
-        android:width="1dp" />
+        android:width="0.9dp" />
 
 </shape>

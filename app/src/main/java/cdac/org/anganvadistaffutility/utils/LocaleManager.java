@@ -36,7 +36,7 @@ public class LocaleManager {
 
     public static String getLanguagePref(Context mContext) {
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-        return mPreferences.getString(LANGUAGE_KEY, ENGLISH);
+        return mPreferences.getString(LANGUAGE_KEY, HINDI);
     }
 
     private static void setLanguagePref(Context mContext, String localeKey) {

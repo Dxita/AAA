@@ -77,7 +77,12 @@
     <string name="english">English</string>
     <string name="hindi">हिन्दी</string>
     <string name="you_can_change_text">You can change the language later on</string>
-    <string name="sms_code_sent_text">SMS Verification code has been sent to +91 82XXXXX499</string>
+    <string name="sms_code_sent_text">SMS Verification code has been sent to +91 </string>
+    <string name="profile_details">Profile Details</string>
+    <string name="job_details">Job Details</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="card_details">Card Details</string>
+    <string name="payment_details">Payment Details</string>
 
 
 </resources>

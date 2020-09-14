@@ -33,6 +33,38 @@
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp" />
 
+            <LinearLayout
+                android:layout_margin="@dimen/margin_08"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/from_year"
+                android:inputType="number"
+                android:layout_marginRight="@dimen/margin_08"
+                android:layout_marginLeft="@dimen/margin_08"
+                android:background="@drawable/otpbg"
+                android:singleLine="true"
+                android:padding="@dimen/margin_10"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatEditText>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/to_year"
+                    android:enabled="false"
+                    android:clickable="false"
+                    android:inputType="number"
+                    android:layout_marginRight="@dimen/margin_08"
+                    android:layout_marginLeft="@dimen/margin_08"
+                    android:background="@drawable/otpbg"
+                    android:singleLine="true"
+                    android:padding="@dimen/margin_10"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatEditText>
+            </LinearLayout>
+<!--
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
@@ -44,9 +76,10 @@
                 android:layout_marginBottom="@dimen/margin_08"
                 android:background="@drawable/otpbg"
                 android:padding="@dimen/margin_02"
-                android:prompt="@string/category" />
+                android:prompt="@string/category" />-->
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/generate_slip_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_08"
