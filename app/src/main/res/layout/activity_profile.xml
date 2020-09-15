@@ -47,6 +47,27 @@
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_08"
+                android:text="@string/fatherhusband_name"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/father_husband_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
@@ -65,25 +86,6 @@
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey"  />
 
-            <androidx.appcompat.widget.AppCompatTextView
-
-                android:text="@string/category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
-                android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -106,6 +108,28 @@
 
             <androidx.appcompat.widget.AppCompatTextView
 
+                android:text="@string/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_08"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/margin_15">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
@@ -124,19 +148,20 @@
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey" />
 
+
             <androidx.appcompat.widget.AppCompatTextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
-                android:text="@string/fatherhusband_name"
+                android:text="@string/awc_name"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/father_husband_name"
+                android:id="@+id/awc_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_05"
@@ -144,7 +169,25 @@
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey" />
 
+            <androidx.appcompat.widget.AppCompatTextView
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_08"
+                android:text="@string/awc_address"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/awc_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

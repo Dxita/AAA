@@ -27,40 +27,18 @@
             android:layout_margin="@dimen/margin_15"
             android:orientation="vertical">
 
-
-
             <androidx.appcompat.widget.AppCompatTextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
-                android:text="@string/pan_card_no"
+                android:text="@string/asha_id"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/pan_card_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
-                android:padding="@dimen/margin_10"
-                android:textColor="@color/grey"/>
-            <androidx.appcompat.widget.AppCompatTextView
-
-                android:text="@string/bhamasha_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/bhamasha_no"
+                android:id="@+id/asha_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_05"
@@ -86,24 +64,6 @@
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
-                android:text="@string/asha_id"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
-
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/asha_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
-                android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -124,6 +84,31 @@
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
+
+                android:text="@string/bhamasha_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_08"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/margin_15">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bhamasha_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey" />
+
+
+
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="08dp"
@@ -141,6 +126,29 @@
                 android:background="@color/sky"
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/grey" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_08"
+                android:text="@string/pan_card_no"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/pan_card_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:background="@color/sky"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/grey"/>
+
+
 
         </LinearLayout>
 

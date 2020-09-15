@@ -1,6 +1,9 @@
 package cdac.org.anganvadistaffutility.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +37,7 @@ EditText from_year;
 TextView to_year;
 Button generate_slip_button;
 String f_year, t_year;
-int count=0;
+int nextyear=1;
 
 
     @Override
@@ -50,23 +53,45 @@ int count=0;
         from_year=findViewById(R.id.from_year);
         to_year=findViewById(R.id.to_year);
         generate_slip_button=findViewById(R.id.generate_slip_button);
-
         f_year=from_year.getText().toString();
-        t_year=to_year.getText().toString();
+
+
+
+
+        from_year.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+                if (from_year.length()==4)
+                {
+                    String version =from_year.getText().toString() ;
+                    String newVersion = "20" + (Integer.parseInt(version.substring(1,version.length()))+1);
+                    to_year.setText(newVersion);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
+
 
 
         generate_slip_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String version = from_year.getText().toString();
-                String newVersion = "20"+((Integer.parseInt(version.substring(1,version.length()))+1));
-                to_year.setText(newVersion);
-
-
-                //Toast.makeText(context, ""+newVersion, Toast.LENGTH_SHORT).show();
-                //increment the count
-                //getPaymentData();
+                    getPaymentData();
 
             }
         });
@@ -91,6 +116,7 @@ int count=0;
                              public void onSuccess(PaymentDetails body) {
 
                                 AppUtils.showToast(getApplicationContext(),body.getMessage());
+                                startActivity(new Intent(getApplicationContext(),SalaryDetailsTblActivity.class));
                              }
 
                         @Override
