@@ -23,7 +23,6 @@ import cdac.org.anganvadistaffutility.fragment.JobFragment;
 import cdac.org.anganvadistaffutility.fragment.PaymentFragment;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -46,8 +45,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void onClick(View view) {
-    }
+    public void onClick(View view) { }
 
     @Override
     public void onBackPressed() {

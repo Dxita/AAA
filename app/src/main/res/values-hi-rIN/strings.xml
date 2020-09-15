@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">राजपोशन</string>
+    <string name="app_name">राजपोषण</string>
     <string name="verify_user">उपयोगकर्ता की पुष्टि करें</string>
     <string name="get_employee_data">कर्मचारी डेटा प्राप्त करें</string>
 
@@ -35,7 +35,7 @@
     <string name="enter">पास वर्ड दर्ज करें</string>
     <string name="login_txt">लॉग इन करें</string>
     <string name="password">कुंजिका</string>
-    <string name="awc_id">आंगनवाड़ी केंद्र का आईडी</string>
+    <string name="awc_id">आंगनवाड़ी केन्द्र आईडी</string>
     <string name="fatherhusband_name">पिता / पति का नाम</string>
     <string name="mobile_no">मोबाइल नंबर</string>
     <string name="name">नाम</string>
@@ -45,7 +45,7 @@
     <string name="employment_status">रोज़गार की स्थिति</string>
     <string name="doj_text">शामिल होने की तिथि</string>
     <string name="designation">पद</string>
-    <string name="payslab_amount">Payslab राशि</string>
+    <string name="payslab_amount">वेतनमान राशि</string>
     <string name="qualification">शैक्षिक योग्यता</string>
     <string name="branch_code">शाखा क्र्मांक</string>
     <string name="branch_name">शाखा का नाम</string>
@@ -67,7 +67,7 @@
     <string name="continue_text">जारी रखें</string>
     <string name="admin_text">व्यवस्थापक</string>
     <string name="user_text">उपयोगकर्ता</string>
-    <string name="otp_txt">अपना कोड सत्यापित कर रहा है</string>
+    <string name="otp_txt">OTP कोड सत्यापित किया जा रहा है</string>
     <string name="validate_text">ओटीपी सत्यापित करें</string>
     <string name="getotp">OTP प्राप्त करें</string>
     <string name="country_code">+91</string>

@@ -27,7 +27,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.callback.OtpReceivedInterface;
 import cdac.org.anganvadistaffutility.receiver.SmsBroadcastReceiver;
 
-public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterface {
+public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterface, View.OnClickListener {
 
     SmsBroadcastReceiver mSmsBroadcastReceiver;
     private int RESOLVE_HINT = 2;
@@ -46,7 +46,6 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
         initViews();
 
-        mobile_number_text = findViewById(R.id.mobile_number_text);
         mSmsBroadcastReceiver = new SmsBroadcastReceiver();
         mSmsBroadcastReceiver.setOnOtpListeners(this);
 
@@ -61,6 +60,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
             appPreferences.setOtpGenerated(AppUtils.getRandomNumberString());
 
             inputOtp.setText(appPreferences.getOtpGenerated());
+
             //   startSMSListener();
         });*/
 
@@ -71,20 +71,13 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
             mobile_number_text.setText(getResources().getString(R.string.sms_code_sent_text) + " +91" + mobileNumber);
         }
 
-        btnVerifyOtp.setOnClickListener(view -> {
-         /*   if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {
-
-            }*/
-
-            startActivity(new Intent(context, HomeActivity.class));
-        });
+        btnVerifyOtp.setOnClickListener(this);
     }
 
     private void initViews() {
         inputMobileNumber = findViewById(R.id.editTextInputMobile);
-
-        btnVerifyOtp = findViewById(R.id.buttonVerify);
-
+        btnVerifyOtp = findViewById(R.id.btnVerifyOtp);
+        mobile_number_text = findViewById(R.id.mobile_number_text);
     }
 
     @Override
@@ -126,7 +119,6 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //Result if we want hint number
         if (requestCode == RESOLVE_HINT) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
@@ -136,6 +128,18 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
                     inputMobileNumber.setText(credential.getId());
                 }
             }
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnVerifyOtp:
+                 /*   if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {
+            }*/
+                startActivity(new Intent(context, HomeActivity.class));
+                finish();
+                break;
         }
     }
 }

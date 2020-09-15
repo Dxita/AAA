@@ -19,7 +19,7 @@ import retrofit2.Call;
 public class VerifyUserActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText edt_user_mobile_no;
-    String mobile;
+    private String mobile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +37,6 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
     private void verifyUser(String userMobileNumber) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<VerifyUser> call = apiInterface.verifyUser(userMobileNumber);
-        //   Call<VerifyUser> call = apiInterface.verifyUser(AppUtils.empMobileNumber);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyUser>() {
             @Override
             public void onSuccess(VerifyUser body) {
