@@ -35,7 +35,7 @@
     <string name="enter">पास वर्ड दर्ज करें</string>
     <string name="login_txt">लॉग इन करें</string>
     <string name="password">कुंजिका</string>
-    <string name="awc_id">AWC आईडी</string>
+    <string name="awc_id">आंगनवाड़ी केंद्र का आईडी</string>
     <string name="fatherhusband_name">पिता / पति का नाम</string>
     <string name="mobile_no">मोबाइल नंबर</string>
     <string name="name">नाम</string>
@@ -46,7 +46,7 @@
     <string name="doj_text">शामिल होने की तिथि</string>
     <string name="designation">पद</string>
     <string name="payslab_amount">Payslab राशि</string>
-    <string name="qualification">योग्यता</string>
+    <string name="qualification">शैक्षिक योग्यता</string>
     <string name="branch_code">शाखा क्र्मांक</string>
     <string name="branch_name">शाखा का नाम</string>
     <string name="ifsc_code">IFSC कोड</string>
@@ -82,8 +82,15 @@
     <string name="profile_details">प्रोफ़ाइल विवरण </string>
     <string name="job_details">नौकरी विवरण</string>
     <string name="bank_details">बैंक विवरण</string>
-    <string name="card_details">कार्ड के विवरण</string>
+    <string name="card_details">पहचान का विवरण</string>
     <string name="payment_details">भुगतान विवरण</string>
     <string name="no_internet_connection">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
+
+    <string name="employee_id">कर्मचारी कामतत्व</string>
+    <string name="month">महीना</string>
+    <string name="textView">Text here</string>
+    <string name="download">डाउनलोड</string>
+    <string name="awc_name">आंगनवाड़ी केंद्र का नाम</string>
+    <string name="awc_address">आंगनवाड़ी केंद्र का पता</string>
 
 </resources>
