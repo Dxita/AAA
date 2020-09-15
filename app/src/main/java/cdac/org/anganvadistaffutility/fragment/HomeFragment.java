@@ -85,6 +85,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         if (AppUtils.isNetworkConnected(context)) {
             getEmployeeData();
+        }else {
+            AppUtils.showToast(context, context.getResources().getString(R.string.no_internet_connection));
         }
     }
 

@@ -84,5 +84,6 @@
     <string name="bank_details">बैंक विवरण</string>
     <string name="card_details">कार्ड के विवरण</string>
     <string name="payment_details">भुगतान विवरण</string>
+    <string name="no_internet_connection">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
 
 </resources>

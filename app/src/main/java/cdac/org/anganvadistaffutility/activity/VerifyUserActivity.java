@@ -36,8 +36,8 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
     private void verifyUser(String userMobileNumber) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        //  Call<VerifyUser> call = apiInterface.verifyUser(userMobileNumber);
-        Call<VerifyUser> call = apiInterface.verifyUser(AppUtils.empMobileNumber);
+        Call<VerifyUser> call = apiInterface.verifyUser(userMobileNumber);
+        //   Call<VerifyUser> call = apiInterface.verifyUser(AppUtils.empMobileNumber);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyUser>() {
             @Override
             public void onSuccess(VerifyUser body) {
@@ -67,6 +67,8 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             } else {
                 if (AppUtils.isNetworkConnected(context)) {
                     verifyUser(mobile);
+                } else {
+                    AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
                 }
             }
         }
