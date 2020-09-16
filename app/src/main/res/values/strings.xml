@@ -14,7 +14,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -34,12 +34,11 @@
     <string name="enter">Enter Password</string>
     <string name="login_txt">LOGIN</string>
     <string name="password">Password</string>
-    <string name="awc_id">AWC ID</string>
+    <string name="awc_id">Aanganwadi Centre ID</string>
     <string name="fatherhusband_name">Father/Husband Name</string>
     <string name="mobile_no">Mobile Number</string>
     <string name="name">Name</string>
     <string name="dob_text">Date of birth</string>
-    <string name="margin_40dp">40dp</string>
     <string name="select_finincial_year">Select Financial Year :</string>
     <string name="generate_salary_slip">Generate Salary Slip</string>
     <string name="employment_status">Employment Status</string>
@@ -81,15 +80,19 @@
     <string name="profile_details">Profile Details</string>
     <string name="job_details">Job Details</string>
     <string name="bank_details">Bank Details</string>
-    <string name="card_details">Identification Details</string>
+    <string name="card_details">Identity Details</string>
     <string name="payment_details">Payment Details</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="employee_id">Employee ID</string>
     <string name="month">Month</string>
     <string name="textView">Text here</string>
     <string name="download">Download</string>
-    <string name="awc_name">AWC Name</string>
-    <string name="awc_address">AWC Address</string>
+    <string name="awc_name">Aanganwadi Centre Name</string>
+    <string name="awc_address">Aanganwadi Centre Address</string>
+
+    <string name="retired">Retired</string>
+    <string name="employed">Working</string>
+
 
 
 </resources>

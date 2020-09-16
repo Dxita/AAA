@@ -68,7 +68,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             String mobileNumber = (String) bundle.get("mobile_number");
-            mobile_number_text.setText(getResources().getString(R.string.sms_code_sent_text) + " +91" + mobileNumber);
+            mobile_number_text.setText( "+91" + mobileNumber+" "+ getResources().getString(R.string.sms_code_sent_text));
         }
 
         btnVerifyOtp.setOnClickListener(this);
@@ -88,7 +88,9 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
     @Override
     public void onOtpTimeout() {
+
         Toast.makeText(this, "Time out, please resend", Toast.LENGTH_LONG).show();
+
     }
 
     public void startSMSListener() {
@@ -99,7 +101,9 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
             layoutVerify.setVisibility(View.VISIBLE);
             Toast.makeText(VerifyOTPActivity.this, "SMS Retriever starts", Toast.LENGTH_LONG).show();
         });
+
         mTask.addOnFailureListener(e -> Toast.makeText(VerifyOTPActivity.this, "Error", Toast.LENGTH_LONG).show());
+
     }
 
     public void getHintPhoneNumber() {

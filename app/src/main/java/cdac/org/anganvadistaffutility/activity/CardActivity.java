@@ -20,7 +20,7 @@ public class CardActivity extends BaseActivity {
         setContentView(R.layout.activity_card);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Card Details");
+        toolbar.setTitle("Identity Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 

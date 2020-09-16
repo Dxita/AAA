@@ -82,7 +82,7 @@
     <string name="profile_details">प्रोफ़ाइल विवरण </string>
     <string name="job_details">नौकरी विवरण</string>
     <string name="bank_details">बैंक विवरण</string>
-    <string name="card_details">पहचान का विवरण</string>
+    <string name="card_details">पहचान विवरण</string>
     <string name="payment_details">भुगतान विवरण</string>
     <string name="no_internet_connection">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
 
@@ -92,5 +92,9 @@
     <string name="download">डाउनलोड</string>
     <string name="awc_name">आंगनवाड़ी केंद्र का नाम</string>
     <string name="awc_address">आंगनवाड़ी केंद्र का पता</string>
+
+    <string name="retired">सेवा निवृत </string>
+    <string name="employed">कार्यरत</string>
+
 
 </resources>

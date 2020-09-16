@@ -33,6 +33,15 @@ public class JobActivity extends BaseActivity {
         EmployeeDetails.Job jobDetails = getIntent().getParcelableExtra("job_details");
         if (jobDetails != null) {
             employment_status.setText(jobDetails.getEmployeeStatus());
+
+            if (jobDetails.getEmployeeStatus().equals("0"))
+            {
+                employment_status.setText(getString(R.string.retired));
+            }
+            else {
+                employment_status.setText(getString(R.string.employed));
+            }
+
             doj.setText(jobDetails.getDateOfJoining());
             payslab_amount.setText(jobDetails.getPayslabAmount());
             qualification.setText(jobDetails.getEducationalQualification());
