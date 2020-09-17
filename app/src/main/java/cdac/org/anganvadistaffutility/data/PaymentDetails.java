@@ -1,5 +1,8 @@
 package cdac.org.anganvadistaffutility.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -53,11 +56,27 @@ public class PaymentDetails {
     }
 
 
-    public static class Data {
+    public static class Data implements Parcelable {
 
         @SerializedName("empdata")
         @Expose
         private List<Empdatum> empdata = null;
+
+        protected Data(Parcel in) {
+            empdata = in.createTypedArrayList(Empdatum.CREATOR);
+        }
+
+        public static final Creator<Data> CREATOR = new Creator<Data>() {
+            @Override
+            public Data createFromParcel(Parcel in) {
+                return new Data(in);
+            }
+
+            @Override
+            public Data[] newArray(int size) {
+                return new Data[size];
+            }
+        };
 
         public List<Empdatum> getEmpdata() {
             return empdata;
@@ -67,8 +86,20 @@ public class PaymentDetails {
             this.empdata = empdata;
         }
 
+        @Override
+        public int describeContents() {
+            return 0;
+        }
 
-        public static class Empdatum {
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+
+
+            parcel.writeTypedList(empdata);
+        }
+    }
+
+        public static class Empdatum implements Parcelable {
 
             @SerializedName("employee_id")
             @Expose
@@ -100,6 +131,30 @@ public class PaymentDetails {
             @SerializedName("salary")
             @Expose
             private String salary;
+
+            protected Empdatum(Parcel in) {
+                employeeId = in.readString();
+                employeeNameEnglish = in.readString();
+                subbillid = in.readString();
+                subbillname = in.readString();
+                billnameid = in.readString();
+                billname = in.readString();
+                month = in.readString();
+                absentDays = in.readString();
+                salary = in.readString();
+            }
+
+            public static final Creator<Empdatum> CREATOR = new Creator<Empdatum>() {
+                @Override
+                public Empdatum createFromParcel(Parcel in) {
+                    return new Empdatum(in);
+                }
+
+                @Override
+                public Empdatum[] newArray(int size) {
+                    return new Empdatum[size];
+                }
+            };
 
             public String getEmployeeId() {
                 return employeeId;
@@ -181,7 +236,25 @@ public class PaymentDetails {
                 this.salary = salary;
             }
 
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel parcel, int i) {
+                parcel.writeString(employeeId);
+                parcel.writeString(employeeNameEnglish);
+                parcel.writeString(subbillid);
+                parcel.writeString(subbillname);
+                parcel.writeString(billnameid);
+                parcel.writeString(billname);
+                parcel.writeString(month);
+                parcel.writeString(absentDays);
+                parcel.writeString(salary);
+
+            }
         }
     }
-}
+
 

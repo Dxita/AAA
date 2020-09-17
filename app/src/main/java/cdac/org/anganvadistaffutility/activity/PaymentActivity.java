@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
@@ -38,6 +40,8 @@ TextView to_year;
 Button generate_slip_button;
 String f_year, t_year;
 int nextyear=1;
+
+    private List<PaymentDetails.Empdatum> paymentDetails;
 
 
     @Override
@@ -115,8 +119,10 @@ int nextyear=1;
                       @Override
                              public void onSuccess(PaymentDetails body) {
 
-                                AppUtils.showToast(getApplicationContext(),body.getMessage());
-                                startActivity(new Intent(getApplicationContext(),SalaryDetailsTblActivity.class));
+                                AppUtils.showToast(context,body.getMessage());
+                          paymentDetails =body.getData().getEmpdata();
+                          startActivity(new Intent(context,SalaryDetailsTblActivity.class).putExtra("salary_data",paymentDetails));
+
                              }
 
                         @Override

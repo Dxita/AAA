@@ -149,6 +149,7 @@ public class EmployeeDetails {
 
         @Override
         public void writeToParcel(Parcel parcel, int i) {
+
             parcel.writeString(employeeStatus);
             parcel.writeString(dateOfJoining);
             parcel.writeString(designationNameEnglish);

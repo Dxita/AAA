@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.ImageButton;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.data.PaymentDetails;
 
 public class SalaryDetailsTblActivity extends AppCompatActivity {
 
@@ -30,6 +33,12 @@ public class SalaryDetailsTblActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         init();
+
+
+        PaymentDetails.Empdatum empdatum = (PaymentDetails.Empdatum) getIntent().getParcelableExtra("salary_data");
+        Log.d("data", String.valueOf(empdatum));
+
+
     }
 
     private void init() {
