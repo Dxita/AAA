@@ -54,4 +54,7 @@ dependencies {
     // lib for SMS verification (Phone Auth)
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
+
+    // Bar Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

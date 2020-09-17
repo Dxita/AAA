@@ -92,7 +92,8 @@
 
     <string name="retired">Retired</string>
     <string name="employed">Working</string>
-
+    <string name="view_aaganwadi_data">View Aaganwadi Data</string>
+    <string name="show_kpi">Show KPI</string>
 
 
 </resources>
