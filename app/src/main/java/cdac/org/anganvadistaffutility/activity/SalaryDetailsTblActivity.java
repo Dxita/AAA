@@ -1,33 +1,31 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.data.PaymentModel;
 import cdac.org.anganvadistaffutility.utils.AppUtils;
 
 public class SalaryDetailsTblActivity extends AppCompatActivity {
 
+    RecyclerView recycler_view;
+    PaymentAdapter adapter;
     List<PaymentDetails.Empdatum> empdatumList;
     String emp_id,emp_name,emonth,payslab_amt;
 
@@ -42,98 +40,30 @@ public class SalaryDetailsTblActivity extends AppCompatActivity {
 
         String emdData = getIntent().getStringExtra("salary_data");
         empdatumList = AppUtils.convertToGet(emdData);
-
-
         for (PaymentDetails.Empdatum empdatum : empdatumList) {
 
-           emp_id= empdatum.getEmployeeId();
-           emonth=empdatum.getMonth();
-           emp_name=empdatum.getEmployeeNameEnglish();
-           payslab_amt=empdatum.getSalary();
-
+            emp_id= empdatum.getEmployeeId();
+            emonth=empdatum.getMonth();
+            emp_name=empdatum.getEmployeeNameEnglish();
+            payslab_amt=empdatum.getSalary();
         }
 
-        init();
+        recycler_view = findViewById(R.id.recycler_view);
+
+        setRecyclerView();
+
+
+
 
     }
 
-    private void init() {
+    private void setRecyclerView() {
 
-        TableLayout stk = (TableLayout) findViewById(R.id.table_main);
-       /* LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        params.setMargins(12, 12, 12, 12);
-        stk.setGravity(Gravity.CENTER_HORIZONTAL);
-        stk.setLayoutParams(params);*/
-
-       LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
-       params.setMargins(12,12,12,12);
-       stk.setGravity(Gravity.CENTER_HORIZONTAL);
-       stk.setLayoutParams(params);
-
-
-        TableRow tbrow0 = new TableRow(this);
-        TextView tv0 = new TextView(this);
-        tv0.setText("ID");
-        tv0.setTextColor(Color.BLACK);
-        tv0.setGravity(Gravity.CENTER);
-        tv0.setPadding(10,10,10,10);
-        tbrow0.addView(tv0);
-
-        TextView tv1 = new TextView(this);
-        tv1.setText(" Name ");
-        tv1.setTextColor(Color.BLACK);
-        tv1.setGravity(Gravity.CENTER);
-        tv1.setPadding(10,10,10,10);
-        tbrow0.addView(tv1);
-
-        TextView tv2 = new TextView(this);
-        tv2.setText(" Month ");
-        tv2.setTextColor(Color.BLACK);
-        tv2.setGravity(Gravity.CENTER);
-        tv2.setPadding(10,10,10,10);
-        tbrow0.addView(tv2);
-
-        TextView tv3 = new TextView(this);
-        tv3.setText(" Salary ");
-        tv3.setTextColor(Color.BLACK);
-        tv3.setGravity(Gravity.CENTER);
-        tv3.setPadding(10,10,10,10);
-        tbrow0.addView(tv3);
-
-        stk.addView(tbrow0);
-
-        for (int i = 0; i < empdatumList.size(); i++) {
-
-            TableRow tbrow = new TableRow(this);
-            TextView t1v = new TextView(this);
-            t1v.setText("" + emp_id);
-            t1v.setTextColor(Color.GRAY);
-            t1v.setGravity(Gravity.CENTER);
-            tbrow.addView(t1v);
-
-            TextView t2v = new TextView(this);
-            t2v.setText( " " + emp_name);
-            t2v.setTextColor(Color.GRAY);
-            t2v.setGravity(Gravity.CENTER);
-            tbrow.addView(t2v);
-
-            TextView t3v = new TextView(this);
-            t3v.setText(" " + emonth);
-            t3v.setTextColor(Color.GRAY);
-            t3v.setGravity(Gravity.CENTER);
-            tbrow.addView(t3v);
-
-            TextView t4v = new TextView(this);
-            t4v.setText("" + payslab_amt);
-            t4v.setTextColor(Color.GRAY);
-            t4v.setGravity(Gravity.CENTER);
-            tbrow.addView(t4v);
-            stk.addView(tbrow);
-        }
-
+        recycler_view.setHasFixedSize(true);
+        recycler_view.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new PaymentAdapter(this, empdatumList);
+        recycler_view.setAdapter(adapter);
     }
-
-
 
 
     @Override
@@ -142,5 +72,55 @@ public class SalaryDetailsTblActivity extends AppCompatActivity {
             onBackPressed();
         }
         return true;
+    }
+
+    private static class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.ViewHolder> {
+
+        Context context;
+        List<PaymentDetails.Empdatum> payment_list;
+
+
+        public PaymentAdapter(SalaryDetailsTblActivity context, List<PaymentDetails.Empdatum> payment_list) {
+            this.context = context;
+            this.payment_list = payment_list;
+        }
+
+        @NonNull
+        @Override
+        public PaymentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_layout,parent,false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+            if (payment_list != null && payment_list.size() > 0){
+                PaymentDetails.Empdatum empdatum = payment_list.get(position);
+                holder.id_tv.setText(empdatum.getEmployeeId());
+                holder.name_tv.setText(empdatum.getMonth());
+                holder.payment_tv.setText(empdatum.getSalary());
+            } else {
+                return;
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return payment_list.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            TextView id_tv,name_tv,payment_tv;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+
+                id_tv = itemView.findViewById(R.id.id_tv);
+                name_tv = itemView.findViewById(R.id.name_tv);
+                payment_tv = itemView.findViewById(R.id.payment_tv);
+
+            }
+        }
     }
 }
