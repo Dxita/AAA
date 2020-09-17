@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         if (AppUtils.isNetworkConnected(context)) {
             getEmployeeData();
-        }else {
+        } else {
             AppUtils.showToast(context, context.getResources().getString(R.string.no_internet_connection));
         }
     }
@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess(EmployeeDetails body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
-//                    AppUtils.showToast(getActivity(), body.getMessage());
+                    AppUtils.showToast(getActivity(), body.getMessage());
 
                     EmployeeDetails.Data data = body.getData();
                     profileDetails = data.getProfile();
@@ -106,6 +106,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     bankDetails = data.getBank();
                 }
             }
+
             @Override
             public void onFailure(Throwable t) {
                 //

@@ -5,8 +5,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
+import cdac.org.anganvadistaffutility.data.PaymentDetails;
 
 public class AppUtils {
 
@@ -28,6 +36,17 @@ public class AppUtils {
 
     public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public static String convertToPut(ArrayList<PaymentDetails.Empdatum> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<PaymentDetails.Empdatum> convertToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<PaymentDetails.Empdatum>>(){}.getType();
+        return gson.fromJson(list, type);
     }
 
     public static String getRandomNumberString() {
