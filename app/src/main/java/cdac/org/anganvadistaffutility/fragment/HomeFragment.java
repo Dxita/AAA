@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess(EmployeeDetails body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
-                    AppUtils.showToast(getActivity(), body.getMessage());
+                   AppUtils.showToast(getActivity(), body.getMessage());
 
                     EmployeeDetails.Data data = body.getData();
                     profileDetails = data.getProfile();

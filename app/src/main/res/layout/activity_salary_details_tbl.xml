@@ -27,22 +27,13 @@
 
 
 
-            <TableLayout
+                <TableLayout
+                    android:layout_gravity="center"
+                    android:id="@+id/table_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </TableLayout>
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/displayLinear"
-                android:background="@color/offwhite"
-                android:orientation="vertical" >
-
-                <TableRow
-
-                    android:padding="@dimen/margin_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/display_row"/>
-
-            </TableLayout>
         </LinearLayout>
 
          <!--   <LinearLayout
