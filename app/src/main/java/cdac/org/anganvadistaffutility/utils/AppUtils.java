@@ -3,6 +3,10 @@ package cdac.org.anganvadistaffutility.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -14,6 +18,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.PaymentDetails;
 
 public class AppUtils {
@@ -38,6 +43,13 @@ public class AppUtils {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
+    public static void setProgressBarVisibility(Context context, ViewGroup parent, int visibility) {
+        LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = mInflater.inflate(R.layout.layout_progress_bar, parent, true);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(visibility);
+    }
+
     public static String convertToPut(ArrayList<PaymentDetails.Empdatum> list) {
         Gson gson = new Gson();
         return gson.toJson(list);
@@ -45,17 +57,14 @@ public class AppUtils {
 
     public static List<PaymentDetails.Empdatum> convertToGet(String list) {
         Gson gson = new Gson();
-        Type type = new TypeToken<List<PaymentDetails.Empdatum>>(){}.getType();
+        Type type = new TypeToken<List<PaymentDetails.Empdatum>>() {
+        }.getType();
         return gson.fromJson(list, type);
     }
 
     public static String getRandomNumberString() {
-        // It will generate 6 digit random Number.
-        // from 0 to 999999
         Random rnd = new Random();
         int number = rnd.nextInt(999999);
-
-        // this will convert any number sequence into 6 character.
         return String.format(Locale.ENGLISH, "%06d", number);
     }
 }

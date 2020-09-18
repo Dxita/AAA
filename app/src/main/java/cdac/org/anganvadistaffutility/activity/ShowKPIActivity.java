@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -23,12 +24,17 @@ import com.github.mikephil.charting.utils.Utils;
 import java.util.ArrayList;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.data.RegisteredUserKPI;
+import cdac.org.anganvadistaffutility.retrofit.ApiInterface;
+import cdac.org.anganvadistaffutility.retrofit.ApiServiceOperator;
+import cdac.org.anganvadistaffutility.retrofit.ApiUtils;
+import cdac.org.anganvadistaffutility.utils.AppUtils;
+import retrofit2.Call;
 
 public class ShowKPIActivity extends BaseActivity implements View.OnClickListener, OnChartValueSelectedListener {
 
-    //private BarChart chart;
+    private RelativeLayout relativeLayout;
     private LineChart mChart;
-    LineDataSet set1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,44 +44,53 @@ public class ShowKPIActivity extends BaseActivity implements View.OnClickListene
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_show_kpi);
 
-        Button btn_show_kpi_chart = findViewById(R.id.btn_show_kpi_chart);
-        //  chart = findViewById(R.id.barchart);
+        relativeLayout = findViewById(R.id.relativeLayout);
         mChart = findViewById(R.id.lineChart);
+
+        Button btn_show_kpi_chart = findViewById(R.id.btn_show_kpi_chart);
         btn_show_kpi_chart.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_show_kpi_chart) {
-            /*if (chart.getVisibility() == View.GONE) {
-                chart.setVisibility(View.VISIBLE);
-            }
-            setData();*/
-
-            if (mChart.getVisibility() == View.GONE) {
-                mChart.setVisibility(View.VISIBLE);
-            }
-            setLineData();
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            getRegisteredUserKPI();
         }
     }
 
-    private void setLineData() {
+    private void getRegisteredUserKPI() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.SHOW_USER_KPI_BASE_URL);
+        Call<RegisteredUserKPI> call = apiInterface.getRegisteredUserKPI();
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<RegisteredUserKPI>() {
+            @Override
+            public void onSuccess(RegisteredUserKPI body) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, body.getMessage());
+                if (mChart.getVisibility() == View.GONE) {
+                    mChart.setVisibility(View.VISIBLE);
+                }
+
+                setLineData(body.getData());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                //
+            }
+        }));
+    }
+
+    private void setLineData(RegisteredUserKPI.Data data) {
         mChart.setTouchEnabled(true);
         mChart.setPinchZoom(true);
 
         ArrayList<Entry> values = new ArrayList<>();
-        values.add(new Entry(1, 0));
-        values.add(new Entry(2, 10));
-        values.add(new Entry(3, 25));
-        values.add(new Entry(4, 50));
-        values.add(new Entry(5, 75));
-        values.add(new Entry(6, 70));
-        values.add(new Entry(7, 80));
-        values.add(new Entry(8, 60));
-        values.add(new Entry(9, 90));
-        values.add(new Entry(10, 100));
+        for (RegisteredUserKPI.Empdatum empdatum: data.getEmpdata()) {
+            values.add(new Entry(1, Float.parseFloat(empdatum.getAMonth() + empdatum.getAYear())));
+        }
 
-        set1 = new LineDataSet(values, "Sample Data");
+        LineDataSet set1 = new LineDataSet(values, "Total Employees");
         set1.setDrawIcons(false);
         set1.enableDashedLine(10f, 5f, 0f);
         set1.enableDashedHighlightLine(10f, 5f, 0f);
@@ -97,49 +112,15 @@ public class ShowKPIActivity extends BaseActivity implements View.OnClickListene
         }
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
-        LineData data = new LineData(dataSets);
-        mChart.setData(data);
+        LineData lineData = new LineData(dataSets);
+        mChart.setData(lineData);
     }
-
-    /*private void setData() {
-        ArrayList<String> months = new ArrayList<>();
-        months.add("January");
-        months.add("February");
-        months.add("March");
-        months.add("April");
-        months.add("May");
-        months.add("June");
-        months.add("July");
-        months.add("August");
-        months.add("September");
-
-        ArrayList<BarEntry> barEntryArrayList = new ArrayList<>();
-        barEntryArrayList.add(new BarEntry(2f, 0));
-        barEntryArrayList.add(new BarEntry(4f, 1));
-        barEntryArrayList.add(new BarEntry(6f, 2));
-        barEntryArrayList.add(new BarEntry(8f, 3));
-        barEntryArrayList.add(new BarEntry(7f, 4));
-        barEntryArrayList.add(new BarEntry(3f, 5));
-        barEntryArrayList.add(new BarEntry(9f, 6));
-        barEntryArrayList.add(new BarEntry(5f, 7));
-        barEntryArrayList.add(new BarEntry(10f, 8));
-
-
-        BarDataSet dataSet = new BarDataSet(barEntryArrayList, "Projects");
-        BarData data = new BarData(months, dataSet);
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        chart.animateY(2500);
-        chart.setData(data);
-    }*/
-
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
     }
 
     @Override
     public void onNothingSelected() {
-
     }
 }
