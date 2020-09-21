@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.retrofit;
 
+import cdac.org.anganvadistaffutility.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.data.RegisteredUserKPI;
@@ -28,4 +29,7 @@ public interface ApiInterface {
 
     @GET("api_js_app_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<RegisteredUserKPI> getRegisteredUserKPI();
+
+    @GET("api_js_infrastructure_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    Call<AaganwadiInfraStructure> getInfrastructureData();
 }

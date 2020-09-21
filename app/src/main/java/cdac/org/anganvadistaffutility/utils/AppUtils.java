@@ -1,25 +1,25 @@
 package cdac.org.anganvadistaffutility.utils;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+        import android.content.Context;
+        import android.net.ConnectivityManager;
+        import android.net.NetworkInfo;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ProgressBar;
+        import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+        import com.google.gson.Gson;
+        import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+        import java.lang.reflect.Type;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Locale;
+        import java.util.Random;
 
-import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.data.PaymentDetails;
+        import cdac.org.anganvadistaffutility.R;
+        import cdac.org.anganvadistaffutility.data.PaymentDetails;
 
 public class AppUtils {
 
@@ -63,8 +63,10 @@ public class AppUtils {
     }
 
     public static String getRandomNumberString() {
-        Random rnd = new Random();
-        int number = rnd.nextInt(999999);
-        return String.format(Locale.ENGLISH, "%06d", number);
+        Random random = new Random();
+        //   int number = random.nextInt(999999);
+        int number = random.nextInt(900) + 100;
+      //  return String.format(Locale.ENGLISH, "%06d", number);
+        return String.format(Locale.ENGLISH, "%03d", number);
     }
 }

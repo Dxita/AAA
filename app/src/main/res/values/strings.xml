@@ -93,7 +93,12 @@
     <string name="retired">Retired</string>
     <string name="employed">Working</string>
     <string name="view_aaganwadi_data">View Aaganwadi Data</string>
-    <string name="show_kpi">Show KPI</string>
+    <string name="show_kpi">Key Performance Indicators</string>
+    <string name="payment_data">View Payment Data</string>
+    <string name="error_in_fetch_data">Error in fetch data</string>
+    <string name="employee_data">Employee Data</string>
+    <string name="total_employees">Total Employees</string>
+    <string name="registered_employees">Registered Employees</string>
 
 
 </resources>

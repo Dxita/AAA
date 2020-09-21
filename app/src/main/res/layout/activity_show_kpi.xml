@@ -13,13 +13,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_margin="@dimen/margin_05"
             android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/margin_60"
-                android:layout_height="@dimen/margin_60"
+                android:layout_width="@dimen/margin_40"
+                android:layout_height="@dimen/margin_40"
                 android:src="@drawable/app_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -28,30 +28,18 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_05"
                 android:layout_marginLeft="@dimen/margin_05"
-                android:text="@string/welcome_text"
+                android:text="@string/show_kpi"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_18" />
+                android:textSize="@dimen/font_12" />
 
         </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_show_kpi_chart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:background="@drawable/buttonbg"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/show_kpi"
-            android:textColor="@color/white" />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/lineChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:visibility="gone" />
 
     </LinearLayout>

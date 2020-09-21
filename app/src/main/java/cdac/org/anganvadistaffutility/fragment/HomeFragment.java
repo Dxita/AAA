@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private EmployeeDetails.Job jobDetails;
     private EmployeeDetails.Card cardDetails;
     private EmployeeDetails.Bank bankDetails;
+    private RelativeLayout relativeLayout;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -70,6 +72,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         CardView bank_card = root.findViewById(R.id.bank_card);
         CardView payment_card = root.findViewById(R.id.payment_card);
         CardView card = root.findViewById(R.id.card);
+        relativeLayout = root.findViewById(R.id.relativeLayout);
 
         cardView.setOnClickListener(this);
         job_card.setOnClickListener(this);
@@ -84,6 +87,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getEmployeeData();
         } else {
             AppUtils.showToast(context, context.getResources().getString(R.string.no_internet_connection));
@@ -97,7 +101,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess(EmployeeDetails body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
-                   AppUtils.showToast(getActivity(), body.getMessage());
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                    AppUtils.showToast(context, body.getMessage());
 
                     EmployeeDetails.Data data = body.getData();
                     profileDetails = data.getProfile();
@@ -109,7 +114,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFailure(Throwable t) {
-                //
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, context.getResources().getString(R.string.error_in_fetch_data));
             }
         }));
     }
