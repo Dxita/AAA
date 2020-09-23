@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cdac.org.anganvadistaffutility.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.retrofit.ApiInterface;
+import cdac.org.anganvadistaffutility.utils.AppUtils;
 import cdac.org.anganvadistaffutility.utils.LocaleManager;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
@@ -20,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final String TAG = BaseActivity.class.getSimpleName();
 
     AppPreferences appPreferences;
-    Context context;
+    public Context context;
     ApiInterface apiInterface;
 
     @Override
@@ -55,6 +58,17 @@ public class BaseActivity extends AppCompatActivity {
         finishAffinity();
     }
 
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            AppUtils.showToast(context, "landscape");
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            AppUtils.showToast(context, "portrait");
+        }
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -75,4 +89,9 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

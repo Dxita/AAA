@@ -99,6 +99,8 @@
     <string name="employee_data">Employee Data</string>
     <string name="total_employees">Total Employees</string>
     <string name="registered_employees">Registered Employees</string>
+    <string name="view_users_data">View Users Data</string>
+    <string name="view_infra_data">View Infrastructure Data</string>
 
 
 </resources>

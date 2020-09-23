@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.UserTypeActivity">
+    tools:context=".activity.ViewAaganwadiDataActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,7 +58,8 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     app:cardBackgroundColor="@color/peach"
                     app:cardCornerRadius="@dimen/margin_05"
-                    app:cardElevation="@dimen/margin_05">
+                    app:cardElevation="@dimen/margin_05"
+                    app:cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -73,7 +74,8 @@
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
-                            app:cardElevation="@dimen/margin_05">
+                            app:cardElevation="@dimen/margin_05"
+                            app:cardUseCompatPadding="true">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -123,7 +125,8 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     app:cardBackgroundColor="@color/green"
                     app:cardCornerRadius="@dimen/margin_05"
-                    app:cardElevation="@dimen/margin_05">
+                    app:cardElevation="@dimen/margin_05"
+                    app:cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -133,12 +136,13 @@
                             android:layout_width="@dimen/margin_200"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardElevation="@dimen/margin_05"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin">
+                            app:cardUseCompatPadding="true">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -169,14 +173,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
                             app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                     </RelativeLayout>
-
                 </androidx.cardview.widget.CardView>
-
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
