@@ -32,7 +32,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.user_type_admin:
-                startActivity(new Intent(context, ViewAaganwadiDataActivity.class));
+                startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
                 break;
             case R.id.user_type_employee:
                 startActivity(new Intent(context, VerifyUserActivity.class));

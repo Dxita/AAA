@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
@@ -20,43 +21,45 @@ import cdac.org.anganvadistaffutility.utils.AppUtils;
 import cdac.org.anganvadistaffutility.utils.AutoFitGridLayoutManager;
 import retrofit2.Call;
 
-public class ViewInfraStructureActivity extends BaseActivity {
+public class ViewInfraStructureActivity extends BaseActivity implements InfraStructureAdapter.ItemClickListener {
 
     private RelativeLayout relativeLayout;
-    private RecyclerView recyclerView;
     private InfraStructureAdapter infraStructureAdapter;
     private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_view_infrastructure);
 
         relativeLayout = findViewById(R.id.relativeLayout);
-        recyclerView = findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         infrastructureData = new ArrayList<>();
+        InfraStructureAdapter.ItemClickListener itemClickListener = this;
         AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            getAaganwadiInfrastructureData();
+            getAaGanWadiInfrastructureData();
         }
 
-        infraStructureAdapter = new InfraStructureAdapter(context, infrastructureData);
+        infraStructureAdapter = new InfraStructureAdapter(context, infrastructureData, itemClickListener);
         recyclerView.setAdapter(infraStructureAdapter);
     }
 
-    private void getAaganwadiInfrastructureData() {
+    private void getAaGanWadiInfrastructureData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.INFRASTRUCTURE_BASE_URL);
         Call<AaganwadiInfraStructure> call = apiInterface.getInfrastructureData();
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AaganwadiInfraStructure>() {
             @Override
             public void onSuccess(AaganwadiInfraStructure body) {
-                //   AppUtils.showToast(context, body.getMessage());
-                //  AppUtils.showToast(context, body.getData().getInfrastructureData().get(0).getTimInfrastructureNamee());
+                // AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData.addAll(body.getData().getInfrastructureData());
                 infraStructureAdapter.notifyDataSetChanged();
@@ -64,8 +67,14 @@ public class ViewInfraStructureActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
+    }
+
+    @Override
+    public void onItemClick(AaganwadiInfraStructure.InfrastructureDatum item) {
+        AppUtils.showToast(context, "" + item.getTimInfrastructureId() + ": " + item.getTimInfrastructureNameh());
     }
 }

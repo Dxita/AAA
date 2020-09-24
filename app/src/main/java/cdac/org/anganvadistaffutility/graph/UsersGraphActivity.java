@@ -31,9 +31,9 @@ public class UsersGraphActivity extends BaseActivity {
 
     private RelativeLayout relativeLayout;
     private LineChart mChart;
-    private ArrayList<String> x;
-    private ArrayList<Entry> y;
-    private ArrayList<Entry> z;
+    private ArrayList<String> monthData;
+    private ArrayList<Entry> totalEmployeesData;
+    private ArrayList<Entry> registeredEmployeesData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public class UsersGraphActivity extends BaseActivity {
         relativeLayout = findViewById(R.id.relativeLayout);
         mChart = findViewById(R.id.lineChart);
 
-        x = new ArrayList<>();
-        y = new ArrayList<>();
-        z = new ArrayList<>();
+        monthData = new ArrayList<>();
+        totalEmployeesData = new ArrayList<>();
+        registeredEmployeesData = new ArrayList<>();
 
         mChart.setDrawGridBackground(false);
         mChart.setDescription("");
@@ -58,13 +58,17 @@ public class UsersGraphActivity extends BaseActivity {
         mChart.setPinchZoom(true);
         mChart.getXAxis().setTextSize(14f);
         mChart.getAxisLeft().setTextSize(14f);
-        XAxis xl = mChart.getXAxis();
-        xl.setAvoidFirstLastClipping(true);
-        xl.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        XAxis xAxis = mChart.getXAxis();
+        xAxis.setAvoidFirstLastClipping(true);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setInverted(false);
+
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
+
         Legend l = mChart.getLegend();
         l.setPosition(Legend.LegendPosition.BELOW_CHART_RIGHT);
         l.setForm(Legend.LegendForm.CIRCLE);
@@ -81,8 +85,8 @@ public class UsersGraphActivity extends BaseActivity {
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<RegisteredUserKPI>() {
             @Override
             public void onSuccess(RegisteredUserKPI body) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 // AppUtils.showToast(context, body.getMessage());
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 if (mChart.getVisibility() == View.GONE) {
                     mChart.setVisibility(View.VISIBLE);
                 }
@@ -98,29 +102,27 @@ public class UsersGraphActivity extends BaseActivity {
     }
 
     private void setLineData(RegisteredUserKPI.Data data) {
-
         for (int i = 0; i < data.getEmpdata().size(); i++) {
-            RegisteredUserKPI.Empdatum empdatum = data.getEmpdata().get(i);
-
-            y.add(new Entry(Integer.parseInt(empdatum.getTotalEmployees()), i));
-            z.add(new Entry(Integer.parseInt(empdatum.getRegisterredEmployee()), i));
-            x.add(empdatum.getMonthyear());
+            RegisteredUserKPI.Empdatum empDatum = data.getEmpdata().get(i);
+            totalEmployeesData.add(new Entry(Integer.parseInt(empDatum.getTotalEmployees()), i));
+            registeredEmployeesData.add(new Entry(Integer.parseInt(empDatum.getRegisterredEmployee()), i));
+            monthData.add(empDatum.getMonthyear());
         }
 
-        LineDataSet set1 = new LineDataSet(y, getResources().getString(R.string.total_employees));
-        set1.setColor(Color.RED);
-        set1.setLineWidth(5f);
-        set1.setCircleRadius(2f);
+        LineDataSet totalEmployeesSet = new LineDataSet(totalEmployeesData, getResources().getString(R.string.total_employees));
+        totalEmployeesSet.setColor(Color.RED);
+        totalEmployeesSet.setLineWidth(5f);
+        totalEmployeesSet.setCircleRadius(2f);
 
-        LineDataSet set2 = new LineDataSet(z, getResources().getString(R.string.registered_employees));
-        set2.setColor(Color.GREEN);
-        set2.setLineWidth(3f);
-        set2.setCircleRadius(2f);
+        LineDataSet registeredEmployeesSet = new LineDataSet(registeredEmployeesData, getResources().getString(R.string.registered_employees));
+        registeredEmployeesSet.setColor(Color.GREEN);
+        registeredEmployeesSet.setLineWidth(3f);
+        registeredEmployeesSet.setCircleRadius(2f);
 
-        LineData datas = new LineData(x);
-        datas.addDataSet(set1);
-        datas.addDataSet(set2);
-        mChart.setData(datas);
+        LineData graphData = new LineData(monthData);
+        graphData.addDataSet(totalEmployeesSet);
+        graphData.addDataSet(registeredEmployeesSet);
+        mChart.setData(graphData);
         mChart.invalidate();
     }
 }

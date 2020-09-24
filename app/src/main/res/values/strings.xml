@@ -101,6 +101,8 @@
     <string name="registered_employees">Registered Employees</string>
     <string name="view_users_data">View Users Data</string>
     <string name="view_infra_data">View Infrastructure Data</string>
+    <string name="enter_employee_id">Enter Employee ID</string>
+    <string name="get_payment_details">Get Payment Details</string>
 
 
 </resources>
