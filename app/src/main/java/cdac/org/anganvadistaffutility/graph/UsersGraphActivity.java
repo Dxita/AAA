@@ -15,6 +15,8 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
@@ -27,7 +29,7 @@ import cdac.org.anganvadistaffutility.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.utils.AppUtils;
 import retrofit2.Call;
 
-public class UsersGraphActivity extends BaseActivity {
+public class UsersGraphActivity extends BaseActivity implements OnChartValueSelectedListener {
 
     private RelativeLayout relativeLayout;
     private LineChart mChart;
@@ -45,6 +47,7 @@ public class UsersGraphActivity extends BaseActivity {
 
         relativeLayout = findViewById(R.id.relativeLayout);
         mChart = findViewById(R.id.lineChart);
+        mChart.setOnChartValueSelectedListener(this);
 
         monthData = new ArrayList<>();
         totalEmployeesData = new ArrayList<>();
@@ -60,11 +63,13 @@ public class UsersGraphActivity extends BaseActivity {
         mChart.getAxisLeft().setTextSize(14f);
 
         XAxis xAxis = mChart.getXAxis();
-        xAxis.setAvoidFirstLastClipping(true);
+        //   xAxis.setAvoidFirstLastClipping(true);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setInverted(false);
+        leftAxis.setSpaceBottom(0);
+        leftAxis.setSpaceTop(0);
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
@@ -111,19 +116,31 @@ public class UsersGraphActivity extends BaseActivity {
 
         LineDataSet totalEmployeesSet = new LineDataSet(totalEmployeesData, getResources().getString(R.string.total_employees));
         totalEmployeesSet.setColor(Color.RED);
-        totalEmployeesSet.setLineWidth(5f);
+        totalEmployeesSet.setLineWidth(4f);
         totalEmployeesSet.setCircleRadius(2f);
 
         LineDataSet registeredEmployeesSet = new LineDataSet(registeredEmployeesData, getResources().getString(R.string.registered_employees));
         registeredEmployeesSet.setColor(Color.GREEN);
-        registeredEmployeesSet.setLineWidth(3f);
+        registeredEmployeesSet.setLineWidth(4f);
         registeredEmployeesSet.setCircleRadius(2f);
 
         LineData graphData = new LineData(monthData);
         graphData.addDataSet(totalEmployeesSet);
         graphData.addDataSet(registeredEmployeesSet);
+
         mChart.setData(graphData);
+        mChart.animateX(1600);
         mChart.invalidate();
+    }
+
+    @Override
+    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+        AppUtils.showToast(context, "" + Math.round(e.getVal()));
+    }
+
+    @Override
+    public void onNothingSelected() {
+
     }
 }
 
