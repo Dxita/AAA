@@ -92,6 +92,7 @@
 
     <string name="retired">Retired</string>
     <string name="employed">Working</string>
+
     <string name="view_aaganwadi_data">View Aaganwadi Data</string>
     <string name="show_kpi">Key Performance Indicators</string>
     <string name="payment_data">View Payment Data</string>
@@ -101,12 +102,16 @@
     <string name="registered_employees">Registered Employees</string>
     <string name="view_users_data">View Users Data</string>
     <string name="view_infra_data">View Infrastructure Data</string>
-    <string name="enter_employee_id">Enter Employee ID</string>
+    <string name="enter_employee_id">Enter Employee ID:</string>
     <string name="get_payment_details">Get Payment Details</string>
 
     <string name="change_your_language">Change your language</string>
 
 
     <string name="Rs">\u20B9</string>
+    <string name="enter_financial_year">Enter Financial Year:</string>
+    <string name="from_year">fromYear</string>
+    <string name="toYear">toYear</string>
+    <string name="fill_required_fields">Please fill required fields</string>
 
 </resources>

@@ -86,7 +86,7 @@
     <string name="payment_details">भुगतान विवरण</string>
     <string name="no_internet_connection">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
 
-    <string name="employee_id">कर्मचारी कामतत्व</string>
+    <string name="employee_id">कर्मचारी पहचान संख्या</string>
     <string name="month">महीना</string>
     <string name="textView">Text here</string>
     <string name="download">डाउनलोड</string>
@@ -99,5 +99,22 @@
 
     <string name="change_your_language">अपनी भाषा बदलें</string>
 
+
+    <string name="view_aaganwadi_data">आगनवाड़ी डेटा</string>
+    <string name="show_kpi">मुख्य प्रदर्शन संकेतक</string>
+    <string name="payment_data">भुगतान डेटा </string>
+    <string name="error_in_fetch_data">डेटा लाने में त्रुटि</string>
+    <string name="employee_data">कर्मचारी डेटा</string>
+    <string name="total_employees">कुल कर्मचारी</string>
+    <string name="registered_employees">पंजीकृत कर्मचारी</string>
+    <string name="view_users_data">उपयोगकर्ता डेटा</string>
+    <string name="view_infra_data">इंफ्रास्ट्रक्चर डेटा</string>
+    <string name="enter_employee_id">कर्मचारी पहचान संख्या दर्ज करें:</string>
+    <string name="get_payment_details">भुगतान विवरण</string>
+
+    <string name="enter_financial_year">वित्तीय वर्ष दर्ज करें:</string>
+    <string name="from_year">वर्ष से</string>
+    <string name="toYear">वर्ष के लिए</string>
+    <string name="fill_required_fields">कृपया सभी आवश्यक फ़ील्ड भरें</string>
 
 </resources>
