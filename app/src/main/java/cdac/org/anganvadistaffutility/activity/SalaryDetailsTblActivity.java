@@ -1,13 +1,28 @@
 package cdac.org.anganvadistaffutility.activity;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.graphics.fonts.Font;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,16 +34,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -46,8 +70,10 @@ public class SalaryDetailsTblActivity extends BaseActivity {
 
     private static final String LOG_TAG = "GeneratePDF";
 
-
     private BaseFont bfBold;
+
+
+
 
 
     @Override
@@ -70,6 +96,8 @@ public class SalaryDetailsTblActivity extends BaseActivity {
             payslab_amt=empdatum.getSalary();
         }
 
+
+
         recycler_view = findViewById(R.id.recycler_view);
 
         setRecyclerView();
@@ -77,27 +105,83 @@ public class SalaryDetailsTblActivity extends BaseActivity {
 
 
         download.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
 
 
-                String filename = "david";
-                String filecontent = "Contenido";
-                Metodos fop = new Metodos();
-                if (fop.write(filename, filecontent)) {
-                    Toast.makeText(context,
-                            filename + ".pdf created", Toast.LENGTH_SHORT)
-                            .show();
-                } else {
-                    Toast.makeText(context, "I/O error",
-                            Toast.LENGTH_SHORT).show();
-                }
-
+                    createandDisplayPdf();
 
             }
         });
 
+    }
 
+
+    public void createandDisplayPdf() {
+
+        Document doc = new Document();
+
+        try {
+            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dir";
+
+            File dir = new File(path);
+            if(!dir.exists())
+                dir.mkdirs();
+
+            File file = new File(dir, "newFile.pdf");
+            FileOutputStream fOut = new FileOutputStream(file);
+
+            PdfWriter.getInstance(doc, fOut);
+
+            //open the document
+            doc.open();
+
+            Paragraph p1 = new Paragraph("ABC");
+            p1.setAlignment(Paragraph.ALIGN_CENTER);
+
+            //add paragraph to document
+            doc.add(p1);
+
+        } catch (DocumentException de) {
+            Log.e("PDFCreator", "DocumentException:" + de);
+        } catch (IOException e) {
+            Log.e("PDFCreator", "ioException:" + e);
+        }
+        finally {
+            doc.close();
+        }
+
+        viewPdf("newFile.pdf", "Dir");
+    }
+
+    // Method for opening a pdf file
+    private void viewPdf(String file, String directory) {
+
+        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/" + directory + "/" + file);
+        Uri path = Uri.fromFile(pdfFile);
+
+        // Setting the intent for pdf reader
+        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+        pdfIntent.setDataAndType(path, "application/pdf");
+        pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        try {
+            startActivity(pdfIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(SalaryDetailsTblActivity.this, "Can't read pdf file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void setRecyclerView() {
