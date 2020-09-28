@@ -39,7 +39,7 @@
     <string name="mobile_no">Mobile Number</string>
     <string name="name">Name</string>
     <string name="dob_text">Date of birth</string>
-    <string name="select_finincial_year">Select Financial Year :</string>
+    <string name="select_finincial_year">Enter Financial Year :</string>
     <string name="generate_salary_slip">Generate Salary Slip</string>
     <string name="employment_status">Employment Status</string>
     <string name="doj_text">Date of Joining</string>
@@ -113,5 +113,9 @@
     <string name="from_year">fromYear</string>
     <string name="toYear">toYear</string>
     <string name="fill_required_fields">Please fill required fields</string>
+
+    <string name="should_have_4_digits">Should have 4 digits</string>
+    <string name="download_salary_slip">Download Salary Slip</string>
+
 
 </resources>

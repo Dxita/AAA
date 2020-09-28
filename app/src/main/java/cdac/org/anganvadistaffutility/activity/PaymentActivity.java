@@ -8,9 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -25,13 +28,13 @@ import cdac.org.anganvadistaffutility.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.utils.AppUtils;
 import retrofit2.Call;
 
-public class PaymentActivity extends BaseActivity {
+public class PaymentActivity extends BaseActivity implements TextWatcher {
 
     // String[] financial_year = {"2019-20", "2018-19", "2017-18", "2016-17", "2015-16", "2014-15"};
-    EditText from_year;
-    TextView to_year;
-    Button generate_slip_button;
-    String f_year, t_year;
+    AppCompatEditText from_year, to_year;
+RelativeLayout relativeLayout;
+    AppCompatButton generate_slip_button;
+
     int nextyear = 1;
 
 
@@ -42,37 +45,37 @@ public class PaymentActivity extends BaseActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         from_year = findViewById(R.id.from_year);
         to_year = findViewById(R.id.to_year);
         generate_slip_button = findViewById(R.id.generate_slip_button);
-        f_year = from_year.getText().toString();
+        relativeLayout=findViewById(R.id.relativeLayout);
+        from_year.addTextChangedListener(this);
 
-
-        from_year.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (from_year.length() == 4) {
-                    String version = from_year.getText().toString();
-                    String newVersion = "20" + (Integer.parseInt(version.substring(1)) + 1);
-                    to_year.setText(newVersion);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
 
         generate_slip_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getPaymentData();
+                String f_year= from_year.getText().toString().trim();
+                if (f_year.isEmpty())
+                {
+                    from_year.requestFocus();
+                    from_year.setError(getResources().getString(R.string.required_field));
+                }
+
+                else if (f_year.length()<4)
+                {
+                    from_year.requestFocus();
+                    from_year.setError(getResources().getString(R.string.should_have_4_digits));
+                }
+                else
+                {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                    getPaymentData();
+                }
+
 
             }
         });
@@ -93,7 +96,7 @@ public class PaymentActivity extends BaseActivity {
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<PaymentDetails>() {
             @Override
             public void onSuccess(PaymentDetails body) {
-
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, body.getMessage());
 
                 PaymentDetails.Data data = body.getData();
@@ -107,8 +110,31 @@ public class PaymentActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t) {
-                //
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
     }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        if (charSequence.length() == 4) {
+            int currentFinancialYear = Integer.parseInt(charSequence.toString());
+            int nextFinancialYear = currentFinancialYear + 1;
+            to_year.setText(String.valueOf(nextFinancialYear));
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
+
+
 }

@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,7 @@ public class CardActivity extends BaseActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+      Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         TextView pan_card_no = findViewById(R.id.pan_card_no);
         TextView bhamashah_no = findViewById(R.id.bhamasha_no);
@@ -41,11 +42,13 @@ public class CardActivity extends BaseActivity {
         }
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+
             onBackPressed();
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 }

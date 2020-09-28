@@ -7,9 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/app_logo"
@@ -19,14 +20,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".activity.SplashActivity">
-
+        <activity android:name=".activity.SplashActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.SalaryDetailsTblActivity"
@@ -52,7 +52,6 @@
         <activity
             android:name=".activity.SelectLanguageActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.BaseActivity"
             android:screenOrientation="portrait" />
@@ -65,15 +64,12 @@
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ViewAaGanWadiDataActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />
@@ -82,7 +78,6 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".graph.UsersGraphActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"

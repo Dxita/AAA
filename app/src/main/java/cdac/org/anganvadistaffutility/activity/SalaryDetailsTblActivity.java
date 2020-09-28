@@ -70,6 +70,7 @@ public class SalaryDetailsTblActivity extends BaseActivity {
 
     private static final String LOG_TAG = "GeneratePDF";
 
+
     private BaseFont bfBold;
 
 
@@ -81,7 +82,6 @@ public class SalaryDetailsTblActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salary_details_tbl);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Download Salary Slip");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -110,15 +110,13 @@ public class SalaryDetailsTblActivity extends BaseActivity {
             public void onClick(View view) {
 
 
-                    createandDisplayPdf();
-
             }
         });
 
     }
 
 
-    public void createandDisplayPdf() {
+    public void createandDisplayPdf(String text) {
 
         Document doc = new Document();
 
@@ -137,7 +135,7 @@ public class SalaryDetailsTblActivity extends BaseActivity {
             //open the document
             doc.open();
 
-            Paragraph p1 = new Paragraph("ABC");
+            Paragraph p1 = new Paragraph(text);
             p1.setAlignment(Paragraph.ALIGN_CENTER);
 
             //add paragraph to document

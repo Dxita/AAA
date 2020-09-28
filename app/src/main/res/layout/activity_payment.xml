@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/relativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:background="@drawable/custom_app_bg">
 
     <androidx.appcompat.widget.Toolbar
+        android:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
+        app:title="@string/payment_details"
         android:layout_width="match_parent"
+        tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:background="@color/colorPrimaryDark" >
-
-        <TextView
-            android:textSize="@dimen/textsize_18"
-            android:textColor="@color/black"
-            android:text="@string/payment_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </androidx.appcompat.widget.Toolbar>
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -28,50 +26,59 @@
         android:layout_below="@+id/toolbar">
 
         <LinearLayout
+            android:layout_marginTop="@dimen/margin_30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_10"
-                android:padding="@dimen/margin_02"
+                android:layout_margin="@dimen/margin_12"
+                android:padding="@dimen/margin_05"
                 android:text="@string/select_finincial_year"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp" />
 
             <LinearLayout
-                android:layout_margin="@dimen/margin_08"
+
                 android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/from_year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_05"
+                    android:layout_marginRight="@dimen/margin_05"
+                    android:layout_weight="1"
+                    android:background="@drawable/otpbg"
+                    android:enabled="true"
+                    android:hint="@string/from_year"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:layout_marginRight="@dimen/margin_08"
-                    android:layout_marginLeft="@dimen/margin_08"
-                    android:background="@drawable/otpbg"
+                    android:padding="@dimen/activity_horizontal_margin"
                     android:singleLine="true"
-                    android:padding="@dimen/margin_10"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:textSize="@dimen/textsize_14sp" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/to_year"
-                    android:inputType="number"
-                    android:layout_marginRight="@dimen/margin_08"
-                    android:layout_marginLeft="@dimen/margin_08"
-                    android:background="@drawable/otpbg"
-                    android:singleLine="true"
-                    android:padding="@dimen/margin_10"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_05"
+                    android:layout_marginLeft="@dimen/margin_05"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content" />
+                    android:background="@drawable/otpbg"
+                    android:enabled="false"
+                    android:hint="@string/toYear"
+                    android:inputType="number"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:singleLine="true"
+                    android:textSize="@dimen/textsize_14sp" />
             </LinearLayout>
 <!--
             <Spinner
@@ -88,10 +95,10 @@
                 android:prompt="@string/category" />-->
 
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="@dimen/margin_35"
                 android:id="@+id/generate_slip_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_08"
                 android:background="@drawable/buttonbg"
                 android:text="@string/generate_salary_slip"
                 android:textColor="@color/white">

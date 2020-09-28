@@ -40,7 +40,7 @@
     <string name="mobile_no">मोबाइल नंबर</string>
     <string name="name">नाम</string>
     <string name="dob_text">जन्म की तारीख</string>
-    <string name="select_finincial_year">वित्तीय वर्ष का चयन करें:</string>
+    <string name="select_finincial_year">वित्तीय वर्ष दर्ज करें:</string>
     <string name="generate_salary_slip">वेतन पर्ची उत्पन्न करें</string>
     <string name="employment_status">रोज़गार की स्थिति</string>
     <string name="doj_text">शामिल होने की तिथि</string>
@@ -116,5 +116,9 @@
     <string name="from_year">वर्ष से</string>
     <string name="toYear">वर्ष के लिए</string>
     <string name="fill_required_fields">कृपया सभी आवश्यक फ़ील्ड भरें</string>
+
+    <string name="should_have_4_digits">4 अंक होने चाहिए</string>
+
+    <string name="download_salary_slip">वेतन पर्ची डाउनलोड करें</string>
 
 </resources>

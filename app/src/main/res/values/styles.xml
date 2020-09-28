@@ -21,4 +21,8 @@
         </item> <!-- target android sdk versions < 26 and > 14 if theme other than AppCompat -->
     </style>
 
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Customize color of Toolbar -->
+        <item name="colorControlNormal">@color/white</item>
+    </style>
 </resources>

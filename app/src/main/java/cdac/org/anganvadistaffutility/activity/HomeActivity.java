@@ -1,9 +1,11 @@
 package cdac.org.anganvadistaffutility.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,14 +21,25 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.fragment.BankFragment;
 import cdac.org.anganvadistaffutility.fragment.CardFragment;
 import cdac.org.anganvadistaffutility.fragment.HomeFragment;
 import cdac.org.anganvadistaffutility.fragment.JobFragment;
 import cdac.org.anganvadistaffutility.fragment.PaymentFragment;
+import cdac.org.anganvadistaffutility.retrofit.ApiInterface;
+import cdac.org.anganvadistaffutility.retrofit.ApiServiceOperator;
+import cdac.org.anganvadistaffutility.retrofit.ApiUtils;
+import cdac.org.anganvadistaffutility.utils.AppUtils;
 import cdac.org.anganvadistaffutility.utils.LocaleManager;
+import retrofit2.Call;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+    private EmployeeDetails.Profile profileDetails;
+    private EmployeeDetails.Job jobDetails;
+    private EmployeeDetails.Card cardDetails;
+    private EmployeeDetails.Bank bankDetails;
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +48,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -46,6 +60,39 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
         HomeFragment homeFragment = new HomeFragment();
         setMyFragment(homeFragment);
+
+        if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            getEmployeeData();
+        } else {
+            AppUtils.showToast(context, context.getResources().getString(R.string.no_internet_connection));
+        }
+    }
+
+    private void getEmployeeData() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
+        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppUtils.empID);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
+            @Override
+            public void onSuccess(EmployeeDetails body) {
+                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                    AppUtils.showToast(context, body.getMessage());
+
+                    EmployeeDetails.Data data = body.getData();
+                    profileDetails = data.getProfile();
+                    cardDetails = data.getCard();
+                    jobDetails = data.getJob();
+                    bankDetails = data.getBank();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, context.getResources().getString(R.string.error_in_fetch_data));
+            }
+        }));
     }
 
     @Override
@@ -60,6 +107,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             super.onBackPressed();
         }
     }
+
+
+
 
   /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,20 +135,18 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             setMyFragment(homeFragment);
         } else if (id == R.id.nav_account) {
 
-            // startActivity(new Intent(context, ProfileActivity.class).putExtra("profile_details", profileDetails));
+          startActivity(new Intent(context, ProfileActivity.class).putExtra("profile_details", profileDetails));
             // Handle the camera action
         } else if (id == R.id.nav_job) {
-            JobFragment jobFragment = new JobFragment();
-            setMyFragment(jobFragment);
+            startActivity(new Intent(context, JobActivity.class).putExtra("job_details", jobDetails));
         } else if (id == R.id.nav_bank) {
-            BankFragment bankFragment = new BankFragment();
-            setMyFragment(bankFragment);
+            startActivity(new Intent(context, BankActivity.class).putExtra("bank_details", bankDetails));
+
         } else if (id == R.id.nav_payments) {
-            PaymentFragment paymentFragment = new PaymentFragment();
-            setMyFragment(paymentFragment);
+            startActivity(new Intent(context, PaymentActivity.class));
+
         } else if (id == R.id.nav_cards) {
-            CardFragment cardsFragment = new CardFragment();
-            setMyFragment(cardsFragment);
+            startActivity(new Intent(context, CardActivity.class).putExtra("card_details", cardDetails));
         }
 
         else if (id == R.id.change_language) {
