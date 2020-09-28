@@ -1,12 +1,15 @@
 package cdac.org.anganvadistaffutility.activity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -21,6 +24,7 @@ import cdac.org.anganvadistaffutility.fragment.CardFragment;
 import cdac.org.anganvadistaffutility.fragment.HomeFragment;
 import cdac.org.anganvadistaffutility.fragment.JobFragment;
 import cdac.org.anganvadistaffutility.fragment.PaymentFragment;
+import cdac.org.anganvadistaffutility.utils.LocaleManager;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -57,10 +61,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
+  /*  @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }*/
 
     private void setMyFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -93,6 +99,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         } else if (id == R.id.nav_cards) {
             CardFragment cardsFragment = new CardFragment();
             setMyFragment(cardsFragment);
+        }
+
+        else if (id == R.id.change_language) {
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+            } else {
+                setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+            }
+
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -21,7 +21,6 @@ public class BankActivity extends BaseActivity {
         setContentView(R.layout.activity_bank);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Bank Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 

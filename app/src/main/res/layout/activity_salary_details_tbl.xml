@@ -81,7 +81,7 @@
         android:id="@+id/download_button"
         android:text="@string/download"
         android:textColor="@color/white"
-        android:background="@color/pink"
+        android:background="@color/colorAccent"
         android:layout_margin="@dimen/margin_12"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"

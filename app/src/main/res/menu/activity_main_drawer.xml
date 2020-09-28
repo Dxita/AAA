@@ -28,8 +28,13 @@
             android:icon="@drawable/ic_baseline_money_24"
             android:title="@string/menu_payments" />
         <item
-            android:id="@+id/nav_cards"
-            android:icon="@drawable/ic_baseline_credit_card_24"
-            android:title="@string/menu_cards" />
+        android:id="@+id/nav_cards"
+        android:icon="@drawable/ic_baseline_credit_card_24"
+        android:title="@string/menu_cards" />
+
+        <item
+            android:id="@+id/change_language"
+            android:icon="@drawable/ic_baseline_language_24"
+            android:title="@string/change_your_language" />
     </group>
 </menu>

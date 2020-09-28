@@ -104,6 +104,9 @@
     <string name="enter_employee_id">Enter Employee ID</string>
     <string name="get_payment_details">Get Payment Details</string>
 
+    <string name="change_your_language">Change your language</string>
+
+
     <string name="Rs">\u20B9</string>
 
 </resources>

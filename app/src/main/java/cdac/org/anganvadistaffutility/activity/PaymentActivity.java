@@ -41,7 +41,6 @@ public class PaymentActivity extends BaseActivity {
         setContentView(R.layout.activity_payment);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Payment Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 

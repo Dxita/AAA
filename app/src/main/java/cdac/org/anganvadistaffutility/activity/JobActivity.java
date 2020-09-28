@@ -20,7 +20,6 @@ public class JobActivity extends BaseActivity {
         setContentView(R.layout.activity_job);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Job Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
