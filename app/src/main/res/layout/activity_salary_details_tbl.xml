@@ -27,56 +27,63 @@
 
 
 
-            <TableLayout
-                android:background="@drawable/white_stroke"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:stretchColumns="1,2,3"
-                tools:context=".MainActivity"
-                android:layout_margin="8dp">
 
-                <TableRow>
 
-                    <TextView
-                        android:layout_column="1"
-                        android:text="ID"
-                        android:padding="10dip"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/textsize_14sp"/>
-                    <TextView
-                        android:layout_column="2"
-                        android:text="Name"
-                        android:gravity="center"
-                        android:padding="10dip"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/textsize_14sp"/>
-                    <TextView
-                        android:layout_column="3"
-                        android:text="Payment"
-                        android:gravity="center"
-                        android:padding="10dip"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/textsize_14sp"/>
-                </TableRow>
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="ID"
+                            android:textSize="@dimen/textsize_14sp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:layout_column="1"
+                            android:background="@drawable/header_border"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"
+                            android:text="MONTH"
+                            android:textSize="@dimen/textsize_14sp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:layout_column="1"
+                            android:background="@drawable/header_border"/>
+                        <TextView
+                            android:layout_width="100dp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"
+                            android:text="PAYMENT"
+                            android:textSize="@dimen/textsize_14sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:layout_column="1"
+                            android:background="@drawable/header_border"/>
+                    </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
-            </TableLayout>
-
-        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
     <Button
+        android:id="@+id/download_button"
         android:text="@string/download"
         android:textColor="@color/white"
         android:background="@color/pink"
         android:layout_margin="@dimen/margin_12"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></Button>
+        android:layout_height="wrap_content" />
 </RelativeLayout>

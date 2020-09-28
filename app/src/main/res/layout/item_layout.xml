@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-    android:background="@drawable/white_stroke"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:stretchColumns="1,2,3">
-    <TableRow>
-        <TextView
-            android:id="@+id/id_tv"
-            android:layout_column="1"
-            android:padding="10dip"
-            android:gravity="center"
-            android:textSize="@dimen/textsize_14sp"/>
-        <TextView
-            android:id="@+id/name_tv"
-            android:layout_column="2"
-            android:padding="10dip"
-            android:textSize="@dimen/textsize_14sp"/>
-        <TextView
-            android:id="@+id/payment_tv"
-            android:layout_column="3"
-            android:padding="10dip"
-            android:textSize="@dimen/textsize_14sp"/>
-    </TableRow>
-</TableLayout>
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="@dimen/margin_100"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:id="@+id/id_tv"
+        android:textSize="@dimen/textsize_14sp"
+        android:padding="@dimen/margin_10"
+        android:gravity="center"
+        android:layout_column="1"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_tv"
+        android:textSize="@dimen/textsize_14sp"
+        android:padding="@dimen/margin_10"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_column="1"
+        android:background="@drawable/border"/>
+    <TextView
+        android:layout_width="@dimen/margin_100"
+        android:layout_height="wrap_content"
+        android:id="@+id/payment_tv"
+        android:textSize="@dimen/textsize_14sp"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:background="@drawable/border"/>
+
+</LinearLayout>

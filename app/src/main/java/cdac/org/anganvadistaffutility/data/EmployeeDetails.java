@@ -53,6 +53,7 @@ public class EmployeeDetails {
         this.data = data;
     }
 
+
     public static class Job implements Parcelable {
 
         @SerializedName("employee status")
@@ -73,6 +74,27 @@ public class EmployeeDetails {
         @SerializedName("educational qualification")
         @Expose
         private String educationalQualification;
+
+        protected Job(Parcel in) {
+            employeeStatus = in.readString();
+            dateOfJoining = in.readString();
+            designationNameEnglish = in.readString();
+            designationNameHindi = in.readString();
+            payslabAmount = in.readString();
+            educationalQualification = in.readString();
+        }
+
+        public static final Creator<Job> CREATOR = new Creator<Job>() {
+            @Override
+            public Job createFromParcel(Parcel in) {
+                return new Job(in);
+            }
+
+            @Override
+            public Job[] newArray(int size) {
+                return new Job[size];
+            }
+        };
 
         public String getEmployeeStatus() {
             return employeeStatus;
@@ -122,26 +144,6 @@ public class EmployeeDetails {
             this.educationalQualification = educationalQualification;
         }
 
-        protected Job(Parcel in) {
-            employeeStatus = in.readString();
-            dateOfJoining = in.readString();
-            designationNameEnglish = in.readString();
-            payslabAmount = in.readString();
-            educationalQualification = in.readString();
-        }
-
-        public static final Creator<Job> CREATOR = new Creator<Job>() {
-            @Override
-            public Job createFromParcel(Parcel in) {
-                return new Job(in);
-            }
-
-            @Override
-            public Job[] newArray(int size) {
-                return new Job[size];
-            }
-        };
-
         @Override
         public int describeContents() {
             return 0;
@@ -149,10 +151,10 @@ public class EmployeeDetails {
 
         @Override
         public void writeToParcel(Parcel parcel, int i) {
-
             parcel.writeString(employeeStatus);
             parcel.writeString(dateOfJoining);
             parcel.writeString(designationNameEnglish);
+            parcel.writeString(designationNameHindi);
             parcel.writeString(payslabAmount);
             parcel.writeString(educationalQualification);
         }
@@ -172,6 +174,15 @@ public class EmployeeDetails {
         @SerializedName("awcid")
         @Expose
         private String awcid;
+        @SerializedName("awc_name_english")
+        @Expose
+        private String awcNameEnglish;
+        @SerializedName("awc_name_hindi")
+        @Expose
+        private String awcNameHindi;
+        @SerializedName("awc_address")
+        @Expose
+        private String awcAddress;
         @SerializedName("moblie number")
         @Expose
         private String moblieNumber;
@@ -181,6 +192,31 @@ public class EmployeeDetails {
         @SerializedName("husband father name")
         @Expose
         private String husbandFatherName;
+
+        protected Profile(Parcel in) {
+            employeeNameEnglish = in.readString();
+            employeeNameHindi = in.readString();
+            dateOfBirth = in.readString();
+            awcid = in.readString();
+            awcNameEnglish = in.readString();
+            awcNameHindi = in.readString();
+            awcAddress = in.readString();
+            moblieNumber = in.readString();
+            category = in.readString();
+            husbandFatherName = in.readString();
+        }
+
+        public static final Creator<Profile> CREATOR = new Creator<Profile>() {
+            @Override
+            public Profile createFromParcel(Parcel in) {
+                return new Profile(in);
+            }
+
+            @Override
+            public Profile[] newArray(int size) {
+                return new Profile[size];
+            }
+        };
 
         public String getEmployeeNameEnglish() {
             return employeeNameEnglish;
@@ -214,6 +250,30 @@ public class EmployeeDetails {
             this.awcid = awcid;
         }
 
+        public String getAwcNameEnglish() {
+            return awcNameEnglish;
+        }
+
+        public void setAwcNameEnglish(String awcNameEnglish) {
+            this.awcNameEnglish = awcNameEnglish;
+        }
+
+        public String getAwcNameHindi() {
+            return awcNameHindi;
+        }
+
+        public void setAwcNameHindi(String awcNameHindi) {
+            this.awcNameHindi = awcNameHindi;
+        }
+
+        public String getAwcAddress() {
+            return awcAddress;
+        }
+
+        public void setAwcAddress(String awcAddress) {
+            this.awcAddress = awcAddress;
+        }
+
         public String getMoblieNumber() {
             return moblieNumber;
         }
@@ -244,37 +304,18 @@ public class EmployeeDetails {
         }
 
         @Override
-        public void writeToParcel(Parcel dest, int i) {
-            dest.writeString(employeeNameEnglish);
-            dest.writeString((String) employeeNameHindi);
-            dest.writeString(dateOfBirth);
-            dest.writeString(awcid);
-            dest.writeString(moblieNumber);
-            dest.writeString(category);
-            dest.writeString(husbandFatherName);
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(employeeNameEnglish);
+            parcel.writeString(employeeNameHindi);
+            parcel.writeString(dateOfBirth);
+            parcel.writeString(awcid);
+            parcel.writeString(awcNameEnglish);
+            parcel.writeString(awcNameHindi);
+            parcel.writeString(awcAddress);
+            parcel.writeString(moblieNumber);
+            parcel.writeString(category);
+            parcel.writeString(husbandFatherName);
         }
-
-        private Profile(Parcel in) {
-            this.employeeNameEnglish = in.readString();
-            this.employeeNameHindi = in.readString();
-            this.dateOfBirth = in.readString();
-            this.awcid = in.readString();
-            this.moblieNumber = in.readString();
-            this.category = in.readString();
-            this.husbandFatherName = in.readString();
-        }
-
-        public static final Parcelable.Creator<Profile> CREATOR = new Parcelable.Creator<Profile>() {
-            @Override
-            public Profile createFromParcel(Parcel source) {
-                return new Profile(source);
-            }
-
-            @Override
-            public Profile[] newArray(int size) {
-                return new Profile[size];
-            }
-        };
     }
 
     public static class Data {
@@ -323,9 +364,10 @@ public class EmployeeDetails {
         public void setBank(Bank bank) {
             this.bank = bank;
         }
+
     }
 
-    public static class Card implements Parcelable {
+    public static class Card implements Parcelable{
 
         @SerializedName("pan number")
         @Expose
@@ -345,6 +387,27 @@ public class EmployeeDetails {
         @SerializedName("janaadhar self number")
         @Expose
         private String janaadharSelfNumber;
+
+        protected Card(Parcel in) {
+            panNumber = in.readString();
+            bhamashahNumber = in.readString();
+            aadharNumber = in.readString();
+            ashaid = in.readString();
+            janaadharNumber = in.readString();
+            janaadharSelfNumber = in.readString();
+        }
+
+        public static final Creator<Card> CREATOR = new Creator<Card>() {
+            @Override
+            public Card createFromParcel(Parcel in) {
+                return new Card(in);
+            }
+
+            @Override
+            public Card[] newArray(int size) {
+                return new Card[size];
+            }
+        };
 
         public String getPanNumber() {
             return panNumber;
@@ -394,25 +457,6 @@ public class EmployeeDetails {
             this.janaadharSelfNumber = janaadharSelfNumber;
         }
 
-        protected Card(Parcel in) {
-            panNumber = in.readString();
-            bhamashahNumber = in.readString();
-            aadharNumber = in.readString();
-            ashaid = in.readString();
-        }
-
-        public static final Creator<Card> CREATOR = new Creator<Card>() {
-            @Override
-            public Card createFromParcel(Parcel in) {
-                return new Card(in);
-            }
-
-            @Override
-            public Card[] newArray(int size) {
-                return new Card[size];
-            }
-        };
-
         @Override
         public int describeContents() {
             return 0;
@@ -424,6 +468,8 @@ public class EmployeeDetails {
             parcel.writeString(bhamashahNumber);
             parcel.writeString(aadharNumber);
             parcel.writeString(ashaid);
+            parcel.writeString(janaadharNumber);
+            parcel.writeString(janaadharSelfNumber);
         }
     }
 
@@ -447,6 +493,27 @@ public class EmployeeDetails {
         @SerializedName("aadhar attached_bank_account_number")
         @Expose
         private String aadharAttachedBankAccountNumber;
+
+        protected Bank(Parcel in) {
+            branchCode = in.readString();
+            bankName = in.readString();
+            ifscCode = in.readString();
+            branchAddress = in.readString();
+            bankAccountNumber = in.readString();
+            aadharAttachedBankAccountNumber = in.readString();
+        }
+
+        public static final Creator<Bank> CREATOR = new Creator<Bank>() {
+            @Override
+            public Bank createFromParcel(Parcel in) {
+                return new Bank(in);
+            }
+
+            @Override
+            public Bank[] newArray(int size) {
+                return new Bank[size];
+            }
+        };
 
         public String getBranchCode() {
             return branchCode;
@@ -496,26 +563,6 @@ public class EmployeeDetails {
             this.aadharAttachedBankAccountNumber = aadharAttachedBankAccountNumber;
         }
 
-        protected Bank(Parcel in) {
-            branchCode = in.readString();
-            bankName = in.readString();
-            ifscCode = in.readString();
-            branchAddress = in.readString();
-            bankAccountNumber = in.readString();
-        }
-
-        public static final Creator<Bank> CREATOR = new Creator<Bank>() {
-            @Override
-            public Bank createFromParcel(Parcel in) {
-                return new Bank(in);
-            }
-
-            @Override
-            public Bank[] newArray(int size) {
-                return new Bank[size];
-            }
-        };
-
         @Override
         public int describeContents() {
             return 0;
@@ -528,6 +575,7 @@ public class EmployeeDetails {
             parcel.writeString(ifscCode);
             parcel.writeString(branchAddress);
             parcel.writeString(bankAccountNumber);
+            parcel.writeString(aadharAttachedBankAccountNumber);
         }
     }
 }

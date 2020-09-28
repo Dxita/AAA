@@ -95,6 +95,7 @@
 
     <string name="retired">सेवा निवृत </string>
     <string name="employed">कार्यरत</string>
+    <string name="Rs">\u20B9</string>
 
 
 </resources>
