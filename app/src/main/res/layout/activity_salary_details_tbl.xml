@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:background="@drawable/custom_app_bg"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/tools"
+    android:background="@drawable/custom_app_bg"
     app:ignore="NamespaceTypo">
 
     <androidx.appcompat.widget.Toolbar
 
-        android:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
-        tool:title="@string/download_salary_slip"
         android:layout_width="match_parent"
-        tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true" >
+        android:theme="@style/ToolbarTheme"
+        tool:title="@string/download_salary_slip"
+        tool:titleTextColor="@color/white">
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -29,73 +28,72 @@
 
         <LinearLayout
 
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:background="@drawable/header_border"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/id"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_14sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:background="@drawable/header_border"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/months"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_14sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/id"
-                            android:textSize="@dimen/textsize_14sp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:padding="10dp"
-                            android:gravity="center"
-                            android:layout_column="1"
-                            android:background="@drawable/header_border"/>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:background="@drawable/header_border"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/payment"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:textColor="@color/white"
-                            android:layout_height="wrap_content"
-                            android:text="@string/months"
-                            android:textSize="@dimen/textsize_14sp"
-                            android:textStyle="bold"
-                            android:padding="10dp"
-                            android:gravity="center"
-                            android:layout_column="1"
-                            android:background="@drawable/header_border"/>
-
-                        <TextView
-                            android:layout_width="100dp"
-                            android:textColor="@color/white"
-                            android:layout_height="wrap_content"
-                            android:text="@string/payment"
-                            android:textSize="@dimen/textsize_14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:layout_column="1"
-                            android:background="@drawable/header_border"/>
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
 
-    <Button
-        android:id="@+id/download_button"
-        android:text="@string/download"
-        android:textColor="@color/white"
-        android:background="@drawable/buttonbg"
-        android:layout_margin="@dimen/margin_12"
-        android:layout_alignParentBottom="true"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_download_salary_slip"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/buttonbg"
+        android:text="@string/download"
+        android:textColor="@color/white" />
 </RelativeLayout>

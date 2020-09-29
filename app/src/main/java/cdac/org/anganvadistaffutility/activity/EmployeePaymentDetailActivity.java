@@ -98,17 +98,16 @@ public class EmployeePaymentDetailActivity extends BaseActivity implements TextW
                 ArrayList<PaymentDetails.Empdatum> empDatumArrayList = new ArrayList<>(paymentDetails);
 
                 Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
+                intent.putExtra("fromYear", fromYear);
+                intent.putExtra("toYear", toYear);
                 intent.putExtra("salary_data", AppUtils.convertToPut(empDatumArrayList));
                 startActivity(intent);
-
             }
 
             @Override
             public void onFailure(Throwable t) {
-
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
-
             }
         }));
     }

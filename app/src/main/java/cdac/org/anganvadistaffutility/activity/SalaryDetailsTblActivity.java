@@ -1,58 +1,37 @@
 package cdac.org.anganvadistaffutility.activity;
 
-import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.Shader;
-import android.graphics.fonts.Font;
-import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.StrictMode;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -60,140 +39,150 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.utils.AppUtils;
 
-public class SalaryDetailsTblActivity extends BaseActivity {
 
-    RecyclerView recycler_view;
-    PaymentAdapter adapter;
-    List<PaymentDetails.Empdatum> empdatumList;
-    String emp_id,emp_name,emonth,payslab_amt;
-    Button download;
+public class SalaryDetailsTblActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final String LOG_TAG = "GeneratePDF";
-
-
-    private BaseFont bfBold;
-
-
-
-
+    private RecyclerView recycler_view;
+    private List<PaymentDetails.Empdatum> empDatumList;
+    private String employeeName = "";
+    private String fromYear = "";
+    private String toYear = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salary_details_tbl);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        download=findViewById(R.id.download_button);
-        String emdData = getIntent().getStringExtra("salary_data");
-        empdatumList = AppUtils.convertToGet(emdData);
-        for (PaymentDetails.Empdatum empdatum : empdatumList) {
-
-            emp_id= empdatum.getEmployeeId();
-            emonth=empdatum.getMonth();
-            emp_name=empdatum.getEmployeeNameEnglish();
-            payslab_amt=empdatum.getSalary();
-        }
-
-
-
         recycler_view = findViewById(R.id.recycler_view);
+        AppCompatButton btn_download_salary_slip = findViewById(R.id.btn_download_salary_slip);
+
+        String emdData = getIntent().getStringExtra("salary_data");
+        fromYear = getIntent().getStringExtra("fromYear");
+        toYear = getIntent().getStringExtra("toYear");
+
+        empDatumList = AppUtils.convertToGet(emdData);
+        if (empDatumList != null) {
+            if (!empDatumList.isEmpty()) {
+                employeeName = empDatumList.get(0).getEmployeeNameEnglish();
+            }
+        }
 
         setRecyclerView();
-
-
-
-        download.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
-
-    }
-
-
-    public void createandDisplayPdf(String text) {
-
-        Document doc = new Document();
-
-        try {
-            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dir";
-
-            File dir = new File(path);
-            if(!dir.exists())
-                dir.mkdirs();
-
-            File file = new File(dir, "newFile.pdf");
-            FileOutputStream fOut = new FileOutputStream(file);
-
-            PdfWriter.getInstance(doc, fOut);
-
-            //open the document
-            doc.open();
-
-            Paragraph p1 = new Paragraph(text);
-            p1.setAlignment(Paragraph.ALIGN_CENTER);
-
-            //add paragraph to document
-            doc.add(p1);
-
-        } catch (DocumentException de) {
-            Log.e("PDFCreator", "DocumentException:" + de);
-        } catch (IOException e) {
-            Log.e("PDFCreator", "ioException:" + e);
-        }
-        finally {
-            doc.close();
-        }
-
-        viewPdf("newFile.pdf", "Dir");
-    }
-
-    // Method for opening a pdf file
-    private void viewPdf(String file, String directory) {
-
-        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/" + directory + "/" + file);
-        Uri path = Uri.fromFile(pdfFile);
-
-        // Setting the intent for pdf reader
-        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
-        pdfIntent.setDataAndType(path, "application/pdf");
-        pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        try {
-            startActivity(pdfIntent);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(SalaryDetailsTblActivity.this, "Can't read pdf file", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public static boolean hasPermissions(Context context, String... permissions) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        btn_download_salary_slip.setOnClickListener(this);
     }
 
     private void setRecyclerView() {
-
-
         recycler_view.setHasFixedSize(true);
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PaymentAdapter(this, empdatumList);
+        PaymentAdapter adapter = new PaymentAdapter(this, empDatumList);
         recycler_view.setAdapter(adapter);
-
-
-
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btn_download_salary_slip) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (AppUtils.hasPermissions(context, AppUtils.STORAGE_PERMISSIONS)) {
+                    downloadSalarySlip();
+                } else {
+                    requestPermissions(AppUtils.STORAGE_PERMISSIONS, AppUtils.STORAGE_PERMISSION_REQUEST_CODE);
+                }
+            } else {
+                downloadSalarySlip();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == AppUtils.STORAGE_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                downloadSalarySlip();
+            }
+        }
+    }
+
+    private void downloadSalarySlip() {
+        int serialNo = 0;
+        String outPath = "";
+
+        String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
+        Document document = new Document(PageSize.A4);
+        try {
+            outPath = String.valueOf(AppUtils.writeFilesToAppFolder(employeeName + fromYear + "-" + toYear.substring(2, 4), ".pdf"));
+            PdfWriter.getInstance(document,
+                    new FileOutputStream(new File(outPath)));
+            document.open();
+
+            Font fontHeader = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            Font fontRow = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL);
+
+            float[] columnWidths = new float[]{20f, 25f, 30f, 30f, 25f};
+            PdfPTable table = new PdfPTable(headers.length);
+            table.setTotalWidth(columnWidths);
+
+            for (String header : headers) {
+                PdfPCell cell = new PdfPCell();
+                cell.setGrayFill(1.0f);
+                cell.setPhrase(new Phrase(header.toUpperCase(), fontHeader));
+                table.addCell(cell);
+            }
+            table.completeRow();
+
+            for (PaymentDetails.Empdatum empDatum : empDatumList) {
+                serialNo = ++serialNo;
+                String[][] rows = new String[][]{
+                        {"" + serialNo, empDatum.getEmployeeId(), empDatum.getEmployeeNameEnglish(), empDatum.getMonth(), empDatum.getSalary()},
+                };
+
+                for (String[] row : rows) {
+                    for (String data : row) {
+                        Phrase phrase = new Phrase(data, fontRow);
+                        PdfPCell cell = new PdfPCell(phrase);
+                        table.addCell(cell);
+                    }
+                    table.completeRow();
+                }
+            }
+
+            document.add(table);
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            document.close();
+        }
+
+        openEmployeeSalaryPDF(outPath);
+    }
+
+    private void openEmployeeSalaryPDF(String pdfPath) {
+        File file = new File(pdfPath);
+        if (file.exists()) {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            Uri pdfURI = FileProvider.getUriForFile(
+                    context,
+                    context.getApplicationContext()
+                            .getPackageName() + ".provider", file);
+            intent.setDataAndType(pdfURI, "application/pdf");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            context.startActivity(intent);
+
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                AppUtils.showToast(context, getResources().getString(R.string.no_app_available_to_view_pdf));
+            }
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -217,20 +206,17 @@ public class SalaryDetailsTblActivity extends BaseActivity {
         @NonNull
         @Override
         public PaymentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.item_layout,parent,false);
+            View view = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-            if (payment_list != null && payment_list.size() > 0){
+            if (payment_list != null && payment_list.size() > 0) {
                 PaymentDetails.Empdatum empdatum = payment_list.get(position);
                 holder.id_tv.setText(empdatum.getEmployeeId());
                 holder.name_tv.setText(empdatum.getMonth());
                 holder.payment_tv.setText(empdatum.getSalary());
-            } else {
-                return;
             }
         }
 
@@ -240,7 +226,7 @@ public class SalaryDetailsTblActivity extends BaseActivity {
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView id_tv,name_tv,payment_tv;
+            TextView id_tv, name_tv, payment_tv;
 
             public ViewHolder(View itemView) {
                 super(itemView);

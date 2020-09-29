@@ -6,10 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -30,13 +27,8 @@ import retrofit2.Call;
 
 public class PaymentActivity extends BaseActivity implements TextWatcher {
 
-    // String[] financial_year = {"2019-20", "2018-19", "2017-18", "2016-17", "2015-16", "2014-15"};
-    AppCompatEditText from_year, to_year;
-RelativeLayout relativeLayout;
-    AppCompatButton generate_slip_button;
-
-    int nextyear = 1;
-
+    private AppCompatEditText from_year, to_year;
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,38 +37,30 @@ RelativeLayout relativeLayout;
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         from_year = findViewById(R.id.from_year);
         to_year = findViewById(R.id.to_year);
-        generate_slip_button = findViewById(R.id.generate_slip_button);
-        relativeLayout=findViewById(R.id.relativeLayout);
+        AppCompatButton generate_slip_button = findViewById(R.id.generate_slip_button);
+        relativeLayout = findViewById(R.id.relativeLayout);
         from_year.addTextChangedListener(this);
 
-
-        generate_slip_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String f_year= from_year.getText().toString().trim();
-                if (f_year.isEmpty())
-                {
-                    from_year.requestFocus();
-                    from_year.setError(getResources().getString(R.string.required_field));
-                }
-
-                else if (f_year.length()<4)
-                {
-                    from_year.requestFocus();
-                    from_year.setError(getResources().getString(R.string.should_have_4_digits));
-                }
-                else
-                {
+        generate_slip_button.setOnClickListener(view -> {
+            String f_year = Objects.requireNonNull(from_year.getText()).toString().trim();
+            String t_year = Objects.requireNonNull(to_year.getText()).toString().trim();
+            if (f_year.isEmpty()) {
+                from_year.requestFocus();
+                from_year.setError(getResources().getString(R.string.required_field));
+            } else if (f_year.length() < 4) {
+                from_year.requestFocus();
+                from_year.setError(getResources().getString(R.string.should_have_4_digits));
+            } else {
+                if (AppUtils.isNetworkConnected(context)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-                    getPaymentData();
+                    getPaymentData(f_year, t_year);
+                } else {
+                    AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
                 }
-
-
             }
         });
     }
@@ -90,9 +74,9 @@ RelativeLayout relativeLayout;
         return true;
     }
 
-    private void getPaymentData() {
+    private void getPaymentData(String fromYear, String toYear) {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PAYMENT_BASE_URL);
-        Call<PaymentDetails> call = apiInterface.paymentDetails(AppUtils.empID, from_year.getText().toString(), to_year.getText().toString());
+        Call<PaymentDetails> call = apiInterface.paymentDetails(AppUtils.empID, fromYear, toYear);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<PaymentDetails>() {
             @Override
             public void onSuccess(PaymentDetails body) {
@@ -104,6 +88,8 @@ RelativeLayout relativeLayout;
                 ArrayList<PaymentDetails.Empdatum> empdatumArrayList = new ArrayList<>(paymentDetails);
 
                 Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
+                intent.putExtra("fromYear", fromYear);
+                intent.putExtra("toYear", toYear);
                 intent.putExtra("salary_data", AppUtils.convertToPut(empdatumArrayList));
                 startActivity(intent);
             }
@@ -118,12 +104,10 @@ RelativeLayout relativeLayout;
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
         if (charSequence.length() == 4) {
             int currentFinancialYear = Integer.parseInt(charSequence.toString());
             int nextFinancialYear = currentFinancialYear + 1;
@@ -133,8 +117,6 @@ RelativeLayout relativeLayout;
 
     @Override
     public void afterTextChanged(Editable editable) {
-
     }
-
 
 }

@@ -120,6 +120,7 @@
     <string name="id">ID</string>
     <string name="payment">PAYMENT</string>
     <string name="months">MONTH</string>
+    <string name="no_app_available_to_view_pdf">No Application available to view PDF</string>
 
 
 </resources>

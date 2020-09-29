@@ -1,17 +1,24 @@
 package cdac.org.anganvadistaffutility.utils;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +38,10 @@ public class AppUtils {
     // public static final String empID = "109567";
     public static final String empID = "30819";
 
+    private static final String FOLDER_NAME = "RajPosh";
+    public static final int STORAGE_PERMISSION_REQUEST_CODE = 123;
+    public static final String[] STORAGE_PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -48,6 +59,36 @@ public class AppUtils {
         View view = mInflater.inflate(R.layout.layout_progress_bar, parent, true);
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
         progressBar.setVisibility(visibility);
+    }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static File writeFilesToAppFolder(String fileName, String fileType) {
+        File file = null;
+        try {
+            String rootPath = Environment.getExternalStorageDirectory() + File.separator + FOLDER_NAME;
+            File root = new File(rootPath);
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            file = new File(rootPath + File.separator + fileName + fileType);
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file;
     }
 
     public static String convertToPut(ArrayList<PaymentDetails.Empdatum> list) {
