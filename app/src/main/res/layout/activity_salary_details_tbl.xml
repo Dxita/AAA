@@ -8,17 +8,16 @@
     app:ignore="NamespaceTypo">
 
     <androidx.appcompat.widget.Toolbar
-        app:theme="@style/ToolbarTheme"
+
+        android:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
-       app:title="@string/download_salary_slip"
+        tool:title="@string/download_salary_slip"
         android:layout_width="match_parent"
         tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:background="@color/colorPrimary"
         android:layout_alignParentLeft="true" >
-
-
 
     </androidx.appcompat.widget.Toolbar>
 

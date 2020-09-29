@@ -11,7 +11,8 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        app:theme="@style/ToolbarTheme"
+
+        android:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
         tool:title="@string/card_details"
         android:layout_width="match_parent"
@@ -21,10 +22,7 @@
         android:background="@color/colorPrimary"
         android:layout_alignParentLeft="true" >
 
-
-
     </androidx.appcompat.widget.Toolbar>
-
     <androidx.core.widget.NestedScrollView
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
