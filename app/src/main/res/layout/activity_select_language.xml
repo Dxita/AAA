@@ -20,7 +20,7 @@
                 android:layout_width="@dimen/margin_150"
                 android:layout_height="@dimen/margin_150"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/newapplogo">
+                app:srcCompat="@drawable/app_logo">
 
             </androidx.appcompat.widget.AppCompatImageView>
 

@@ -21,7 +21,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/margin_60"
                 android:layout_height="@dimen/margin_60"
-                android:src="@drawable/newapplogo" />
+                android:src="@drawable/app_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

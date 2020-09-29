@@ -41,7 +41,6 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_12"
                 android:padding="@dimen/margin_05"
                 android:text="@string/select_finincial_year"
                 android:textColor="@color/blue"
@@ -50,7 +49,7 @@
             <LinearLayout
 
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -101,7 +100,7 @@
                 android:prompt="@string/category" />-->
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_marginTop="@dimen/margin_35"
+                android:layout_marginTop="@dimen/margin_20"
                 android:id="@+id/generate_slip_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

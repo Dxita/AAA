@@ -19,7 +19,7 @@
         android:layout_marginTop="@dimen/margin_05"
         android:layout_marginLeft="@dimen/margin_02"
         android:contentDescription="@string/nav_header_desc"
-        app:srcCompat="@drawable/newapplogo" />
+        app:srcCompat="@drawable/app_logo" />
 
     <TextView
         android:layout_width="wrap_content"
