@@ -74,8 +74,14 @@ public class AppUtils {
 
     public static File writeFilesToAppFolder(String fileName, String fileType) {
         File file = null;
+        String rootPath = "";
         try {
-            String rootPath = Environment.getExternalStorageDirectory() + File.separator + FOLDER_NAME;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                rootPath = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DOWNLOADS + File.separator + FOLDER_NAME;
+            } else {
+                rootPath = Environment.getExternalStorageDirectory() + File.separator + FOLDER_NAME;
+            }
+
             File root = new File(rootPath);
             if (!root.exists()) {
                 root.mkdirs();
