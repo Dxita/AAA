@@ -121,4 +121,9 @@
 
     <string name="download_salary_slip">वेतन पर्ची डाउनलोड करें</string>
 
+
+    <string name="id">आईडी</string>
+    <string name="payment">भुगतान</string>
+    <string name="months">महीना</string>
+
 </resources>

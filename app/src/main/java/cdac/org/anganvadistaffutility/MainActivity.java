@@ -80,6 +80,7 @@ Button create;
             PdfWriter.getInstance(doc, new FileOutputStream(outpath));
 //open the document for writing
             doc.open();
+
 //add paragraph to the document
             doc.add(new Paragraph(et.getText().toString()));
 //close the document

@@ -100,12 +100,15 @@ public class EmployeePaymentDetailActivity extends BaseActivity implements TextW
                 Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
                 intent.putExtra("salary_data", AppUtils.convertToPut(empDatumArrayList));
                 startActivity(intent);
+
             }
 
             @Override
             public void onFailure(Throwable t) {
+
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+
             }
         }));
     }

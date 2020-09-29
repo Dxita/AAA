@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tool="http://schemas.android.com/tools"
-    android:background="@drawable/custom_app_bg">
+    xmlns:app="http://schemas.android.com/tools"
+    app:ignore="NamespaceTypo">
 
     <androidx.appcompat.widget.Toolbar
-        android:theme="@style/ToolbarTheme"
+        app:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
-        app:title="@string/download_salary_slip"
+       app:title="@string/download_salary_slip"
         android:layout_width="match_parent"
         tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true" >
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +45,7 @@
                         <TextView
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:text="ID"
+                            android:text="@string/id"
                             android:textSize="@dimen/textsize_14sp"
                             android:textColor="@color/white"
                             android:textStyle="bold"
@@ -47,23 +53,25 @@
                             android:gravity="center"
                             android:layout_column="1"
                             android:background="@drawable/header_border"/>
+
                         <TextView
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textColor="@color/white"
                             android:layout_height="wrap_content"
-                            android:text="MONTH"
+                            android:text="@string/months"
                             android:textSize="@dimen/textsize_14sp"
                             android:textStyle="bold"
                             android:padding="10dp"
                             android:gravity="center"
                             android:layout_column="1"
                             android:background="@drawable/header_border"/>
+
                         <TextView
                             android:layout_width="100dp"
                             android:textColor="@color/white"
                             android:layout_height="wrap_content"
-                            android:text="PAYMENT"
+                            android:text="@string/payment"
                             android:textSize="@dimen/textsize_14sp"
                             android:textStyle="bold"
                             android:gravity="center"
