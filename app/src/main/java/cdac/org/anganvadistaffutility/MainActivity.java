@@ -5,7 +5,9 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -19,6 +21,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -80,7 +83,6 @@ Button create;
             PdfWriter.getInstance(doc, new FileOutputStream(outpath));
 //open the document for writing
             doc.open();
-
 //add paragraph to the document
             doc.add(new Paragraph(et.getText().toString()));
 //close the document
