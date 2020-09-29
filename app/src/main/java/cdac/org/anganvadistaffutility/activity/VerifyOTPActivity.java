@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.callback.OtpReceivedInterface;
 import cdac.org.anganvadistaffutility.receiver.SmsBroadcastReceiver;
+import cdac.org.anganvadistaffutility.utils.LocaleManager;
 
 public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterface, View.OnClickListener {
 
@@ -68,7 +70,14 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             String mobileNumber = (String) bundle.get("mobile_number");
-            mobile_number_text.setText( "+91" + mobileNumber+" "+ getResources().getString(R.string.sms_code_sent_text));
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                mobile_number_text.setText( "+91" + mobileNumber+" "+ getResources().getString(R.string.sms_code_sent_text));
+            }
+            else
+            {
+                mobile_number_text.setText(getString(R.string.sms_code_sent_text)+" "+"91"+mobileNumber);
+
+            }
         }
 
         btnVerifyOtp.setOnClickListener(this);

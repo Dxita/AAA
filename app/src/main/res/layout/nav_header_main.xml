@@ -17,14 +17,15 @@
         android:layout_width="@dimen/margin_85dp"
         android:layout_height="@dimen/margin_85dp"
         android:layout_marginTop="@dimen/margin_05"
+        android:layout_marginLeft="@dimen/margin_02"
         android:contentDescription="@string/nav_header_desc"
-        app:srcCompat="@drawable/app_logo" />
+        app:srcCompat="@drawable/newapplogo" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/margin_05"
         android:textSize="@dimen/textsize_18"
-        android:layout_marginLeft="@dimen/margin_02"
         android:text="@string/app_name"
         android:textStyle="bold"
         android:textColor="@color/white"

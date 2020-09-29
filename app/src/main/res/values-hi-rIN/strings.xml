@@ -125,5 +125,8 @@
     <string name="id">आईडी</string>
     <string name="payment">भुगतान</string>
     <string name="months">महीना</string>
+    <string name="logout">लॉग आउट</string>
+
+    <string name="no_app_available_to_view_pdf">पीडीएफ देखने के लिए कोई एप्लिकेशन उपलब्ध नहीं है</string>
 
 </resources>
