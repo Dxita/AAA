@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -19,21 +20,24 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
 
     private Context mContext;
     private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
+    private List<Integer> infraImageList;
     protected ItemClickListener mListener;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txt_infra_name;
-        public View layout;
+        protected TextView txt_infra_name;
+        protected View layout;
+        protected AppCompatImageView img_infra_name;
         protected AaganwadiInfraStructure.InfrastructureDatum infrastructureDatum;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
             txt_infra_name = v.findViewById(R.id.txt_infra_name);
+            img_infra_name = v.findViewById(R.id.img_infra_name);
             layout.setOnClickListener(this);
         }
 
-        public void setData(AaganwadiInfraStructure.InfrastructureDatum infrastructureDatum) {
+        public void setData(AaganwadiInfraStructure.InfrastructureDatum infrastructureDatum, int drawable) {
             this.infrastructureDatum = infrastructureDatum;
             String name = "";
             if (LocaleManager.getLocale(mContext.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
@@ -42,6 +46,7 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
                 name = infrastructureDatum.getTimInfrastructureNameh();
             }
             txt_infra_name.setText(name);
+            img_infra_name.setImageResource(drawable);
         }
 
         @Override
@@ -52,10 +57,11 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
         }
     }
 
-    public InfraStructureAdapter(Context context, List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData,
+    public InfraStructureAdapter(Context context, List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData, List<Integer> imageList,
                                  ItemClickListener itemClickListener) {
         this.mContext = context;
         this.infrastructureData = infrastructureData;
+        this.infraImageList = imageList;
         this.mListener = itemClickListener;
     }
 
@@ -70,7 +76,7 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
 
     @Override
     public void onBindViewHolder(@androidx.annotation.NonNull ViewHolder holder, final int position) {
-        holder.setData(infrastructureData.get(position));
+        holder.setData(infrastructureData.get(position), infraImageList.get(position));
     }
 
     @Override

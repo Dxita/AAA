@@ -26,6 +26,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
     private RelativeLayout relativeLayout;
     private InfraStructureAdapter infraStructureAdapter;
     private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
+    private List<Integer> infraStructureImageList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         infrastructureData = new ArrayList<>();
+        infraStructureImageList = new ArrayList<>();
         InfraStructureAdapter.ItemClickListener itemClickListener = this;
         AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
         recyclerView.setLayoutManager(manager);
@@ -49,7 +51,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
             getAaGanWadiInfrastructureData();
         }
 
-        infraStructureAdapter = new InfraStructureAdapter(context, infrastructureData, itemClickListener);
+        infraStructureAdapter = new InfraStructureAdapter(context, infrastructureData, infraStructureImageList, itemClickListener);
         recyclerView.setAdapter(infraStructureAdapter);
     }
 
@@ -62,6 +64,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
                 // AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData.addAll(body.getData().getInfrastructureData());
+                setCustomInfraImages();
                 infraStructureAdapter.notifyDataSetChanged();
             }
 
@@ -76,5 +79,21 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
     @Override
     public void onItemClick(AaganwadiInfraStructure.InfrastructureDatum item) {
         AppUtils.showToast(context, "" + item.getTimInfrastructureId() + ": " + item.getTimInfrastructureNameh());
+    }
+
+    private void setCustomInfraImages() {
+        infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
+        infraStructureImageList.add(R.drawable.ic_creche_house);
+        infraStructureImageList.add(R.drawable.ic_drinking_water);
+        infraStructureImageList.add(R.drawable.ic_electricity);
+        infraStructureImageList.add(R.drawable.ic_kitchen);
+        infraStructureImageList.add(R.drawable.ic_open_area);
+        infraStructureImageList.add(R.drawable.ic_toilet);
+
+        if (infrastructureData.size() > infraStructureImageList.size()) {
+            for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {
+                infraStructureImageList.add(R.drawable.app_logo);
+            }
+        }
     }
 }
