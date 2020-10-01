@@ -55,7 +55,7 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salary_details_tbl);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -255,10 +255,10 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             if (payment_list != null && payment_list.size() > 0) {
-                PaymentDetails.Empdatum empdatum = payment_list.get(position);
-                holder.id_tv.setText(empdatum.getEmployeeId());
-                holder.name_tv.setText(empdatum.getMonth());
-                holder.payment_tv.setText(empdatum.getSalary());
+                PaymentDetails.Empdatum empDatum = payment_list.get(position);
+                holder.id_tv.setText(empDatum.getEmployeeId());
+                holder.name_tv.setText(empDatum.getMonth());
+                holder.payment_tv.setText(empDatum.getSalary());
             }
         }
 
