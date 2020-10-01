@@ -150,7 +150,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
             case R.id.btnVerifyOtp:
                  /*   if (inputOtp.getText().toString().equals(appPreferences.getOtpGenerated())) {
             }*/
-                startActivity(new Intent(context, HomeActivity.class));
+                startActivity(new Intent(context, GeneratePaswordActivity.class));
                 finish();
                 break;
         }

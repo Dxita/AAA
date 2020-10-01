@@ -128,5 +128,7 @@
     <string name="logout">लॉग आउट</string>
 
     <string name="no_app_available_to_view_pdf">पीडीएफ देखने के लिए कोई एप्लिकेशन उपलब्ध नहीं है</string>
-
+    <string name="enter_your_password">यहां अपना पासवर्ड डालें</string>
+    <string name="enter_your_password_to_login">लॉगिन करने के लिए अपना पासवर्ड डालें</string>
+    <string name="login_with_your_password">अपने पासवर्ड के साथ लॉग इन करें</string>
 </resources>
