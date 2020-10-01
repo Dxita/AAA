@@ -20,6 +20,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
         tools:targetApi="q">
         <activity android:name=".activity.GeneratePaswordActivity" />
         <activity android:name=".activity.PasswordActivity" />

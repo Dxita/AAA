@@ -22,8 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -113,25 +115,54 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         int serialNo = 0;
         String outPath = "";
 
-        String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
-        Document document = new Document(PageSize.A4);
+        // String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
+        String[] headers = new String[]{"Sr. No.", "Payment Month", "Bill Name", "Amount (Rs.)"};
+        Document document = new Document();
+        document.setPageSize(PageSize.A4);
+        //   document.setMargins(16, 14, 14, 14);
+
         try {
             outPath = String.valueOf(AppUtils.writeFilesToAppFolder(employeeName + fromYear + "-" + toYear.substring(2, 4), ".pdf"));
-            PdfWriter.getInstance(document,
+            PdfWriter writer = PdfWriter.getInstance(document,
                     new FileOutputStream(new File(outPath)));
             document.open();
+            //   document.setPageSize(PageSize.LETTER);
+            // document.setMargins(16, 14, 42, 38);
 
-            Font fontHeader = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
-            Font fontRow = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL);
+            Font fontHeader = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD);
+            Font fontRow = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.NORMAL);
 
-            float[] columnWidths = new float[]{20f, 25f, 30f, 30f, 25f};
+            Paragraph p1 = new Paragraph("Employee Name: " + empDatumList.get(0).getEmployeeNameEnglish());
+            Paragraph p2 = new Paragraph("Employee ID: " + empDatumList.get(0).getEmployeeId());
+            Paragraph p3 = new Paragraph("Payment Data of Financial Year: " + fromYear + "-" + toYear.substring(2, 4));
+            Font paraFont = new Font(fontHeader);
+            p1.setAlignment(Paragraph.ALIGN_CENTER);
+            p1.setFont(paraFont);
+
+            p2.setAlignment(Paragraph.ALIGN_CENTER);
+            p2.setFont(paraFont);
+
+            p3.setAlignment(Paragraph.ALIGN_CENTER);
+            p3.setFont(paraFont);
+
+            document.add(p1);
+            document.add(p2);
+            document.add(p3);
+
+            float[] columnWidths = new float[]{1f, 2f, 2f, 1f};
             PdfPTable table = new PdfPTable(headers.length);
-            table.setTotalWidth(columnWidths);
+            table.setSpacingAfter(0f);
+            table.setSpacingBefore(24f);
+            table.setTotalWidth(document.right() - document.left());
+            table.setLockedWidth(true);
+            table.setWidths(columnWidths);
 
             for (String header : headers) {
                 PdfPCell cell = new PdfPCell();
                 cell.setGrayFill(1.0f);
                 cell.setPhrase(new Phrase(header.toUpperCase(), fontHeader));
+                cell.setFixedHeight(36f);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 table.addCell(cell);
             }
             table.completeRow();
@@ -139,19 +170,30 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
             for (PaymentDetails.Empdatum empDatum : empDatumList) {
                 serialNo = ++serialNo;
                 String[][] rows = new String[][]{
-                        {"" + serialNo, empDatum.getEmployeeId(), empDatum.getEmployeeNameEnglish(), empDatum.getMonth(), empDatum.getSalary()},
+                        {"" + serialNo, empDatum.getMonth(), empDatum.getSubbillname(), empDatum.getSalary()},
                 };
 
+                int dataNo = 0;
                 for (String[] row : rows) {
                     for (String data : row) {
+                        dataNo = ++dataNo;
                         Phrase phrase = new Phrase(data, fontRow);
                         PdfPCell cell = new PdfPCell(phrase);
+                        cell.setFixedHeight(36f);
+                        if (dataNo < row.length) {
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        } else {
+                            cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                        }
                         table.addCell(cell);
                     }
                     table.completeRow();
                 }
             }
 
+            if (writer.getVerticalPosition(true) - table.getRowHeight(0) - table.getRowHeight(1) < document.bottom()) {
+                document.newPage();
+            }
             document.add(table);
         } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
