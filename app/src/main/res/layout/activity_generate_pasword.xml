@@ -46,7 +46,7 @@
                 android:layout_marginRight="@dimen/margin_35"
                 android:layout_marginLeft="@dimen/margin_35"
                 android:text="@string/password_guidelines"
-                android:textSize="@dimen/textsize_12sp"
+                android:textSize="@dimen/textsize_13sp"
                 tools:ignore="RtlCompat" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -60,7 +60,7 @@
                 android:layout_marginRight="@dimen/margin_35"
                 android:layout_marginLeft="@dimen/margin_35"
                 android:text="@string/password_guidelines2"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_13sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:drawablePadding="@dimen/margin_10"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="@dimen/margin_35"
                 android:gravity="left"
                 android:text="@string/password_guidelines1"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_13sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:drawablePadding="@dimen/margin_10"
@@ -86,7 +86,7 @@
                 android:layout_marginLeft="@dimen/margin_35"
                 android:gravity="left"
                 android:text="@string/password_guidelines3"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_13sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
