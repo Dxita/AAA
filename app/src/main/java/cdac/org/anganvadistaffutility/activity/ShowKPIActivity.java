@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.graph.UsersGraphActivity;
+import cdac.org.anganvadistaffutility.graph.UsersPieChartActivity;
 
 public class ShowKPIActivity extends BaseActivity implements View.OnClickListener {
 
@@ -32,7 +32,8 @@ public class ShowKPIActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.view_users_data:
-                startActivity(new Intent(context, UsersGraphActivity.class));
+                //  startActivity(new Intent(context, UsersGraphActivity.class));
+                startActivity(new Intent(context, UsersPieChartActivity.class));
                 break;
             case R.id.view_infra_data:
                 startActivity(new Intent(context, ViewInfraStructureActivity.class));

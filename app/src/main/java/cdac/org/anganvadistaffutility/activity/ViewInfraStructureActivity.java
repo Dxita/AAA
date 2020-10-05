@@ -86,9 +86,10 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
         infraStructureImageList.add(R.drawable.ic_creche_house);
         infraStructureImageList.add(R.drawable.ic_drinking_water);
         infraStructureImageList.add(R.drawable.ic_electricity);
+
         infraStructureImageList.add(R.drawable.ic_kitchen);
         infraStructureImageList.add(R.drawable.ic_open_area);
-        infraStructureImageList.add(R.drawable.ic_toilet);
+        infraStructureImageList.add(R.drawable.ic_toilet_new);
 
         if (infrastructureData.size() > infraStructureImageList.size()) {
             for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {

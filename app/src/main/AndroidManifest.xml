@@ -82,11 +82,18 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".graph.UsersGraphActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".graph.UsersPieChartActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".receiver.SmsBroadcastReceiver"
