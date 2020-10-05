@@ -5,7 +5,6 @@
 
     <color name="colorPrimary">#DD827C</color>
     <color name="colorPrimaryDark">#DD827C</color>
-
     <color name="colorAccent">#FF77A5</color>
     <color name="white">#FFFFFF</color>
     <color name="offwhite">#FFF7FD</color>
@@ -20,7 +19,7 @@
     <color name="lightgreen">#B3D191</color>
     <color name="peach">#DD827C</color>
     <color name="grey">#424040</color>
-    <color name="sky">#ECF3F3</color>
+    <color name="sky">#F1FBFB</color>
 
     <color name="blue_bg">#158391</color>
     <color name="dark_peach_bg">#BF4B44</color>
