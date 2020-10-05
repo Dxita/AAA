@@ -131,4 +131,13 @@
     <string name="enter_your_password">यहां अपना पासवर्ड डालें</string>
     <string name="enter_your_password_to_login">लॉगिन करने के लिए अपना पासवर्ड डालें</string>
     <string name="login_with_your_password">अपने पासवर्ड के साथ लॉग इन करें</string>
+
+    <string name="password_guidelines">पासवर्ड में कम से कम 8 अक्षर होने चाहिए</string>
+    <string name="password_guidelines1">अपरकेस और लोअरकेस अक्षर दोनों का मिश्रण</string>
+    <string name="password_guidelines2">अक्षरों और संख्याओं का मिश्रण</string>
+    <string name="password_guidelines3">कम से कम एक विशेष चरित्र का समावेश, उदा।, @ #? ]</string>
+    <string name="follow_password_guidlines">कृपया पासवर्ड गिल्डलाइन का पालन करें</string>
+    <string name="password_doesnt_match">पासवर्ड मैच नहीं कर रहा है</string>
+
+
 </resources>

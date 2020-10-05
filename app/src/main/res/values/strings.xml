@@ -30,7 +30,7 @@
     <string name="setup_text">Set up Password</string>
     <string name="enter_text">Enter password</string>
     <string name="confirm_text">Confirm password</string>
-    <string name="generate_text">Generate password</string>
+    <string name="generate_text">Password</string>
     <string name="enter">Enter Password</string>
     <string name="login_txt">LOGIN</string>
     <string name="password">Password</string>
@@ -126,6 +126,13 @@
     <string name="enter_your_password">Enter your password here</string>
     <string name="enter_your_password_to_login">Enter your password to login</string>
     <string name="login_with_your_password">Log In with your password</string>
+
+    <string name="password_guidelines">Password should have atleast 8 characters</string>
+    <string name="password_guidelines1">A mixture of both uppercase and lowercase letters</string>
+    <string name="password_guidelines2">A mixture of letters and numbers</string>
+    <string name="password_guidelines3">Inclusion of at least one special character, e.g., ! @ # ? ]</string>
+    <string name="password_doesnt_match">Password does not match</string>
+    <string name="follow_password_guidlines">Please follow password guildlines</string>
 
 
 </resources>
