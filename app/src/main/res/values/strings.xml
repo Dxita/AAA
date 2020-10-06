@@ -133,6 +133,13 @@
     <string name="password_guidelines3">Inclusion of at least one special character, e.g., ! @ # ? ]</string>
     <string name="password_doesnt_match">Password does not match</string>
     <string name="follow_password_guidlines">Please follow password guildlines</string>
+    <string name="registration">Registration</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="already_a_user">Already a user ?</string>
+    <string name="new_user">New User ?</string>
 
 
 </resources>

@@ -38,6 +38,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 startActivity(new Intent(context, VerifyUserActivity.class));
                 break;
             case R.id.user_type_public:
+                startActivity(new Intent(context, PublicRegisterationActivity.class));
                 break;
 
         }

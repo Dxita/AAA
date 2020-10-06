@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PublicRegisterationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_app_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/margin_60"
+                android:layout_height="@dimen/margin_60"
+                android:src="@drawable/app_logo" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_08"
+                android:layout_marginLeft="@dimen/margin_08"
+                android:text="@string/registration"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_18" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_100"
+            android:fillViewport="true">
+
+            <LinearLayout
+
+                android:layout_marginTop="@dimen/margin_30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:id="@+id/first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_45"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:drawableLeft="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:hint="@string/first_name"
+                    android:singleLine="true"
+                    android:padding="@dimen/margin_10"
+                    android:textSize="@dimen/textsize_15sp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:id="@+id/last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_45"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableStart="@drawable/ic_baseline_person_add_24"
+                    android:drawableLeft="@drawable/ic_baseline_person_add_24"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:hint="@string/last_name"
+                    android:singleLine="true"
+                    android:padding="@dimen/margin_10"
+                    android:textSize="@dimen/textsize_15sp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:id="@+id/phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_45"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableStart="@drawable/ic_baseline_phone_24"
+                    android:drawableLeft="@drawable/ic_baseline_phone_24"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:hint="@string/phone_number"
+                    android:padding="@dimen/margin_10"
+                    android:textSize="@dimen/textsize_15sp" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_45"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/margin_10"
+                    android:singleLine="true"
+                    android:textSize="@dimen/textsize_15sp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/c_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_45"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:drawableStart="@drawable/ic_baseline_vpn_key_24"
+                    android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:hint="@string/confirm_text"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/margin_10"
+                    android:singleLine="true"
+                    android:textSize="@dimen/textsize_15sp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_above="@+id/register_btn"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:textColor="@color/black"
+                android:text="@string/already_a_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/login_txt"
+                android:padding="@dimen/margin_05"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/login_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:background="@drawable/buttonbg"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16" />
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

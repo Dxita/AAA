@@ -139,5 +139,13 @@
     <string name="follow_password_guidlines">कृपया पासवर्ड गिल्डलाइन का पालन करें</string>
     <string name="password_doesnt_match">पासवर्ड मैच नहीं कर रहा है</string>
 
+    <string name="first_name">पहला नाम</string>
+    <string name="last_name">उपनाम</string>
+    <string name="registration">पंजीकरण</string>
+    <string name="phone_number">फ़ोन नंबर</string>
+    <string name="register">रजिस्टर करें</string>
+    <string name="already_a_user">पहले से ही एक उपयोगकर्ता?</string>
+    <string name="new_user">नया उपयोगकर्ता ?</string>
+
 
 </resources>
