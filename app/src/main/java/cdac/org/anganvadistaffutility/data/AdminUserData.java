@@ -51,7 +51,7 @@ public class AdminUserData {
         this.data = data;
     }
 
-    static class Data {
+    public static class Data {
 
         @SerializedName("empdata")
         @Expose
@@ -66,7 +66,7 @@ public class AdminUserData {
         }
     }
 
-    static class Empdatum {
+    public static class Empdatum {
 
         @SerializedName("tjdm_district_id")
         @Expose
