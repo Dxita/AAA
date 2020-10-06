@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_08"
                 android:layout_marginLeft="@dimen/margin_08"
-                android:text="@string/login_txt"
+                android:text="@string/welcome_text"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_18" />
@@ -44,7 +44,7 @@
 
             <LinearLayout
 
-                android:layout_marginTop="@dimen/margin_50"
+                android:layout_marginTop="@dimen/margin_30"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -58,7 +58,7 @@
                     android:layout_marginTop="@dimen/margin_12"
                     android:id="@+id/phone_number"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_45"
+                    android:layout_height="@dimen/margin_50"
                     android:layout_marginLeft="@dimen/margin_15"
                     android:layout_marginRight="@dimen/margin_15"
                     android:drawableStart="@drawable/ic_baseline_phone_24"
@@ -72,7 +72,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_45"
+                    android:layout_height="@dimen/margin_50"
                     android:layout_marginLeft="@dimen/margin_15"
                     android:layout_marginTop="@dimen/margin_15"
                     android:layout_marginRight="@dimen/margin_15"
