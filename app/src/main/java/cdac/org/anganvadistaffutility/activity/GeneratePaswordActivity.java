@@ -34,7 +34,7 @@ public class GeneratePaswordActivity extends BaseActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         if (view.getId()==R.id.continue_button ) {
-            if(pwd.getText().toString().length()<8 &&!isValidPassword(pwd.getText().toString())){
+            if(pwd.getText().toString().isEmpty()|| pwd.getText().toString().length()<8 &&!isValidPassword(pwd.getText().toString())){
                 pwd.requestFocus();
                 Toast.makeText(context, "" +getResources().getString(R.string.follow_password_guidlines), Toast.LENGTH_SHORT).show();
 
