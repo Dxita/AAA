@@ -141,5 +141,22 @@
     <string name="already_a_user">Already a user ?</string>
     <string name="new_user">New User ?</string>
 
+    <string name="building_details">Building Details</string>
+    <string name="public_infrastructure">Public Infrastructure</string>
+    <string name="add_building_details">Submit Building Details</string>
+
+
+    <string name="district">District</string>
+    <string name="project">Project</string>
+    <string name="select_facilities_txt">Select available facilities in your building</string>
+
+    <string name="open_area">Open Area</string>
+    <string name="toilet">Toilet</string>
+    <string name="submit_btn">Submit</string>
+    <string name="year">Year</string>
+    <string name="drinking_water">Drinking Water</string>
+    <string name="electricity">Electricity</string>
+    <string name="kitchen">Kitchen</string>
+    <string name="sector">Sector</string>
 
 </resources>

@@ -34,7 +34,7 @@ public class PublicLoginActivity extends BaseActivity implements View.OnClickLis
                 startActivity(new Intent(context, PublicRegisterationActivity.class));
                 break;
             case R.id.login_btn:
-                startActivity(new Intent(context, ViewInfraStructureActivity.class));
+                startActivity(new Intent(context, PublicInfraActivity.class));
                 break;
 
         }

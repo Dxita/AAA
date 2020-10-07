@@ -147,5 +147,20 @@
     <string name="already_a_user">पहले से ही एक उपयोगकर्ता?</string>
     <string name="new_user">नया उपयोगकर्ता ?</string>
 
+    <string name="building_details">भवन का विवरण</string>
+    <string name="public_infrastructure">सार्वजनिक अवसंरचना</string>
+
+    <string name="add_building_details">भवन विवरण प्रस्तुत करें</string>
+    <string name="district">जिला</string>
+    <string name="project">परियोजना</string>
+    <string name="select_facilities_txt">अपने भवन में उपलब्ध सुविधाओं का चयन करें</string>
+    <string name="open_area">खुली जगह</string>
+    <string name="toilet">शौचालय</string>
+    <string name="submit_btn">प्रस्तुत</string>
+    <string name="year">साल</string>
+    <string name="drinking_water">पीने का पानी</string>
+    <string name="electricity">बिजली</string>
+    <string name="kitchen">रसोई</string>
+    <string name="sector">क्षेत्र</string>
 
 </resources>
