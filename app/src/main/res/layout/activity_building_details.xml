@@ -89,94 +89,7 @@
                 android:textSize="@dimen/textsize_13sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_marginTop="@dimen/margin_10"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:paddingRight="@dimen/margin_05"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_05"
-                    android:text="@string/district"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/textsize_14sp" />
-
-                <Spinner
-                    android:id="@+id/spinner1"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/otpbg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingRight="@dimen/margin_05"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_05"
-                    android:text="@string/project"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/textsize_14sp" />
-
-                <Spinner
-                    android:id="@+id/spinner2"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/otpbg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingRight="@dimen/margin_05"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_05"
-                    android:text="@string/sector"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/textsize_14sp" />
-
-                <Spinner
-                    android:id="@+id/spinner3"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/otpbg"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
         <androidx.cardview.widget.CardView
             app:cardUseCompatPadding="true"
@@ -276,6 +189,7 @@ android:layout_margin="@dimen/margin_10"
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

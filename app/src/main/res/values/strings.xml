@@ -158,5 +158,8 @@
     <string name="electricity">Electricity</string>
     <string name="kitchen">Kitchen</string>
     <string name="sector">Sector</string>
+    <string name="infrastructure">Infrastructure</string>
+    <string name="aw_details">Aanganwadi Details</string>
+    <string name="creche_details">Creche Details</string>
 
 </resources>

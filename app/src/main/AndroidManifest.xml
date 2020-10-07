@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".activity.BuildingDetailsActivity"></activity>
+        <activity android:name=".activity.InfrastructureActivity"></activity>
+        <activity android:name=".activity.BuildingDetailsActivity" />
         <activity android:name=".activity.PublicInfraActivity" />
         <activity android:name=".activity.PublicLoginActivity" />
         <activity android:name=".activity.PublicRegisterationActivity" />

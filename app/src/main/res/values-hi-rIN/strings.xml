@@ -162,5 +162,6 @@
     <string name="electricity">बिजली</string>
     <string name="kitchen">रसोई</string>
     <string name="sector">क्षेत्र</string>
+    <string name="aw_details">Aanganwadi Details</string>
 
 </resources>
