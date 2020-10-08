@@ -162,6 +162,9 @@
     <string name="electricity">बिजली</string>
     <string name="kitchen">रसोई</string>
     <string name="sector">क्षेत्र</string>
-    <string name="aw_details">Aanganwadi Details</string>
+    <string name="aw_details">आंगनवाड़ी विवरण</string>
+    <string name="infrastructure">भूमिकारूप व्यवस्था</string>
+    <string name="creche_details">क्रेच विवरण</string>
+
 
 </resources>

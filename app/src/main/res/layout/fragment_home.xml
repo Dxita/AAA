@@ -49,7 +49,7 @@
                         android:padding="@dimen/margin_05"
                         android:text="@string/profile_details"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/textsize_17sp"
+                        android:textSize="@dimen/textsize_15sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -90,7 +90,7 @@
                         android:padding="5dp"
                         android:text="@string/job_details"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/textsize_17sp"
+                        android:textSize="@dimen/textsize_15sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -139,7 +139,7 @@
                         android:padding="@dimen/margin_05"
                         android:text="@string/bank_details"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/textsize_17sp"
+                        android:textSize="@dimen/textsize_15sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -181,7 +181,7 @@
                         android:padding="@dimen/margin_05"
                         android:text="@string/card_details"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/textsize_17sp"
+                        android:textSize="@dimen/textsize_15sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -229,7 +229,7 @@
                         android:padding="@dimen/margin_05"
                         android:text="@string/payment_details"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/textsize_17sp"
+                        android:textSize="@dimen/textsize_15sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
@@ -268,7 +268,7 @@
                         android:padding="@dimen/margin_05"
                         android:text="@string/infrastructure"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/textsize_17sp"
+                        android:textSize="@dimen/textsize_15sp"
                         android:textStyle="bold">
 
                     </androidx.appcompat.widget.AppCompatTextView>
