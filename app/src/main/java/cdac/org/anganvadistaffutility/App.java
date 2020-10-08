@@ -7,11 +7,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import cdac.org.anganvadistaffutility.utils.AppSignatureHelper;
-import cdac.org.anganvadistaffutility.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.common.utils.AppSignatureHelper;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class App extends Application {
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate() {

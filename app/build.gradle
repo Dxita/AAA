@@ -58,14 +58,18 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
 
     // Line Chart
-    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+
+    // Pie Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
 
     //creating PDF+
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:23.1.1'
     implementation 'com.madgag:scpkix-jdk15on:1.47.0.1'
     implementation 'com.itextpdf:itextg:5.5.10'
-
-
 
 }

@@ -22,14 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".activity.InfrastructureActivity"></activity>
-        <activity android:name=".activity.BuildingDetailsActivity" />
-        <activity android:name=".activity.PublicInfraActivity" />
-        <activity android:name=".activity.PublicLoginActivity" />
-        <activity android:name=".activity.PublicRegisterationActivity" />
-        <activity android:name=".activity.GeneratePaswordActivity" />
-        <activity android:name=".activity.PasswordActivity" />
-        <activity android:name=".activity.SplashActivity">
+
+        <activity android:name=".common.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,68 +31,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.SalaryDetailsTblActivity"
+            android:name=".common.activity.SalaryDetailsTblActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.CardActivity"
+            android:name=".user.activity.CardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.BankActivity"
+            android:name=".user.activity.BankActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.PaymentActivity"
+            android:name=".user.activity.PaymentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.JobActivity"
+            android:name=".user.activity.JobActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".user.activity.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.UserTypeActivity"
+            android:name=".common.activity.UserTypeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SelectLanguageActivity"
+            android:name=".common.activity.SelectLanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.BaseActivity"
+            android:name=".common.activity.BaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.VerifyUserActivity"
+            android:name=".user.activity.VerifyUserActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.VerifyOTPActivity"
+            android:name=".user.activity.VerifyOTPActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".user.activity.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ViewAaGanWadiDataActivity"
+            android:name=".admin.activity.ViewAaGanWadiDataActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ViewInfraStructureActivity"
+            android:name=".admin.activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.EmployeePaymentDetailActivity"
+            android:name=".admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ShowKPIActivity"
+            android:name=".admin.activity.ShowKPIActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".graph.UsersGraphActivity"
+            android:name=".admin.activity.UsersGraphActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".graph.UsersPieChartActivity"
+            android:name=".admin.activity.UsersPieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".public_u.activity.InfrastructureActivity" />
+        <activity android:name=".public_u.activity.BuildingDetailsActivity" />
+        <activity android:name=".public_u.activity.PublicInfraActivity" />
+        <activity android:name=".public_u.activity.PublicLoginActivity" />
+        <activity android:name=".public_u.activity.PublicRegistrationActivity" />
+        <activity android:name=".common.activity.GeneratePasswordActivity" />
+        <activity android:name=".common.activity.PasswordActivity" />
+
         <receiver
-            android:name=".receiver.SmsBroadcastReceiver"
+            android:name=".common.receiver.SmsBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.gms.auth.api.phone.permission.SEND">
             <intent-filter>
