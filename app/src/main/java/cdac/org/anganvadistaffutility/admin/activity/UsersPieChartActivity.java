@@ -11,8 +11,6 @@ import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -65,7 +63,8 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
         pieChart.setUsePercentValues(false);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setExtraOffsets(5, 10, 5, 5);
+        pieChart.getLegend().setEnabled(false);
+        pieChart.setExtraOffsets(16, 16, 16, 16);
 
         pieChart.setDragDecelerationFrictionCoef(0.95f);
         pieChart.setDrawHoleEnabled(false);
@@ -76,21 +75,20 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
         pieChart.setHoleRadius(0f);
         pieChart.setTransparentCircleRadius(0f);
-        pieChart.setDrawCenterText(true);
+        pieChart.setDrawCenterText(false);
         pieChart.setRotationAngle(270);
         pieChart.setRotationEnabled(true);
         pieChart.setHighlightPerTapEnabled(true);
-
         pieChart.animateY(1400, Easing.EaseInOutQuad);
 
-        List<LegendEntry> legendEntries = new ArrayList<>();
+      /*  List<LegendEntry> legendEntries = new ArrayList<>();
         legendEntries.add(new LegendEntry("Registered Employees", Legend.LegendForm.SQUARE, 11f, 11f,
                 null, ContextCompat.getColor(context, R.color.green)));
 
         legendEntries.add(new LegendEntry("UnRegistered Employees", Legend.LegendForm.SQUARE, 11f, 11f,
-                null, ContextCompat.getColor(context, R.color.red)));
+                null, ContextCompat.getColor(context, R.color.red)));*/
 
-        Legend l = pieChart.getLegend();
+       /* Legend l = pieChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
@@ -98,11 +96,11 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         l.setDrawInside(false);
         l.setXEntrySpace(7f);
         l.setYEntrySpace(0f);
-        l.setYOffset(0f);
+        l.setYOffset(0f);*/
 
         // entry label styling
-        pieChart.setEntryLabelColor(Color.WHITE);
-        pieChart.setEntryLabelTextSize(12f);
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setEntryLabelTextSize(10f);
 
         pieChart1.setHoleRadius(0f);
         pieChart1.setTransparentCircleRadius(0f);
@@ -143,10 +141,13 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         }
 
         ArrayList<PieEntry> NoOfEmp = new ArrayList<>();
-        NoOfEmp.add(new PieEntry(totalRegisteredEmployees, 0));
-        NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, 1));
+        NoOfEmp.add(new PieEntry(totalRegisteredEmployees, "Registered Employee", 0));
+        NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, "UnRegistered Employee", 1));
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
+
+        dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        dataSet.setYValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
 
         dataSet.setDrawIcons(false);
         dataSet.setSliceSpace(4f);
@@ -163,6 +164,7 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         pieData.setValueTextSize(15f);
         pieData.setValueTextColor(Color.WHITE);
         pieChart.setData(pieData);
+        pieChart.setDrawEntryLabels(true);
 
         // undo all highlights
         pieChart.highlightValues(null);
@@ -229,15 +231,23 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
     private void setEmployeeData(List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
         List<PieEntry> NoOfEmp = new ArrayList<>();
-        for (int j = 0; j < districtWiseEmployeeDetails.size(); j++) {
+        for (int j = 0; j < 11; j++) {
             // NoOfEmp.add(new PieEntry(districtWiseEmployeeDetails.get(j).getDistrict_name_english(), j));
-            NoOfEmp.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()), districtWiseEmployeeDetails.get(j).getDistrict_name_english()));
+            NoOfEmp.add(new PieEntry(j,
+                    districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
         }
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
 
+        dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        dataSet.setYValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
+
+        dataSet.setValueLinePart1Length(0.5f);
+        dataSet.setValueLinePart2Length(1.5f);
+        dataSet.setValueLineVariableLength(true);
+
         dataSet.setDrawIcons(false);
-        dataSet.setSliceSpace(2f);
+        dataSet.setSliceSpace(5f);
         //   dataSet.setIconsOffset(new MPPointF(0, 40));
         dataSet.setSelectionShift(3f);
 
@@ -251,8 +261,8 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
         pieData.setValueFormatter(vf);
         //  pieData.setValueFormatter(new PercentFormatter());
-        pieData.setValueTextSize(11f);
-        pieData.setValueTextColor(Color.WHITE);
+        pieData.setValueTextSize(10f);
+        pieData.setValueTextColor(Color.BLACK);
         pieChart.setData(pieData);
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 

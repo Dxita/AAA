@@ -21,6 +21,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        tools:node="replace"
         tools:targetApi="q">
 
         <activity android:name=".common.activity.SplashActivity">
@@ -88,11 +89,13 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".admin.activity.UsersPieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
+
 
         <activity android:name=".user.activity.InfrastructureActivity" />
         <activity android:name=".public_u.activity.BuildingDetailsActivity" />
