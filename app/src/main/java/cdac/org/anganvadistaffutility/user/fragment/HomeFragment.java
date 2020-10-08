@@ -13,17 +13,17 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.activity.BankActivity;
-import cdac.org.anganvadistaffutility.activity.CardActivity;
-import cdac.org.anganvadistaffutility.activity.InfrastructureActivity;
-import cdac.org.anganvadistaffutility.activity.JobActivity;
-import cdac.org.anganvadistaffutility.activity.PaymentActivity;
-import cdac.org.anganvadistaffutility.activity.ProfileActivity;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
+import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.data.EmployeeDetails;
-import cdac.org.anganvadistaffutility.retrofit.ApiInterface;
-import cdac.org.anganvadistaffutility.retrofit.ApiServiceOperator;
-import cdac.org.anganvadistaffutility.retrofit.ApiUtils;
-import cdac.org.anganvadistaffutility.utils.AppUtils;
+import cdac.org.anganvadistaffutility.public_u.activity.InfrastructureActivity;
+import cdac.org.anganvadistaffutility.user.activity.BankActivity;
+import cdac.org.anganvadistaffutility.user.activity.CardActivity;
+import cdac.org.anganvadistaffutility.user.activity.JobActivity;
+import cdac.org.anganvadistaffutility.user.activity.PaymentActivity;
+import cdac.org.anganvadistaffutility.user.activity.ProfileActivity;
 import retrofit2.Call;
 
 
@@ -147,7 +147,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
 
 
 }

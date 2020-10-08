@@ -38,9 +38,8 @@ import java.util.List;
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.utils.AppUtils;
-
+import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
+import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 
 public class SalaryDetailsTblActivity extends BaseActivity implements View.OnClickListener {
 

@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+
 
 public class SelectLanguageActivity extends BaseActivity implements View.OnClickListener {
 
