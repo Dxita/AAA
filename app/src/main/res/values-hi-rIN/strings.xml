@@ -165,6 +165,27 @@
     <string name="aw_details">आंगनवाड़ी विवरण</string>
     <string name="infrastructure">भूमिकारूप व्यवस्था</string>
     <string name="creche_details">क्रेच विवरण</string>
+    <string name="property_type">संपत्ति के प्रकार  </string>
+
+    <string name="Commercial">व्यावसायिक</string>
+    <string name="residential">"आवासीय"</string>
+    <string name="others">अन्य</string>
+    <string name="select_aw_facilities">अपने आंगनवाड़ी भवन में उपलब्ध सुविधाओं का चयन करें</string>
+    <string name="drinkink_water_faciltity">पीने के पानी की सुविधा है?</string>
+    <string name="electricity_faciltity">बिजली की सुविधा है?</string>
+    <string name="kitchen_faciltity">रसोई की सुविधा है?</string>
+    <string name="toilet_faciltity">टॉलीट की सुविधा है?</string>
+    <string name="open_area_facility">ओपन एरिया की सुविधा है?</string>
+
+
+
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="drinking_water_type">पीने के पानी के प्रकार का चयन करें</string>
+    <string name="Mineral_water">शुद्ध पानी</string>
+    <string name="normal_water">सामान्य पानी</string>
+    <string name="both">दोनों</string>
+    <string name="cancel">रद्द करना</string>
 
 
 </resources>

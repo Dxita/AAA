@@ -40,6 +40,9 @@
             android:name=".user.activity.BankActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".user.activity.AwDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".user.activity.PaymentActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -91,7 +94,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".public_u.activity.InfrastructureActivity" />
+        <activity android:name=".user.activity.InfrastructureActivity" />
         <activity android:name=".public_u.activity.BuildingDetailsActivity" />
         <activity android:name=".public_u.activity.PublicInfraActivity" />
         <activity android:name=".public_u.activity.PublicLoginActivity" />

@@ -18,7 +18,11 @@ import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 public class PublicRegistrationActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     AppCompatTextView login_txt;
     AppCompatButton register_btn;
-    String[] district = {"Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
+    String[] district = {"","Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
+    String[] project = {"","Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
+    String[] sector = {"","S01", "S02", "S03", "S04", "S05", "S06", "S07"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +45,14 @@ public class PublicRegistrationActivity extends BaseActivity implements View.OnC
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
-        spin2.setAdapter(aa);
-        spin3.setAdapter(aa);
+        ArrayAdapter projet_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, project);
+        projet_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin2.setAdapter(projet_adapter);
+
+        ArrayAdapter sector_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sector);
+        sector_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin3.setAdapter(sector_adapter);
+
 
     }
 
@@ -61,7 +71,6 @@ public class PublicRegistrationActivity extends BaseActivity implements View.OnC
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(getApplicationContext(), district[i], Toast.LENGTH_LONG).show();
 
     }
 

@@ -161,5 +161,26 @@
     <string name="infrastructure">Infrastructure</string>
     <string name="aw_details">Aanganwadi Details</string>
     <string name="creche_details">Creche Details</string>
+    <string name="property_type">Property Type</string>
+
+    <string name="Commercial">Commercial</string>
+    <string name="residential">"Residential "</string>
+    <string name="others">Others</string>
+    <string name="select_aw_facilities">Select avalilable facilities in your Aanganwadi building</string>
+    <string name="drinkink_water_faciltity">Have drinking water facility?</string>
+    <string name="electricity_faciltity">Have Electricity facility?</string>
+    <string name="kitchen_faciltity">Have Kitchen facility?</string>
+    <string name="toilet_faciltity">Have Toliet facility?</string>
+    <string name="open_area_facility">Have Open area facility?</string>
+
+
+
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="drinking_water_type">Select drinking water type</string>
+    <string name="Mineral_water">Mineral Water</string>
+    <string name="normal_water">Normal Water</string>
+    <string name="both">Both</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
