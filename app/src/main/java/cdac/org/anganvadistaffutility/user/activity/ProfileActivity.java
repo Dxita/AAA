@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 
 public class ProfileActivity extends BaseActivity {
 

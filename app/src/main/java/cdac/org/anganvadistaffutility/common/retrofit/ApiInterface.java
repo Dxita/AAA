@@ -4,8 +4,10 @@ import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.data.VerifyUser;
+import cdac.org.anganvadistaffutility.user.data.AWDetails;
+import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.InfraCategory;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -36,4 +38,10 @@ public interface ApiInterface {
 
     @GET("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<AdminUserData> getAdminUserData();
+
+    @POST("api_js_app_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AWDetails> awDetails(@Field("empid") String empID);
+
+
 }

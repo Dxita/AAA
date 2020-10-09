@@ -17,13 +17,12 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.activity.BankActivity;
 import cdac.org.anganvadistaffutility.user.activity.CardActivity;
-import cdac.org.anganvadistaffutility.user.activity.InfrastructureActivity;
 import cdac.org.anganvadistaffutility.user.activity.JobActivity;
 import cdac.org.anganvadistaffutility.user.activity.PaymentActivity;
 import cdac.org.anganvadistaffutility.user.activity.ProfileActivity;
+import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import retrofit2.Call;
 
 
@@ -72,7 +71,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         CardView job_card = root.findViewById(R.id.job_card);
         CardView bank_card = root.findViewById(R.id.bank_card);
         CardView payment_card = root.findViewById(R.id.payment_card);
-        CardView infrastructure = root.findViewById(R.id.infra_card);
         CardView card = root.findViewById(R.id.card);
         relativeLayout = root.findViewById(R.id.relativeLayout);
 
@@ -81,7 +79,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         payment_card.setOnClickListener(this);
         bank_card.setOnClickListener(this);
         card.setOnClickListener(this);
-        infrastructure.setOnClickListener(this);
 
         return root;
     }
@@ -142,9 +139,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.card:
                 startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details", cardDetails));
                 break;
-            case R.id.infra_card:
-                startActivity(new Intent(getActivity(), InfrastructureActivity.class));
-                break;
+
         }
     }
 

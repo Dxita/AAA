@@ -25,8 +25,8 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.fragment.HomeFragment;
+import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import retrofit2.Call;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {

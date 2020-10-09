@@ -187,5 +187,13 @@
     <string name="both">दोनों</string>
     <string name="cancel">रद्द करना</string>
 
+    <string name="kitchen_type">रसोई के प्रकार का चयन करें</string>
+    <string name="open_kitchen">ओपन एरिया किचन</string>
+    <string name="non_open_kitchen">गैर खुली रसोई</string>
+    <string name="indian_toilet">भारतीय शौचालय</string>
+    <string name="western_toilet">पश्चिमी शौचालय</string>
+    <string name="toilet_type">शौचालय का प्रकार चुनें</string>
+    <string name="infra_data">Infrastructure Data</string>
+
 
 </resources>

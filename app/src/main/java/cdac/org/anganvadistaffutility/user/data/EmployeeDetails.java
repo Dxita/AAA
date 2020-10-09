@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.data;
+package cdac.org.anganvadistaffutility.user.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
+import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 
 public class GeneratePasswordActivity extends BaseActivity implements View.OnClickListener {
     AppCompatEditText pwd, c_pwd;
@@ -44,7 +45,7 @@ public class GeneratePasswordActivity extends BaseActivity implements View.OnCli
                 c_pwd.requestFocus();
                 Toast.makeText(context, "" + getResources().getString(R.string.password_doesnt_match), Toast.LENGTH_SHORT).show();
             } else {
-                startActivity(new Intent(context, HomeActivity.class));
+                startActivity(new Intent(context, UserSectionActivity.class));
             }
 
         }

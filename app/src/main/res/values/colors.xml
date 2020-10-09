@@ -24,4 +24,9 @@
     <color name="blue_bg">#158391</color>
     <color name="dark_peach_bg">#BF4B44</color>
     <color name="dark_green_bg">#2F7A32</color>
+ <color name="dark_purple">#39255A</color>
+ <color name="purple">#9B77DC</color>
+ <color name="mustard">#E6B215</color>
+ <color name="dark_pink">#932349</color>
+ <color name="light_pink">#F881AA</color>
 </resources>

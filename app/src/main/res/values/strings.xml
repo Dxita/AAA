@@ -174,7 +174,6 @@
     <string name="open_area_facility">Have Open area facility?</string>
 
 
-
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="drinking_water_type">Select drinking water type</string>
@@ -182,5 +181,13 @@
     <string name="normal_water">Normal Water</string>
     <string name="both">Both</string>
     <string name="cancel">Cancel</string>
+    <string name="kitchen_type">Select kitchen type</string>
+    <string name="open_kitchen">Open Kitchen</string>
+    <string name="non_open_kitchen">Non open kitchen</string>
+    <string name="indian_toilet">Indian toilet</string>
+    <string name="western_toilet">Western toilet</string>
+    <string name="toilet_type">Select toilet type</string>
+    <string name="infra_data">Infrastructure Data</string>
+    <string name="personal_data">Personal Data</string>
 
 </resources>
