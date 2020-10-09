@@ -95,6 +95,13 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".admin.activity.DistrictWisePieChartActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+
         <activity android:name=".public_u.activity.BuildingDetailsActivity" />
         <activity android:name=".public_u.activity.PublicInfraActivity" />
         <activity android:name=".public_u.activity.PublicLoginActivity" />

@@ -72,10 +72,10 @@ public class AaganwadiInfraStructure {
         @SerializedName("tim_infrastructure_id")
         @Expose
         private String timInfrastructureId;
-        @SerializedName("tim_infrastructure_namee")
+        @SerializedName("tim_infra_namee")
         @Expose
         private String timInfrastructureNamee;
-        @SerializedName("tim_infrastructure_nameh")
+        @SerializedName("tim_infra_nameh")
         @Expose
         private String timInfrastructureNameh;
 

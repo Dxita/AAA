@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -37,7 +39,7 @@ import retrofit2.Call;
 public class UsersPieChartActivity extends BaseActivity implements OnChartValueSelectedListener {
 
     private RelativeLayout relativeLayout;
-    private PieChart pieChart, pieChart1, pieChart2;
+    private PieChart pieChart;
 
     private List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetailsList;
     private AdminUserData.Data empData;
@@ -54,14 +56,8 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
         relativeLayout = findViewById(R.id.relativeLayout);
         pieChart = findViewById(R.id.pieChart);
-        pieChart1 = findViewById(R.id.pieChart1);
-        pieChart2 = findViewById(R.id.pieChart2);
 
-        pieChart.setOnChartValueSelectedListener(this);
-        //  pieChart1.setOnChartValueSelectedListener(this);
-        // pieChart2.setOnChartValueSelectedListener(this);
-
-        pieChart.setUsePercentValues(false);
+        pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
         pieChart.getLegend().setEnabled(false);
         pieChart.setExtraOffsets(16, 16, 16, 16);
@@ -81,6 +77,11 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         pieChart.setHighlightPerTapEnabled(true);
         pieChart.animateY(1400, Easing.EaseInOutQuad);
 
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setEntryLabelTextSize(14f);
+
+        pieChart.setOnChartValueSelectedListener(this);
+
       /*  List<LegendEntry> legendEntries = new ArrayList<>();
         legendEntries.add(new LegendEntry("Registered Employees", Legend.LegendForm.SQUARE, 11f, 11f,
                 null, ContextCompat.getColor(context, R.color.green)));
@@ -97,13 +98,6 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         l.setXEntrySpace(7f);
         l.setYEntrySpace(0f);
         l.setYOffset(0f);*/
-
-        // entry label styling
-        pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setEntryLabelTextSize(10f);
-
-        pieChart1.setHoleRadius(0f);
-        pieChart1.setTransparentCircleRadius(0f);
 
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
@@ -140,31 +134,41 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
             totalUnRegisteredEmployees = totalUnRegisteredEmployees + Integer.parseInt(empDatum.getUnregistered());
         }
 
-        ArrayList<PieEntry> NoOfEmp = new ArrayList<>();
-        NoOfEmp.add(new PieEntry(totalRegisteredEmployees, "Registered Employee", 0));
-        NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, "UnRegistered Employee", 1));
+        List<PieEntry> NoOfEmp = new ArrayList<>();
+        NoOfEmp.add(new PieEntry(totalRegisteredEmployees, "Registered Employees " + "(" + totalRegisteredEmployees + ")"));
+        NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, "UnRegistered Employees " + "(" + totalUnRegisteredEmployees + ")"));
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
-
         dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataSet.setYValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
 
-        dataSet.setDrawIcons(false);
-        dataSet.setSliceSpace(4f);
-        //   dataSet.setIconsOffset(new MPPointF(0, 40));
-        dataSet.setSelectionShift(5f);
+        dataSet.setValueLinePart1Length(0.5f);
+        dataSet.setValueLinePart2Length(1.2f);
+        dataSet.setValueLineVariableLength(true);
 
-        ArrayList<Integer> colors = new ArrayList<>();
+        dataSet.setDrawIcons(false);
+        dataSet.setSliceSpace(3f);
+        //   dataSet.setIconsOffset(new MPPointF(0, 40));
+        dataSet.setSelectionShift(4f);
+
+        List<Integer> colors = new ArrayList<>();
         colors.add(ContextCompat.getColor(context, R.color.green));
         colors.add(ContextCompat.getColor(context, R.color.red));
-        dataSet.setColors(colors);
 
         PieData pieData = new PieData(dataSet);
-        //pieData.setValueFormatter(new PercentFormatter());
-        pieData.setValueTextSize(15f);
-        pieData.setValueTextColor(Color.WHITE);
+        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
+            @Override
+            public String getFormattedValue(float value) {
+                return "" + (int) value;
+            }
+        };
+
+        pieData.setValueFormatter(new PercentFormatter());
+        pieData.setValueTextSize(12f);
+        pieData.setValueTextColor(Color.BLACK);
         pieChart.setData(pieData);
-        pieChart.setDrawEntryLabels(true);
+        //    pieChart.setDrawEntryLabels(true);
+        dataSet.setColors(colors);
 
         // undo all highlights
         pieChart.highlightValues(null);
@@ -174,7 +178,19 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        int districtWiseEmployees = 0;
+
+        List<AdminUserData.Empdatum> empDatumList = empData.getEmpdata();
+        ArrayList<AdminUserData.Empdatum> empDatumArrayList = new ArrayList<>(empDatumList);
+
+        if (h.getX() == 0.0) {
+            startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("data_type", "registered_user")
+                    .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
+        } else {
+            startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("data_type", "unregistered_user")
+                    .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
+        }
+
+      /*  int districtWiseEmployees = 0;
         int previousDistrictID;
         int currentDistrictID = -1;
 
@@ -216,12 +232,7 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
                 }
             }
         }
-
-       /* if (pieChart.getVisibility() == View.VISIBLE) {
-            pieChart.setVisibility(View.GONE);
-            pieChart1.setVisibility(View.VISIBLE);
-        }*/
-        setEmployeeData(districtWiseEmployeeDetailsList);
+        setEmployeeData(districtWiseEmployeeDetailsList);*/
     }
 
     @Override
@@ -231,25 +242,23 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
     private void setEmployeeData(List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
         List<PieEntry> NoOfEmp = new ArrayList<>();
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 7; j++) {
             // NoOfEmp.add(new PieEntry(districtWiseEmployeeDetails.get(j).getDistrict_name_english(), j));
-            NoOfEmp.add(new PieEntry(j,
+            NoOfEmp.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                     districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
         }
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
-
         dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataSet.setYValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
 
         dataSet.setValueLinePart1Length(0.5f);
-        dataSet.setValueLinePart2Length(1.5f);
+        dataSet.setValueLinePart2Length(1.2f);
         dataSet.setValueLineVariableLength(true);
 
         dataSet.setDrawIcons(false);
-        dataSet.setSliceSpace(5f);
-        //   dataSet.setIconsOffset(new MPPointF(0, 40));
-        dataSet.setSelectionShift(3f);
+        dataSet.setSliceSpace(3f);
+        dataSet.setSelectionShift(4f);
 
         PieData pieData = new PieData(dataSet);
         ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
@@ -259,12 +268,11 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
             }
         };
 
-        pieData.setValueFormatter(vf);
-        //  pieData.setValueFormatter(new PercentFormatter());
-        pieData.setValueTextSize(10f);
+        pieData.setValueFormatter(new PercentFormatter());
+        pieData.setValueTextSize(12f);
         pieData.setValueTextColor(Color.BLACK);
         pieChart.setData(pieData);
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
 
         // undo all highlights
         pieChart.highlightValues(null);

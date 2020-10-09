@@ -33,7 +33,7 @@ public interface ApiInterface {
     @GET("api_js_app_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<RegisteredUserKPI> getRegisteredUserKPI();
 
-    @GET("api_js_infrastructure_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @GET("api_infrastructure_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<AaganwadiInfraStructure> getInfrastructureData();
 
     @GET("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")

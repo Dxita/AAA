@@ -26,6 +26,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 
 
@@ -109,6 +110,19 @@ public class AppUtils {
         }.getType();
         return gson.fromJson(list, type);
     }
+
+    public static String convertUserToPut(ArrayList<AdminUserData.Empdatum> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<AdminUserData.Empdatum> convertUserToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<AdminUserData.Empdatum>>() {
+        }.getType();
+        return gson.fromJson(list, type);
+    }
+
 
     public static String getRandomNumberString() {
         Random random = new Random();
