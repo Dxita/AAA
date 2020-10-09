@@ -231,7 +231,7 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
     private void setEmployeeData(List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
         List<PieEntry> NoOfEmp = new ArrayList<>();
-        for (int j = 0; j < 11; j++) {
+        for (int j = 0; j < 5; j++) {
             // NoOfEmp.add(new PieEntry(districtWiseEmployeeDetails.get(j).getDistrict_name_english(), j));
             NoOfEmp.add(new PieEntry(j,
                     districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
