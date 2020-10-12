@@ -34,7 +34,7 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.infra_data_card:
-                startActivity(new Intent(context, ViewInfraStructureActivity.class));
+                startActivity(new Intent(context, InfraCategoriesActivity.class));
                 break;
             case R.id.personal_info_card:
                 startActivity(new Intent(context, HomeActivity.class));
