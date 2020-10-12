@@ -27,6 +27,7 @@ import java.util.Random;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
+import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 
 
@@ -123,6 +124,17 @@ public class AppUtils {
         return gson.fromJson(list, type);
     }
 
+    public static String convertProjectToPut(ArrayList<ProjectWiseEmployeeDetails> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<ProjectWiseEmployeeDetails> convertProjectToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<ProjectWiseEmployeeDetails>>() {
+        }.getType();
+        return gson.fromJson(list, type);
+    }
 
     public static String getRandomNumberString() {
         Random random = new Random();

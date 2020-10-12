@@ -17,17 +17,14 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
-import cdac.org.anganvadistaffutility.admin.data.DistrictWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
@@ -41,7 +38,6 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
     private RelativeLayout relativeLayout;
     private PieChart pieChart;
 
-    private List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetailsList;
     private AdminUserData.Data empData;
     private int totalRegisteredEmployees = 0;
     private int totalUnRegisteredEmployees = 0;
@@ -156,13 +152,6 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         colors.add(ContextCompat.getColor(context, R.color.red));
 
         PieData pieData = new PieData(dataSet);
-        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
-            @Override
-            public String getFormattedValue(float value) {
-                return "" + (int) value;
-            }
-        };
-
         pieData.setValueFormatter(new PercentFormatter());
         pieData.setValueTextSize(12f);
         pieData.setValueTextColor(Color.BLACK);
@@ -175,64 +164,18 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         pieChart.invalidate();
     }
 
-
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
         List<AdminUserData.Empdatum> empDatumList = empData.getEmpdata();
         ArrayList<AdminUserData.Empdatum> empDatumArrayList = new ArrayList<>(empDatumList);
 
         if (h.getX() == 0.0) {
-            startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("data_type", "registered_user")
+            startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "registered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
         } else {
-            startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("data_type", "unregistered_user")
+            startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "unregistered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
         }
-
-      /*  int districtWiseEmployees = 0;
-        int previousDistrictID;
-        int currentDistrictID = -1;
-
-        districtWiseEmployeeDetailsList = new ArrayList<>();
-        if (h.getX() == 0.0) {
-            for (AdminUserData.Empdatum empDatum : empData.getEmpdata()) {
-                previousDistrictID = currentDistrictID;
-                currentDistrictID = Integer.parseInt(empDatum.getTjdmDistrictId());
-
-                if (previousDistrictID == currentDistrictID) {
-                    districtWiseEmployees = districtWiseEmployees + Integer.parseInt(empDatum.getRegistered());
-                } else {
-                    if (previousDistrictID != -1) {
-                        DistrictWiseEmployeeDetails districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
-                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
-                        districtWiseEmployeeDetails.setDistrict_employees("" + districtWiseEmployees);
-                        districtWiseEmployeeDetails.setDistrict_id("" + previousDistrictID);
-                        districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
-                    }
-                    districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
-                }
-            }
-        } else {
-            for (AdminUserData.Empdatum empDatum : empData.getEmpdata()) {
-                previousDistrictID = currentDistrictID;
-                currentDistrictID = Integer.parseInt(empDatum.getTjdmDistrictId());
-
-                if (previousDistrictID == currentDistrictID) {
-                    districtWiseEmployees = districtWiseEmployees + Integer.parseInt(empDatum.getUnregistered());
-                } else {
-                    if (previousDistrictID != -1) {
-                        DistrictWiseEmployeeDetails districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
-                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
-                        districtWiseEmployeeDetails.setDistrict_employees("" + districtWiseEmployees);
-                        districtWiseEmployeeDetails.setDistrict_id("" + previousDistrictID);
-                        districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
-                    }
-                    districtWiseEmployees = Integer.parseInt(empDatum.getUnregistered());
-                }
-            }
-        }
-        setEmployeeData(districtWiseEmployeeDetailsList);*/
     }
 
     @Override
@@ -240,42 +183,4 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         // do nothing
     }
 
-    private void setEmployeeData(List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
-        List<PieEntry> NoOfEmp = new ArrayList<>();
-        for (int j = 0; j < 7; j++) {
-            // NoOfEmp.add(new PieEntry(districtWiseEmployeeDetails.get(j).getDistrict_name_english(), j));
-            NoOfEmp.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
-                    districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
-        }
-
-        PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
-        dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        dataSet.setYValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
-
-        dataSet.setValueLinePart1Length(0.5f);
-        dataSet.setValueLinePart2Length(1.2f);
-        dataSet.setValueLineVariableLength(true);
-
-        dataSet.setDrawIcons(false);
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(4f);
-
-        PieData pieData = new PieData(dataSet);
-        ValueFormatter vf = new ValueFormatter() { //value format here, here is the overridden method
-            @Override
-            public String getFormattedValue(float value) {
-                return "" + (int) value;
-            }
-        };
-
-        pieData.setValueFormatter(new PercentFormatter());
-        pieData.setValueTextSize(12f);
-        pieData.setValueTextColor(Color.BLACK);
-        pieChart.setData(pieData);
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-
-        // undo all highlights
-        pieChart.highlightValues(null);
-        pieChart.invalidate();
-    }
 }

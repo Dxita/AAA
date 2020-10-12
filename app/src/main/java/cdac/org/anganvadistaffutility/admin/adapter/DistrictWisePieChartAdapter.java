@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -30,7 +33,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
     protected ItemClickListener mListener;
     private int fixListSize = 7;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements OnChartValueSelectedListener {
         protected PieChart pieChart;
         protected View layout;
         protected List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails;
@@ -39,7 +42,6 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
             super(v);
             layout = v;
             pieChart = v.findViewById(R.id.pieChart);
-            layout.setOnClickListener(this);
 
             pieChart.setUsePercentValues(true);
             pieChart.getDescription().setEnabled(false);
@@ -63,6 +65,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
 
             pieChart.setEntryLabelColor(Color.BLACK);
             pieChart.setEntryLabelTextSize(14f);
+            pieChart.setOnChartValueSelectedListener(this);
         }
 
         public void setData(int position, List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
@@ -80,35 +83,41 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
             if (districtWiseEmployeeDetails.size() >= fixListSize) {
                 for (int j = 0; j < fixListSize; j++) {
                     noOfEmp1.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
-                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id())
+                    );
                 }
             }
 
             if (districtWiseEmployeeDetails.size() >= 2 * fixListSize) {
                 for (int j = fixListSize; j < 2 * fixListSize; j++) {
                     noOfEmp2.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
-                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
             }
 
             if (districtWiseEmployeeDetails.size() >= 3 * fixListSize) {
                 for (int j = 2 * fixListSize; j < 3 * fixListSize; j++) {
                     noOfEmp3.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
-                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
             }
 
             if (districtWiseEmployeeDetails.size() >= 4 * fixListSize) {
                 for (int j = 3 * fixListSize; j < 4 * fixListSize; j++) {
                     noOfEmp4.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
-                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
             }
 
             if (districtWiseEmployeeDetails.size() <= 5 * fixListSize) {
                 for (int j = 4 * fixListSize; j < 31; j++) {
                     noOfEmp5.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
-                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"));
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
             }
 
@@ -152,16 +161,23 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
         }
 
         @Override
-        public void onClick(View view) {
+        public void onValueSelected(Entry e, Highlight h) {
             if (mListener != null) {
-                // mListener.onItemClick(districtWiseEmployeeDetails);
+                mListener.onItemClick(e.getData());
             }
+        }
+
+        @Override
+        public void onNothingSelected() {
+            //
         }
     }
 
-    public DistrictWisePieChartAdapter(Context context, List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
+    public DistrictWisePieChartAdapter(Context context, List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails,
+                                       ItemClickListener itemClickListener) {
         this.mContext = context;
         this.districtWiseEmployeeDetailsList = districtWiseEmployeeDetails;
+        this.mListener = itemClickListener;
     }
 
     @NonNull
@@ -189,7 +205,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
     }
 
     public interface ItemClickListener {
-        void onItemClick(DistrictWiseEmployeeDetails item);
+        void onItemClick(Object item);
     }
 
 }

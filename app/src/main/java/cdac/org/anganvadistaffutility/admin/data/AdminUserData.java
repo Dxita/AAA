@@ -92,6 +92,39 @@ public class AdminUserData {
         @SerializedName("registered")
         @Expose
         private String registered;
+        @SerializedName("tjpm_project_incharge_cdpo")
+        @Expose
+        private String tjpmProjectInchargeCdpo;
+        @SerializedName("tjpm_cdpo_email")
+        @Expose
+        private String tjpmCdpoEmail;
+        @SerializedName("tjpm_cdpo_mobile_no")
+        @Expose
+        private String tjpmCdpoMobileNo;
+
+        public String getTjpmProjectInchargeCdpo() {
+            return tjpmProjectInchargeCdpo;
+        }
+
+        public void setTjpmProjectInchargeCdpo(String tjpmProjectInchargeCdpo) {
+            this.tjpmProjectInchargeCdpo = tjpmProjectInchargeCdpo;
+        }
+
+        public String getTjpmCdpoEmail() {
+            return tjpmCdpoEmail;
+        }
+
+        public void setTjpmCdpoEmail(String tjpmCdpoEmail) {
+            this.tjpmCdpoEmail = tjpmCdpoEmail;
+        }
+
+        public String getTjpmCdpoMobileNo() {
+            return tjpmCdpoMobileNo;
+        }
+
+        public void setTjpmCdpoMobileNo(String tjpmCdpoMobileNo) {
+            this.tjpmCdpoMobileNo = tjpmCdpoMobileNo;
+        }
 
         public String getTjdmDistrictId() {
             return tjdmDistrictId;

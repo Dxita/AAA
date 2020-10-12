@@ -1,6 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.data;
 
-public class DistrictWiseEmployeeDetails {
+public class DistrictWiseEmployeeDetails implements Comparable<DistrictWiseEmployeeDetails> {
 
     String district_id;
 
@@ -67,4 +67,9 @@ public class DistrictWiseEmployeeDetails {
     }
 
     String district_employees;
+
+    @Override
+    public int compareTo(DistrictWiseEmployeeDetails districtWiseEmployeeDetails) {
+        return this.getDistrict_employees().compareTo(districtWiseEmployeeDetails.getDistrict_employees());
+    }
 }
