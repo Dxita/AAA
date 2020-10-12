@@ -71,7 +71,7 @@ public class AaganwadiInfraStructure {
 
     public static class InfrastructureDatum {
 
-        @SerializedName("tim_infrastructure_id")
+        @SerializedName("tim_infra_id")
         @Expose
         private String timInfrastructureId;
         @SerializedName("tim_infra_namee")
