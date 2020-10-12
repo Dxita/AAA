@@ -3,7 +3,9 @@ package cdac.org.anganvadistaffutility.admin.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Collection;
 import java.util.List;
+
 
 public class AaganwadiInfraStructure {
 
@@ -58,7 +60,7 @@ public class AaganwadiInfraStructure {
         @Expose
         private List<InfrastructureDatum> infrastructureData = null;
 
-        public List<InfrastructureDatum> getInfrastructureData() {
+        public Collection<? extends InfrastructureDatum> getInfrastructureData() {
             return infrastructureData;
         }
 
