@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.public_u.activity;
+package cdac.org.anganvadistaffutility.public_u.activity.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,20 +22,16 @@ public class PublicLoginActivity extends BaseActivity implements View.OnClickLis
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_public_login);
-        login_btn = findViewById(R.id.login_btn);
-        register_txt = findViewById(R.id.register_txt);
-        register_txt.setOnClickListener(this);
+        login_btn = findViewById(R.id.btn_verify_user);
         login_btn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.register_txt:
-                startActivity(new Intent(context, PublicRegistrationActivity.class));
-                break;
-            case R.id.login_btn:
-                startActivity(new Intent(context, PublicInfraActivity.class));
+
+            case R.id.btn_verify_user:
+                startActivity(new Intent(context, PublicOTPVerificationActivity.class));
                 break;
 
         }

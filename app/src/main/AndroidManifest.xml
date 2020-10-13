@@ -4,11 +4,13 @@
     package="cdac.org.anganvadistaffutility"
     android:installLocation="preferExternal">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".App"
@@ -23,7 +25,8 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.InfraCategoriesActivity"></activity>
+        <activity android:name=".public_u.activity.activity.PublicOTPVerificationActivity"></activity>
+        <activity android:name=".user.activity.InfraCategoriesActivity" />
         <activity android:name=".user.activity.UserSectionActivity" />
         <activity android:name=".common.activity.SplashActivity">
             <intent-filter>
@@ -95,23 +98,20 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".admin.activity.DistrictWisePieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".admin.activity.ProjectWisePieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
-
-        <activity android:name=".public_u.activity.BuildingDetailsActivity" />
-        <activity android:name=".public_u.activity.PublicInfraActivity" />
-        <activity android:name=".public_u.activity.PublicLoginActivity" />
-        <activity android:name=".public_u.activity.PublicRegistrationActivity" />
+        <activity android:name=".public_u.activity.activity.BuildingDetailsActivity" />
+        <activity android:name=".public_u.activity.activity.PublicInfraActivity" />
+        <activity android:name=".public_u.activity.activity.PublicLoginActivity" />
+        <activity android:name=".public_u.activity.activity.PublicRegistrationActivity" />
         <activity android:name=".common.activity.GeneratePasswordActivity" />
         <activity android:name=".common.activity.PasswordActivity" />
 

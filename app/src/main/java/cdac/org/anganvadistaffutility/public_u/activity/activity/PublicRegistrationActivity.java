@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.public_u.activity;
+package cdac.org.anganvadistaffutility.public_u.activity.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicInfraActivity;
 
 public class PublicRegistrationActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     AppCompatTextView login_txt;
@@ -31,14 +32,12 @@ public class PublicRegistrationActivity extends BaseActivity implements View.OnC
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_public_registeration);
-        login_txt = findViewById(R.id.login_txt);
         register_btn = findViewById(R.id.register_btn);
         Spinner spin = (Spinner) findViewById(R.id.spinner1);
         Spinner spin2 = (Spinner) findViewById(R.id.spinner2);
         Spinner spin3 = (Spinner) findViewById(R.id.spinner3);
 
         spin.setOnItemSelectedListener(this);
-        login_txt.setOnClickListener(this);
         register_btn.setOnClickListener(this);
 
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, district);
@@ -59,9 +58,6 @@ public class PublicRegistrationActivity extends BaseActivity implements View.OnC
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_txt:
-                startActivity(new Intent(context, PublicLoginActivity.class));
-                break;
             case R.id.register_btn:
                 startActivity(new Intent(context, PublicInfraActivity.class));
                 break;

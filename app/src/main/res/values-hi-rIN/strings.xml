@@ -195,5 +195,7 @@
     <string name="toilet_type">शौचालय का प्रकार चुनें</string>
     <string name="infra_data">Infrastructure Data</string>
 
-
+    <string name="personal_data">Personal Data</string>
+    <string name="GPSAlertDialogTitle">GPS is setting</string>
+    <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
 </resources>

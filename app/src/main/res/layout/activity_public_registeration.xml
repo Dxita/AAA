@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_08"
                 android:layout_marginLeft="@dimen/margin_08"
-                android:text="@string/registration"
+                android:text="@string/welcome_text"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_18" />
@@ -81,21 +81,7 @@
                     android:singleLine="true"
                     android:textSize="@dimen/textsize_15sp" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/phone_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_45"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_12"
-                    android:layout_marginRight="@dimen/margin_15"
-                    android:drawableStart="@drawable/ic_baseline_phone_24"
-                    android:drawableLeft="@drawable/ic_baseline_phone_24"
-                    android:drawablePadding="@dimen/margin_10"
-                    android:hint="@string/phone_number"
-                    android:inputType="number"
-                    android:padding="@dimen/margin_10"
-                    android:singleLine="true"
-                    android:textSize="@dimen/textsize_15sp" />
+
 
 
 
@@ -250,27 +236,6 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/register_btn"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/already_a_user"
-                android:textColor="@color/black" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/login_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/margin_05"
-                android:text="@string/login_txt"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/register_btn"
@@ -280,7 +245,7 @@
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@drawable/buttonbg"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/register"
+            android:text="@string/submit_btn"
             android:textColor="@color/white"
             android:textSize="@dimen/font_16" />
 

@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
-import cdac.org.anganvadistaffutility.public_u.activity.PublicRegistrationActivity;
+import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 
 public class UserTypeActivity extends BaseActivity implements View.OnClickListener {
@@ -41,7 +41,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 startActivity(new Intent(context, VerifyUserActivity.class));
                 break;
             case R.id.user_type_public:
-                startActivity(new Intent(context, PublicRegistrationActivity.class));
+                startActivity(new Intent(context, PublicLoginActivity.class));
                 break;
 
         }
