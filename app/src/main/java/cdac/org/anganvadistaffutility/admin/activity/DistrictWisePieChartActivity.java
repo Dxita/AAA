@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.admin.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,15 +39,22 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_district_wise_pie_chart);
 
+        String emdData = getIntent().getStringExtra("emp_data");
+        userType = getIntent().getStringExtra("user_type");
+        empDatumList = AppUtils.convertUserToGet(emdData);
+
+        TextView txt_title = findViewById(R.id.txt_title);
+        if (userType.equalsIgnoreCase("registered_user")) {
+            txt_title.setText(getResources().getString(R.string.district_wise_reg_users));
+        } else {
+            txt_title.setText(getResources().getString(R.string.district_wise_unreg_users));
+        }
+
         itemClickListener = this;
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-
-        String emdData = getIntent().getStringExtra("emp_data");
-        userType = getIntent().getStringExtra("user_type");
-        empDatumList = AppUtils.convertUserToGet(emdData);
 
         if (userType != null) {
             setUserData(userType);
@@ -129,6 +137,7 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                 projectWiseEmployeeDetailsList.add(projectWiseEmployeeDetails);
             }
         }
+
         startActivity(new Intent(context, ProjectWisePieChartActivity.class)
                 .putExtra("user_type", userType)
                 .putExtra("project_data", AppUtils.convertProjectToPut(projectWiseEmployeeDetailsList)));

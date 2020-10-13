@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="@dimen/margin_60"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/margin_10"
+        android:weightSum="1">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_60"
+            android:layout_weight="0.15"
+            app:srcCompat="@drawable/app_logo" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.45"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_project_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_project_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_cdpo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/textsize_14sp" />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_05"
+            android:layout_marginLeft="@dimen/margin_05"
+            android:layout_marginEnd="@dimen/margin_05"
+            android:layout_marginRight="@dimen/margin_05"
+            android:layout_weight="0.20"
+            android:textSize="@dimen/textsize_14sp"
+            android:background="@color/dark_peach_bg"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/call"
+            android:textColor="#fff" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:background="@color/dark_peach_bg"
+            android:textSize="@dimen/textsize_14sp"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/email"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/margin_50"
+            app:srcCompat="@drawable/app_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_cdpo_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_50"
+            android:layout_height="@dimen/margin_50"
+            app:srcCompat="@drawable/app_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_cdpo_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="1">
+
+        <!-- <androidx.appcompat.widget.AppCompatButton
+             android:id="@+id/btn_call"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/activity_horizontal_margin"
+             android:layout_weight="0.50"
+             android:background="@color/dark_peach_bg"
+             android:foreground="?attr/selectableItemBackground"
+             android:text="@string/call"
+             android:textColor="#fff" />
+
+         <androidx.appcompat.widget.AppCompatButton
+             android:id="@+id/btn_email"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/activity_horizontal_margin"
+             android:layout_weight="0.50"
+             android:background="@color/dark_peach_bg"
+             android:foreground="?attr/selectableItemBackground"
+             android:text="@string/email"
+             android:textColor="#fff" />-->
+
+    </LinearLayout>
+
+</LinearLayout>

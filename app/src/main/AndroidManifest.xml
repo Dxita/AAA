@@ -10,7 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".App"
@@ -25,8 +27,9 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".public_u.activity.activity.PublicOTPVerificationActivity"></activity>
+
         <activity android:name=".user.activity.InfraCategoriesActivity" />
+        <activity android:name=".public_u.activity.activity.PublicOTPVerificationActivity" />
         <activity android:name=".user.activity.UserSectionActivity" />
         <activity android:name=".common.activity.SplashActivity">
             <intent-filter>
@@ -108,6 +111,7 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
         <activity android:name=".public_u.activity.activity.BuildingDetailsActivity" />
         <activity android:name=".public_u.activity.activity.PublicInfraActivity" />
         <activity android:name=".public_u.activity.activity.PublicLoginActivity" />

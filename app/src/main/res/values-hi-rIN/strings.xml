@@ -178,7 +178,6 @@
     <string name="open_area_facility">ओपन एरिया की सुविधा है?</string>
 
 
-
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
     <string name="drinking_water_type">पीने के पानी के प्रकार का चयन करें</string>
@@ -198,4 +197,17 @@
     <string name="personal_data">Personal Data</string>
     <string name="GPSAlertDialogTitle">GPS is setting</string>
     <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
+
+    <string name="call">Call</string>
+    <string name="email">E-Mail</string>
+
+    <string name="district_wise_reg_users">District Wise Registered Users</string>
+    <string name="district_wise_unreg_users">District Wise UnRegistered Users</string>
+
+    <string name="project_wise_reg_users">Project Wise Registered Users</string>
+    <string name="project_wise_unreg_users">Project Wise UnRegistered Users</string>
+
+    <string name="project_name">Project Name: </string>
+    <string name="project_code">Project Code: </string>
+
 </resources>
