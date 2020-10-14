@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.common.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -12,7 +13,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 
 public class GeneratePasswordActivity extends BaseActivity implements View.OnClickListener {
@@ -22,6 +22,9 @@ public class GeneratePasswordActivity extends BaseActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_generate_pasword);
 
         continue_button = findViewById(R.id.continue_button);

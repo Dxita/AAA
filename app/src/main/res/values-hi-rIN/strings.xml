@@ -77,7 +77,8 @@
     <string name="english">अंग्रेज़ी</string>
     <string name="hindi">हिन्दी</string>
     <string name="you_can_change_text">आप बाद में भाषा बदल सकते हैं</string>
-    <string name="sms_code_sent_text"> पर एसएमएस सत्यापन कोड भेजा गया है</string>
+
+    <string name="sms_code_sent_text">+91%1$s पर एसएमएस सत्यापन कोड भेजा गया है</string>
 
     <string name="profile_details">प्रोफ़ाइल विवरण </string>
     <string name="job_details">नौकरी विवरण</string>
@@ -209,5 +210,8 @@
 
     <string name="project_name">Project Name: </string>
     <string name="project_code">Project Code: </string>
+
+    <string name="enter_valid_otp">Please enter valid OTP</string>
+    <string name="otp_verified">OTP verified successfully</string>
 
 </resources>

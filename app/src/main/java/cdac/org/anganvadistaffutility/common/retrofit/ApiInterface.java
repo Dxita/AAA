@@ -7,6 +7,7 @@ import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.data.VerifyUser;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -22,6 +23,11 @@ public interface ApiInterface {
     @POST("api_js_app_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<EmployeeDetails> employeeDetails(@Field("empid") String empID);
+
+    @POST("api_js_app_auth_otp_verify_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<VerifyOTPDetails> sendOtpToServer(@Field("mobileno") String mobileNumber,
+                                           @Field("otp") String OTP);
 
     @POST("api_js_salry_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded

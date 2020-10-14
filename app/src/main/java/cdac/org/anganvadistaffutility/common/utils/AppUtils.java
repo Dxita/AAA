@@ -34,6 +34,7 @@ import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 public class AppUtils {
 
     public static final String successStatus = "true";
+
     // public static final String empMobileNumber = "9982471586";
     //public static final String empMobileNumber = "7062613314";
 
@@ -140,9 +141,9 @@ public class AppUtils {
 
     public static String getRandomNumberString() {
         Random random = new Random();
-        int number = random.nextInt(999999);
-        //  int number = random.nextInt(900) + 100;
-        return String.format(Locale.ENGLISH, "%06d", number);
-        // return String.format(Locale.ENGLISH, "%03d", number);
+        //  int number = random.nextInt(999999);
+        int number = random.nextInt(9000) + 1000;
+        // return String.format(Locale.ENGLISH, "%06d", number);
+        return String.format(Locale.ENGLISH, "%04d", number);
     }
 }

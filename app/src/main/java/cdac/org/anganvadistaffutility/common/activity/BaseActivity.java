@@ -22,7 +22,7 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 public class BaseActivity extends AppCompatActivity {
 
     public static final String TAG = BaseActivity.class.getSimpleName();
-    AppPreferences appPreferences;
+    public AppPreferences appPreferences;
     public Context context;
     public ApiInterface apiInterface;
 

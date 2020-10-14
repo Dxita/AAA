@@ -52,7 +52,7 @@ public class VerifyUser {
         this.data = data;
     }
 
-    static class Data {
+    public static class Data {
 
         @SerializedName("empdata")
         @Expose
@@ -67,7 +67,7 @@ public class VerifyUser {
         }
     }
 
-    static class Empdatum {
+    public static class Empdatum {
 
         @SerializedName("empid")
         @Expose

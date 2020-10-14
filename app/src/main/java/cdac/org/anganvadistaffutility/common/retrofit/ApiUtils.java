@@ -11,6 +11,7 @@ public class ApiUtils {
     public static final String PROFILE_BASE_URL = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
     public static final String PAYMENT_BASE_URL = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
     public static final String USER_AWDETAILS_BASE_URL = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
+    public static final String SEND_OTP_TO_SERVER_BASE_URL = "http://10.68.114.51/projects/rajposhan_v2_5_2_test/";
 
     // User Type: Admin
     public static final String SHOW_USER_KPI_BASE_URL = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
