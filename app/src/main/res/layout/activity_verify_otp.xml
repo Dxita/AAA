@@ -5,6 +5,7 @@
     android:background="@drawable/custom_app_bg">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -49,6 +50,60 @@
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_resend_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout"
+            android:layout_marginTop="@dimen/margin_30"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/otp_not_received"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_resend_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_05"
+                android:layout_marginLeft="@dimen/margin_05"
+                android:text="@string/resend_code"
+                android:textColor="@color/dark_peach_bg"
+                android:textSize="@dimen/font_16" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_resend_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout"
+            android:layout_marginTop="@dimen/margin_30"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_remain"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_time_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_05"
+                android:layout_marginLeft="@dimen/margin_05"
+                android:textColor="@color/dark_peach_bg"
+                android:textSize="@dimen/font_16" />
+
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton

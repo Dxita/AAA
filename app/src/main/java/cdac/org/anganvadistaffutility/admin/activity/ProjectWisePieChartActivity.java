@@ -38,10 +38,11 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 
 public class ProjectWisePieChartActivity extends BaseActivity implements OnChartValueSelectedListener {
 
+    private LinearLayout ll_bottom_sheet;
     private PieChart pieChart;
     private List<ProjectWiseEmployeeDetails> projectWiseEmployeeDetailsList;
     private String userType = "";
-    private LinearLayout ll_bottom_sheet;
+    private String cdpoMobile = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -184,8 +185,6 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
         };
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback);
     }
-
-    private String cdpoMobile = "";
 
     private void toggleBottomSheet(String projectCode, String projectName, String name, String mobile, String email) {
         if (ll_bottom_sheet.getVisibility() == View.GONE) {

@@ -6,6 +6,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity;
+import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
+import retrofit2.Call;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
 
@@ -51,12 +58,40 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
-
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(new Intent(context, SplashActivity.class));
         finishAffinity();
+    }
+
+    protected void sendOtpToServer(RelativeLayout relativeLayout, String mobileNumber, String otp) {
+        apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
+        Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyOTPDetails>() {
+            @Override
+            public void onSuccess(VerifyOTPDetails body) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                if (body.getResult().getStatus().getStatusCode() == 0) {
+                    AppUtils.showToast(context, body.getData().getResponseMessage());
+
+                    if (context instanceof VerifyOTPActivity) {
+                        finish();
+                    }
+                    appPreferences.saveGeneratedOtp(body.getData().getOtp());
+                    startActivity(new Intent(context, VerifyOTPActivity.class)
+                            .putExtra("mobile_number", body.getData().getMobile()));
+                } else {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                    AppUtils.showToast(context, body.getData().getResponseMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+            }
+        }));
     }
 
     @Override

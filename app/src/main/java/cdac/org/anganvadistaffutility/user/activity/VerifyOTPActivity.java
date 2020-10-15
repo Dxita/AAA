@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,21 +25,30 @@ import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.Task;
 
+import java.util.concurrent.TimeUnit;
+
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.GeneratePasswordActivity;
 import cdac.org.anganvadistaffutility.common.callback.OtpReceivedInterface;
 import cdac.org.anganvadistaffutility.common.receiver.SmsBroadcastReceiver;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 
 public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterface, View.OnClickListener {
 
+    private static final int TIME_LIMIT = 1000 * 60 * 10; // 10 min
+    private static final int TIME_INTERVAL = 1000; // 1 sec
+
     private int RESOLVE_HINT = 2;
     private EditText et_input_otp;
-    private Button btnVerifyOtp;
     private TextView mobile_number_text;
+    private TextView txt_time_remaining;
+    private LinearLayout ll_resend_otp, ll_resend_timer;
+    private RelativeLayout relativeLayout;
+
+    private CountDownTimer countDownTimer;
+    private String mobileNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +63,8 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
-            String mobileNumber = bundle.getString("mobile_number");
-            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                mobile_number_text.setText(getResources().getString(R.string.sms_code_sent_text, mobileNumber));
-            } else {
-                mobile_number_text.setText(getString(R.string.sms_code_sent_text, mobileNumber));
-            }
+            mobileNumber = bundle.getString("mobile_number");
+            mobile_number_text.setText(getResources().getString(R.string.sms_code_sent_text, mobileNumber));
         }
 
         SmsBroadcastReceiver mSmsBroadcastReceiver = new SmsBroadcastReceiver();
@@ -66,14 +74,20 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         getApplicationContext().registerReceiver(mSmsBroadcastReceiver, intentFilter);
         getHintPhoneNumber();
         // startSMSListener();
-
-        btnVerifyOtp.setOnClickListener(this);
     }
 
     private void initViews() {
+        relativeLayout = findViewById(R.id.relativeLayout);
         et_input_otp = findViewById(R.id.et_input_otp);
-        btnVerifyOtp = findViewById(R.id.btnVerifyOtp);
+        Button btnVerifyOtp = findViewById(R.id.btnVerifyOtp);
         mobile_number_text = findViewById(R.id.mobile_number_text);
+        ll_resend_otp = findViewById(R.id.ll_resend_otp);
+        ll_resend_timer = findViewById(R.id.ll_resend_timer);
+        TextView txt_resend_otp = findViewById(R.id.txt_resend_otp);
+        txt_time_remaining = findViewById(R.id.txt_time_remaining);
+
+        btnVerifyOtp.setOnClickListener(this);
+        txt_resend_otp.setOnClickListener(this);
     }
 
     @Override
@@ -141,6 +155,43 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
                     AppUtils.showToast(context, getResources().getString(R.string.enter_valid_otp));
                 }
             }
+        } else if (view.getId() == R.id.txt_resend_otp) {
+            sendOtpToServer(relativeLayout, mobileNumber, AppUtils.getRandomNumberString());
         }
+    }
+
+    private void startOtpTimer() {
+        countDownTimer = new CountDownTimer(TIME_LIMIT, TIME_INTERVAL) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                txt_time_remaining.setText(getResources().getString(R.string.time_remaining, TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60,
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60));
+            }
+
+            @Override
+            public void onFinish() {
+                ll_resend_timer.setVisibility(View.GONE);
+                ll_resend_otp.setVisibility(View.VISIBLE);
+            }
+        };
+        countDownTimer.start();
+    }
+
+    private void stopOtpTimer() {
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startOtpTimer();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopOtpTimer();
     }
 }

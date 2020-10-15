@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,9 +33,11 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
     private List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetailsList;
     protected ItemClickListener mListener;
     private int fixListSize = 7;
+    private int totalListSize = 0;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements OnChartValueSelectedListener {
         protected PieChart pieChart;
+        protected TextView txt_page_count;
         protected View layout;
         protected List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails;
 
@@ -42,6 +45,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
             super(v);
             layout = v;
             pieChart = v.findViewById(R.id.pieChart);
+            txt_page_count = v.findViewById(R.id.txt_page_count);
 
             pieChart.setUsePercentValues(true);
             pieChart.getDescription().setEnabled(false);
@@ -71,6 +75,8 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
         public void setData(int position, List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetails) {
             this.districtWiseEmployeeDetails = districtWiseEmployeeDetails;
 
+            int pagePosition = position + 1;
+            txt_page_count.setText("(" + pagePosition + "/" + totalListSize + ")");
             List<PieEntry> noOfEmp1 = new ArrayList<>();
             List<PieEntry> noOfEmp2 = new ArrayList<>();
             List<PieEntry> noOfEmp3 = new ArrayList<>();
@@ -114,7 +120,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
             }
 
             if (districtWiseEmployeeDetails.size() <= 5 * fixListSize) {
-                for (int j = 4 * fixListSize; j < 31; j++) {
+                for (int j = 4 * fixListSize; j < districtWiseEmployeeDetails.size(); j++) {
                     noOfEmp5.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
@@ -198,10 +204,11 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
 
     public int getItemCount() {
         if (districtWiseEmployeeDetailsList.size() % fixListSize == 0) {
-            return districtWiseEmployeeDetailsList.size() / fixListSize;
+            totalListSize = districtWiseEmployeeDetailsList.size() / fixListSize;
         } else {
-            return districtWiseEmployeeDetailsList.size() / fixListSize + 1;
+            totalListSize = districtWiseEmployeeDetailsList.size() / fixListSize + 1;
         }
+        return totalListSize;
     }
 
     public interface ItemClickListener {

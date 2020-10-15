@@ -214,4 +214,9 @@
     <string name="enter_valid_otp">Please enter valid OTP</string>
     <string name="otp_verified">OTP verified successfully</string>
 
+    <string name="otp_not_received">Not Received Yet?</string>
+    <string name="resend_code"><u>Resend Code</u></string>
+
+    <string name="time_remain">Resend in</string>
+    <string name="time_remaining">%02d:%02d</string>
 </resources>

@@ -1,6 +1,5 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,7 +15,6 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.data.VerifyUser;
-import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import retrofit2.Call;
 
 public class VerifyUserActivity extends BaseActivity implements View.OnClickListener {
@@ -67,7 +65,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     AppUtils.showToast(context, body.getMessage());
 
                     appPreferences.setEmployeeId(body.getData().getEmpdata().get(0).getEmpid());
-                    sendOtpToServer(userMobileNumber, AppUtils.getRandomNumberString());
+                    sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     AppUtils.showToast(context, body.getMessage());
@@ -81,7 +79,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
         }));
     }
 
-    private void sendOtpToServer(String mobileNumber, String otp) {
+  /*  private void sendOtpToServer(String mobileNumber, String otp) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
         Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyOTPDetails>() {
@@ -105,5 +103,5 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }
         }));
-    }
+    }*/
 }
