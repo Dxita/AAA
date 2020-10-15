@@ -14,8 +14,9 @@ import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import cdac.org.anganvadistaffutility.data.VerifyUser;
+import cdac.org.anganvadistaffutility.user.data.VerifyUser;
 import retrofit2.Call;
+
 
 public class VerifyUserActivity extends BaseActivity implements View.OnClickListener {
 
@@ -78,30 +79,4 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             }
         }));
     }
-
-  /*  private void sendOtpToServer(String mobileNumber, String otp) {
-        apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
-        Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyOTPDetails>() {
-            @Override
-            public void onSuccess(VerifyOTPDetails body) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                if (body.getResult().getStatus().getStatusCode() == 0) {
-                    AppUtils.showToast(context, body.getData().getResponseMessage());
-
-                    appPreferences.saveGeneratedOtp(body.getData().getOtp());
-                    startActivity(new Intent(VerifyUserActivity.this, VerifyOTPActivity.class)
-                            .putExtra("mobile_number", body.getData().getMobile()));
-                } else {
-                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    AppUtils.showToast(context, body.getData().getResponseMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-            }
-        }));
-    }*/
 }

@@ -4,10 +4,11 @@ import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.data.VerifyUser;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
+import cdac.org.anganvadistaffutility.user.data.VerifyUser;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -28,6 +29,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<VerifyOTPDetails> sendOtpToServer(@Field("mobileno") String mobileNumber,
                                            @Field("otp") String OTP);
+
+    @POST("api_js_app_auth_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SetUserPassword> setUserPassword(@Field("empid") String empID, @Field("mobileno") String mobileNumber,
+                                          @Field("password") String password);
 
     @POST("api_js_salry_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded

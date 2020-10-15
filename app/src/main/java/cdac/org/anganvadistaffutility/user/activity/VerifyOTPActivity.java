@@ -149,7 +149,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
                 if (et_input_otp.getText().toString().equalsIgnoreCase(appPreferences.getSavedOtp())) {
                     AppUtils.showToast(context, getResources().getString(R.string.otp_verified));
 
-                    startActivity(new Intent(context, GeneratePasswordActivity.class));
+                    startActivity(new Intent(context, GeneratePasswordActivity.class).putExtra("mobile_number", mobileNumber));
                     finish();
                 } else {
                     AppUtils.showToast(context, getResources().getString(R.string.enter_valid_otp));

@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
@@ -145,5 +147,14 @@ public class AppUtils {
         int number = random.nextInt(9000) + 1000;
         // return String.format(Locale.ENGLISH, "%06d", number);
         return String.format(Locale.ENGLISH, "%04d", number);
+    }
+
+    public static boolean isValidPassword(final String password) {
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-8])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+        return !matcher.matches();
     }
 }
