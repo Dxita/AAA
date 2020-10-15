@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,6 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.PasswordActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
@@ -64,9 +66,13 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             public void onSuccess(VerifyUser body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getMessage());
-
-                    appPreferences.setEmployeeId(body.getData().getEmpdata().get(0).getEmpid());
-                    sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
+                    appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
+                    if (body.getData().getEmpdata().getPasswordset()) {
+                        AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                        startActivity(new Intent(context, PasswordActivity.class));
+                    } else {
+                        sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
+                    }
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     AppUtils.showToast(context, body.getMessage());

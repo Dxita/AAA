@@ -3,8 +3,6 @@ package cdac.org.anganvadistaffutility.user.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class VerifyUser {
 
     @SerializedName("status")
@@ -56,18 +54,18 @@ public class VerifyUser {
 
         @SerializedName("empdata")
         @Expose
-        private List<Empdatum> empdata = null;
+        private Empdata empdata;
 
-        public List<Empdatum> getEmpdata() {
+        public Empdata getEmpdata() {
             return empdata;
         }
 
-        public void setEmpdata(List<Empdatum> empdata) {
+        public void setEmpdata(Empdata empdata) {
             this.empdata = empdata;
         }
     }
 
-    public static class Empdatum {
+    public static class Empdata {
 
         @SerializedName("empid")
         @Expose
@@ -78,6 +76,28 @@ public class VerifyUser {
         @SerializedName("mobileno")
         @Expose
         private String mobileno;
+        @SerializedName("awcid")
+        @Expose
+        private String awcid;
+        @SerializedName("passwordset")
+        @Expose
+        private Boolean passwordset;
+
+        public String getAwcid() {
+            return awcid;
+        }
+
+        public void setAwcid(String awcid) {
+            this.awcid = awcid;
+        }
+
+        public Boolean getPasswordset() {
+            return passwordset;
+        }
+
+        public void setPasswordset(Boolean passwordset) {
+            this.passwordset = passwordset;
+        }
 
         public String getEmpid() {
             return empid;
