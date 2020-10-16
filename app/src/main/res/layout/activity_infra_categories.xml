@@ -2,43 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/custom_app_bg"
     tools:context=".admin.activity.ViewInfraStructureActivity">
 
-    <LinearLayout
-        android:id="@+id/largeLabel"
+    <androidx.appcompat.widget.Toolbar
+
+        android:theme="@style/ToolbarTheme"
+        android:id="@+id/toolbar"
+        tool:title="@string/infra_data"
         android:layout_width="match_parent"
+        tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true" >
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/margin_60"
-            android:layout_height="@dimen/margin_60"
-            android:src="@drawable/app_logo" />
+    </androidx.appcompat.widget.Toolbar>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/margin_05"
-            android:layout_marginLeft="@dimen/margin_05"
-            android:text="@string/welcome_text"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_18" />
 
-    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/largeLabel"
+        android:layout_below="@id/toolbar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </RelativeLayout>

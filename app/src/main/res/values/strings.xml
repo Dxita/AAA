@@ -225,5 +225,5 @@
 
     <string name="time_remain">Resend in</string>
     <string name="time_remaining">%02d:%02d</string>
-
+    <string name="log_out">Log out</string>
 </resources>

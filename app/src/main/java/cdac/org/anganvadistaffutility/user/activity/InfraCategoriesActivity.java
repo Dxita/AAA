@@ -1,11 +1,20 @@
 package cdac.org.anganvadistaffutility.user.activity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -14,6 +23,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.adapter.UserInfraStructureAdapter;
 import retrofit2.Call;
 
@@ -30,8 +40,13 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_infra_categories);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         relativeLayout = findViewById(R.id.relativeLayout);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
+
 
         infrastructureData = new ArrayList<>();
         infraStructureImageList = new ArrayList<>();
@@ -48,6 +63,37 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
 
         userInfraStructureAdapter = new UserInfraStructureAdapter(context, infrastructureData, infraStructureImageList, itemClickListener);
         recyclerView.setAdapter(userInfraStructureAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+               onBackPressed();
+               return true;
+            case R.id.change_your_language:
+                if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                    setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                } else {
+                    setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+                }
+                return true;
+            case R.id.log_out:
+                Toast.makeText(context, "you clicked on logout", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+            return super.onOptionsItemSelected(item);
+        }
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        return true;
     }
 
     private void getAaGanWadiInfrastructureData() {

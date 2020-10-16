@@ -19,13 +19,13 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/profile_card"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/margin_180"
                 android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white"
+              app:cardBackgroundColor="@color/sky"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -46,7 +46,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="@dimen/margin_05"
                         android:text="@string/profile_details"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/textsize_15sp"
@@ -60,11 +59,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/job_card"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/margin_180"
                 android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/sky"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -87,7 +86,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="5dp"
                         android:text="@string/job_details"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/textsize_15sp"
@@ -109,11 +107,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/bank_card"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/margin_180"
                 android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/sky"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -136,7 +134,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="@dimen/margin_05"
                         android:text="@string/bank_details"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/textsize_15sp"
@@ -150,11 +147,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/margin_180"
                 android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/sky"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -178,7 +175,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="@dimen/margin_05"
                         android:text="@string/card_details"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/textsize_15sp"
@@ -201,11 +197,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/payment_card"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/margin_180"
                 android:layout_margin="@dimen/margin_12"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white"
+                app:cardBackgroundColor="@color/sky"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 

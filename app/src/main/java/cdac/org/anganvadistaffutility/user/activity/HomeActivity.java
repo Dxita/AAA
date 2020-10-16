@@ -1,14 +1,19 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -20,13 +25,14 @@ import com.google.android.material.navigation.NavigationView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.fragment.HomeFragment;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.fragment.HomeFragment;
 import retrofit2.Call;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
@@ -35,10 +41,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     private EmployeeDetails.Card cardDetails;
     private EmployeeDetails.Bank bankDetails;
     private RelativeLayout relativeLayout;
+    AppCompatTextView logout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -46,6 +55,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        logout=drawer.findViewById(R.id.logout);
+        logout.setOnClickListener(this);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,6 +103,32 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.logout:
+                SharedPreferences myPrefs = getSharedPreferences("Activity",
+                        MODE_PRIVATE);
+                SharedPreferences.Editor editor = myPrefs.edit();
+                editor.clear();
+                editor.apply();
+                //AppState.getSingleInstance().setLoggingOut(true);
+                setLoginState(true);
+                Log.d(TAG, "Now log out and start the activity login");
+                Intent intent = new Intent(HomeActivity.this,
+                        SelectLanguageActivity.class);
+                finish();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                Toast.makeText(context, "Logout successfully", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    private void setLoginState(boolean b) {
+            SharedPreferences sp = getSharedPreferences("LoginState",
+                    MODE_PRIVATE);
+            SharedPreferences.Editor ed = sp.edit();
+            ed.putBoolean("setLoggingOut", b);
+            ed.commit();
     }
 
     @Override

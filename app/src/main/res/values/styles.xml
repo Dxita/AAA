@@ -29,4 +29,14 @@
         <item name="colorControlNormal">@color/white</item>
 
     </style>
+
+
+    <style name="AppTheme.ActionBar.Transparent" parent="AppTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@color/peach</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+
+    </style>
 </resources>

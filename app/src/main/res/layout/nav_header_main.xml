@@ -2,33 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/side_nav_bar"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
     android:gravity="bottom"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/margin_85dp"
-        android:layout_height="@dimen/margin_85dp"
+        android:layout_width="@dimen/margin_60"
+        android:layout_height="@dimen/margin_60"
         android:layout_marginTop="@dimen/margin_05"
-        android:layout_marginLeft="@dimen/margin_02"
         android:contentDescription="@string/nav_header_desc"
         app:srcCompat="@drawable/app_logo" />
 
     <TextView
+        android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_05"
         android:textSize="@dimen/textsize_18"
         android:text="@string/app_name"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 

@@ -5,7 +5,7 @@
     <string name="get_employee_data">कर्मचारी डेटा प्राप्त करें</string>
 
     <string name="menu_profile">प्रोफ़ाइल</string>
-    <string name="menu_home">घर</string>
+    <string name="menu_home">मुख पृष्ठ</string>
     <string name="menu_bank">बैंक विवरण</string>
     <string name="menu_cards">कार्ड</string>
     <string name="menu_job">नौकरी विवरण</string>
@@ -193,30 +193,33 @@
     <string name="indian_toilet">भारतीय शौचालय</string>
     <string name="western_toilet">पश्चिमी शौचालय</string>
     <string name="toilet_type">शौचालय का प्रकार चुनें</string>
-    <string name="infra_data">Infrastructure Data</string>
 
-    <string name="personal_data">Personal Data</string>
-    <string name="GPSAlertDialogTitle">GPS is setting</string>
-    <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
+    <string name="infra_data">इन्फ्रास्ट्रक्चर डेटा</string>
 
-    <string name="call">Call</string>
-    <string name="email">E-Mail</string>
+    <string name="personal_data">व्यक्तिगत डेटा</string>
+    <string name="GPSAlertDialogTitle">GPS सेट कर रहा है</string>
+    <string name="GPSAlertDialogMessage">GPS सक्षम नहीं है। क्या आप सेटिंग मेन्यू में जाना चाहते हैं</string>
 
-    <string name="district_wise_reg_users">District Wise Registered Users</string>
-    <string name="district_wise_unreg_users">District Wise UnRegistered Users</string>
+    <string name="call">कॉल</string>
+    <string name="email">ईमेल</string>
 
-    <string name="project_wise_reg_users">Project Wise Registered Users</string>
-    <string name="project_wise_unreg_users">Project Wise UnRegistered Users</string>
+    <string name="district_wise_reg_users">जिला वाइज पंजीकृत उपयोगकर्ता</string>
+    <string name="district_wise_unreg_users">जिला वाइज अनरजिस्टर्ड यूजर्स</string>
 
-    <string name="project_name">Project Name: </string>
-    <string name="project_code">Project Code: </string>
+    <string name="project_wise_reg_users">परियोजना समझदार पंजीकृत उपयोगकर्ता</string>
+    <string name="project_wise_unreg_users">परियोजना समझदार अपंजीकृत उपयोगकर्ता</string>
 
-    <string name="enter_valid_otp">Please enter valid OTP</string>
-    <string name="otp_verified">OTP verified successfully</string>
+    <string name="project_name">परियोजना का नाम:</string>
+    <string name="project_code">परियोजना क्रमांक:</string>
 
-    <string name="otp_not_received">Not Received Yet?</string>
-    <string name="resend_code"><u>Resend Code</u></string>
+    <string name="enter_valid_otp">कृपया मान्य OTP दर्ज करें</string>
+    <string name="otp_verified">OTP सफलतापूर्वक सत्यापित किया गया</string>
+
+    <string name="otp_not_received">अभी तक प्राप्त नहीं हुआ?</string>
+    <string name="resend_code"><u>पुन: कोड भेजे</u></string>
 
     <string name="time_remain">Resend in</string>
     <string name="time_remaining">%02d:%02d</string>
+
+    <string name="log_out">लॉग आउट</string>
 </resources>
