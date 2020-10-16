@@ -11,16 +11,18 @@ import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
 
     @POST("api_js_emp_check_by_mob/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
-    Call<VerifyUser> verifyUser(@Field("mobileno") String mobileNumber);
+    Call<VerifyUser>verifyUser(@Field("mobileno") String mobileNumber);
 
     @POST("api_js_app_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/custom_app_bg">
@@ -20,12 +20,13 @@
                 android:id="@+id/profile_card"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/margin_180"
-                android:layout_margin="@dimen/margin_12"
+                android:layout_margin="@dimen/activity_horizontal_margin"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-              app:cardBackgroundColor="@color/sky"
+                app:cardBackgroundColor="@color/sky"
+                app:cardCornerRadius="@dimen/margin_05"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -60,10 +61,13 @@
                 android:id="@+id/job_card"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/margin_180"
-                android:layout_margin="@dimen/margin_12"
+                android:layout_margin="@dimen/activity_horizontal_margin"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sky"
+                app:cardCornerRadius="@dimen/margin_05"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -108,10 +112,13 @@
                 android:id="@+id/bank_card"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/margin_180"
-                android:layout_margin="@dimen/margin_12"
+                android:layout_margin="@dimen/activity_horizontal_margin"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sky"
+                app:cardCornerRadius="@dimen/margin_05"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -148,10 +155,13 @@
                 android:id="@+id/card"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/margin_180"
-                android:layout_margin="@dimen/margin_12"
+                android:layout_margin="@dimen/activity_horizontal_margin"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sky"
+                app:cardCornerRadius="@dimen/margin_05"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 
@@ -198,10 +208,13 @@
                 android:id="@+id/payment_card"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/margin_180"
-                android:layout_margin="@dimen/margin_12"
+                android:layout_margin="@dimen/activity_horizontal_margin"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/sky"
+                app:cardCornerRadius="@dimen/margin_05"
                 app:cardElevation="@dimen/margin_10"
                 app:cardUseCompatPadding="true">
 

@@ -100,7 +100,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {
-                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
+                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus))
+                {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     AppUtils.showToast(context, body.getMessage());
 

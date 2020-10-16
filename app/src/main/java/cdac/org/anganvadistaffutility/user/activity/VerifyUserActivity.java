@@ -59,7 +59,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
     private void verifyUser(String userMobileNumber) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<VerifyUser> call = apiInterface.verifyUser(userMobileNumber);
+        Call<VerifyUser>call = apiInterface.verifyUser(userMobileNumber);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyUser>() {
             @Override
             public void onSuccess(VerifyUser body) {
