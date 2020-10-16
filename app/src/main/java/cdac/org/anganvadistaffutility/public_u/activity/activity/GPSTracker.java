@@ -113,6 +113,7 @@ public class GPSTracker extends Service implements LocationListener {
      * Stop using GPS listener
      * Calling this function will stop using GPS in your app.
      */
+
     public void stopUsingGPS() {
         if (locationManager != null) {
             locationManager.removeUpdates(GPSTracker.this);
@@ -123,10 +124,11 @@ public class GPSTracker extends Service implements LocationListener {
     /**
      * Function to get latitude
      */
+
     public double getLatitude() {
-        if (location != null) {
-            latitude = location.getLatitude();
-        }
+            if (location != null) {
+                latitude = location.getLatitude();
+            }
 
         // return latitude
         return latitude;
@@ -151,7 +153,9 @@ public class GPSTracker extends Service implements LocationListener {
      * @return boolean
      */
     public boolean canGetLocation() {
+
         return this.canGetLocation;
+
     }
 
 

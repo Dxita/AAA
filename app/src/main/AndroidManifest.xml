@@ -28,16 +28,32 @@
         tools:node="replace"
         tools:targetApi="q">
 
-        <activity android:name=".user.activity.InfraCategoriesActivity" />
-        <activity android:name=".public_u.activity.activity.PublicOTPVerificationActivity" />
-        <activity android:name=".user.activity.UserSectionActivity" />
-        <activity android:name=".common.activity.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".user.activity.InfraCategoriesActivity"
+            android:screenOrientation="portrait" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <activity
+            android:name=".public_u.activity.activity.PublicOTPVerificationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".user.activity.UserSectionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".common.activity.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:screenOrientation="portrait" />
+
+                <category
+                    android:name="android.intent.category.LAUNCHER"
+                    android:screenOrientation="portrait" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".common.activity.SalaryDetailsTblActivity"
             android:screenOrientation="portrait" />
