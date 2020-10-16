@@ -133,7 +133,7 @@
         <activity android:name=".public_u.activity.activity.PublicLoginActivity" />
         <activity android:name=".public_u.activity.activity.PublicRegistrationActivity" />
         <activity android:name=".common.activity.GeneratePasswordActivity" />
-        <activity android:name=".common.activity.PasswordActivity" />
+        <activity android:name=".common.activity.UserLoginActivity" />
 
         <receiver
             android:name=".common.receiver.SmsBroadcastReceiver"

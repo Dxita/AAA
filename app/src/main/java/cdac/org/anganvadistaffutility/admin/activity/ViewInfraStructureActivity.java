@@ -85,13 +85,12 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
 
     private void setCustomInfraImages() {
         infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
-        infraStructureImageList.add(R.drawable.ic_creche_house);
-        infraStructureImageList.add(R.drawable.ic_drinking_water);
         infraStructureImageList.add(R.drawable.ic_electricity);
-
+        infraStructureImageList.add(R.drawable.ic_drinking_water);
+        infraStructureImageList.add(R.drawable.ic_toilet_new);
         infraStructureImageList.add(R.drawable.ic_kitchen);
         infraStructureImageList.add(R.drawable.ic_open_area);
-        infraStructureImageList.add(R.drawable.ic_toilet_new);
+        infraStructureImageList.add(R.drawable.ic_creche_house);
 
         if (infrastructureData.size() > infraStructureImageList.size()) {
             for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {

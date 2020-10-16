@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.activity.PasswordActivity;
+import cdac.org.anganvadistaffutility.common.activity.UserLoginActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
@@ -24,7 +24,6 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
     private RelativeLayout relativeLayout;
     private EditText edt_user_mobile_no;
-    private String mobile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_verify_user) {
-            mobile = edt_user_mobile_no.getText().toString();
+            String mobile = edt_user_mobile_no.getText().toString();
             if (mobile.isEmpty()) {
                 edt_user_mobile_no.requestFocus();
                 edt_user_mobile_no.setError(getResources().getString(R.string.required_field));
@@ -69,7 +68,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     if (body.getData().getEmpdata().getPasswordset()) {
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                        startActivity(new Intent(context, UserSectionActivity.class));
+                        startActivity(new Intent(context, UserLoginActivity.class));
                     } else {
                         sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
                     }
@@ -78,6 +77,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     AppUtils.showToast(context, body.getMessage());
                 }
             }
+
 
             @Override
             public void onFailure(Throwable t) {

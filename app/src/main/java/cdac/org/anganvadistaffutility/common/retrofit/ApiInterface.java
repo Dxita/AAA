@@ -6,6 +6,7 @@ import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
@@ -34,6 +35,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<SetUserPassword> setUserPassword(@Field("empid") String empID, @Field("mobileno") String mobileNumber,
                                           @Field("password") String password);
+
+    @POST("api_js_app_auth_login_verify_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SetUserLogin> setUserLogin(@Field("validuser") String empID,
+                                    @Field("password") String password);
 
     @POST("api_js_salry_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
