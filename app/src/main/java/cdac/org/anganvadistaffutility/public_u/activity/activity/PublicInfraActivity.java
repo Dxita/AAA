@@ -40,11 +40,15 @@ public class PublicInfraActivity extends BaseActivity implements View.OnClickLis
                 Log.d("curentlocation", "" + stringLatitude + " " + stringLongitude);
 
                 Toast.makeText(context, ""+stringLatitude+" "+stringLongitude, Toast.LENGTH_SHORT).show();
-            } else {
+
+            }
+            else {
+
                 // can't get location
                 // GPS or Network is not enabled
                 // Ask user to enable GPS/network in settings
                 gpsTracker.showSettingsAlert();
+
             }
         }
 

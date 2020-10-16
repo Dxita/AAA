@@ -1,18 +1,12 @@
-
 package cdac.org.anganvadistaffutility.user.activity;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.admin.adapter.InfraStructureAdapter;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
@@ -68,6 +62,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 infrastructureData.addAll(body.getData().getInfrastructureData());
                 setCustomInfraImages();
                 userInfraStructureAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -95,9 +90,13 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
         infraStructureImageList.add(R.drawable.ic_creche_house);
 
         if (infrastructureData.size() > infraStructureImageList.size()) {
-            for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {
+
+            for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++)
+            {
                 infraStructureImageList.add(R.drawable.app_logo);
+
             }
+
         }
     }
 
