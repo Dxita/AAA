@@ -1,9 +1,14 @@
 package cdac.org.anganvadistaffutility.user.activity;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +23,7 @@ import java.util.Objects;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -27,7 +33,7 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.adapter.UserInfraStructureAdapter;
 import retrofit2.Call;
 
-public class InfraCategoriesActivity extends BaseActivity implements UserInfraStructureAdapter.ItemClickListener  {
+public class InfraCategoriesActivity extends BaseActivity implements UserInfraStructureAdapter.ItemClickListener {
     private RelativeLayout relativeLayout;
     private UserInfraStructureAdapter userInfraStructureAdapter;
     private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
@@ -69,8 +75,8 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               onBackPressed();
-               return true;
+                onBackPressed();
+                return true;
             case R.id.change_your_language:
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
                     setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
@@ -79,13 +85,35 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 }
                 return true;
             case R.id.log_out:
-                Toast.makeText(context, "you clicked on logout", Toast.LENGTH_SHORT).show();
+                SharedPreferences myPrefs = getSharedPreferences("Activity",
+                        MODE_PRIVATE);
+                SharedPreferences.Editor editor = myPrefs.edit();
+                editor.clear();
+                editor.apply();
+                //AppState.getSingleInstance().setLoggingOut(true);
+                setLoginState(true);
+                Log.d(TAG, "Now log out and start the activity login");
+                Intent intent = new Intent(InfraCategoriesActivity.this,
+                        SelectLanguageActivity.class);
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                Toast.makeText(context, "" + getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
                 return true;
             default:
-            return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
 
 
+    }
+
+    private void setLoginState(boolean b) {
+        SharedPreferences sp = getSharedPreferences("LoginState",
+                MODE_PRIVATE);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putBoolean("setLoggingOut", b);
+        ed.apply();
     }
 
     @Override
@@ -137,8 +165,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
 
         if (infrastructureData.size() > infraStructureImageList.size()) {
 
-            for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++)
-            {
+            for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {
                 infraStructureImageList.add(R.drawable.app_logo);
 
             }

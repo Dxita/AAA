@@ -55,4 +55,5 @@
     <dimen name="textsize_12sp">12sp</dimen>
     <dimen name="textsize_13sp">13sp</dimen>
     <dimen name="margin_170">170dp</dimen>
+    <dimen name="margin_300dp">300dp</dimen>
 </resources>

@@ -10,6 +10,7 @@ import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.HTTP;
 
 public class ApiClient {
 
@@ -18,7 +19,6 @@ public class ApiClient {
     public static Retrofit getClient(String baseUrl) {
 
         Retrofit retrofit;
-
 
 
         //    if (retrofit == null) {
@@ -41,8 +41,6 @@ public class ApiClient {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         //  }
-
-
 
 
         return retrofit;

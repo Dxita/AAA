@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PublicRegisterationActivity">
+    tools:context=".public_u.activity.activity.PublicRegistrationActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -86,20 +86,15 @@
 
 
                 <LinearLayout
+                    android:layout_marginBottom="@dimen/margin_10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_15"
                     android:layout_marginTop="@dimen/margin_12"
                     android:layout_marginRight="@dimen/margin_15"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_02"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingRight="@dimen/margin_02">
+
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
@@ -107,10 +102,11 @@
                             android:padding="@dimen/margin_05"
                             android:text="@string/district"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/textsize_14sp" />
+                            android:textSize="@dimen/textsize_15sp" />
 
                         <Spinner
-
+                                android:layout_marginTop="@dimen/margin_05"
+                            android:layout_marginBottom="@dimen/margin_05"
                             android:id="@+id/spinner1"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/margin_40"
@@ -120,15 +116,9 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_02"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingRight="@dimen/margin_02">
+
+
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
@@ -136,10 +126,12 @@
                             android:padding="@dimen/margin_05"
                             android:text="@string/project"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/textsize_14sp" />
+                            android:textSize="@dimen/textsize_15sp" />
 
                         <Spinner
                             android:id="@+id/spinner2"
+                            android:layout_marginBottom="@dimen/margin_05"
+                            android:layout_marginTop="@dimen/margin_05"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/margin_40"
                             android:background="@drawable/white_stroke"
@@ -148,15 +140,9 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_02"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingRight="@dimen/margin_02">
+
+
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
@@ -164,10 +150,12 @@
                             android:padding="@dimen/margin_05"
                             android:text="@string/sector"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/textsize_14sp" />
+                            android:textSize="@dimen/textsize_15sp" />
 
                         <Spinner
                             android:id="@+id/spinner3"
+                            android:layout_marginBottom="@dimen/margin_05"
+                            android:layout_marginTop="@dimen/margin_05"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/margin_40"
                             android:background="@drawable/white_stroke"
@@ -176,25 +164,19 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:layout_marginRight="@dimen/margin_15"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/margin_05"
-                        android:text="@string/property_type"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/textsize_14sp" />
+                       android:layout_marginTop="@dimen/margin_12"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/margin_05"
+                            android:text="@string/property_type"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize_15sp" />
 
 
                         <RadioGroup
@@ -203,35 +185,39 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                        <RadioButton
-                            android:id="@+id/radio_button1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/margin_08"
-                            android:text="@string/Commercial"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/textsize_14sp" />
+                            <RadioButton
+                                android:id="@+id/radio_button1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/margin_08"
+                                android:text="@string/Commercial"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/textsize_14sp" />
 
-                        <RadioButton
-                            android:id="@+id/radio_button2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/margin_10"
-                            android:text="@string/residential"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/textsize_14sp" />
+                            <RadioButton
+                                android:id="@+id/radio_button2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/margin_10"
+                                android:text="@string/residential"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/textsize_14sp" />
 
-                        <RadioButton
-                            android:id="@+id/radio_button3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/others"
-                            android:textColor="@color/grey"
-                            android:textSize="@dimen/textsize_14sp" />
+                            <RadioButton
+                                android:id="@+id/radio_button3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/others"
+                                android:textColor="@color/grey"
+                                android:textSize="@dimen/textsize_14sp" />
                         </RadioGroup>
 
 
+                    </LinearLayout>
+
                 </LinearLayout>
+
+
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

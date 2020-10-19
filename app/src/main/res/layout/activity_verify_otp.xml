@@ -40,7 +40,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_input_otp"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/margin_300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/activity_horizontal_margin"

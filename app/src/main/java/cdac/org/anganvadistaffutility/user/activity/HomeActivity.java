@@ -115,10 +115,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                 Log.d(TAG, "Now log out and start the activity login");
                 Intent intent = new Intent(HomeActivity.this,
                         SelectLanguageActivity.class);
-                finish();
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                Toast.makeText(context, "Logout successfully", Toast.LENGTH_SHORT).show();
+                finish();
+
+                Toast.makeText(context, ""+getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -128,7 +129,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                     MODE_PRIVATE);
             SharedPreferences.Editor ed = sp.edit();
             ed.putBoolean("setLoggingOut", b);
-            ed.commit();
+            ed.apply();
     }
 
     @Override

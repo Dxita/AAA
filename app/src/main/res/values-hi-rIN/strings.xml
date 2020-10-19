@@ -220,6 +220,9 @@
 
     <string name="time_remain">Resend in</string>
     <string name="time_remaining">%02d:%02d</string>
-
     <string name="log_out">लॉग आउट</string>
+
+    <string name="logout_success">लॉगआउट सफलतापूर्वक</string>
+    <string name="forgot_password">पासवर्ड भूल गए? यहाँ क्लिक करें</string>
+
 </resources>

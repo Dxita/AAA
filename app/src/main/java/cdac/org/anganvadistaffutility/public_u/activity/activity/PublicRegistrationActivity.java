@@ -19,10 +19,9 @@ import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicInfraActi
 public class PublicRegistrationActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     AppCompatTextView login_txt;
     AppCompatButton register_btn;
-    String[] district = {"","Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
-    String[] project = {"","Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
-    String[] sector = {"","S01", "S02", "S03", "S04", "S05", "S06", "S07"};
-
+    String[] district = {"", "Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
+    String[] project = {"", "Ajmer", "Alwar", "Banswara", "Baran", "Barmer", "Bhilwara", "Dausa"};
+    String[] sector = {"", "S01", "S02", "S03", "S04", "S05", "S06", "S07"};
 
 
     @Override

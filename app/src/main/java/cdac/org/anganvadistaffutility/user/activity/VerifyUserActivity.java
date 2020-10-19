@@ -6,9 +6,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+
+import java.net.HttpURLConnection;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -59,7 +62,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
     private void verifyUser(String userMobileNumber) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<VerifyUser>call = apiInterface.verifyUser(userMobileNumber);
+        Call<VerifyUser> call = apiInterface.verifyUser(userMobileNumber);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyUser>() {
             @Override
             public void onSuccess(VerifyUser body) {
@@ -68,7 +71,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     if (body.getData().getEmpdata().getPasswordset()) {
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                        startActivity(new Intent(context, UserLoginActivity.class));
+                        startActivity(new Intent(context, UserLoginActivity.class).putExtra("empid", body.getData().getEmpdata().getEmpid()));
                     } else {
                         sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
                     }

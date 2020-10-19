@@ -30,7 +30,7 @@
             android:text="@string/public_infrastructure"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_15sp" />
+            android:textSize="@dimen/textsize_18" />
 
     </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 
 public class SplashActivity extends BaseActivity {
 
@@ -20,7 +21,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, SelectLanguageActivity.class));
+                startActivity(new Intent(SplashActivity.this, SelectLanguageActivity.class));
             finish();
         }, 2000);
     }
