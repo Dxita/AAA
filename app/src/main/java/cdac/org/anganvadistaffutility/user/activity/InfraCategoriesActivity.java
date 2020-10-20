@@ -77,7 +77,8 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                startActivity(new Intent(context, UserSectionActivity.class));
+                finish();
                 return true;
             case R.id.change_your_language:
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
@@ -157,16 +158,11 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
         infraStructureImageList.add(R.drawable.ic_creche_house);
 
         if (infrastructureData.size() > infraStructureImageList.size()) {
-
             for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {
                 infraStructureImageList.add(R.drawable.app_logo);
-
             }
-
         }
     }
-
-
 }
 
 

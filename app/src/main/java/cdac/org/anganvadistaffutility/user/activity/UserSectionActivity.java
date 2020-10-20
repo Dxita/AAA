@@ -1,19 +1,15 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.cardview.widget.CardView;
+
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.admin.activity.ViewInfraStructureActivity;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.user.data.AWDetails;
 
 public class UserSectionActivity extends BaseActivity implements View.OnClickListener {
 
@@ -29,21 +25,19 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
 
         personal_info.setOnClickListener(this);
         infra_data.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.infra_data_card:
                 startActivity(new Intent(context, InfraCategoriesActivity.class));
+                finish();
                 break;
             case R.id.personal_info_card:
                 startActivity(new Intent(context, HomeActivity.class));
                 break;
         }
-
     }
 
     @Override
@@ -53,18 +47,9 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         builder.setIcon(R.drawable.app_logo);
         builder.setMessage(getString(R.string.exit_text))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> finishAffinity())
+                .setNegativeButton(getString(R.string.no), (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
-
     }
 }
