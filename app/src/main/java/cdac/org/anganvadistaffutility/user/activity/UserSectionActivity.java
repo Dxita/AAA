@@ -39,7 +39,7 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
 
     private void initFabActionMenu() {
         fabWithOptions = findViewById(R.id.fab_l);
-        fabWithOptions.setMiniFabsColors(R.color.colorPrimary, R.color.green_fab);
+        fabWithOptions.setMiniFabsColors(R.color.sky, R.color.sky);
 
         fabWithOptions.setMainFabOnClickListener(view -> {
             if (fabWithOptions.isOptionsMenuOpened()) {

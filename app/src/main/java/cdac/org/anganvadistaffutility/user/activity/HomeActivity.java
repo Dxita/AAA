@@ -164,15 +164,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             startActivity(new Intent(context, PaymentActivity.class));
         } else if (id == R.id.nav_cards) {
             startActivity(new Intent(context, CardActivity.class).putExtra("card_details", cardDetails));
-        } else if (id == R.id.change_language) {
-            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
-            } else {
-                changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
-            }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }
+/*else if (id == R.id.change_language) {
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+            } else {
+                changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+            }*/

@@ -33,10 +33,10 @@
         android:icon="@drawable/ic_baseline_credit_card_24"
         android:title="@string/card_details" />
 
-        <item
+     <!--   <item
             android:id="@+id/change_language"
             android:icon="@drawable/ic_baseline_language_24"
-            android:title="@string/change_your_language" />
+            android:title="@string/change_your_language" />-->
     </group>
 
 
