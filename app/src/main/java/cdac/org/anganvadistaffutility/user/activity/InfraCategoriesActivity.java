@@ -1,8 +1,5 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,7 +11,6 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +40,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_infra_categories);
@@ -55,7 +52,6 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
         relativeLayout = findViewById(R.id.relativeLayout);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
-
         infrastructureData = new ArrayList<>();
         infraStructureImageList = new ArrayList<>();
         UserInfraStructureAdapter.ItemClickListener itemClickListener = this;
@@ -66,7 +62,8 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getAaGanWadiInfrastructureData();
-
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
         userInfraStructureAdapter = new UserInfraStructureAdapter(context, infrastructureData, infraStructureImageList, itemClickListener);
@@ -77,8 +74,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                startActivity(new Intent(context, UserSectionActivity.class));
-                finish();
+                onBackPressed();
                 return true;
             case R.id.change_your_language:
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
@@ -114,8 +110,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-
+       // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 

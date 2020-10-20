@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
 
@@ -55,7 +55,7 @@ dependencies {
 
     // lib for SMS verification (Phone Auth)
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
-    implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
 
     // Line Chart
     //implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
@@ -70,5 +70,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:23.1.1'
     implementation 'com.madgag:scpkix-jdk15on:1.47.0.1'
     implementation 'com.itextpdf:itextg:5.5.10'
+
+    implementation 'com.github.arthurghazaryan:floatingactionmenu:1.0.0'
 
 }

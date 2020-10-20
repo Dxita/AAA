@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fab_change_language"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:title="@string/change_your_language" />
+
+    <item
+        android:id="@+id/fab_logout"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:title="@string/log_out" />
+</menu>

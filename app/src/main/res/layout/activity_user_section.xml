@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -182,5 +183,16 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
+        <com.github.ag.floatingactionmenu.OptionsFabLayout
+            android:id="@+id/fab_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|end"
+            custom:color="@color/colorAccent"
+            custom:options_color="@color/colorPrimary"
+            custom:options_menu="@menu/fab_menu"
+            custom:src="@drawable/ic_add_white_24dp" />
+
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,16 +2,25 @@ package cdac.org.anganvadistaffutility.user.activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.github.ag.floatingactionmenu.OptionsFabLayout;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
+import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class UserSectionActivity extends BaseActivity implements View.OnClickListener {
+
+    private OptionsFabLayout fabWithOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +31,45 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.activity_user_section);
         CardView personal_info = findViewById(R.id.personal_info_card);
         CardView infra_data = findViewById(R.id.infra_data_card);
+        initFabActionMenu();
 
         personal_info.setOnClickListener(this);
         infra_data.setOnClickListener(this);
+    }
+
+    private void initFabActionMenu() {
+        fabWithOptions = findViewById(R.id.fab_l);
+        fabWithOptions.setMiniFabsColors(R.color.colorPrimary, R.color.green_fab);
+
+        fabWithOptions.setMainFabOnClickListener(view -> {
+            if (fabWithOptions.isOptionsMenuOpened()) {
+                fabWithOptions.closeOptionsMenu();
+            }
+        });
+
+        fabWithOptions.setMiniFabSelectedListener(fabItem -> {
+            switch (fabItem.getItemId()) {
+                case R.id.fab_change_language:
+                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                        changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                    } else {
+                        changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+                    }
+                    break;
+                case R.id.fab_logout:
+                    SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+                    editor.clear();
+                    editor.apply();
+                    Intent intent = new Intent(context,
+                            UserTypeActivity.class);
+                    startActivity(intent);
+                    finishAffinity();
+
+                    AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+                default:
+                    break;
+            }
+        });
     }
 
     @Override
@@ -32,7 +77,6 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.infra_data_card:
                 startActivity(new Intent(context, InfraCategoriesActivity.class));
-                finish();
                 break;
             case R.id.personal_info_card:
                 startActivity(new Intent(context, HomeActivity.class));
