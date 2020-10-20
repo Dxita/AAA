@@ -166,9 +166,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             startActivity(new Intent(context, CardActivity.class).putExtra("card_details", cardDetails));
         } else if (id == R.id.change_language) {
             if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
             } else {
-                setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+                changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
             }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -225,4 +225,6 @@
     <string name="logout_success">लॉगआउट सफलतापूर्वक</string>
     <string name="forgot_password">पासवर्ड भूल गए? यहाँ क्लिक करें</string>
 
+    <string name="exit_text">क्या बाहर जाना चाहते हो?</string>
+
 </resources>

@@ -59,12 +59,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
+
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
         startActivity(new Intent(context, SplashActivity.class));
         finishAffinity();
+
     }
 
     public void changeAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
