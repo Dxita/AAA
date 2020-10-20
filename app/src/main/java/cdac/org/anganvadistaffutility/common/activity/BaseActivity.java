@@ -66,6 +66,13 @@ public class BaseActivity extends AppCompatActivity {
         finishAffinity();
     }
 
+    public void changeAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
+        LocaleManager.setNewLocale(this, language);
+        Intent intent = mContext.getIntent();
+        mContext.finish();
+        startActivity(intent);
+    }
+
     protected void sendOtpToServer(RelativeLayout relativeLayout, String mobileNumber, String otp) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
         Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);

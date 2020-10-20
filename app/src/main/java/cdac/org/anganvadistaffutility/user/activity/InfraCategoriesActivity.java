@@ -1,21 +1,18 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +21,6 @@ import java.util.Objects;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity;
 import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
@@ -82,9 +78,9 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 return true;
             case R.id.change_your_language:
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                    setAppLocale((AppCompatActivity) this, LocaleManager.ENGLISH);
+                    changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
                 } else {
-                    setAppLocale((AppCompatActivity) this, LocaleManager.HINDI);
+                    changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
                 }
                 return true;
             case R.id.log_out:
