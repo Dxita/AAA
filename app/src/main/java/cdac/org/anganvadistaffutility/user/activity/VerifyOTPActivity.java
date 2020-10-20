@@ -72,7 +72,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(SmsRetriever.SMS_RETRIEVED_ACTION);
         getApplicationContext().registerReceiver(mSmsBroadcastReceiver, intentFilter);
-        getHintPhoneNumber();
+        //getHintPhoneNumber();
         // startSMSListener();
     }
 
@@ -156,7 +156,12 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
                 }
             }
         } else if (view.getId() == R.id.txt_resend_otp) {
-            sendOtpToServer(relativeLayout, mobileNumber, AppUtils.getRandomNumberString());
+            if (AppUtils.isNetworkConnected(context)) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                sendOtpToServer(relativeLayout, mobileNumber, AppUtils.getRandomNumberString());
+            } else {
+                AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+            }
         }
     }
 

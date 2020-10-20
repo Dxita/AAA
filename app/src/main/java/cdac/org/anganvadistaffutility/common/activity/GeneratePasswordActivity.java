@@ -63,7 +63,12 @@ public class GeneratePasswordActivity extends BaseActivity implements View.OnCli
                 c_pwd.requestFocus();
                 Toast.makeText(context, "" + getResources().getString(R.string.password_doesnt_match), Toast.LENGTH_SHORT).show();
             } else {
-                setUserPassword();
+                if (AppUtils.isNetworkConnected(context)) {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                    setUserPassword();
+                } else {
+                    AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+                }
             }
         }
     }

@@ -83,7 +83,7 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
 
     private void getPaymentData(String fromYear, String toYear) {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PAYMENT_BASE_URL);
-        Call<PaymentDetails> call = apiInterface.paymentDetails(AppPreferences.getEmployeeId(), fromYear, toYear);
+        Call<PaymentDetails> call = apiInterface.paymentDetails(appPreferences.getEmployeeId(), fromYear, toYear);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<PaymentDetails>() {
             @Override
             public void onSuccess(PaymentDetails body) {

@@ -13,13 +13,13 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.user.activity.BankActivity;
 import cdac.org.anganvadistaffutility.user.activity.CardActivity;
+import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
 import cdac.org.anganvadistaffutility.user.activity.JobActivity;
 import cdac.org.anganvadistaffutility.user.activity.PaymentActivity;
 import cdac.org.anganvadistaffutility.user.activity.ProfileActivity;
@@ -97,12 +97,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void getEmployeeData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
-        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppPreferences.getEmployeeId());
+        Call<EmployeeDetails> call = apiInterface.employeeDetails(((HomeActivity) context).appPreferences.getEmployeeId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {
-                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus))
-                {
+                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     AppUtils.showToast(context, body.getMessage());
 
@@ -141,9 +140,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.card:
                 startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details", cardDetails));
                 break;
-
         }
     }
-
-
 }

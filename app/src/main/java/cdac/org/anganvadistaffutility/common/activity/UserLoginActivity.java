@@ -25,7 +25,6 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
 
     private RelativeLayout relativeLayout;
     private AppCompatEditText et_user_password;
-    String EMPID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +37,8 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
         relativeLayout = findViewById(R.id.relativeLayout);
         et_user_password = findViewById(R.id.et_user_password);
 
-
         AppCompatButton btn_login_user = findViewById(R.id.btn_login_user);
         btn_login_user.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -73,7 +69,7 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
                 if (body.getStatus().getStatusCode().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getStatus().getMessage());
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    AppPreferences.putKey(context, "loggedin", "true");
+                    appPreferences.setUserLoggedIn(true);
                     startActivity(new Intent(context, UserSectionActivity.class));
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);

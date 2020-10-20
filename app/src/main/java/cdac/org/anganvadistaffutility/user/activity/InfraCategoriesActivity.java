@@ -22,7 +22,6 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -84,37 +83,19 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 }
                 return true;
             case R.id.log_out:
-                AppPreferences.putKey(context, "loggedin", "false");
-                SharedPreferences.Editor editor = AppPreferences.editor;
+                SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
                 editor.clear();
                 editor.apply();
                 Intent intent = new Intent(context,
                         UserTypeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
+                finishAffinity();
 
-               /* SharedPreferences myPrefs = getSharedPreferences("Activity",
-                        MODE_PRIVATE);
-                SharedPreferences.Editor editor = myPrefs.edit();
-                editor.clear();
-                editor.apply();
-                //AppState.getSingleInstance().setLoggingOut(true);
-                setLoginState(true);
-                Log.d(TAG, "Now log out and start the activity login");
-                Intent intent = new Intent(InfraCategoriesActivity.this,
-                        SelectLanguageActivity.class);
-
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-                Toast.makeText(context, "" + getString(R.string.logout_success), Toast.LENGTH_SHORT).show();*/
+                AppUtils.showToast(context, getResources().getString(R.string.logout_success));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-
     }
 
     private void setLoginState(boolean b) {
@@ -145,7 +126,6 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 infrastructureData.addAll(body.getData().getInfrastructureData());
                 setCustomInfraImages();
                 userInfraStructureAdapter.notifyDataSetChanged();
-
             }
 
             @Override

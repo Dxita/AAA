@@ -6,17 +6,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
-import java.net.HttpURLConnection;
-
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.UserLoginActivity;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
@@ -69,13 +65,17 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             public void onSuccess(VerifyUser body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getMessage());
-                    AppPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
+                    appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     if (body.getData().getEmpdata().getPasswordset()) {
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                        startActivity(new Intent(context, UserLoginActivity.class).putExtra("empid", body.getData().getEmpdata().getEmpid()));
-
+                        startActivity(new Intent(context, UserLoginActivity.class));
                     } else {
-                        sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
+                        if (AppUtils.isNetworkConnected(context)) {
+                            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                            sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
+                        } else {
+                            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+                        }
                     }
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
@@ -85,6 +85,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
 
             @Override
+
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }

@@ -9,9 +9,7 @@ import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicLoginActivity;
-import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 
@@ -41,20 +39,16 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
                 break;
             case R.id.user_type_employee:
-
-                if (AppPreferences.getKey(context, "loggedin").equals("true")) {
+                if (!appPreferences.getEmployeeId().isEmpty() && appPreferences.isUserLoggedIn()) {
                     startActivity(new Intent(this, UserSectionActivity.class));
                     finish();
                 } else {
                     startActivity(new Intent(context, VerifyUserActivity.class));
-
                 }
-
                 break;
             case R.id.user_type_public:
                 startActivity(new Intent(context, PublicLoginActivity.class));
                 break;
-
         }
     }
 }

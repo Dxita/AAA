@@ -3,12 +3,10 @@ package cdac.org.anganvadistaffutility.user.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -25,9 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity;
 import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -38,6 +34,7 @@ import cdac.org.anganvadistaffutility.user.fragment.HomeFragment;
 import retrofit2.Call;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+
     private EmployeeDetails.Profile profileDetails;
     private EmployeeDetails.Job jobDetails;
     private EmployeeDetails.Card cardDetails;
@@ -54,7 +51,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         logout = drawer.findViewById(R.id.logout);
@@ -79,7 +75,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void getEmployeeData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
-        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppPreferences.getEmployeeId());
+        Call<EmployeeDetails> call = apiInterface.employeeDetails(appPreferences.getEmployeeId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {
@@ -105,20 +101,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.logout:
-                AppPreferences.putKey(context, "loggedin", "false");
-                SharedPreferences.Editor editor = AppPreferences.editor;
-                editor.clear();
-                editor.apply();
-                Intent intent = new Intent(context,
-                        UserTypeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+        if (view.getId() == R.id.logout) {
+            SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+            editor.clear();
+            editor.apply();
+            Intent intent = new Intent(context,
+                    UserTypeActivity.class);
+            startActivity(intent);
+            finishAffinity();
 
-                Toast.makeText(context, "" + getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
-                break;
+            AppUtils.showToast(context, getResources().getString(R.string.logout_success));
         }
     }
 
@@ -154,7 +146,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         fragmentTransaction.commit();
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -163,17 +154,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             HomeFragment homeFragment = new HomeFragment();
             setMyFragment(homeFragment);
         } else if (id == R.id.nav_account) {
-
             startActivity(new Intent(context, ProfileActivity.class).putExtra("profile_details", profileDetails));
             // Handle the camera action
         } else if (id == R.id.nav_job) {
             startActivity(new Intent(context, JobActivity.class).putExtra("job_details", jobDetails));
         } else if (id == R.id.nav_bank) {
             startActivity(new Intent(context, BankActivity.class).putExtra("bank_details", bankDetails));
-
         } else if (id == R.id.nav_payments) {
             startActivity(new Intent(context, PaymentActivity.class));
-
         } else if (id == R.id.nav_cards) {
             startActivity(new Intent(context, CardActivity.class).putExtra("card_details", cardDetails));
         } else if (id == R.id.change_language) {
@@ -182,7 +170,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             } else {
                 setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
             }
-
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

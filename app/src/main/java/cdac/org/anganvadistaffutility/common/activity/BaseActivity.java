@@ -20,6 +20,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity;
+import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import retrofit2.Call;
 
@@ -89,6 +90,10 @@ public class BaseActivity extends AppCompatActivity {
                     appPreferences.saveGeneratedOtp(body.getData().getOtp());
                     startActivity(new Intent(context, VerifyOTPActivity.class)
                             .putExtra("mobile_number", body.getData().getMobile()));
+
+                    if (context instanceof VerifyUserActivity) {
+                        finish();
+                    }
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     AppUtils.showToast(context, body.getData().getResponseMessage());
