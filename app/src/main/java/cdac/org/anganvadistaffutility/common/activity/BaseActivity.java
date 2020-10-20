@@ -61,6 +61,7 @@ public class BaseActivity extends AppCompatActivity {
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
         startActivity(new Intent(context, SplashActivity.class));
         finishAffinity();
     }

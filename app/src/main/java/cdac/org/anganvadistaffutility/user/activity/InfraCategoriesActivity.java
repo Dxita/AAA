@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity;
+import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -79,13 +82,23 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 return true;
             case R.id.change_your_language:
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                    setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                    setAppLocale((AppCompatActivity) this, LocaleManager.ENGLISH);
                 } else {
-                    setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+                    setAppLocale((AppCompatActivity) this, LocaleManager.HINDI);
                 }
                 return true;
             case R.id.log_out:
-                SharedPreferences myPrefs = getSharedPreferences("Activity",
+                AppPreferences.putKey(context, "loggedin", "false");
+                SharedPreferences.Editor editor = AppPreferences.editor;
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(context,
+                        UserTypeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+
+               /* SharedPreferences myPrefs = getSharedPreferences("Activity",
                         MODE_PRIVATE);
                 SharedPreferences.Editor editor = myPrefs.edit();
                 editor.clear();
@@ -99,7 +112,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
-                Toast.makeText(context, "" + getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + getString(R.string.logout_success), Toast.LENGTH_SHORT).show();*/
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

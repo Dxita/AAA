@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -96,7 +97,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void getEmployeeData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
-        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppUtils.empID);
+        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppPreferences.getEmployeeId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {

@@ -22,6 +22,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.SalaryDetailsTblActivity;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -82,7 +83,7 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
 
     private void getPaymentData(String fromYear, String toYear) {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PAYMENT_BASE_URL);
-        Call<PaymentDetails> call = apiInterface.paymentDetails(AppUtils.empID, fromYear, toYear);
+        Call<PaymentDetails> call = apiInterface.paymentDetails(AppPreferences.getEmployeeId(), fromYear, toYear);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<PaymentDetails>() {
             @Override
             public void onSuccess(PaymentDetails body) {

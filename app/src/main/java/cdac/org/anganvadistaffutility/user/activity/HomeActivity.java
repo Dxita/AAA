@@ -26,6 +26,8 @@ import com.google.android.material.navigation.NavigationView;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity;
+import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -55,7 +57,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        logout=drawer.findViewById(R.id.logout);
+        logout = drawer.findViewById(R.id.logout);
         logout.setOnClickListener(this);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -77,7 +79,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void getEmployeeData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
-        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppUtils.empID);
+        Call<EmployeeDetails> call = apiInterface.employeeDetails(AppPreferences.getEmployeeId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {
@@ -103,33 +105,29 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.logout:
-                SharedPreferences myPrefs = getSharedPreferences("Activity",
-                        MODE_PRIVATE);
-                SharedPreferences.Editor editor = myPrefs.edit();
+                AppPreferences.putKey(context, "loggedin", "false");
+                SharedPreferences.Editor editor = AppPreferences.editor;
                 editor.clear();
                 editor.apply();
-                //AppState.getSingleInstance().setLoggingOut(true);
-                setLoginState(true);
-                Log.d(TAG, "Now log out and start the activity login");
-                Intent intent = new Intent(HomeActivity.this,
-                        SelectLanguageActivity.class);
+                Intent intent = new Intent(context,
+                        UserTypeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
 
-                Toast.makeText(context, ""+getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
     private void setLoginState(boolean b) {
-            SharedPreferences sp = getSharedPreferences("LoginState",
-                    MODE_PRIVATE);
-            SharedPreferences.Editor ed = sp.edit();
-            ed.putBoolean("setLoggingOut", b);
-            ed.apply();
+        SharedPreferences sp = getSharedPreferences("LoginState",
+                MODE_PRIVATE);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putBoolean("setLoggingOut", b);
+        ed.apply();
     }
 
     @Override

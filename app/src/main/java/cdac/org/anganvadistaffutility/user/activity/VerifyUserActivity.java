@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.UserLoginActivity;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
@@ -68,10 +69,11 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             public void onSuccess(VerifyUser body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getMessage());
-                    appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
+                    AppPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     if (body.getData().getEmpdata().getPasswordset()) {
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                         startActivity(new Intent(context, UserLoginActivity.class).putExtra("empid", body.getData().getEmpdata().getEmpid()));
+
                     } else {
                         sendOtpToServer(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
                     }
