@@ -22,7 +22,6 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.SalaryDetailsTblActivity;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -88,17 +87,23 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
             @Override
             public void onSuccess(PaymentDetails body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, body.getMessage());
 
-                PaymentDetails.Data data = body.getData();
-                List<PaymentDetails.Empdatum> paymentDetails = data.getEmpdata();
-                ArrayList<PaymentDetails.Empdatum> empdatumArrayList = new ArrayList<>(paymentDetails);
+                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
+                    AppUtils.showToast(context, body.getMessage());
+                    PaymentDetails.Data data = body.getData();
+                    List<PaymentDetails.Empdatum> paymentDetails = data.getEmpdata();
+                    ArrayList<PaymentDetails.Empdatum> empDatumArrayList = new ArrayList<>(paymentDetails);
 
-                Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
-                intent.putExtra("fromYear", fromYear);
-                intent.putExtra("toYear", toYear);
-                intent.putExtra("salary_data", AppUtils.convertToPut(empdatumArrayList));
-                startActivity(intent);
+                    if (!empDatumArrayList.isEmpty()) {
+                        Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
+                        intent.putExtra("fromYear", fromYear);
+                        intent.putExtra("toYear", toYear);
+                        intent.putExtra("salary_data", AppUtils.convertToPut(empDatumArrayList));
+                        startActivity(intent);
+                    }
+                } else {
+                    AppUtils.showToast(context, body.getMessage());
+                }
             }
 
             @Override
