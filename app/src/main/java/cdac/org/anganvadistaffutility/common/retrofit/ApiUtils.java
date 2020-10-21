@@ -22,6 +22,7 @@ public class ApiUtils {
     public static final String INFRASTRUCTURE_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String ADMIN_USER_DATA_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
 
+    //http://164.100.222.241/rajposhan/rajposhan_2/
 
     public static ApiInterface getApiInterface(String baseURL) {
         return ApiClient.getClient(baseURL).create(ApiInterface.class);
