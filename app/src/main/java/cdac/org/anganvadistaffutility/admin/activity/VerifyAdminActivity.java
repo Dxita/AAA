@@ -2,7 +2,9 @@ package cdac.org.anganvadistaffutility.admin.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.credentials.Credentials;
+import com.google.android.gms.auth.api.credentials.HintRequest;
 
 import java.util.List;
 
@@ -38,7 +42,7 @@ public class VerifyAdminActivity extends BaseActivity {
 
 
     private void getHintPhoneNumber() {
-       /* HintRequest hintRequest =
+        HintRequest hintRequest =
                 new HintRequest.Builder()
                         .setPhoneNumberIdentifierSupported(true)
                         .build();
@@ -48,9 +52,9 @@ public class VerifyAdminActivity extends BaseActivity {
             startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+     /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
@@ -59,7 +63,7 @@ public class VerifyAdminActivity extends BaseActivity {
                 SubscriptionInfo info = subscription.get(i);
                 Log.e(TAG, "number " + info.getNumber());
             }
-        }
+        }*/
     }
 
 

@@ -27,19 +27,16 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-
+        <activity android:name=".common.LanguageActivity"></activity>
         <activity
             android:name=".user.activity.InfraCategoriesActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".public_u.activity.activity.PublicOTPVerificationActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".user.activity.UserSectionActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".common.activity.SplashActivity"
             android:screenOrientation="portrait">
@@ -53,7 +50,6 @@
                     android:screenOrientation="portrait" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".common.activity.SalaryDetailsTblActivity"
             android:screenOrientation="portrait" />
@@ -133,7 +129,6 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
-
         <activity android:name=".public_u.activity.activity.BuildingDetailsActivity" />
         <activity android:name=".public_u.activity.activity.PublicInfraActivity" />
         <activity android:name=".public_u.activity.activity.PublicLoginActivity" />

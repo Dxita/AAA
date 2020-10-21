@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,9 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
 
     private TextView hindi_text, english_text;
 
+    RelativeLayout select_language_activity, continue_button_layout;
+    Button continue_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +31,10 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
 
         english_text = findViewById(R.id.english_text);
         hindi_text = findViewById(R.id.hindi_text);
-        Button continue_button = findViewById(R.id.continue_button);
+         continue_button = findViewById(R.id.continue_button);
+         select_language_activity=findViewById(R.id.select_language_layout);
+         continue_button_layout=findViewById(R.id.button_language_activity);
+
 
         if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
             english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
@@ -53,6 +60,8 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
                 setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+
+
                 break;
             case R.id.hindi_text:
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));

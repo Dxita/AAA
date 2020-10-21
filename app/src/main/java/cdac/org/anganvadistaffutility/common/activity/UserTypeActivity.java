@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -51,5 +52,19 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 startActivity(new Intent(context, PublicLoginActivity.class));
                 break;
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(UserTypeActivity.this);
+        builder.setTitle(R.string.app_name);
+        builder.setIcon(R.drawable.app_logo);
+        builder.setMessage(getString(R.string.exit_text))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> finishAffinity())
+                .setNegativeButton(getString(R.string.no), (dialog, id) -> dialog.cancel());
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

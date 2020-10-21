@@ -29,4 +29,7 @@
  <color name="mustard">#E6B215</color>
  <color name="dark_pink">#932349</color>
  <color name="light_pink">#F881AA</color>
+ <color name="app_bg">#ECFAEC</color>
+ <color name="bg">#EBF8D3</color>
+
 </resources>

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import cdac.org.anganvadistaffutility.common.LanguageActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
@@ -62,7 +63,7 @@ public class BaseActivity extends AppCompatActivity {
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(new Intent(context, SplashActivity.class));
+        startActivity(new Intent(context, LanguageActivity.class));
         finishAffinity();
     }
 
@@ -72,6 +73,14 @@ public class BaseActivity extends AppCompatActivity {
         mContext.finish();
         startActivity(intent);
     }
+
+    /*public void changeLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
+        LocaleManager.setNewLocale(this, language);
+        Intent intent = mContext.getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(new Intent(context, SplashActivity.class));
+        finishAffinity();
+    }*/
 
     protected void sendOtpToServer(RelativeLayout relativeLayout, String mobileNumber, String otp) {
         apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
