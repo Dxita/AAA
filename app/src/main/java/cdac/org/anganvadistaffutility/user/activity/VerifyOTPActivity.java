@@ -72,7 +72,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(SmsRetriever.SMS_RETRIEVED_ACTION);
         getApplicationContext().registerReceiver(mSmsBroadcastReceiver, intentFilter);
-        //getHintPhoneNumber();
+        getHintPhoneNumber();
         // startSMSListener();
     }
 

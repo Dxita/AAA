@@ -99,11 +99,15 @@ public class EmployeePaymentDetailActivity extends BaseActivity implements TextW
                 List<PaymentDetails.Empdatum> paymentDetails = data.getEmpdata();
                 ArrayList<PaymentDetails.Empdatum> empDatumArrayList = new ArrayList<>(paymentDetails);
 
-                Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
-                intent.putExtra("fromYear", fromYear);
-                intent.putExtra("toYear", toYear);
-                intent.putExtra("salary_data", AppUtils.convertToPut(empDatumArrayList));
-                startActivity(intent);
+                if (!empDatumArrayList.isEmpty()) {
+                    Intent intent = new Intent(context, SalaryDetailsTblActivity.class);
+                    intent.putExtra("fromYear", fromYear);
+                    intent.putExtra("toYear", toYear);
+                    intent.putExtra("salary_data", AppUtils.convertToPut(empDatumArrayList));
+                    startActivity(intent);
+                } else {
+                    AppUtils.showToast(context, body.getMessage());
+                }
             }
 
             @Override
