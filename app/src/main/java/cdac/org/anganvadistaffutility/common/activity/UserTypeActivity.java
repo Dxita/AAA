@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.VerifyAdminActivity;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
 import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
@@ -36,7 +37,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.user_type_admin:
-                startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
+                startActivity(new Intent(context, VerifyAdminActivity.class));
                 break;
             case R.id.user_type_employee:
                 if (!appPreferences.getEmployeeId().isEmpty() && appPreferences.isUserLoggedIn()) {

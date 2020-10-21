@@ -1,10 +1,7 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
-import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -16,11 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
-import com.google.android.gms.auth.api.credentials.Credential;
-import com.google.android.gms.auth.api.credentials.Credentials;
-import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.Task;
@@ -40,7 +32,6 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
     private static final int TIME_LIMIT = 1000 * 60 * 10; // 10 min
     private static final int TIME_INTERVAL = 1000; // 1 sec
 
-    private int RESOLVE_HINT = 2;
     private EditText et_input_otp;
     private TextView mobile_number_text;
     private TextView txt_time_remaining;
@@ -49,6 +40,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
     private CountDownTimer countDownTimer;
     private String mobileNumber = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +64,7 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(SmsRetriever.SMS_RETRIEVED_ACTION);
         getApplicationContext().registerReceiver(mSmsBroadcastReceiver, intentFilter);
-        getHintPhoneNumber();
+
         // startSMSListener();
     }
 
@@ -110,34 +102,6 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
         mTask.addOnFailureListener(e -> Toast.makeText(VerifyOTPActivity.this, "Error", Toast.LENGTH_LONG).show());
     }
 
-    public void getHintPhoneNumber() {
-        HintRequest hintRequest =
-                new HintRequest.Builder()
-                        .setPhoneNumberIdentifierSupported(true)
-                        .build();
-
-        PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
-        try {
-            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESOLVE_HINT) {
-            if (resultCode == Activity.RESULT_OK) {
-                if (data != null) {
-                    Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
-                    // credential.getId();  <-- will need to process phone number string
-                    assert credential != null;
-                    et_input_otp.setText(credential.getId());
-                }
-            }
-        }
-    }
 
     @Override
     public void onClick(View view) {

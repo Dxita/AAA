@@ -1,8 +1,6 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,9 +9,6 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
-
-import com.google.android.gms.auth.api.credentials.Credentials;
-import com.google.android.gms.auth.api.credentials.HintRequest;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -42,8 +37,6 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
         edt_user_mobile_no = findViewById(R.id.edt_user_mobile_no);
         AppCompatButton btn_verify_user = findViewById(R.id.btn_verify_user);
         btn_verify_user.setOnClickListener(this);
-
-      // getHintPhoneNumber();
     }
 
     @Override
@@ -90,27 +83,10 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                 }
             }
 
-
             @Override
-
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }
         }));
-    }
-
-    public void getHintPhoneNumber() {
-        HintRequest hintRequest =
-                new HintRequest.Builder()
-                        .setPhoneNumberIdentifierSupported(true)
-                        .build();
-
-        PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
-        try {
-            int RESOLVE_HINT = 2;
-            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-        }
     }
 }

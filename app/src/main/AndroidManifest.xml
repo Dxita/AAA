@@ -96,9 +96,15 @@
         <activity
             android:name=".admin.activity.ViewAaGanWadiDataActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".admin.activity.VerifyAdminActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />
