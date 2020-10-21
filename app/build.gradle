@@ -73,4 +73,8 @@ dependencies {
 
     implementation 'com.github.arthurghazaryan:floatingactionmenu:1.0.0'
 
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:23.1.1'
+
+
 }

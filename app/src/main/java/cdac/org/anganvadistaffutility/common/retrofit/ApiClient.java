@@ -19,8 +19,6 @@ public class ApiClient {
     public static Retrofit getClient(String baseUrl) {
 
         Retrofit retrofit;
-
-
         //    if (retrofit == null) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -28,7 +26,7 @@ public class ApiClient {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .retryOnConnectionFailure(true)
-                .connectTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(20, TimeUnit.SECONDS)
                 .build();
 
         Gson gson = new GsonBuilder()

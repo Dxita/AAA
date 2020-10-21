@@ -4,15 +4,24 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_app_bg">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
+            android:layout_centerInParent="true"
+            android:src="@drawable/app_logo"
+            android:layout_width="@dimen/margin_300dp"
+            android:layout_height="@dimen/margin_300dp" />
+
         <androidx.appcompat.widget.AppCompatTextView
+            android:layout_below="@id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:drawableTop="@drawable/app_logo"
+
             android:drawablePadding="@dimen/margin_08"
             android:gravity="center"
             android:textColor="@color/black"
