@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 
 public class ProfileActivity extends BaseActivity {
@@ -39,7 +40,12 @@ public class ProfileActivity extends BaseActivity {
 
         EmployeeDetails.Profile profileDetails = (EmployeeDetails.Profile) getIntent().getParcelableExtra("profile_details");
         if (profileDetails != null) {
-            name.setText(profileDetails.getEmployeeNameEnglish());
+
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                name.setText(profileDetails.getEmployeeNameHindi() + " (" + profileDetails.getEmployeeNameEnglish() + ")");
+            } else {
+                name.setText(profileDetails.getEmployeeNameEnglish() + " (" + profileDetails.getEmployeeNameHindi() + ")");
+            }
             dob.setText(profileDetails.getDateOfBirth());
             category.setText(profileDetails.getCategory());
             awc_id.setText(profileDetails.getAwcid());
@@ -47,6 +53,7 @@ public class ProfileActivity extends BaseActivity {
             father_husband_name.setText(profileDetails.getHusbandFatherName());
             awc_address.setText(profileDetails.getAwcAddress());
             awc_name.setText(profileDetails.getAwcNameEnglish());
+
         }
     }
 

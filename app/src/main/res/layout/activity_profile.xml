@@ -50,14 +50,15 @@
                 android:layout_marginTop="@dimen/margin_05"
                 android:background="@color/sky"
                 android:padding="@dimen/margin_10"
+                android:singleLine="false"
                 android:textColor="@color/grey" />
 
             <androidx.appcompat.widget.AppCompatTextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_08"
                 android:text="@string/fatherhusband_name"
+                android:singleLine="false"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/textsize_15sp">
 
