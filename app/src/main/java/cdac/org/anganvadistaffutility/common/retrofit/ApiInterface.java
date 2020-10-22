@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.common.retrofit;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
+import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
@@ -79,5 +80,9 @@ public interface ApiInterface {
     @POST("api_js_app_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AWDetails> awDetails(@Field("empid") String empID);
+
+    @POST("api_js_admin_check_by_mob/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<VerifyAdmin> verifyAdmin(@Field("mobileno") String adminNumber);
 
 }

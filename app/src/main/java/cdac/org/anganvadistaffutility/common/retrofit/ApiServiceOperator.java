@@ -14,7 +14,7 @@ public class ApiServiceOperator<T> implements Callback<T> {
         void onFailure(Throwable t);
     }
 
-    private OnResponseListener<T> onResponseListener;
+    private final OnResponseListener<T> onResponseListener;
 
     public ApiServiceOperator(OnResponseListener<T> onResponseListener) {
         this.onResponseListener = onResponseListener;
