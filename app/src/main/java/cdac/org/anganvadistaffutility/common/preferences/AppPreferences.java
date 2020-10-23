@@ -71,7 +71,7 @@ public class AppPreferences {
     }
 
 
-    public void settypeuser(boolean value) {
+    public void setTypeUser(boolean value) {
         editor = sharedPreferences.edit();
         editor.putBoolean(TYPE_USER, value);
         editor.apply();

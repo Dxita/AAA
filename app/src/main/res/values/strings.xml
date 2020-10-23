@@ -230,4 +230,7 @@
     <string name="logout_success">Logout successfully</string>
     <string name="forgot_password">Forgot Password? Click here</string>
     <string name="exit_text">Are you sure you want to exit?</string>
+
+    <string name="next_financial_year">Financial year can not be greater than current financial year</string>
+    <string name="previous_financial_year">Financial year can not be less than 2015</string>
 </resources>
