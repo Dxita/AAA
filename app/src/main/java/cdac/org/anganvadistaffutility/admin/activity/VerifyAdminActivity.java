@@ -93,13 +93,17 @@ public class VerifyAdminActivity extends BaseActivity {
             if (subscriptionInfoList != null && subscriptionInfoList.size() > 0) {
                 for (SubscriptionInfo info : subscriptionInfoList) {
                     String number = info.getNumber();
+                    if (number == null) {
+                        number = "";
+                    }
                     adminNumberList.add(number);
-                   // adminNumberList.add("8899889955");
+                    // adminNumberList.add("8899889955");
                 }
             }
         } else {
             if (telephonyManager != null) {
                 String number = telephonyManager.getLine1Number();
+                adminNumberList.add(number);
             }
         }
 

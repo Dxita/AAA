@@ -45,10 +45,14 @@ public class AppUtils {
     //public static final String empID = "30819";
 
     private static final String FOLDER_NAME = "RajPosh";
+
     public static final int STORAGE_PERMISSION_REQUEST_CODE = 123;
     public static final int CALL_PERMISSION_REQUEST_CODE = 456;
+    public static final int PHONE_PERMISSION_REQUEST_CODE = 789;
+
     public static final String[] STORAGE_PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
     public static final String[] CALL_PERMISSIONS = {Manifest.permission.CALL_PHONE};
+    public static final String[] PHONE_PERMISSIONS = {Manifest.permission.READ_PHONE_STATE};
 
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm =

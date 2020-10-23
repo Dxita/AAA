@@ -30,13 +30,10 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.view_aaganwadi_data:
-                startActivity(new Intent(context, ShowKPIActivity.class));
-                break;
-            case R.id.view_payment_data:
-                startActivity(new Intent(context, EmployeePaymentDetailActivity.class));
-                break;
+        if (view.getId() == R.id.view_aaganwadi_data) {
+            startActivity(new Intent(context, ShowKPIActivity.class));
+        } else if (view.getId() == R.id.view_payment_data) {
+            startActivity(new Intent(context, EmployeePaymentDetailActivity.class));
         }
     }
 }

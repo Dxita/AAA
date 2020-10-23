@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".App"
@@ -96,10 +95,6 @@
 
         <activity
             android:name=".admin.activity.ViewInfraStructureActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".admin.activity.VerifyAdminActivity"
             android:screenOrientation="portrait" />
 
         <activity
