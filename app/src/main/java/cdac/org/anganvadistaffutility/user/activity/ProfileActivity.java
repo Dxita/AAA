@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 
 public class ProfileActivity extends BaseActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class ProfileActivity extends BaseActivity {
 
             if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
                 name.setText(profileDetails.getEmployeeNameHindi() + " (" + profileDetails.getEmployeeNameEnglish() + ")");
+                dob.setText(profileDetails.getDateOfBirth());
+
             } else {
                 name.setText(profileDetails.getEmployeeNameEnglish() + " (" + profileDetails.getEmployeeNameHindi() + ")");
             }

@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.common.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.LinearLayout;
 
 public class AppPreferences {
 
@@ -10,6 +11,8 @@ public class AppPreferences {
     private static final String SAVE_GENERATED_OTP = "SAVE_GENERATED_OTP";
     private static final String EMPLOYEE_ID = "EMPLOYEE_ID";
     private static final String IS_LOGGED_IN = "IS_LOGGED_IN";
+    private static final String LANGUAGE_SET = "IS_LANGUAGE_SET";
+
     private SharedPreferences.Editor editor;
 
     public AppPreferences(Context context) {
@@ -48,6 +51,16 @@ public class AppPreferences {
 
     public boolean isUserLoggedIn() {
         return sharedPreferences.getBoolean(IS_LOGGED_IN, false);
+    }
+
+    public void setLanguagePref(boolean value) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(LANGUAGE_SET, value);
+        editor.apply();
+    }
+
+    public boolean isSetLanguagePref() {
+        return sharedPreferences.getBoolean(LANGUAGE_SET, false);
     }
 
 }

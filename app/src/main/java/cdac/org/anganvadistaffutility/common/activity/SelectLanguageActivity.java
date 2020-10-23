@@ -60,6 +60,8 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
                 setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                appPreferences.setLanguagePref(true);
+
 
 
                 break;
@@ -67,6 +69,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+                appPreferences.setLanguagePref(true);
                 break;
         }
     }
