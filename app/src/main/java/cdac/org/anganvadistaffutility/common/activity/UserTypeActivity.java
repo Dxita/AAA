@@ -76,7 +76,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserTypeActivity.this);
         builder.setTitle(R.string.app_name);
@@ -87,5 +87,5 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 .setNegativeButton(getString(R.string.no), (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
-    }
+    }*/
 }
