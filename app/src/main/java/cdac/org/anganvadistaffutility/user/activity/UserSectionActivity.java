@@ -60,8 +60,8 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
                     SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
                     editor.clear();
                     editor.apply();
-                    Intent intent = new Intent(context,
-                            UserTypeActivity.class);
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
                     startActivity(intent);
                     finishAffinity();
 
@@ -91,9 +91,23 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         builder.setIcon(R.drawable.app_logo);
         builder.setMessage(getString(R.string.exit_text))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), (dialog, id) -> finishAffinity())
-                .setNegativeButton(getString(R.string.no), (dialog, id) -> dialog.cancel());
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> logout())
+                .setNegativeButton(getString(R.string.no),
+                        (dialog, id) -> dialog.cancel());
         AlertDialog alert = builder.create();
         alert.show();
+    }
+    private void logout() {
+
+        SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+        editor.clear();
+        editor.apply();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
+        finishAffinity();
+
+        AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+
     }
 }

@@ -105,8 +105,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
             editor.clear();
             editor.apply();
-            Intent intent = new Intent(context,
-                    UserTypeActivity.class);
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
             startActivity(intent);
             finishAffinity();
 
