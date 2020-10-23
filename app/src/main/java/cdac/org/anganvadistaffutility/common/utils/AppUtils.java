@@ -21,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -160,5 +161,13 @@ public class AppUtils {
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);
         return !matcher.matches();
+    }
+
+    public static int currentYear() {
+        return Calendar.getInstance().get(Calendar.YEAR);
+    }
+
+    public static int previousYear() {
+        return 2015;
     }
 }

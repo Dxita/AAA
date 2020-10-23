@@ -122,8 +122,16 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         if (charSequence.length() == 4) {
             int currentFinancialYear = Integer.parseInt(charSequence.toString());
-            int nextFinancialYear = currentFinancialYear + 1;
-            to_year.setText(String.valueOf(nextFinancialYear));
+            if (currentFinancialYear >= AppUtils.currentYear() + 1) {
+                AppUtils.showToast(context, getResources().getString(R.string.next_financial_year));
+                to_year.setText("");
+            } else if (currentFinancialYear < AppUtils.previousYear()) {
+                AppUtils.showToast(context, getResources().getString(R.string.previous_financial_year));
+                to_year.setText("");
+            } else {
+                int nextFinancialYear = currentFinancialYear + 1;
+                to_year.setText(String.valueOf(nextFinancialYear));
+            }
         }
     }
 

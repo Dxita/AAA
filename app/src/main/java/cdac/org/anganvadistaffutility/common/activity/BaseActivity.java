@@ -140,6 +140,8 @@ public class BaseActivity extends AppCompatActivity {
                     String number = info.getNumber();
                     if (number == null) {
                         number = "";
+                    } else {
+                        number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
                     }
                     adminNumberList.add(number);
                 }
@@ -149,6 +151,8 @@ public class BaseActivity extends AppCompatActivity {
                 String number = telephonyManager.getLine1Number();
                 if (number == null) {
                     number = "";
+                } else {
+                    number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
                 }
                 adminNumberList.add(number);
             }
@@ -161,6 +165,7 @@ public class BaseActivity extends AppCompatActivity {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
     }
+
 
     public void verifyAdmin(RelativeLayout relativeLayout) {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.VERIFY_ADMIN_URL);
@@ -189,9 +194,9 @@ public class BaseActivity extends AppCompatActivity {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            AppUtils.showToast(context, "landscape");
+            //   AppUtils.showToast(context, "landscape");
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            AppUtils.showToast(context, "portrait");
+            //  AppUtils.showToast(context, "portrait");
         }
     }
 

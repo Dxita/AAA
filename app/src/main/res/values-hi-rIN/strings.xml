@@ -227,4 +227,6 @@
 
     <string name="exit_text">क्या बाहर जाना चाहते हो?</string>
 
+    <string name="next_financial_year">Financial year can not be greater than current financial year</string>
+    <string name="previous_financial_year">Financial year can not be less than 2015</string>
 </resources>
