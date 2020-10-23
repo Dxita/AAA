@@ -13,6 +13,13 @@ public class AppPreferences {
     private static final String IS_LOGGED_IN = "IS_LOGGED_IN";
     private static final String LANGUAGE_SET = "IS_LANGUAGE_SET";
 
+    private static final String TYPE_USER = "IS_TYPE_USER";
+
+    private static final String TYPE_ADMIN = "IS_TYPE_ADMIN";
+    private static final String TYPE_PUBLIC = "IS_TYPE_PUBLIC";
+
+
+
     private SharedPreferences.Editor editor;
 
     public AppPreferences(Context context) {
@@ -62,5 +69,37 @@ public class AppPreferences {
     public boolean isSetLanguagePref() {
         return sharedPreferences.getBoolean(LANGUAGE_SET, false);
     }
+
+
+    public void settypeuser(boolean value) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(TYPE_USER, value);
+        editor.apply();
+    }
+
+    public boolean istypeuser() {
+        return sharedPreferences.getBoolean(TYPE_USER, false);
+    }
+
+    public void settypeadmin(boolean value) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(TYPE_ADMIN, value);
+        editor.apply();
+    }
+
+    public boolean istypeadmin() {
+        return sharedPreferences.getBoolean(TYPE_ADMIN, false);
+    }
+
+    public void settyppublic(boolean value) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(TYPE_PUBLIC, value);
+        editor.apply();
+    }
+
+    public boolean istypepublic() {
+        return sharedPreferences.getBoolean(TYPE_PUBLIC, false);
+    }
+
 
 }

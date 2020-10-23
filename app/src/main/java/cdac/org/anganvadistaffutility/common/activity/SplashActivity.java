@@ -8,7 +8,9 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.VerifyAdminActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
+import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 
@@ -25,12 +27,29 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(() -> {
 
             if (appPreferences.isSetLanguagePref()) {
-                startActivity(new Intent(this, UserTypeActivity.class));
-                finish();
+
+
+                if (appPreferences.istypeuser()) {
+                    startActivity(new Intent(this, UserSectionActivity.class));
+                    finish();
+                } else if (appPreferences.istypeadmin()) {
+                    startActivity(new Intent(this, VerifyAdminActivity.class));
+                    finish();
+                } else if (appPreferences.istypeadmin()) {
+                    startActivity(new Intent(this, PublicLoginActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(this, UserTypeActivity.class));
+                    finish();
+
+                }
+
             } else {
                 startActivity(new Intent(context, SelectLanguageActivity.class));
             }
-             /*   startActivity(new Intent(SplashActivity.this, SelectLanguageActivity.class));*/
+
+
+            /*   startActivity(new Intent(SplashActivity.this, SelectLanguageActivity.class));*/
             finish();
         }, 2000);
     }

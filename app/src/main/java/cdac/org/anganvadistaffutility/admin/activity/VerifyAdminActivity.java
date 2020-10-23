@@ -133,6 +133,7 @@ public class VerifyAdminActivity extends BaseActivity {
             public void onSuccess(VerifyAdmin body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, body.getMessage());
+                appPreferences.settypeadmin(true);
             }
 
             @Override
