@@ -19,7 +19,7 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
+    private List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
     private List<Integer> infraImageList;
     protected ItemClickListener mListener;
 
@@ -27,7 +27,7 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
         protected TextView txt_infra_name;
         protected View layout;
         protected AppCompatImageView img_infra_name;
-        protected AaganwadiInfraStructure.InfrastructureDatum infrastructureDatum;
+        protected AaganwadiInfraStructure.Data.InfrastructureDatum infrastructureDatum;
 
         public ViewHolder(View v) {
             super(v);
@@ -37,13 +37,13 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
             layout.setOnClickListener(this);
         }
 
-        public void setData(AaganwadiInfraStructure.InfrastructureDatum infrastructureDatum, int drawable) {
+        public void setData(AaganwadiInfraStructure.Data.InfrastructureDatum infrastructureDatum, int drawable) {
             this.infrastructureDatum = infrastructureDatum;
             String name = "";
             if (LocaleManager.getLocale(mContext.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
-                name = infrastructureDatum.getTimInfrastructureNamee();
+                name = infrastructureDatum.getTimInfraNamee();
             } else {
-                name = infrastructureDatum.getTimInfrastructureNameh();
+                name = infrastructureDatum.getTimInfraNameh();
             }
             txt_infra_name.setText(name);
             img_infra_name.setImageResource(drawable);
@@ -57,7 +57,7 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
         }
     }
 
-    public InfraStructureAdapter(Context context, List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData, List<Integer> imageList,
+    public InfraStructureAdapter(Context context, List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData, List<Integer> imageList,
                                  ItemClickListener itemClickListener) {
         this.mContext = context;
         this.infrastructureData = infrastructureData;
@@ -85,6 +85,6 @@ public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAd
     }
 
     public interface ItemClickListener {
-        void onItemClick(AaganwadiInfraStructure.InfrastructureDatum item);
+        void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item);
     }
 }

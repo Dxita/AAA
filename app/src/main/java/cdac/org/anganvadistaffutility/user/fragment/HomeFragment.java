@@ -6,17 +6,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.user.activity.BankActivity;
 import cdac.org.anganvadistaffutility.user.activity.CardActivity;
 import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
@@ -27,7 +37,7 @@ import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import retrofit2.Call;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment {
 
     private Context context;
     private EmployeeDetails.Profile profileDetails;
@@ -36,8 +46,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private EmployeeDetails.Bank bankDetails;
     private RelativeLayout relativeLayout;
 
+    RecyclerView recyclerView;
+    ArrayList personNames = new ArrayList<>(Arrays.asList("Profile Details", "Job Details", "Bank Details", "Card Details", "Payment Details"));
+    ArrayList personImages = new ArrayList<>(Arrays.asList(R.drawable.profile, R.drawable.job, R.drawable.bank, R.drawable.cards, R.drawable.payment));
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,19 +84,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CardView cardView = root.findViewById(R.id.profile_card);
-        CardView job_card = root.findViewById(R.id.job_card);
-        CardView bank_card = root.findViewById(R.id.bank_card);
-        CardView payment_card = root.findViewById(R.id.payment_card);
-        CardView card = root.findViewById(R.id.card);
+
+        recyclerView = root.findViewById(R.id.recycler_view);
         relativeLayout = root.findViewById(R.id.relativeLayout);
 
-        cardView.setOnClickListener(this);
-        job_card.setOnClickListener(this);
-        payment_card.setOnClickListener(this);
-        bank_card.setOnClickListener(this);
-        card.setOnClickListener(this);
+        AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setHasFixedSize(true);
 
+        CustomAdapter customAdapter = new CustomAdapter(getActivity(), personNames, personImages);
+        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
         return root;
     }
 
@@ -122,7 +135,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    @Override
+   /* @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.profile_card:
@@ -141,5 +154,93 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details", cardDetails));
                 break;
         }
+    }*/
+
+    private class CustomAdapter extends RecyclerView.Adapter<ViewHolde> {
+        ArrayList personNames;
+        ArrayList personImages;
+        Context context;
+
+        public CustomAdapter(FragmentActivity activity, ArrayList personNames, ArrayList personImages) {
+            this.context = activity;
+            this.personNames = personNames;
+            this.personImages = personImages;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolde onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_items, parent, false);
+            // set the view's size, margins, paddings and layout parameters
+
+            return new ViewHolde(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolde holder, final int position) {
+            holder.text_category.setText((CharSequence) personNames.get(position));
+            holder.img_category.setImageResource((Integer) personImages.get(position));
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // open another activity on item click
+                   if (position==0)
+                   {
+                       startActivity(new Intent(getActivity(), ProfileActivity.class).putExtra("profile_details", profileDetails));
+                   }
+                   if (position==1)
+                   {
+                       startActivity(new Intent(getActivity(), JobActivity.class).putExtra("job_details", jobDetails));
+                   }
+
+                    if (position==2)
+                    {
+                        startActivity(new Intent(getActivity(), BankActivity.class).putExtra("bank_details", bankDetails));
+                    }
+
+                    if (position==3)
+                    {
+                        startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details", cardDetails));
+                    }
+
+                    if (position==4)
+                    {
+                        startActivity(new Intent(getActivity(), PaymentActivity.class));
+                    }
+                    else{
+
+                    }
+                }
+            });
+
+
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return personNames.size();
+        }
     }
+
+
+    private static class ViewHolde extends RecyclerView.ViewHolder {
+        CardView cardView_category;
+        TextView text_category;
+        ImageView img_category;
+
+        public ViewHolde(@NonNull View itemView) {
+
+            super(itemView);
+
+
+            cardView_category = itemView.findViewById(R.id.cardv);
+            text_category = itemView.findViewById(R.id.txt_infra_name);
+            img_category = itemView.findViewById(R.id.img_infra_name);
+
+        }
+    }
+
 }
+

@@ -34,7 +34,7 @@ import retrofit2.Call;
 public class InfraCategoriesActivity extends BaseActivity implements UserInfraStructureAdapter.ItemClickListener {
     private RelativeLayout relativeLayout;
     private UserInfraStructureAdapter userInfraStructureAdapter;
-    private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
+    private List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
     private List<Integer> infraStructureImageList;
 
     @Override
@@ -124,7 +124,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 // AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData.addAll(body.getData().getInfrastructureData());
-                setCustomInfraImages();
+             //   setCustomInfraImages();
                 userInfraStructureAdapter.notifyDataSetChanged();
             }
 
@@ -138,11 +138,11 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
     }
 
     @Override
-    public void onItemClick(AaganwadiInfraStructure.InfrastructureDatum item) {
-        AppUtils.showToast(context, "" + item.getTimInfrastructureId() + ": " + item.getTimInfrastructureNameh());
+    public void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item) {
+        AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
     }
 
-    private void setCustomInfraImages() {
+    /*private void setCustomInfraImages() {
         infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
         infraStructureImageList.add(R.drawable.ic_electricity);
         infraStructureImageList.add(R.drawable.ic_drinking_water);
@@ -157,7 +157,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
                 infraStructureImageList.add(R.drawable.app_logo);
             }
         }
-    }
+    }*/
 }
 
 

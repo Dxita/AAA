@@ -27,7 +27,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
 
     private RelativeLayout relativeLayout;
     private InfraStructureAdapter infraStructureAdapter;
-    private List<AaganwadiInfraStructure.InfrastructureDatum> infrastructureData;
+    private List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
     private List<Integer> infraStructureImageList;
 
     @Override
@@ -79,8 +79,8 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
     }
 
     @Override
-    public void onItemClick(AaganwadiInfraStructure.InfrastructureDatum item) {
-        AppUtils.showToast(context, "" + item.getTimInfrastructureId() + ": " + item.getTimInfrastructureNameh());
+    public void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item) {
+        AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
     }
 
     private void setCustomInfraImages() {
