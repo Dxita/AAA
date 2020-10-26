@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custom_app_bg"
-    app:ignore="NamespaceTypo">
+    android:background="@drawable/custom_app_bg">
 
     <androidx.appcompat.widget.Toolbar
-
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,84 +13,116 @@
         android:layout_alignParentLeft="true"
         android:background="@color/colorPrimary"
         android:theme="@style/ToolbarTheme"
+        android:visibility="gone"
         tool:title="@string/download_salary_slip"
         tool:titleTextColor="@color/white">
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
+        android:id="@+id/ll_emp_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar">
+        android:orientation="vertical">
 
-        <LinearLayout
-
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_financial_year"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_14sp" />
 
+        <TextView
+            android:id="@+id/txt_emp_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_14sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txt_emp_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_14sp" />
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:background="@drawable/header_border"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="@string/id"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textsize_14sp"
-                    android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/header_border"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="@string/months"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textsize_14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.08"
+                android:background="@drawable/header_border"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Sr. No."
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_14sp" />
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:background="@drawable/header_border"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="@string/payment"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textsize_14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.37"
+                android:background="@drawable/header_border"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Bill Name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_14sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.30"
+                android:background="@drawable/header_border"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Payment Month"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:background="@drawable/header_border"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Amount (Rs.)"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_14sp" />
         </LinearLayout>
 
+    </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_download_salary_slip"
+        android:layout_below="@id/ll_emp_data"
+        android:scrollbars="vertical" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_download_salary_slip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/buttonbg"
+        android:background="@color/peach"
         android:text="@string/download"
         android:textColor="@color/white" />
 </RelativeLayout>
