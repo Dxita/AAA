@@ -271,9 +271,9 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
             if (payment_list != null && payment_list.size() > 0) {
                 PaymentDetails.Empdatum empDatum = payment_list.get(position);
                 holder.txt_sr_no.setText("" + (position + 1));
-                holder.txt_bill_name.setText(empDatum.getSubbillname().trim());
-                holder.txt_payment_month.setText(empDatum.getMonth().trim());
-                holder.txt_amount.setText(empDatum.getSalary().trim());
+                holder.txt_bill_name.setText(empDatum.getSubbillname().trim().replace(" ", ""));
+                holder.txt_payment_month.setText(empDatum.getMonth().trim().replace(" ", ""));
+                holder.txt_amount.setText(empDatum.getSalary().trim().replace(" ", ""));
             }
         }
 

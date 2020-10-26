@@ -41,9 +41,8 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:background="@drawable/border"
-        android:gravity="center|end"
+        android:gravity="center"
         android:textColor="@color/black"
-        android:padding="@dimen/margin_05"
         android:textSize="@dimen/textsize_14sp" />
 
 </LinearLayout>
