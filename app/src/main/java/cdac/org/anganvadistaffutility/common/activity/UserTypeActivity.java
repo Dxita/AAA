@@ -1,6 +1,5 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -43,6 +42,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.user_type_admin) {
+            //  startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (AppUtils.hasPermissions(context, AppUtils.PHONE_PERMISSIONS)) {
                     fetchAdminPhoneNumber(relativeLayout);

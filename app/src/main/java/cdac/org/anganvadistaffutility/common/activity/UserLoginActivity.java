@@ -70,7 +70,7 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
                     AppUtils.showToast(context, body.getStatus().getMessage());
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     appPreferences.setUserLoggedIn(true);
-                    appPreferences.settypeuser(true);
+                  //  appPreferences.settypeuser(true);
                     startActivity(new Intent(context, UserSectionActivity.class));
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);

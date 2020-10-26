@@ -229,4 +229,10 @@
 
     <string name="next_financial_year">Financial year can not be greater than current financial year</string>
     <string name="previous_financial_year">Financial year can not be less than 2015</string>
+
+    <string name="sr_no">Sr. No.</string>
+    <string name="bil_name">Bill Name</string>
+    <string name="payment_month">Payment Month</string>
+    <string name="amount">Amount (Rs.)</string>
+
 </resources>

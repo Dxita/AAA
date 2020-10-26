@@ -93,26 +93,33 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
                             , districtWiseEmployeeDetails.get(j).getDistrict_id())
                     );
                 }
+            } else {
+                for (int j = 0; j < districtWiseEmployeeDetails.size(); j++) {
+                    noOfEmp1.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id())
+                    );
+                }
             }
 
-            if (districtWiseEmployeeDetails.size() >= 2 * fixListSize) {
-                for (int j = fixListSize; j < 2 * fixListSize; j++) {
+            if (districtWiseEmployeeDetails.size() <= 2 * fixListSize) {
+                for (int j = fixListSize; j < districtWiseEmployeeDetails.size(); j++) {
                     noOfEmp2.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
             }
 
-            if (districtWiseEmployeeDetails.size() >= 3 * fixListSize) {
-                for (int j = 2 * fixListSize; j < 3 * fixListSize; j++) {
+            if (districtWiseEmployeeDetails.size() <= 3 * fixListSize) {
+                for (int j = 2 * fixListSize; j < districtWiseEmployeeDetails.size(); j++) {
                     noOfEmp3.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
             }
 
-            if (districtWiseEmployeeDetails.size() >= 4 * fixListSize) {
-                for (int j = 3 * fixListSize; j < 4 * fixListSize; j++) {
+            if (districtWiseEmployeeDetails.size() <= 4 * fixListSize) {
+                for (int j = 3 * fixListSize; j < districtWiseEmployeeDetails.size(); j++) {
                     noOfEmp4.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));

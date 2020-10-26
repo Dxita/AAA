@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,19 +53,18 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_salary_details_tbl);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        recycler_view = findViewById(R.id.recycler_view);
-        AppCompatButton btn_download_salary_slip = findViewById(R.id.btn_download_salary_slip);
-
         String emdData = getIntent().getStringExtra("salary_data");
         fromYear = getIntent().getStringExtra("fromYear");
         toYear = getIntent().getStringExtra("toYear");
-
         empDatumList = AppUtils.convertToGet(emdData);
         if (empDatumList != null) {
             if (!empDatumList.isEmpty()) {
@@ -72,7 +72,20 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
             }
         }
 
+        initView();
         setRecyclerView();
+    }
+
+    private void initView() {
+        recycler_view = findViewById(R.id.recycler_view);
+        AppCompatButton btn_download_salary_slip = findViewById(R.id.btn_download_salary_slip);
+        TextView txt_financial_year = findViewById(R.id.txt_financial_year);
+        TextView txt_emp_id = findViewById(R.id.txt_emp_id);
+        TextView txt_emp_name = findViewById(R.id.txt_emp_name);
+
+        txt_financial_year.setText("Payment Data of Financial Year: " + fromYear + "-" + toYear.substring(2, 4));
+        txt_emp_id.setText("Employee ID: " + empDatumList.get(0).getEmployeeId());
+        txt_emp_name.setText("Employee Name: " + empDatumList.get(0).getEmployeeNameEnglish());
         btn_download_salary_slip.setOnClickListener(this);
     }
 
@@ -115,7 +128,8 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         String outPath = "";
 
         // String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
-        String[] headers = new String[]{"Sr. No.", "Payment Month", "Bill Name", "Amount (Rs.)"};
+        String[] headers = new String[]{getResources().getString(R.string.sr_no), getResources().getString(R.string.payment_month),
+                getResources().getString(R.string.bil_name), getResources().getString(R.string.amount)};
         Document document = new Document();
         document.setPageSize(PageSize.A4);
         //   document.setMargins(16, 14, 14, 14);
@@ -131,9 +145,10 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
             Font fontHeader = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD);
             Font fontRow = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.NORMAL);
 
-            Paragraph p1 = new Paragraph("Employee Name: " + empDatumList.get(0).getEmployeeNameEnglish());
+            Paragraph p1 = new Paragraph("Payment Data of Financial Year: " + fromYear + "-" + toYear.substring(2, 4));
             Paragraph p2 = new Paragraph("Employee ID: " + empDatumList.get(0).getEmployeeId());
-            Paragraph p3 = new Paragraph("Payment Data of Financial Year: " + fromYear + "-" + toYear.substring(2, 4));
+            Paragraph p3 = new Paragraph("Employee Name: " + empDatumList.get(0).getEmployeeNameEnglish());
+
             Font paraFont = new Font(fontHeader);
             p1.setAlignment(Paragraph.ALIGN_CENTER);
             p1.setFont(paraFont);
@@ -255,9 +270,10 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             if (payment_list != null && payment_list.size() > 0) {
                 PaymentDetails.Empdatum empDatum = payment_list.get(position);
-                holder.id_tv.setText(empDatum.getEmployeeId());
-                holder.name_tv.setText(empDatum.getMonth());
-                holder.payment_tv.setText(empDatum.getSalary());
+                holder.txt_sr_no.setText("" + (position + 1));
+                holder.txt_bill_name.setText(empDatum.getSubbillname().trim());
+                holder.txt_payment_month.setText(empDatum.getMonth().trim());
+                holder.txt_amount.setText(empDatum.getSalary().trim());
             }
         }
 
@@ -267,17 +283,16 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView id_tv, name_tv, payment_tv;
+            protected TextView txt_sr_no, txt_bill_name, txt_payment_month, txt_amount;
 
             public ViewHolder(View itemView) {
                 super(itemView);
 
-                id_tv = itemView.findViewById(R.id.id_tv);
-                name_tv = itemView.findViewById(R.id.name_tv);
-                payment_tv = itemView.findViewById(R.id.payment_tv);
-
+                txt_sr_no = itemView.findViewById(R.id.txt_sr_no);
+                txt_bill_name = itemView.findViewById(R.id.txt_bill_name);
+                txt_payment_month = itemView.findViewById(R.id.txt_payment_month);
+                txt_amount = itemView.findViewById(R.id.txt_amount);
             }
         }
     }
-
 }
