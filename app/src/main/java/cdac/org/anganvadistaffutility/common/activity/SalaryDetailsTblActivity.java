@@ -128,7 +128,8 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         String outPath = "";
 
         // String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
-        String[] headers = new String[]{"Sr. No.", "Payment Month", "Bill Name", "Amount (Rs.)"};
+        String[] headers = new String[]{getResources().getString(R.string.sr_no), getResources().getString(R.string.payment_month),
+                getResources().getString(R.string.bil_name), getResources().getString(R.string.amount)};
         Document document = new Document();
         document.setPageSize(PageSize.A4);
         //   document.setMargins(16, 14, 14, 14);
