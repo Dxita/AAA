@@ -41,7 +41,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:background="@drawable/border"
-        android:gravity="center"
+        android:gravity="right"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_14sp" />
 
