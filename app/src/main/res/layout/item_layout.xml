@@ -41,7 +41,8 @@
         android:layout_height="match_parent"
         android:layout_weight="0.25"
         android:background="@drawable/border"
-        android:gravity="right"
+        android:gravity="center|end"
+        android:padding="@dimen/margin_05"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_14sp" />
 
