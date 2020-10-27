@@ -99,9 +99,9 @@ public class UserInfraStructureAdapter  extends RecyclerView.Adapter<UserInfraSt
             icon=infrastructureDatum.getTimInfraIcon();
 
             txt_infra_name.setText(name);
-            Glide.with(mContext)
+           /* Glide.with(mContext)
                     .load(icon)
-                    .into(img_infra_name);
+                    .into(img_infra_name);*/
 
         }
     }
