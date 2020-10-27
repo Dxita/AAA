@@ -9,9 +9,12 @@
         android:id="@+id/txt_sr_no"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.08"
+        android:layout_weight="0.12"
         android:background="@drawable/border"
+        android:ellipsize="end"
         android:gravity="center"
+        android:padding="@dimen/margin_05"
+        android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_14sp" />
 
@@ -19,9 +22,12 @@
         android:id="@+id/txt_bill_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.37"
+        android:layout_weight="0.28"
         android:background="@drawable/border"
+        android:ellipsize="end"
         android:gravity="center"
+        android:padding="@dimen/margin_05"
+        android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_14sp" />
 
@@ -31,7 +37,10 @@
         android:layout_height="match_parent"
         android:layout_weight="0.30"
         android:background="@drawable/border"
+        android:ellipsize="end"
         android:gravity="center"
+        android:padding="@dimen/margin_05"
+        android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_14sp" />
 
@@ -39,10 +48,12 @@
         android:id="@+id/txt_amount"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.25"
+        android:layout_weight="0.30"
         android:background="@drawable/border"
+        android:ellipsize="end"
         android:gravity="center|end"
         android:padding="@dimen/margin_05"
+        android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_14sp" />
 

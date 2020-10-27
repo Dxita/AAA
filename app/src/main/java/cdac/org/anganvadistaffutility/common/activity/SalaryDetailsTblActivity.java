@@ -273,6 +273,11 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
                 holder.txt_sr_no.setText("" + (position + 1));
                 holder.txt_bill_name.setText(empDatum.getSubbillname().trim().replace(" ", ""));
                 holder.txt_payment_month.setText(empDatum.getMonth().trim().replace(" ", ""));
+
+               /* holder.txt_payment_month.setText(empDatum.getMonth().trim()
+                        .substring(0, empDatum.getMonth().indexOf(",")).substring(0, 3).replace(" ", "") + ".,"
+                        + empDatum.getMonth().trim().replace(" ", "")
+                        .substring(empDatum.getMonth().trim().indexOf(",") + 1));*/
                 holder.txt_amount.setText(empDatum.getSalary().trim().replace(" ", ""));
             }
         }

@@ -30,9 +30,9 @@ import cdac.org.anganvadistaffutility.admin.data.DistrictWiseEmployeeDetails;
 public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWisePieChartAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetailsList;
+    protected List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetailsList;
     protected ItemClickListener mListener;
-    private int fixListSize = 7;
+    protected int fixListSize = 7;
     private int totalListSize = 0;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements OnChartValueSelectedListener {
@@ -86,8 +86,52 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
             PieDataSet dataSet = null;
             PieData pieData = null;
 
-            if (districtWiseEmployeeDetails.size() >= fixListSize) {
-                for (int j = 0; j < fixListSize; j++) {
+            for (int j = 0; j < districtWiseEmployeeDetails.size(); j++) {
+                if (position == 0 && j < fixListSize) {
+                    noOfEmp1.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id())
+                    );
+
+                    dataSet = new PieDataSet(noOfEmp1, "");
+                    pieData = new PieData(dataSet);
+
+                } else if (position == 1 && j >= fixListSize && j < 2 * fixListSize) {
+                    noOfEmp2.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
+
+                    dataSet = new PieDataSet(noOfEmp2, "");
+                    pieData = new PieData(dataSet);
+
+                } else if (position == 2 && j >= 2 * fixListSize && j < 3 * fixListSize) {
+                    noOfEmp3.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
+
+                    dataSet = new PieDataSet(noOfEmp3, "");
+                    pieData = new PieData(dataSet);
+
+                } else if (position == 3 && j >= 3 * fixListSize && j < 4 * fixListSize) {
+                    noOfEmp4.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
+
+                    dataSet = new PieDataSet(noOfEmp4, "");
+                    pieData = new PieData(dataSet);
+
+                } else if (position == 4 && j >= 4 * fixListSize && j < 5 * fixListSize) {
+                    noOfEmp5.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
+                            districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
+
+                    dataSet = new PieDataSet(noOfEmp5, "");
+                    pieData = new PieData(dataSet);
+                }
+            }
+
+           /* if (districtWiseEmployeeDetails.size() <= fixListSize) {
+                for (int j = 0; j < districtWiseEmployeeDetails.size(); j++) {
                     noOfEmp1.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id())
@@ -132,9 +176,9 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
                 }
-            }
+            }*/
 
-            if (position == 0) {
+           /* if (position == 0) {
                 dataSet = new PieDataSet(noOfEmp1, "");
                 pieData = new PieData(dataSet);
             } else if (position == 1) {
@@ -149,7 +193,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
             } else if (position == 4) {
                 dataSet = new PieDataSet(noOfEmp5, "");
                 pieData = new PieData(dataSet);
-            }
+            }*/
 
             assert dataSet != null;
             dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
