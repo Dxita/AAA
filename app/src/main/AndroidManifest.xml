@@ -27,9 +27,10 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".common.LanguageActivity"></activity>
+        <activity android:name=".user.activity.AwcInfraItemsActivity"></activity>
+        <activity android:name=".common.LanguageActivity" />
         <activity
-            android:name=".user.activity.InfraCategoriesActivity"
+            android:name=".user.activity.AWCInfrastructureActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".public_u.activity.activity.PublicOTPVerificationActivity"
@@ -92,11 +93,9 @@
         <activity
             android:name=".admin.activity.ViewAaGanWadiDataActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".admin.activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />

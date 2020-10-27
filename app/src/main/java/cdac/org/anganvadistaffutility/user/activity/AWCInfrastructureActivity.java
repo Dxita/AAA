@@ -31,7 +31,7 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.adapter.UserInfraStructureAdapter;
 import retrofit2.Call;
 
-public class InfraCategoriesActivity extends BaseActivity implements UserInfraStructureAdapter.ItemClickListener {
+public class AWCInfrastructureActivity extends BaseActivity implements UserInfraStructureAdapter.ItemClickListener {
     private RelativeLayout relativeLayout;
     private UserInfraStructureAdapter userInfraStructureAdapter;
     private List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
@@ -43,7 +43,7 @@ public class InfraCategoriesActivity extends BaseActivity implements UserInfraSt
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_infra_categories);
+        setContentView(R.layout.activity_awc_infrastructure);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
