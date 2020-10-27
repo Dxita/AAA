@@ -230,10 +230,11 @@
     <string name="next_financial_year">वित्तीय वर्ष चालू वित्तीय वर्ष से अधिक नहीं हो सकता है</string>
     <string name="previous_financial_year">वित्तीय वर्ष 2015 से कम नहीं हो सकता है</string>
 
-    <string name="sr_no">क्रमांक</string>
-    <string name="bil_name">बिल का नाम</string>
-    <string name="payment_month">भुगतान का महीना</string>
-    <string name="amount">राशि (रु।)</string>
+    <string name="sr_no">Sr. No.</string>
+    <string name="bil_name">Bill Name</string>
+    <string name="payment_month">Payment Month</string>
+    <string name="amount">Amount (Rs.)</string>
+
     <string name="infra_item">Infrastructure Item</string>
     <string name="update">अपडेट करें</string>
     <string name="item_name">Item Name</string>
