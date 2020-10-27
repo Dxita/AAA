@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_app_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_margin="@dimen/margin_08"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_tv"
+            android:padding="@dimen/margin_10"
+            android:textSize="@dimen/textsize_17sp"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/margin_10"
+            android:layout_marginLeft="@dimen/margin_05"
+            android:gravity="center"
+            android:text="@string/item_name"
+            android:layout_width="@dimen/margin_0"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_qty"
+            android:padding="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_05"
+            android:layout_marginLeft="@dimen/margin_05"
+            android:gravity="center"
+            android:textSize="@dimen/textsize_17sp"
+            android:layout_weight="1"
+            android:text="@string/qty"
+            android:layout_width="@dimen/margin_0"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</RelativeLayout>

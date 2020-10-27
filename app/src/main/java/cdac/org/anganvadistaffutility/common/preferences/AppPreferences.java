@@ -12,6 +12,7 @@ public class AppPreferences {
     private static final String EMPLOYEE_ID = "EMPLOYEE_ID";
     private static final String IS_LOGGED_IN = "IS_LOGGED_IN";
     private static final String LANGUAGE_SET = "IS_LANGUAGE_SET";
+    private static final String AWCID = "AWC_ID";
 
     private static final String TYPE_USER = "IS_TYPE_USER";
 
@@ -36,9 +37,14 @@ public class AppPreferences {
         editor.apply();
     }
 
+
+
     public String getEmployeeId() {
         return sharedPreferences.getString(EMPLOYEE_ID, "");
     }
+
+
+
 
     public void saveGeneratedOtp(String otp) {
         editor = sharedPreferences.edit();
@@ -102,4 +108,13 @@ public class AppPreferences {
     }
 
 
+    public void setAwcId(String awcId) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AWCID, awcId);
+        editor.apply();
+    }
+
+    public String getAwcId() {
+        return sharedPreferences.getString(AWCID, "");
+    }
 }

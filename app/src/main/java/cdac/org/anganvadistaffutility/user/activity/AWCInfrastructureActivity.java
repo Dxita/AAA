@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.user.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -124,8 +125,10 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
                 // AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData.addAll(body.getData().getInfrastructureData());
+                infrastructureData=body.getData().getInfrastructureData();
              //   setCustomInfraImages();
                 userInfraStructureAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -139,6 +142,10 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
     @Override
     public void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item) {
+
+       /* startActivity(new Intent(context,AwcInfraItemsActivity.class).putExtra("awc_item_id", item.getTimInfraId()));
+        Log.d("id_infra",item.getTimInfraId());
+*/
         AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
     }
 

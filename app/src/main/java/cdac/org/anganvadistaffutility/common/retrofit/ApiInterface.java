@@ -6,6 +6,7 @@ import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
+import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
@@ -84,5 +85,10 @@ public interface ApiInterface {
     @POST("api_js_admin_check_by_mob/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<VerifyAdmin> verifyAdmin(@Field("mobileno") String adminNumber);
+
+    @POST("api_js_infrastructure_master_by_awcid/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AwcItemsData> awcItemData(@Field("taid_awc_id") String awc_id,
+                                   @Field("taid_tim_infra_id") String infra_id);
 
 }

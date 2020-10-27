@@ -238,4 +238,8 @@
     <string name="bil_name">Bill Name</string>
     <string name="payment_month">Payment Month</string>
     <string name="amount">Amount (Rs.)</string>
+    <string name="infra_item">Infrastructure Item</string>
+    <string name="update">Update</string>
+    <string name="item_name">Item Name</string>
+    <string name="qty">Item Quantity</string>
 </resources>

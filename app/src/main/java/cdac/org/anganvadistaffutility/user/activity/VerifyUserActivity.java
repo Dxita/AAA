@@ -66,6 +66,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getMessage());
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
+                    appPreferences.setAwcId(body.getData().getEmpdata().getAwcid());
                     if (body.getData().getEmpdata().getPasswordset()) {
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                         startActivity(new Intent(context, UserLoginActivity.class));
