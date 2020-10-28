@@ -10,6 +10,7 @@ import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
+import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
 import retrofit2.Call;
@@ -90,5 +91,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<AwcItemsData> awcItemData(@Field("taid_awc_id") String awc_id,
                                    @Field("taid_tim_infra_id") String infra_id);
+
+    @POST("api_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<UserInfrastructureData> userInfrastructureData(@Field("tjaid_awc_id") String awc_id);
 
 }

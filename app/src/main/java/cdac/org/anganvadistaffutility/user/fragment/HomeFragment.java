@@ -45,9 +45,8 @@ public class HomeFragment extends Fragment {
     private EmployeeDetails.Card cardDetails;
     private EmployeeDetails.Bank bankDetails;
     private RelativeLayout relativeLayout;
-
+    ArrayList personNames;
     RecyclerView recyclerView;
-    ArrayList personNames = new ArrayList<>(Arrays.asList("Profile Details", "Job Details", "Bank Details", "Card Details", "Payment Details"));
     ArrayList personImages = new ArrayList<>(Arrays.asList(R.drawable.profile, R.drawable.job, R.drawable.bank, R.drawable.cards, R.drawable.payment));
 
 
@@ -87,13 +86,16 @@ public class HomeFragment extends Fragment {
 
         recyclerView = root.findViewById(R.id.recycler_view);
         relativeLayout = root.findViewById(R.id.relativeLayout);
-
+        personNames = new ArrayList<>(Arrays.asList(getResources().getString(R.string.profile_details), getResources().getString(R.string.job_details),
+                getResources().getString(R.string.bank_details), getResources().getString(R.string.card_details), getResources().getString(R.string.payment_details)));
         AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
         CustomAdapter customAdapter = new CustomAdapter(getActivity(), personNames, personImages);
         recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+
+
         return root;
     }
 
@@ -185,30 +187,24 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     // open another activity on item click
-                   if (position==0)
-                   {
-                       startActivity(new Intent(getActivity(), ProfileActivity.class).putExtra("profile_details", profileDetails));
-                   }
-                   if (position==1)
-                   {
-                       startActivity(new Intent(getActivity(), JobActivity.class).putExtra("job_details", jobDetails));
-                   }
+                    if (position == 0) {
+                        startActivity(new Intent(getActivity(), ProfileActivity.class).putExtra("profile_details", profileDetails));
+                    }
+                    if (position == 1) {
+                        startActivity(new Intent(getActivity(), JobActivity.class).putExtra("job_details", jobDetails));
+                    }
 
-                    if (position==2)
-                    {
+                    if (position == 2) {
                         startActivity(new Intent(getActivity(), BankActivity.class).putExtra("bank_details", bankDetails));
                     }
 
-                    if (position==3)
-                    {
+                    if (position == 3) {
                         startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details", cardDetails));
                     }
 
-                    if (position==4)
-                    {
+                    if (position == 4) {
                         startActivity(new Intent(getActivity(), PaymentActivity.class));
-                    }
-                    else{
+                    } else {
 
                     }
                 }

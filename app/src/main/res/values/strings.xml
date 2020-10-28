@@ -243,4 +243,9 @@
     <string name="update">Update</string>
     <string name="item_name">Item Name</string>
     <string name="qty">Item Quantity</string>
+
+    <string name="session">Session Timeout.</string>
+    <string name="alert">Alert</string>
+    <string name="ok">Ok</string>
+
 </resources>

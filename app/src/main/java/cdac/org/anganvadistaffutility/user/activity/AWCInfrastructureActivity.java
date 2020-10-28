@@ -30,12 +30,13 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.adapter.UserInfraStructureAdapter;
+import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import retrofit2.Call;
 
 public class AWCInfrastructureActivity extends BaseActivity implements UserInfraStructureAdapter.ItemClickListener {
     private RelativeLayout relativeLayout;
     private UserInfraStructureAdapter userInfraStructureAdapter;
-    private List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
+    private List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureData;
     private List<Integer> infraStructureImageList;
 
     @Override
@@ -111,22 +112,24 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R.menu.main, menu);
+        // getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     private void getAaGanWadiInfrastructureData() {
 
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.INFRASTRUCTURE_BASE_URL);
-        Call<AaganwadiInfraStructure> call = apiInterface.getInfrastructureData();
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AaganwadiInfraStructure>() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.USER_AWC_ITEMS);
+        Call<UserInfrastructureData> call = apiInterface.userInfrastructureData(appPreferences.getAwcId());
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UserInfrastructureData>() {
             @Override
-            public void onSuccess(AaganwadiInfraStructure body) {
+            public void onSuccess(UserInfrastructureData body) {
                 // AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData.addAll(body.getData().getInfrastructureData());
-                infrastructureData=body.getData().getInfrastructureData();
-             //   setCustomInfraImages();
+                infrastructureData = body.getData().getInfrastructureData();
+                //   setCustomInfraImages();
+                setCustomInfraImages();
+
                 userInfraStructureAdapter.notifyDataSetChanged();
 
             }
@@ -141,7 +144,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     }
 
     @Override
-    public void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item) {
+    public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
 
        /* startActivity(new Intent(context,AwcInfraItemsActivity.class).putExtra("awc_item_id", item.getTimInfraId()));
         Log.d("id_infra",item.getTimInfraId());
@@ -149,22 +152,30 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
         AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
     }
 
-    /*private void setCustomInfraImages() {
-        infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
-        infraStructureImageList.add(R.drawable.ic_electricity);
-        infraStructureImageList.add(R.drawable.ic_drinking_water);
-        infraStructureImageList.add(R.drawable.ic_toilet_new);
-
-        infraStructureImageList.add(R.drawable.ic_kitchen);
-        infraStructureImageList.add(R.drawable.ic_open_area);
-        infraStructureImageList.add(R.drawable.ic_creche_house);
-
+    private void setCustomInfraImages() {
+        for (UserInfrastructureData.Data.InfrastructureDatum infrastructureDatum : infrastructureData) {
+            if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("building")) {
+                infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("creche")) {
+                infraStructureImageList.add(R.drawable.ic_creche_house);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("electricity")) {
+                infraStructureImageList.add(R.drawable.ic_electricity);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("toilet")) {
+                infraStructureImageList.add(R.drawable.ic_toilet_new);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("water")) {
+                infraStructureImageList.add(R.drawable.ic_drinking_water);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("kitchen")) {
+                infraStructureImageList.add(R.drawable.ic_kitchen);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("area")) {
+                infraStructureImageList.add(R.drawable.ic_open_area);
+            }
+        }
         if (infrastructureData.size() > infraStructureImageList.size()) {
             for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {
                 infraStructureImageList.add(R.drawable.app_logo);
             }
         }
-    }*/
+    }
 }
 
 

@@ -2,15 +2,20 @@ package cdac.org.anganvadistaffutility.common.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -25,6 +30,8 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.HintRequest;
+
+import org.spongycastle.jcajce.provider.symmetric.ARC4;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +56,13 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static final long DISCONNECT_TIMEOUT =900000;
+  // public static final long DISCONNECT_TIMEOUT =30000; // 30 sec = 30 * 1000 ms
+    Handler disconnectHandler = new Handler() {
+        public void handleMessage(Message msg) {
+        }
+    };
+
     public static final String TAG = BaseActivity.class.getSimpleName();
 
     private final int RESOLVE_HINT = 2;
@@ -68,6 +82,59 @@ public class BaseActivity extends AppCompatActivity {
         appPreferences = new AppPreferences(context);
         telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         resetTitles();
+
+
+
+    }
+
+    //inactivity
+    private Runnable disconnectCallback = new Runnable() {
+        @Override
+        public void run() {
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                    BaseActivity.this);
+            alertDialog.setCancelable(false);
+            alertDialog.setTitle(context.getResources().getString(R.string.alert));
+            alertDialog
+                    .setMessage(context.getResources().getString(R.string.session));
+            alertDialog.setNegativeButton(context.getResources().getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+                            editor.clear();
+                            editor.apply();
+                            AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            startActivity(intent);
+                            finishAffinity();
+
+                            dialog.cancel();
+                        }
+                    });
+
+            alertDialog.show();
+
+            // Perform any required operation on disconnect
+        }
+    };
+
+    public void resetDisconnectTimer() {
+        disconnectHandler.removeCallbacks(disconnectCallback);
+        disconnectHandler.postDelayed(disconnectCallback, DISCONNECT_TIMEOUT);
+    }
+
+    public void stopDisconnectTimer() {
+        disconnectHandler.removeCallbacks(disconnectCallback);
+    }
+
+
+    @Override
+    public void onUserInteraction() {
+        resetDisconnectTimer();
     }
 
     @Override
@@ -277,6 +344,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        stopDisconnectTimer();
     }
 
     @Override
@@ -287,6 +355,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        resetDisconnectTimer();
+
     }
 
     @Override
@@ -298,5 +368,13 @@ public class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+    resetDisconnectTimer();
+        // this method is called when the app goes in background.
+        // you can perform your logout service here
+        super.onTrimMemory(level);
     }
 }

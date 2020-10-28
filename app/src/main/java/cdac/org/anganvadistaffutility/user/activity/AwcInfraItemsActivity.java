@@ -157,25 +157,24 @@ public class AwcInfraItemsActivity extends BaseActivity {
 
 
     private static class MyViewHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView item_name,item_qty;
+        AppCompatTextView item_name, item_qty;
         protected AwcItemsData.Data.InfrastructureDatum infrastructureData;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             item_name = itemView.findViewById(R.id.item_tv);
-            item_qty=itemView.findViewById(R.id.item_qty);
+            item_qty = itemView.findViewById(R.id.item_qty);
         }
 
         public void setData(AwcItemsData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
             String name = "";
-            String qty= "";
+            String qty = "";
             name = infrastructureData.getTidInfraNamee();
-            qty=infrastructureData.getTaidQty();
+            qty = infrastructureData.getTaidQty();
             item_name.setText(name);
             item_qty.setText(qty);
-
 
 
         }

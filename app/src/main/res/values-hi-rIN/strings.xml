@@ -239,5 +239,11 @@
     <string name="update">अपडेट करें</string>
     <string name="item_name">Item Name</string>
     <string name="qty">"Item Quantity "</string>
+    <string name="session">सत्र मध्यांतर।</string>
+
+    <string name="alert">चेतावनी</string>
+    <string name="ok">ठीक</string>
+
+
 
 </resources>
