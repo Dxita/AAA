@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -145,11 +146,12 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
     @Override
     public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
+       // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
+       // Log.d("id_infra",item.getTimInfraId());
 
-       /* startActivity(new Intent(context,AwcInfraItemsActivity.class).putExtra("awc_item_id", item.getTimInfraId()));
-        Log.d("id_infra",item.getTimInfraId());
-*/
+        startActivity(new Intent(context,AanganwadiBuildingActivity.class));
         AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
+
     }
 
     private void setCustomInfraImages() {

@@ -27,7 +27,8 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.AwcInfraItemsActivity"></activity>
+        <activity android:name=".user.activity.AanganwadiBuildingActivity"></activity>
+        <activity android:name=".user.activity.AwcInfraItemsActivity" />
         <activity android:name=".common.LanguageActivity" />
         <activity
             android:name=".user.activity.AWCInfrastructureActivity"

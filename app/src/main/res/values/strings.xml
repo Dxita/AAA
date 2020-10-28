@@ -247,5 +247,6 @@
     <string name="session">Session Timeout.</string>
     <string name="alert">Alert</string>
     <string name="ok">Ok</string>
+    <string name="aanganwadi_building">Aanganwadi Building</string>
 
 </resources>
