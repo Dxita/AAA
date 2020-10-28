@@ -84,14 +84,23 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
     }
 
     private void setCustomInfraImages() {
-        infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
-        infraStructureImageList.add(R.drawable.ic_electricity);
-        infraStructureImageList.add(R.drawable.ic_drinking_water);
-        infraStructureImageList.add(R.drawable.ic_toilet_new);
-        infraStructureImageList.add(R.drawable.ic_kitchen);
-        infraStructureImageList.add(R.drawable.ic_open_area);
-        infraStructureImageList.add(R.drawable.ic_creche_house);
-
+        for (AaganwadiInfraStructure.Data.InfrastructureDatum infrastructureDatum : infrastructureData) {
+            if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("building")) {
+                infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("creche")) {
+                infraStructureImageList.add(R.drawable.ic_creche_house);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("electricity")) {
+                infraStructureImageList.add(R.drawable.ic_electricity);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("toilet")) {
+                infraStructureImageList.add(R.drawable.ic_toilet_new);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("water")) {
+                infraStructureImageList.add(R.drawable.ic_drinking_water);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("kitchen")) {
+                infraStructureImageList.add(R.drawable.ic_kitchen);
+            } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("area")) {
+                infraStructureImageList.add(R.drawable.ic_open_area);
+            }
+        }
         if (infrastructureData.size() > infraStructureImageList.size()) {
             for (int i = infraStructureImageList.size(); i < infrastructureData.size(); i++) {
                 infraStructureImageList.add(R.drawable.app_logo);

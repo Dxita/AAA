@@ -18,9 +18,9 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class InfraStructureAdapter extends RecyclerView.Adapter<InfraStructureAdapter.ViewHolder> {
 
-    private Context mContext;
-    private List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
-    private List<Integer> infraImageList;
+    protected Context mContext;
+    protected List<AaganwadiInfraStructure.Data.InfrastructureDatum> infrastructureData;
+    protected List<Integer> infraImageList;
     protected ItemClickListener mListener;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
