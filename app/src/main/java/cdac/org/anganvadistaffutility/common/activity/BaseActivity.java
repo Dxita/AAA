@@ -51,23 +51,17 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public static final long DISCONNECT_TIMEOUT = 900000;
-    // public static final long DISCONNECT_TIMEOUT =30000; // 30 sec = 30 * 1000 ms
-    /*Handler disconnectHandler = new Handler() {
-        public void handleMessage(Message msg) {
-        }
-    };*/
-
     public static final String TAG = BaseActivity.class.getSimpleName();
 
     private final int PHONE_RESOLVE_HINT = 2;
     private final int EMAIL_RESOLVE_HINT = 3;
+    private final int NO_HINTS_AVAILABLE = 1002;
 
     private RelativeLayout relativeLay;
     public AppPreferences appPreferences;
     public Context context;
     public ApiInterface apiInterface;
-    public List<String> adminNumberList;
+    protected List<String> adminNumberList;
     private TelephonyManager telephonyManager;
 
     @Override
@@ -78,57 +72,6 @@ public class BaseActivity extends AppCompatActivity {
         appPreferences = new AppPreferences(context);
         telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         resetTitles();
-    }
-
-    //inactivity
-   /* private Runnable disconnectCallback = new Runnable() {
-        @Override
-        public void run() {
-
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                    BaseActivity.this);
-            alertDialog.setCancelable(false);
-            alertDialog.setTitle(context.getResources().getString(R.string.alert));
-            alertDialog
-                    .setMessage(context.getResources().getString(R.string.session));
-            alertDialog.setNegativeButton(context.getResources().getString(R.string.ok),
-                    new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-                            editor.clear();
-                            editor.apply();
-                            AppUtils.showToast(context, getResources().getString(R.string.logout_success));
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            startActivity(intent);
-                            finishAffinity();
-
-                            dialog.cancel();
-                        }
-                    });
-
-            alertDialog.show();
-
-            // Perform any required operation on disconnect
-        }
-    };*/
-
-    public void resetDisconnectTimer() {
-      /*  disconnectHandler.removeCallbacks(disconnectCallback);
-        disconnectHandler.postDelayed(disconnectCallback, DISCONNECT_TIMEOUT);*/
-    }
-
-    public void stopDisconnectTimer() {
-
-        //disconnectHandler.removeCallbacks(disconnectCallback);
-    }
-
-
-    @Override
-    public void onUserInteraction() {
-        resetDisconnectTimer();
     }
 
     @Override
@@ -196,6 +139,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void fetchAdminPhoneNumber(RelativeLayout relativeLayout) {
+        adminNumberList = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             SubscriptionManager subscriptionManager = (SubscriptionManager)
                     getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
@@ -204,7 +148,6 @@ public class BaseActivity extends AppCompatActivity {
                 return;
             }
 
-            adminNumberList = new ArrayList<>();
             assert subscriptionManager != null;
             List<SubscriptionInfo> subscriptionInfoList = subscriptionManager.getActiveSubscriptionInfoList();
             if (subscriptionInfoList != null && subscriptionInfoList.size() > 0) {
@@ -216,7 +159,9 @@ public class BaseActivity extends AppCompatActivity {
                     }
                 }
             }
-        } else {
+        }
+
+        /* else {
             if (telephonyManager != null) {
                 String number = telephonyManager.getLine1Number();
                 if (number != null && !number.isEmpty()) {
@@ -224,8 +169,9 @@ public class BaseActivity extends AppCompatActivity {
                     adminNumberList.add(number);
                 }
             }
-        }
-        if (adminNumberList.isEmpty()) {
+        }*/
+
+        if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             relativeLay = relativeLayout;
             getHintPhoneNumber();
         } else {
@@ -259,7 +205,7 @@ public class BaseActivity extends AppCompatActivity {
 
         PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
         try {
-            startIntentSenderForResult(mIntent.getIntentSender(), PHONE_RESOLVE_HINT, null, 0, 0, 0);
+            startIntentSenderForResult(mIntent.getIntentSender(), EMAIL_RESOLVE_HINT, null, 0, 0, 0);
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
         }
@@ -312,8 +258,15 @@ public class BaseActivity extends AppCompatActivity {
                     }
                     // credential.getId();  <-- will need to process phone number string
                 }
-            } else if (resultCode == 1002) {
+            } else if (resultCode == NO_HINTS_AVAILABLE) {
                 getHintEmail();
+            }
+        } else if (requestCode == EMAIL_RESOLVE_HINT) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (data != null) {
+                    Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
+                    // credential.getId();  <-- will need to process phone number string
+                }
             }
         }
     }
@@ -329,24 +282,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        // stopDisconnectTimer();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //   resetDisconnectTimer();
-
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
     }
@@ -355,13 +290,5 @@ public class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    @Override
-    public void onTrimMemory(int level) {
-        resetDisconnectTimer();
-        // this method is called when the app goes in background.
-        // you can perform your logout service here
-        super.onTrimMemory(level);
     }
 }
