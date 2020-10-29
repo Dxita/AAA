@@ -19,7 +19,7 @@
         android:layout_alignParentLeft="true"
         android:background="@color/colorPrimary"
         android:theme="@style/ToolbarTheme"
-        tool:title="@string/electricity"
+        tool:title="@string/drinking_water"
         tool:titleTextColor="@color/white" />
 
     <androidx.core.widget.NestedScrollView

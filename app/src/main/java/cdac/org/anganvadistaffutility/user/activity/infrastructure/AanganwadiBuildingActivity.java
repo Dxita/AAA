@@ -50,21 +50,23 @@ public class AanganwadiBuildingActivity extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        infrastructureData = new ArrayList<>();
-        relativeLayout = findViewById(R.id.relativeLayout);
-        recyclerView = findViewById(R.id.recycler_view);
 
-    /*    if (savedInstanceState == null) {
+        if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
                 infra_id = null;
             } else {
-                infra_id = extras.getString("awc_item_id");
+                infra_id = extras.getString("infra_id");
             }
         } else {
-            infra_id = (String) savedInstanceState.getSerializable("awc_item_id");
+            infra_id = (String) savedInstanceState.getSerializable("infra_id");
         }
-*/
+
+
+        relativeLayout = findViewById(R.id.relativeLayout);
+        recyclerView = findViewById(R.id.recycler_view);
+
+        infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -77,7 +79,7 @@ public class AanganwadiBuildingActivity extends BaseActivity {
 
 
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
-        Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData( "1",appPreferences.getAwcId());
+        Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
@@ -86,7 +88,7 @@ public class AanganwadiBuildingActivity extends BaseActivity {
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
 
-             AwcBuildingAdapter awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
+                AwcBuildingAdapter awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
             }
 
@@ -131,7 +133,7 @@ public class AanganwadiBuildingActivity extends BaseActivity {
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
             infrastructureData.get(position);
             holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
-            holder.setData(context,infrastructureData.get(position));
+            holder.setData(context, infrastructureData.get(position));
 
 
         }
@@ -153,10 +155,10 @@ public class AanganwadiBuildingActivity extends BaseActivity {
             super(itemView);
 
             item_name = itemView.findViewById(R.id.item_tv);
-            checkBox=itemView.findViewById(R.id.checkbox);
+            checkBox = itemView.findViewById(R.id.checkbox);
         }
 
-        public void setData(Context context,AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
+        public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
             String name = "";
             String qty = "";
@@ -167,9 +169,8 @@ public class AanganwadiBuildingActivity extends BaseActivity {
             } else {
                 name = infrastructureData.getTidInfraNameh();
             }
-         //  name = infrastructureData.getTidInfraNamee();
+            //  name = infrastructureData.getTidInfraNamee();
             item_name.setText(name);
-
 
 
         }

@@ -151,31 +151,31 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
         // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
         // Log.d("id_infra",item.getTimInfraId());
         if (item.getTimInfraNamee().toLowerCase().contains("building")){
-            startActivity(new Intent(context, AanganwadiBuildingActivity.class));
+            startActivity(new Intent(context, AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
         else if (item.getTimInfraNamee().toLowerCase().contains("creche"))
         {
-            startActivity(new Intent(context, CrecheActivity.class));
+            startActivity(new Intent(context, CrecheActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
         else if (item.getTimInfraNamee().toLowerCase().contains("electricity"))
         {
-            startActivity(new Intent(context, ElectricityActivity.class));
+            startActivity(new Intent(context, ElectricityActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
         else if (item.getTimInfraNamee().toLowerCase().contains("toilet"))
         {
-            startActivity(new Intent(context,CrecheActivity.class));
+            startActivity(new Intent(context,ToiletActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
         else if (item.getTimInfraNamee().toLowerCase().contains("water"))
         {
-            startActivity(new Intent(context,CrecheActivity.class));
+            startActivity(new Intent(context,WaterActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
         else if (item.getTimInfraNamee().toLowerCase().contains("kitchen"))
         {
-            startActivity(new Intent(context,CrecheActivity.class));
+            startActivity(new Intent(context,KitchenActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
         else if (item.getTimInfraNamee().toLowerCase().contains("area"))
         {
-            startActivity(new Intent(context,CrecheActivity.class));
+            startActivity(new Intent(context,AreaActivity.class).putExtra("infra_id",item.getTimInfraId()));
         }
 
    //     AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
