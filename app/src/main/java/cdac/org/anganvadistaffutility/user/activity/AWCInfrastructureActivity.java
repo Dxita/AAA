@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -73,6 +74,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
         recyclerView.setAdapter(userInfraStructureAdapter);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -146,11 +148,12 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
     @Override
     public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
-       // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
-       // Log.d("id_infra",item.getTimInfraId());
+        // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
+        // Log.d("id_infra",item.getTimInfraId());
 
-        startActivity(new Intent(context,AanganwadiBuildingActivity.class));
+         startActivity(new Intent(context,AanganwadiBuildingActivity.class));
         AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
+
 
     }
 
@@ -178,6 +181,8 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
             }
         }
     }
+
+
 }
 
 

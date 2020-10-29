@@ -58,10 +58,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public static final long DISCONNECT_TIMEOUT =900000;
   // public static final long DISCONNECT_TIMEOUT =30000; // 30 sec = 30 * 1000 ms
-    Handler disconnectHandler = new Handler() {
+    /*Handler disconnectHandler = new Handler() {
         public void handleMessage(Message msg) {
         }
-    };
+    };*/
 
     public static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -88,7 +88,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //inactivity
-    private Runnable disconnectCallback = new Runnable() {
+   /* private Runnable disconnectCallback = new Runnable() {
         @Override
         public void run() {
 
@@ -120,15 +120,16 @@ public class BaseActivity extends AppCompatActivity {
 
             // Perform any required operation on disconnect
         }
-    };
+    };*/
 
     public void resetDisconnectTimer() {
-        disconnectHandler.removeCallbacks(disconnectCallback);
-        disconnectHandler.postDelayed(disconnectCallback, DISCONNECT_TIMEOUT);
+      /*  disconnectHandler.removeCallbacks(disconnectCallback);
+        disconnectHandler.postDelayed(disconnectCallback, DISCONNECT_TIMEOUT);*/
     }
 
     public void stopDisconnectTimer() {
-        disconnectHandler.removeCallbacks(disconnectCallback);
+
+        //disconnectHandler.removeCallbacks(disconnectCallback);
     }
 
 
@@ -344,7 +345,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        stopDisconnectTimer();
+       // stopDisconnectTimer();
     }
 
     @Override
@@ -355,7 +356,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        resetDisconnectTimer();
+     //   resetDisconnectTimer();
 
     }
 

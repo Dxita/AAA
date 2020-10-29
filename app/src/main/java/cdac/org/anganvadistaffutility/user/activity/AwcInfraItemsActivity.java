@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -119,7 +120,7 @@ public class AwcInfraItemsActivity extends BaseActivity {
         return true;
     }
 
-    private class AwcItemsAdapter extends RecyclerView.Adapter<MyViewHolder> {
+    private static class AwcItemsAdapter extends RecyclerView.Adapter<MyViewHolder> {
         Context context;
         List<AwcItemsData.Data.InfrastructureDatum> infrastructureData;
 
@@ -135,6 +136,7 @@ public class AwcInfraItemsActivity extends BaseActivity {
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
+            @SuppressLint("InflateParams")
             View view = LayoutInflater.from(context).inflate(R.layout.awc_items_rv, null);
             return new MyViewHolder(view);
         }

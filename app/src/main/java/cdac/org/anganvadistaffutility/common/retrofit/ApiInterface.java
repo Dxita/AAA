@@ -84,23 +84,26 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<AWDetails> awDetails(@Field("empid") String empID);
 
+    //Mobile number verification in admin side
     @POST("api_js_admin_check_by_mob/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<VerifyAdmin> verifyAdmin(@Field("mobileno") String adminNumber);
+
 
     @POST("api_js_infrastructure_master_by_awcid/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AwcItemsData> awcItemData(@Field("taid_awc_id") String awc_id,
                                    @Field("taid_tim_infra_id") String infra_id);
 
+    //Infrastructure list using awc id in user side
     @POST("api_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<UserInfrastructureData> userInfrastructureData(@Field("tjaid_awc_id") String awc_id);
 
-
+    //aanganwadi building list
     @POST("api_js_infrastructure_detail_by_infra_and_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AanganwadiBuildingData> aanganwadiBuildingData(@Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
-                                                        @Field("tjaid_awc_id")String tjaid_awc_id);
+                                                        @Field("tjaid_awc_id") String tjaid_awc_id);
 
 }
