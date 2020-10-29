@@ -173,6 +173,9 @@ public class BaseActivity extends AppCompatActivity {
         }*/
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
+            if (!adminNumberList.isEmpty()) {
+                adminNumberList.clear();
+            }
             relativeLay = relativeLayout;
             getHintPhoneNumber();
         } else {

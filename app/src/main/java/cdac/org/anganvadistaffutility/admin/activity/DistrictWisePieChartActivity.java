@@ -71,7 +71,6 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
 
                 // To make sum of all same district data and finally add to district list
                 if (previousDistrictID != -1 && previousDistrictID != currentDistrictID) {
-                    districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
                     districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
                 }
 
@@ -83,7 +82,7 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                     districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
                     districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
                 }
-                districtWiseEmployeeDetails.setDistrict_employees("" + districtWiseEmployees);
+                districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
             }
         } else {
             for (AdminUserData.Empdatum empDatum : empDatumList) {
@@ -103,7 +102,7 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                     districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
                     districtWiseEmployees = Integer.parseInt(empDatum.getUnregistered());
                 }
-                districtWiseEmployeeDetails.setDistrict_employees("" + districtWiseEmployees);
+                districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
             }
         }
 

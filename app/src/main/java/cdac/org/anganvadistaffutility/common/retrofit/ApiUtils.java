@@ -25,9 +25,7 @@ public class ApiUtils {
     public static final String SHOW_USER_KPI_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String INFRASTRUCTURE_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String ADMIN_USER_DATA_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
-    public static final String ADMIN_INFRA_DETAILS_BASE_URL = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
-
-
+    public static final String ADMIN_INFRA_DETAILS_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
 
 
     //http://164.100.222.241/rajposhan/rajposhan_2/

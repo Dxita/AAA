@@ -117,7 +117,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".admin.activity.ViewInfraStructureDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />

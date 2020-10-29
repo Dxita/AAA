@@ -2,7 +2,6 @@ package cdac.org.anganvadistaffutility.common.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.public_u.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
@@ -42,8 +42,8 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.user_type_admin) {
-            //  startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
+            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (AppUtils.hasPermissions(context, AppUtils.PHONE_PERMISSIONS)) {
                     fetchAdminPhoneNumber(relativeLayout);
                 } else {
@@ -51,7 +51,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 }
             } else {
                 fetchAdminPhoneNumber(relativeLayout);
-            }
+            }*/
         } else if (view.getId() == R.id.user_type_employee) {
             if (!appPreferences.getEmployeeId().isEmpty() && appPreferences.isUserLoggedIn()) {
                 startActivity(new Intent(this, UserSectionActivity.class));

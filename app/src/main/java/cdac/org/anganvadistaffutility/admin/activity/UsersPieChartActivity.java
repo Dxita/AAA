@@ -109,11 +109,14 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
             public void onSuccess(AdminUserData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, body.getMessage());
-                if (pieChart.getVisibility() == View.GONE) {
-                    pieChart.setVisibility(View.VISIBLE);
-                }
+
                 empData = body.getData();
-                setUserData(empData);
+                if (empData.getEmpdata().size() > 0) {
+                    if (pieChart.getVisibility() == View.GONE) {
+                        pieChart.setVisibility(View.VISIBLE);
+                    }
+                    setUserData(empData);
+                }
             }
 
             @Override
