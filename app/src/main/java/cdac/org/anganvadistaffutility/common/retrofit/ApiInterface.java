@@ -89,7 +89,7 @@ public interface ApiInterface {
 
     @POST("api_js_admin_check_by_mob/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
-    Call<VerifyAdmin> verifyAdmin(@Field("mobileno") String adminNumber);
+    Call<VerifyAdmin> verifyAdmin(@Field("mobileno") String adminNumber, @Field("email") String email);
 
     // Aaganwadi details (User Side)
 

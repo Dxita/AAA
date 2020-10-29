@@ -176,7 +176,7 @@ public class BaseActivity extends AppCompatActivity {
             relativeLay = relativeLayout;
             getHintPhoneNumber();
         } else {
-            callVerifyAdmin(relativeLayout);
+            callVerifyAdmin(relativeLayout, "");
         }
     }
 
@@ -196,39 +196,24 @@ public class BaseActivity extends AppCompatActivity {
     private void getHintEmail() {
         Intent intent =
                 AccountPicker.newChooseAccountIntent(
-                        new AccountPicker.AccountChooserOptions.Builder()
+                        new AccountPicker.AccountChooserOptions.Builder().setAlwaysShowAccountPicker(true)
                                 .setAllowableAccountsTypes(Arrays.asList("com.google"))
                                 .build());
         startActivityForResult(intent, EMAIL_RESOLVE_HINT);
-
-       /* HintRequest hintRequest = new HintRequest.Builder()
-                .setHintPickerConfig(new CredentialPickerConfig.Builder()
-                        .setShowCancelButton(true)
-                        .build())
-                .setEmailAddressIdentifierSupported(true)
-                .setAccountTypes(IdentityProviders.GOOGLE)
-                .build();
-
-        PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
-        try {
-            startIntentSenderForResult(mIntent.getIntentSender(), EMAIL_RESOLVE_HINT, null, 0, 0, 0);
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
-        }*/
     }
 
-    private void callVerifyAdmin(RelativeLayout relativeLayout) {
+    private void callVerifyAdmin(RelativeLayout relativeLayout, String email) {
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            verifyAdmin(relativeLayout);
+            verifyAdmin(relativeLayout, email);
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
     }
 
-    public void verifyAdmin(RelativeLayout relativeLayout) {
+    public void verifyAdmin(RelativeLayout relativeLayout, String email) {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.VERIFY_ADMIN_URL);
-        Call<VerifyAdmin> call = apiInterface.verifyAdmin(android.text.TextUtils.join(",", adminNumberList));
+        Call<VerifyAdmin> call = apiInterface.verifyAdmin(android.text.TextUtils.join(",", adminNumberList), email);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyAdmin>() {
             @Override
             public void onSuccess(VerifyAdmin body) {
@@ -260,9 +245,8 @@ public class BaseActivity extends AppCompatActivity {
                         String number = credential.getId();
                         number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
                         adminNumberList.add(number);
-                        callVerifyAdmin(relativeLay);
+                        callVerifyAdmin(relativeLay, "");
                     }
-                    // credential.getId();  <-- will need to process phone number string
                 }
             } else if (resultCode == NO_HINTS_AVAILABLE) {
                 getHintEmail();
@@ -271,6 +255,10 @@ public class BaseActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
                     String accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+                    if (!adminNumberList.isEmpty()) {
+                        adminNumberList.clear();
+                    }
+                    callVerifyAdmin(relativeLay, accountName);
                 }
             }
         }

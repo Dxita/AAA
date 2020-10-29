@@ -109,7 +109,7 @@ public class VerifyAdminActivity extends BaseActivity {
 
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            verifyAdmin();
+            //verifyAdmin();
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
@@ -125,7 +125,7 @@ public class VerifyAdminActivity extends BaseActivity {
         }*/
     }
 
-    private void verifyAdmin() {
+    /*private void verifyAdmin() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.VERIFY_ADMIN_URL);
         Call<VerifyAdmin> call = apiInterface.verifyAdmin(android.text.TextUtils.join(",", adminNumberList));
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyAdmin>() {
@@ -142,7 +142,7 @@ public class VerifyAdminActivity extends BaseActivity {
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
-    }
+    }*/
 
    /* @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull
