@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.user.activity;
+package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -30,7 +30,6 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
-import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import retrofit2.Call;
 
 public class AanganwadiBuildingActivity extends BaseActivity {
@@ -132,7 +131,7 @@ public class AanganwadiBuildingActivity extends BaseActivity {
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
             infrastructureData.get(position);
             holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
-            holder.setData(infrastructureData.get(position));
+            holder.setData(context,infrastructureData.get(position));
 
 
         }
@@ -157,19 +156,18 @@ public class AanganwadiBuildingActivity extends BaseActivity {
             checkBox=itemView.findViewById(R.id.checkbox);
         }
 
-        public void setData(AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
+        public void setData(Context context,AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
             String name = "";
             String qty = "";
 
-          /*  if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
+            if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
                 name = infrastructureData.getTidInfraNamee();
 
             } else {
-                name = infrastructureData.getTidInfraNamee();
+                name = infrastructureData.getTidInfraNameh();
             }
-*/
-           name = infrastructureData.getTidInfraNamee();
+         //  name = infrastructureData.getTidInfraNamee();
             item_name.setText(name);
 
 

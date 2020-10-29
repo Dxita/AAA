@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.user.activity;
+package cdac.org.anganvadistaffutility.user.activity.personal_details;
 
 import android.os.Bundle;
 import android.view.MenuItem;

@@ -16,6 +16,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.activity.infrastructure.AWCInfrastructureActivity;
 
 public class UserSectionActivity extends BaseActivity implements View.OnClickListener {
 

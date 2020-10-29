@@ -1,16 +1,14 @@
-package cdac.org.anganvadistaffutility.user.activity;
+package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +20,6 @@ import java.util.List;
 import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
@@ -31,6 +28,9 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.activity.infrastructure.AanganwadiBuildingActivity;
+import cdac.org.anganvadistaffutility.user.activity.infrastructure.CrecheActivity;
+import cdac.org.anganvadistaffutility.user.activity.infrastructure.ElectricityActivity;
 import cdac.org.anganvadistaffutility.user.adapter.UserInfraStructureAdapter;
 import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import retrofit2.Call;
@@ -150,9 +150,36 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
         // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
         // Log.d("id_infra",item.getTimInfraId());
+        if (item.getTimInfraNamee().toLowerCase().contains("building")){
+            startActivity(new Intent(context, AanganwadiBuildingActivity.class));
+        }
+        else if (item.getTimInfraNamee().toLowerCase().contains("creche"))
+        {
+            startActivity(new Intent(context, CrecheActivity.class));
+        }
+        else if (item.getTimInfraNamee().toLowerCase().contains("electricity"))
+        {
+            startActivity(new Intent(context, ElectricityActivity.class));
+        }
+        else if (item.getTimInfraNamee().toLowerCase().contains("toilet"))
+        {
+            startActivity(new Intent(context,CrecheActivity.class));
+        }
+        else if (item.getTimInfraNamee().toLowerCase().contains("water"))
+        {
+            startActivity(new Intent(context,CrecheActivity.class));
+        }
+        else if (item.getTimInfraNamee().toLowerCase().contains("kitchen"))
+        {
+            startActivity(new Intent(context,CrecheActivity.class));
+        }
+        else if (item.getTimInfraNamee().toLowerCase().contains("area"))
+        {
+            startActivity(new Intent(context,CrecheActivity.class));
+        }
 
-         startActivity(new Intent(context,AanganwadiBuildingActivity.class));
-        AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
+   //     AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
+
 
 
     }

@@ -66,7 +66,8 @@ public class AanganwadiBuildingData {
             this.infrastructureData = infrastructureData;
         }
 
-        public static class InfrastructureDatum {
+
+        public class InfrastructureDatum {
 
             @SerializedName("tid_tim_infra_id")
             @Expose
@@ -77,6 +78,9 @@ public class AanganwadiBuildingData {
             @SerializedName("tid_infra_namee")
             @Expose
             private String tidInfraNamee;
+            @SerializedName("tid_infra_nameh")
+            @Expose
+            private String tidInfraNameh;
             @SerializedName("tjaid_qty")
             @Expose
             private String tjaidQty;
@@ -108,6 +112,14 @@ public class AanganwadiBuildingData {
                 this.tidInfraNamee = tidInfraNamee;
             }
 
+            public String getTidInfraNameh() {
+                return tidInfraNameh;
+            }
+
+            public void setTidInfraNameh(String tidInfraNameh) {
+                this.tidInfraNameh = tidInfraNameh;
+            }
+
             public String getTjaidQty() {
                 return tjaidQty;
             }
@@ -124,6 +136,6 @@ public class AanganwadiBuildingData {
                 this.status = status;
             }
         }
-    }
 
+    }
 }

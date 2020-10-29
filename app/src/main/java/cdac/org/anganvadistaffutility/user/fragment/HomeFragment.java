@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,12 +26,12 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
-import cdac.org.anganvadistaffutility.user.activity.BankActivity;
-import cdac.org.anganvadistaffutility.user.activity.CardActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.BankActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.CardActivity;
 import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
-import cdac.org.anganvadistaffutility.user.activity.JobActivity;
-import cdac.org.anganvadistaffutility.user.activity.PaymentActivity;
-import cdac.org.anganvadistaffutility.user.activity.ProfileActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.JobActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.PaymentActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import retrofit2.Call;
 

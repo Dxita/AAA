@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -23,12 +22,15 @@ import com.google.android.material.navigation.NavigationView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.BankActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.CardActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.JobActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.PaymentActivity;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.fragment.HomeFragment;
 import retrofit2.Call;

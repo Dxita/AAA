@@ -27,11 +27,13 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.AanganwadiBuildingActivity"></activity>
-        <activity android:name=".user.activity.AwcInfraItemsActivity" />
+        <activity android:name=".user.activity.infrastructure.ToiletActivity"></activity>
+        <activity android:name=".user.activity.infrastructure.ElectricityActivity" />
+        <activity android:name=".user.activity.infrastructure.CrecheActivity" />
+        <activity android:name=".user.activity.infrastructure.AanganwadiBuildingActivity" />
         <activity android:name=".common.LanguageActivity" />
         <activity
-            android:name=".user.activity.AWCInfrastructureActivity"
+            android:name=".user.activity.infrastructure.AWCInfrastructureActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".public_u.activity.activity.PublicOTPVerificationActivity"
@@ -56,22 +58,19 @@
             android:name=".common.activity.SalaryDetailsTblActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.CardActivity"
+            android:name=".user.activity.personal_details.CardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.BankActivity"
+            android:name=".user.activity.personal_details.BankActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.AwDetailsActivity"
+            android:name=".user.activity.personal_details.PaymentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.PaymentActivity"
+            android:name=".user.activity.personal_details.JobActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.JobActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.ProfileActivity"
+            android:name=".user.activity.personal_details.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".common.activity.UserTypeActivity"

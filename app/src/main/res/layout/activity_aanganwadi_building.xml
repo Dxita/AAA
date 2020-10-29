@@ -8,7 +8,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.activity.AanganwadiBuildingActivity">
+    tools:context=".user.activity.infrastructure.AanganwadiBuildingActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -53,12 +53,13 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/update_btn"
             android:text="@string/update"
+            android:enabled="false"
             android:layout_weight="1"
             android:layout_margin="@dimen/margin_05"
             android:textColor="@color/white"
             android:padding="@dimen/margin_10"
             android:textSize="@dimen/textsize_14sp"
-            android:background="@color/grey"
+            android:background="@android:color/darker_gray"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
