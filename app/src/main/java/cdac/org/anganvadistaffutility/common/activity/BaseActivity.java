@@ -1,6 +1,7 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
 import android.Manifest;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -23,12 +24,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.auth.api.credentials.Credential;
-import com.google.android.gms.auth.api.credentials.CredentialPickerConfig;
 import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.HintRequest;
-import com.google.android.gms.auth.api.credentials.IdentityProviders;
+import com.google.android.gms.common.AccountPicker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
@@ -183,7 +184,6 @@ public class BaseActivity extends AppCompatActivity {
         HintRequest hintRequest =
                 new HintRequest.Builder()
                         .setPhoneNumberIdentifierSupported(true)
-                        .setEmailAddressIdentifierSupported(false)
                         .build();
         PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
         try {
@@ -194,11 +194,17 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void getHintEmail() {
-        HintRequest hintRequest = new HintRequest.Builder()
+        Intent intent =
+                AccountPicker.newChooseAccountIntent(
+                        new AccountPicker.AccountChooserOptions.Builder()
+                                .setAllowableAccountsTypes(Arrays.asList("com.google"))
+                                .build());
+        startActivityForResult(intent, EMAIL_RESOLVE_HINT);
+
+       /* HintRequest hintRequest = new HintRequest.Builder()
                 .setHintPickerConfig(new CredentialPickerConfig.Builder()
                         .setShowCancelButton(true)
                         .build())
-                .setPhoneNumberIdentifierSupported(false)
                 .setEmailAddressIdentifierSupported(true)
                 .setAccountTypes(IdentityProviders.GOOGLE)
                 .build();
@@ -208,7 +214,7 @@ public class BaseActivity extends AppCompatActivity {
             startIntentSenderForResult(mIntent.getIntentSender(), EMAIL_RESOLVE_HINT, null, 0, 0, 0);
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void callVerifyAdmin(RelativeLayout relativeLayout) {
@@ -264,8 +270,7 @@ public class BaseActivity extends AppCompatActivity {
         } else if (requestCode == EMAIL_RESOLVE_HINT) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
-                    // credential.getId();  <-- will need to process phone number string
+                    String accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
                 }
             }
         }
