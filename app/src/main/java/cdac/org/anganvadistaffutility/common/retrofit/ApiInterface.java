@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.common.retrofit;
 
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
+import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
@@ -63,7 +64,7 @@ public interface ApiInterface {
                                         @Field("fromdate") String fromDate,
                                         @Field("todate") String toDate);
 
-    // Get line chart registered and unregistered user
+    // Get line chart registered and unregistered user (not in use for now)
 
     @GET("api_js_app_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<RegisteredUserKPI> getRegisteredUserKPI();
@@ -84,26 +85,37 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<AWDetails> awDetails(@Field("empid") String empID);
 
-    //Mobile number verification in admin side
+    // Verify admin phone and email
+
     @POST("api_js_admin_check_by_mob/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<VerifyAdmin> verifyAdmin(@Field("mobileno") String adminNumber);
 
+    // Aaganwadi details (User Side)
 
     @POST("api_js_infrastructure_master_by_awcid/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AwcItemsData> awcItemData(@Field("taid_awc_id") String awc_id,
                                    @Field("taid_tim_infra_id") String infra_id);
 
-    //Infrastructure list using awc id in user side
+    // Infrastructure list using awc id in user side
+
     @POST("api_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<UserInfrastructureData> userInfrastructureData(@Field("tjaid_awc_id") String awc_id);
 
-    //aanganwadi building list
+    // aanganwadi building list
+
     @POST("api_js_infrastructure_detail_by_infra_and_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AanganwadiBuildingData> aanganwadiBuildingData(@Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
                                                         @Field("tjaid_awc_id") String tjaid_awc_id);
+
+    //  InfraStructure Details (Admin Side)
+
+    @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<InfraStructureDetailData> getInfrastructureDetails(@Field("filterby") String filterType,
+                                                            @Field("infra_id") String infraID);
 
 }

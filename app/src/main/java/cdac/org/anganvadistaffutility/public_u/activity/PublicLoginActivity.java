@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.public_u.activity.activity;
+package cdac.org.anganvadistaffutility.public_u.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

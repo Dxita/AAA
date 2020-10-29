@@ -1,7 +1,4 @@
-package cdac.org.anganvadistaffutility.public_u.activity.activity;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package cdac.org.anganvadistaffutility.public_u.activity;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -17,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.HintRequest;
@@ -24,7 +23,6 @@ import com.google.android.gms.auth.api.phone.SmsRetriever;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.activity.GeneratePasswordActivity;
 import cdac.org.anganvadistaffutility.common.callback.OtpReceivedInterface;
 import cdac.org.anganvadistaffutility.common.receiver.SmsBroadcastReceiver;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;

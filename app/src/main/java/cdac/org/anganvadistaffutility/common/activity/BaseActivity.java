@@ -2,20 +2,15 @@ package cdac.org.anganvadistaffutility.common.activity;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -28,10 +23,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.credentials.CredentialPickerConfig;
 import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.HintRequest;
-
-import org.spongycastle.jcajce.provider.symmetric.ARC4;
+import com.google.android.gms.auth.api.credentials.IdentityProviders;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +51,8 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public static final long DISCONNECT_TIMEOUT =900000;
-  // public static final long DISCONNECT_TIMEOUT =30000; // 30 sec = 30 * 1000 ms
+    public static final long DISCONNECT_TIMEOUT = 900000;
+    // public static final long DISCONNECT_TIMEOUT =30000; // 30 sec = 30 * 1000 ms
     /*Handler disconnectHandler = new Handler() {
         public void handleMessage(Message msg) {
         }
@@ -65,7 +60,8 @@ public class BaseActivity extends AppCompatActivity {
 
     public static final String TAG = BaseActivity.class.getSimpleName();
 
-    private final int RESOLVE_HINT = 2;
+    private final int PHONE_RESOLVE_HINT = 2;
+    private final int EMAIL_RESOLVE_HINT = 3;
 
     private RelativeLayout relativeLay;
     public AppPreferences appPreferences;
@@ -82,9 +78,6 @@ public class BaseActivity extends AppCompatActivity {
         appPreferences = new AppPreferences(context);
         telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         resetTitles();
-
-
-
     }
 
     //inactivity
@@ -217,14 +210,6 @@ public class BaseActivity extends AppCompatActivity {
             if (subscriptionInfoList != null && subscriptionInfoList.size() > 0) {
                 for (SubscriptionInfo info : subscriptionInfoList) {
                     String number = info.getNumber();
-
-                    /*if (number == null) {
-                        number = "";
-                    } else {
-                        number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
-                    }
-                    adminNumberList.add(number);*/
-
                     if (number != null && !number.isEmpty()) {
                         number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
                         adminNumberList.add(number);
@@ -234,21 +219,12 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             if (telephonyManager != null) {
                 String number = telephonyManager.getLine1Number();
-
-                /*if (number == null) {
-                    number = "";
-                } else {
-                    number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
-                }
-                adminNumberList.add(number);*/
-
                 if (number != null && !number.isEmpty()) {
                     number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
                     adminNumberList.add(number);
                 }
             }
         }
-
         if (adminNumberList.isEmpty()) {
             relativeLay = relativeLayout;
             getHintPhoneNumber();
@@ -263,19 +239,27 @@ public class BaseActivity extends AppCompatActivity {
                         .setPhoneNumberIdentifierSupported(true)
                         .setEmailAddressIdentifierSupported(false)
                         .build();
+        PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
+        try {
+            startIntentSenderForResult(mIntent.getIntentSender(), PHONE_RESOLVE_HINT, null, 0, 0, 0);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
 
-       /* HintRequest hintRequest = new HintRequest.Builder()
+    private void getHintEmail() {
+        HintRequest hintRequest = new HintRequest.Builder()
                 .setHintPickerConfig(new CredentialPickerConfig.Builder()
                         .setShowCancelButton(true)
                         .build())
-                .setPhoneNumberIdentifierSupported(true)
-                .setEmailAddressIdentifierSupported(false)
+                .setPhoneNumberIdentifierSupported(false)
+                .setEmailAddressIdentifierSupported(true)
                 .setAccountTypes(IdentityProviders.GOOGLE)
-                .build();*/
+                .build();
 
         PendingIntent mIntent = Credentials.getClient(this).getHintPickerIntent(hintRequest);
         try {
-            startIntentSenderForResult(mIntent.getIntentSender(), RESOLVE_HINT, null, 0, 0, 0);
+            startIntentSenderForResult(mIntent.getIntentSender(), PHONE_RESOLVE_HINT, null, 0, 0, 0);
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
         }
@@ -316,7 +300,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESOLVE_HINT) {
+        if (requestCode == PHONE_RESOLVE_HINT) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
                     Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
@@ -328,6 +312,8 @@ public class BaseActivity extends AppCompatActivity {
                     }
                     // credential.getId();  <-- will need to process phone number string
                 }
+            } else if (resultCode == 1002) {
+                getHintEmail();
             }
         }
     }
@@ -335,17 +321,17 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //   AppUtils.showToast(context, "landscape");
+       /* if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            AppUtils.showToast(context, "landscape");
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            //  AppUtils.showToast(context, "portrait");
-        }
+            AppUtils.showToast(context, "portrait");
+        }*/
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-       // stopDisconnectTimer();
+        // stopDisconnectTimer();
     }
 
     @Override
@@ -356,7 +342,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-     //   resetDisconnectTimer();
+        //   resetDisconnectTimer();
 
     }
 
@@ -373,7 +359,7 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onTrimMemory(int level) {
-    resetDisconnectTimer();
+        resetDisconnectTimer();
         // this method is called when the app goes in background.
         // you can perform your logout service here
         super.onTrimMemory(level);

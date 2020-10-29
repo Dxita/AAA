@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -80,7 +81,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
 
     @Override
     public void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item) {
-        AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
+        startActivity(new Intent(context, ViewInfraStructureDetailActivity.class).putExtra("infra_id", "" + item.getTimInfraId()));
     }
 
     private void setCustomInfraImages() {

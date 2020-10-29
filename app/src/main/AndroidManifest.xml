@@ -27,16 +27,32 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.infrastructure.ToiletActivity"></activity>
-        <activity android:name=".user.activity.infrastructure.ElectricityActivity" />
-        <activity android:name=".user.activity.infrastructure.CrecheActivity" />
-        <activity android:name=".user.activity.infrastructure.AanganwadiBuildingActivity" />
-        <activity android:name=".common.LanguageActivity" />
+
+        <activity
+            android:name=".user.activity.infrastructure.ToiletActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".user.activity.infrastructure.ElectricityActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".user.activity.infrastructure.CrecheActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".user.activity.infrastructure.AanganwadiBuildingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".common.LanguageActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.infrastructure.AWCInfrastructureActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".public_u.activity.activity.PublicOTPVerificationActivity"
+            android:name=".public_u.activity.PublicOTPVerificationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".user.activity.UserSectionActivity"
@@ -97,6 +113,9 @@
             android:name=".admin.activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".admin.activity.ViewInfraStructureDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -124,12 +143,30 @@
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
-        <activity android:name=".public_u.activity.activity.BuildingDetailsActivity" />
-        <activity android:name=".public_u.activity.activity.PublicInfraActivity" />
-        <activity android:name=".public_u.activity.activity.PublicLoginActivity" />
-        <activity android:name=".public_u.activity.activity.PublicRegistrationActivity" />
-        <activity android:name=".common.activity.GeneratePasswordActivity" />
-        <activity android:name=".common.activity.UserLoginActivity" />
+
+        <activity
+            android:name=".public_u.activity.BuildingDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".public_u.activity.PublicInfraActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".public_u.activity.PublicLoginActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".public_u.activity.PublicRegistrationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".common.activity.GeneratePasswordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".common.activity.UserLoginActivity"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".common.receiver.SmsBroadcastReceiver"

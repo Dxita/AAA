@@ -1,4 +1,4 @@
-package cdac.org.anganvadistaffutility.public_u.activity.activity;
+package cdac.org.anganvadistaffutility.public_u.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +7,12 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.public_u.activity.activity.PublicInfraActivity;
 
 public class PublicRegistrationActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     AppCompatTextView login_txt;
