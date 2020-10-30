@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".App"
@@ -73,97 +74,138 @@
                     android:screenOrientation="portrait" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".common.activity.SalaryDetailsTblActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.personal_details.CardActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.personal_details.BankActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.personal_details.PaymentActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.personal_details.JobActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.personal_details.ProfileActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".common.activity.UserTypeActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".common.activity.SelectLanguageActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".common.activity.BaseActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.VerifyUserActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.VerifyOTPActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".user.activity.HomeActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.ViewAaGanWadiDataActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.ViewInfraStructureDetailActivity"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.ShowKPIActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".admin.activity.UsersGraphActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".admin.activity.UsersPieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".admin.activity.DistrictWisePieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".admin.activity.ProjectWisePieChartActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".public_u.activity.BuildingDetailsActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".public_u.activity.PublicInfraActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".public_u.activity.PublicLoginActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".public_u.activity.PublicRegistrationActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".common.activity.GeneratePasswordActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".common.activity.UserLoginActivity"
             android:screenOrientation="portrait" />
+
+        <service
+            android:name=".common.service.LogoutService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".common.receiver.ServiceRestart"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="restartservice" />
+            </intent-filter>
+        </receiver>
 
         <receiver
             android:name=".common.receiver.SmsBroadcastReceiver"

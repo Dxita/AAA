@@ -48,39 +48,32 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         });
 
         fabWithOptions.setMiniFabSelectedListener(fabItem -> {
-            switch (fabItem.getItemId()) {
-                case R.id.fab_change_language:
-                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                        changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
-                    } else {
-                        changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
-                    }
-                    break;
-                case R.id.fab_logout:
-                    SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-                    editor.clear();
-                    editor.apply();
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_HOME);
-                    startActivity(intent);
-                    finishAffinity();
+            if (fabItem.getItemId() == R.id.fab_change_language) {
+                if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                    changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                } else {
+                    changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+                }
+            } else if (fabItem.getItemId() == R.id.fab_logout) {
+                SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+                finishAffinity();
 
-                    AppUtils.showToast(context, getResources().getString(R.string.logout_success));
-                default:
-                    break;
+                AppUtils.showToast(context, getResources().getString(R.string.logout_success));
             }
         });
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.infra_data_card:
-                startActivity(new Intent(context, AWCInfrastructureActivity.class));
-                break;
-            case R.id.personal_info_card:
-                startActivity(new Intent(context, HomeActivity.class));
-                break;
+        if (view.getId() == R.id.infra_data_card) {
+            startActivity(new Intent(context, AWCInfrastructureActivity.class));
+        } else if (view.getId() == R.id.personal_info_card) {
+            startActivity(new Intent(context, HomeActivity.class));
         }
     }
 
@@ -97,8 +90,8 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         AlertDialog alert = builder.create();
         alert.show();
     }
-    private void logout() {
 
+    private void logout() {
         SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
         editor.clear();
         editor.apply();
@@ -108,6 +101,5 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         finishAffinity();
 
         AppUtils.showToast(context, getResources().getString(R.string.logout_success));
-
     }
 }

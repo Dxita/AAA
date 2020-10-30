@@ -2,11 +2,10 @@ package cdac.org.anganvadistaffutility.common.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.LinearLayout;
 
 public class AppPreferences {
 
-    private SharedPreferences sharedPreferences;
+    protected SharedPreferences sharedPreferences;
     private static final String APP_PREFERENCES_NAME = "RAJPOSHAN_AANGANVAADI";
     private static final String SAVE_GENERATED_OTP = "SAVE_GENERATED_OTP";
     private static final String EMPLOYEE_ID = "EMPLOYEE_ID";
@@ -18,8 +17,6 @@ public class AppPreferences {
 
     private static final String TYPE_ADMIN = "IS_TYPE_ADMIN";
     private static final String TYPE_PUBLIC = "IS_TYPE_PUBLIC";
-
-
 
     private SharedPreferences.Editor editor;
 
@@ -37,14 +34,9 @@ public class AppPreferences {
         editor.apply();
     }
 
-
-
     public String getEmployeeId() {
         return sharedPreferences.getString(EMPLOYEE_ID, "");
     }
-
-
-
 
     public void saveGeneratedOtp(String otp) {
         editor = sharedPreferences.edit();
@@ -75,7 +67,6 @@ public class AppPreferences {
     public boolean isSetLanguagePref() {
         return sharedPreferences.getBoolean(LANGUAGE_SET, false);
     }
-
 
     public void setTypeUser(boolean value) {
         editor = sharedPreferences.edit();

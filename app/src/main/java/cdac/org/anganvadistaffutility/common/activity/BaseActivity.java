@@ -29,7 +29,7 @@ import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.AccountPicker;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
@@ -40,6 +40,7 @@ import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
+import cdac.org.anganvadistaffutility.common.service.LogoutService;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity;
@@ -56,7 +57,9 @@ public class BaseActivity extends AppCompatActivity {
 
     private final int PHONE_RESOLVE_HINT = 2;
     private final int EMAIL_RESOLVE_HINT = 3;
+
     private final int NO_HINTS_AVAILABLE = 1002;
+    private final int SELECT_NONE = 1001;
 
     private RelativeLayout relativeLay;
     public AppPreferences appPreferences;
@@ -200,7 +203,7 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent =
                 AccountPicker.newChooseAccountIntent(
                         new AccountPicker.AccountChooserOptions.Builder().setAlwaysShowAccountPicker(true)
-                                .setAllowableAccountsTypes(Arrays.asList("com.google"))
+                                .setAllowableAccountsTypes(Collections.singletonList("com.google"))
                                 .build());
         startActivityForResult(intent, EMAIL_RESOLVE_HINT);
     }
@@ -224,6 +227,7 @@ public class BaseActivity extends AppCompatActivity {
                 AppUtils.showToast(context, body.getMessage());
 
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
+                    appPreferences.setUserLoggedIn(true);
                     startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
                     finish();
                 }
@@ -251,7 +255,7 @@ public class BaseActivity extends AppCompatActivity {
                         callVerifyAdmin(relativeLay, "");
                     }
                 }
-            } else if (resultCode == NO_HINTS_AVAILABLE) {
+            } else if (resultCode == NO_HINTS_AVAILABLE || resultCode == SELECT_NONE) {
                 getHintEmail();
             }
         } else if (requestCode == EMAIL_RESOLVE_HINT) {
@@ -278,8 +282,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onUserInteraction() {
+        super.onUserInteraction();
+
+        if (appPreferences.isUserLoggedIn()) {
+            stopService(new Intent(context, LogoutService.class));
+            startService(new Intent(context, LogoutService.class));
+        }
     }
 
     @Override
