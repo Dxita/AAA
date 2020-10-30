@@ -227,6 +227,7 @@ public class BaseActivity extends AppCompatActivity {
 
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     appPreferences.setUserLoggedIn(true);
+                    appPreferences.settypeadmin(true);
                     startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
                     finish();
                 }
@@ -305,3 +306,4 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 }
+
