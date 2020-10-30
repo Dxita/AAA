@@ -193,6 +193,10 @@
             android:name=".common.activity.UserLoginActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".user.activity.ViewBeneficiaryDetailsActivity"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".common.service.LogoutService"
             android:enabled="true"

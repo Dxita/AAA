@@ -28,7 +28,7 @@ public class LogoutService extends Service {
     protected int counter = 0;
     private boolean isTaskRemoved = false;
     private AppPreferences appPreferences;
-    private final static int sessionTimeOut = 1000 * 30;   // 30 seconds
+    private final static int sessionTimeOut = 30;   // 30 seconds
 
     @Override
     public void onCreate() {
@@ -46,8 +46,8 @@ public class LogoutService extends Service {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private void startMyOwnForeground() {
-        String NOTIFICATION_CHANNEL_ID = "example.permanence";
-        String channelName = "Background Service";
+        String NOTIFICATION_CHANNEL_ID = "com.rajposhan";
+        String channelName = "User Session Out Service";
         NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
         chan.setLightColor(Color.BLUE);
         chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
@@ -58,7 +58,7 @@ public class LogoutService extends Service {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
-                .setContentTitle("App is running in background")
+                .setContentTitle("")
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .build();

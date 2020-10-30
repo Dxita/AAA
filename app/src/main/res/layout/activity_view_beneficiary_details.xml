@@ -43,83 +43,85 @@
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="@string/enter_employee_id"
+            android:text="@string/enter_beneficiary_details"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_14sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:hint="@string/employee_id">
+            android:hint="@string/mobile_no">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_employee_id"
+                android:id="@+id/edt_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:maxLength="6"
+                android:maxLength="10"
                 android:textSize="@dimen/textsize_12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="@string/enter_financial_year"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize_14sp" />
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:orientation="horizontal">
+            android:hint="@string/aadhar_no">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_from_year"
-                android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_aadhar_id"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_05"
-                android:layout_marginRight="@dimen/margin_05"
-                android:layout_weight="1"
-                android:background="@drawable/otpbg"
-                android:enabled="true"
-                android:hint="@string/from_year"
                 android:inputType="number"
-                android:maxLength="4"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:singleLine="true"
+                android:maxLength="12"
                 android:textSize="@dimen/textsize_12sp" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_to_year"
-                android:layout_width="0dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:hint="@string/janaadhar_no">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_janadhar_id"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_05"
-                android:layout_marginLeft="@dimen/margin_05"
-                android:layout_weight="1"
-                android:background="@drawable/otpbg"
-                android:enabled="false"
-                android:hint="@string/toYear"
-                android:inputType="number"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:singleLine="true"
+                android:maxLength="12"
+                android:inputType="textPassword"
                 android:textSize="@dimen/textsize_12sp" />
-        </LinearLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:hint="@string/bhamasha_no">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_bhamashah_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="12"
+                android:inputType="textPassword"
+                android:textSize="@dimen/textsize_12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_employee_payment_details"
+            android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@drawable/buttonbg"
-            android:text="@string/get_payment_details"
+            android:text="@string/search"
             android:textColor="@color/white"
             android:textSize="@dimen/textsize_14sp" />
 

@@ -25,16 +25,19 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_user_section);
+
         CardView personal_info = findViewById(R.id.personal_info_card);
         CardView infra_data = findViewById(R.id.infra_data_card);
+        CardView beneficiary_data = findViewById(R.id.beneficiary_data_card);
         initFabActionMenu();
 
         personal_info.setOnClickListener(this);
         infra_data.setOnClickListener(this);
+        beneficiary_data.setOnClickListener(this);
     }
 
     private void initFabActionMenu() {
@@ -55,15 +58,7 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
                     changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
                 }
             } else if (fabItem.getItemId() == R.id.fab_logout) {
-                SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-                editor.clear();
-                editor.apply();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                startActivity(intent);
-                finishAffinity();
-
-                AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+                logout();
             }
         });
     }
@@ -74,6 +69,8 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
             startActivity(new Intent(context, AWCInfrastructureActivity.class));
         } else if (view.getId() == R.id.personal_info_card) {
             startActivity(new Intent(context, HomeActivity.class));
+        } else if (view.getId() == R.id.beneficiary_data_card) {
+            startActivity(new Intent(context, ViewBeneficiaryDetailsActivity.class));
         }
     }
 
@@ -92,14 +89,15 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void logout() {
+        AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+
         SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
         editor.clear();
         editor.apply();
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finishAffinity();
-
-        AppUtils.showToast(context, getResources().getString(R.string.logout_success));
     }
 }

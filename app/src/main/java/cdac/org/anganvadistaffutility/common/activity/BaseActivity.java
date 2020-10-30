@@ -14,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -66,7 +65,7 @@ public class BaseActivity extends AppCompatActivity {
     public Context context;
     public ApiInterface apiInterface;
     protected List<String> adminNumberList;
-    private TelephonyManager telephonyManager;
+    // private TelephonyManager telephonyManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,7 +73,7 @@ public class BaseActivity extends AppCompatActivity {
 
         context = this;
         appPreferences = new AppPreferences(context);
-        telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        //  telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         resetTitles();
     }
 
@@ -295,5 +294,14 @@ public class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (!appPreferences.isUserLoggedIn()) {
+            stopService(new Intent(context, LogoutService.class));
+        }
     }
 }

@@ -246,7 +246,11 @@
 
     <string name="session">Session Timeout.</string>
     <string name="alert">Alert</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="aanganwadi_building">Aanganwadi Building</string>
+
+    <string name="view_beneficiary_details">Beneficiary Details</string>
+    <string name="search">Search</string>
+    <string name="enter_beneficiary_details">Enter Beneficiary Details:</string>
 
 </resources>
