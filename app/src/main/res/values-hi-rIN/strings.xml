@@ -245,6 +245,7 @@
     <string name="ok">ठीक</string>
     <string name="aanganwadi_building">आंगनवाड़ी भवन</string>
 
+    <string name="fill_required_field">कृपया कम से कम एक फ़ील्ड भरें</string>
     <string name="view_beneficiary_details">लाभार्थी विवरण</string>
     <string name="search">खोजें</string>
     <string name="enter_beneficiary_details">लाभार्थी विवरण दर्ज करें:</string>

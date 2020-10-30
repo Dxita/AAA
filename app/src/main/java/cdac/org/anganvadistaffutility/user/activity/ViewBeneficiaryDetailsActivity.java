@@ -47,7 +47,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
             String bhamashahNumber = Objects.requireNonNull(edt_bhamashah_id.getText()).toString().trim();
 
             if (mobileNumber.length() == 0 && aadharNumber.length() == 0 && janadharNumber.length() == 0 && bhamashahNumber.length() == 0) {
-                AppUtils.showToast(context, getResources().getString(R.string.fill_required_fields));
+                AppUtils.showToast(context, getResources().getString(R.string.fill_required_field));
             }
         }
     }
