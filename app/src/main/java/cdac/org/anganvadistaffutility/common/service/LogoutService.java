@@ -29,7 +29,7 @@ public class LogoutService extends Service {
     protected int counter = 1;
     private boolean isTaskRemoved = false;
     private AppPreferences appPreferences;
-    private final static int sessionTimeOut = 10;   // 15 minutes
+    private final static int sessionTimeOut = 900;   // 15 minutes
 
 
     @Override
