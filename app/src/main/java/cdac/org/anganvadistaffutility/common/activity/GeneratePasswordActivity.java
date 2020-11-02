@@ -83,6 +83,7 @@ public class GeneratePasswordActivity extends BaseActivity implements View.OnCli
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.showToast(context, body.getMessage());
                     startActivity(new Intent(context, UserSectionActivity.class));
+                    finishAffinity();
                 } else {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     AppUtils.showToast(context, body.getMessage());

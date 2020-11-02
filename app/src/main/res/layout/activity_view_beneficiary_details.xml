@@ -45,17 +45,7 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/enter_beneficiary_details"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_14sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/margin_05"
-            android:text="@string/fill_required_field"
-            android:textColor="@color/red"
-            android:textSize="@dimen/font_12" />
+            android:textSize="@dimen/font_16" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -70,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="10"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +71,7 @@
             android:layout_marginTop="@dimen/margin_05"
             android:text="@string/or_end"
             android:textColor="@color/red"
-            android:textSize="@dimen/font_10" />
+            android:textSize="@dimen/font_12" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -96,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="12"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +97,7 @@
             android:layout_marginTop="@dimen/margin_05"
             android:text="@string/or_end"
             android:textColor="@color/red"
-            android:textSize="@dimen/font_10" />
+            android:textSize="@dimen/font_12" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -122,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLength="12"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +123,7 @@
             android:layout_marginTop="@dimen/margin_05"
             android:text="@string/or_end"
             android:textColor="@color/red"
-            android:textSize="@dimen/font_10" />
+            android:textSize="@dimen/font_12" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -148,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLength="12"
-                android:textSize="@dimen/textsize_12sp" />
+                android:textSize="@dimen/textsize_14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

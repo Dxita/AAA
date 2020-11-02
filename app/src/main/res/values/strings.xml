@@ -249,10 +249,10 @@
     <string name="ok">OK</string>
     <string name="aanganwadi_building">Aanganwadi Building</string>
 
-    <string name="fill_required_field">Please fill at least one field</string>
+    <string name="fill_required_field">Enter any one of the beneficiary details</string>
     <string name="view_beneficiary_details">Beneficiary Details</string>
     <string name="search">Search</string>
-    <string name="enter_beneficiary_details">Enter Beneficiary Details:</string>
+    <string name="enter_beneficiary_details">Enter any one of the beneficiary details:</string>
     <string name="or_end">OR/AND</string>
 
 </resources>

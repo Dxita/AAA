@@ -18,17 +18,18 @@ import androidx.core.app.NotificationCompat;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cdac.org.anganvadistaffutility.common.activity.UserTypeActivity;
+import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.SplashActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
 
 public class LogoutService extends Service {
 
     private Context context;
-    protected int counter = 0;
+    protected int counter = 1;
     private boolean isTaskRemoved = false;
     private AppPreferences appPreferences;
-    private final static int sessionTimeOut = 900;   // 15 minutes
+    private final static int sessionTimeOut = 10;   // 15 minutes
 
 
     @Override
@@ -110,14 +111,18 @@ public class LogoutService extends Service {
                     SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
                     editor.clear();
                     editor.apply();
-                    stopTimerTask();
 
                     if (!isTaskRemoved) {
-                        Intent intent = new Intent(context, UserTypeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        Intent intent = new Intent(context, SplashActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        if (context instanceof BaseActivity) {
+                            ((BaseActivity) context).finishAffinity();
+                        }
                     }
-                    stopForeground(true);
+                    stopTimerTask();
                 } else {
                     counter = ++counter;
                 }
@@ -131,6 +136,8 @@ public class LogoutService extends Service {
             timer.cancel();
             timer = null;
         }
+        stopForeground(true);
+        stopSelf();
     }
 
     @Nullable
