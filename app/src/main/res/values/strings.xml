@@ -253,5 +253,6 @@
     <string name="view_beneficiary_details">Beneficiary Details</string>
     <string name="search">Search</string>
     <string name="enter_beneficiary_details">Enter Beneficiary Details:</string>
+    <string name="or_end">OR/AND</string>
 
 </resources>
