@@ -245,6 +245,7 @@
     <string name="ok">ठीक</string>
     <string name="aanganwadi_building">आंगनवाड़ी भवन</string>
 
+    <string name="beneficiary_criteria">लाभार्थी मानदंड</string>
     <string name="fill_required_field">लाभार्थी का कोई भी एक विवरण दर्ज करें</string>
     <string name="view_beneficiary_details">लाभार्थी विवरण</string>
     <string name="search">खोजें</string>

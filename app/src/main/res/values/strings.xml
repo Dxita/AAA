@@ -249,10 +249,17 @@
     <string name="ok">OK</string>
     <string name="aanganwadi_building">Aanganwadi Building</string>
 
+    <string name="beneficiary_criteria">Beneficiary Criteria</string>
     <string name="fill_required_field">Enter any one of the beneficiary details</string>
     <string name="view_beneficiary_details">Beneficiary Details</string>
     <string name="search">Search</string>
     <string name="enter_beneficiary_details">Enter any one of the beneficiary details:</string>
     <string name="or_end">OR/AND</string>
 
+    <string-array name="criteria">
+        <item>Pregnant</item>
+        <item>ABC</item>
+        <item>DEF</item>
+        <item>GHI</item>
+    </string-array>
 </resources>

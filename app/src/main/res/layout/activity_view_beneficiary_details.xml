@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
-            android:layout_marginLeft="@dimen/margin_05"
             android:text="@string/welcome_text"
             android:textAllCaps="true"
             android:textColor="@color/black"
@@ -31,127 +31,170 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/largeLabel"
-        android:orientation="vertical">
+        android:layout_above="@id/btn_search"
+        android:layout_below="@id/largeLabel">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:text="@string/enter_beneficiary_details"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_16" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:hint="@string/mobile_no">
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_mobile"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:text="@string/enter_beneficiary_details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_16" />
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_provinces"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="10"
-                android:textSize="@dimen/textsize_14sp" />
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                app:smsp_floatingLabelColor="@color/black"
+                app:smsp_floatingLabelText="@string/beneficiary_criteria"
+                app:smsp_hint="@string/beneficiary_criteria"
+                app:smsp_hintColor="@color/black"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_05"
-            android:text="@string/or_end"
-            android:textColor="@color/red"
-            android:textSize="@dimen/font_12" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:hint="@string/aadhar_no">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_aadhar_id"
+            <com.skydoves.powerspinner.PowerSpinnerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="12"
-                android:textSize="@dimen/textsize_14sp" />
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/beneficiary_criteria"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/textsize_14sp"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_05"
-            android:text="@string/or_end"
-            android:textColor="@color/red"
-            android:textSize="@dimen/font_12" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:hint="@string/janaadhar_no">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_janadhar_id"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:maxLength="12"
-                android:textSize="@dimen/textsize_14sp" />
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/mobile_no">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textSize="@dimen/textsize_14sp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_05"
-            android:text="@string/or_end"
-            android:textColor="@color/red"
-            android:textSize="@dimen/font_12" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:hint="@string/bhamasha_no">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_05"
+                android:text="@string/or_end"
+                android:textColor="@color/red"
+                android:textSize="@dimen/font_12" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_bhamashah_id"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:maxLength="12"
-                android:textSize="@dimen/textsize_14sp" />
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/aadhar_no">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_aadhar_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:textSize="@dimen/textsize_14sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:background="@drawable/buttonbg"
-            android:text="@string/search"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textsize_14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_05"
+                android:text="@string/or_end"
+                android:textColor="@color/red"
+                android:textSize="@dimen/font_12" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/janaadhar_no">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_janadhar_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLength="12"
+                    android:textSize="@dimen/textsize_14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_05"
+                android:text="@string/or_end"
+                android:textColor="@color/red"
+                android:textSize="@dimen/font_12" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/bhamasha_no">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_bhamashah_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLength="12"
+                    android:textSize="@dimen/textsize_14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/peach"
+        android:text="@string/search"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_14sp" />
 
 </RelativeLayout>
