@@ -19,6 +19,8 @@ public class ApiUtils {
     public static final String USER_AWC_ITEMS = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
     public static final String AW_BUILDING_DATA = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
 
+    public static final String GET_BENEFICIARY_CRITERIA = "http://164.100.222.241/rajposhan/rajposhan_2/";
+
 
     // User Type: Admin
     public static final String VERIFY_ADMIN_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";

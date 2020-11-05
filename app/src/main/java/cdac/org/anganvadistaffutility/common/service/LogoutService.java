@@ -18,7 +18,6 @@ import androidx.core.app.NotificationCompat;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.activity.SplashActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
@@ -27,10 +26,8 @@ public class LogoutService extends Service {
 
     private Context context;
     protected int counter = 1;
-    private boolean isTaskRemoved = false;
     private AppPreferences appPreferences;
     private final static int sessionTimeOut = 900;   // 15 minutes
-
 
     @Override
     public void onCreate() {
@@ -38,7 +35,6 @@ public class LogoutService extends Service {
 
         context = this;
         appPreferences = new AppPreferences(context);
-
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
             startMyOwnForeground();
         } else {
@@ -72,7 +68,9 @@ public class LogoutService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
-        startTimer();
+        if (appPreferences.isUserLoggedIn()) {
+            startTimer();
+        }
         return START_STICKY;
     }
 
@@ -88,10 +86,8 @@ public class LogoutService extends Service {
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
 
+        stopTimerTask();
         if (appPreferences.isUserLoggedIn()) {
-            isTaskRemoved = true;
-            stopTimerTask();
-
             Intent broadcastIntent = new Intent();
             broadcastIntent.setAction("restartservice");
             broadcastIntent.setClass(this, ServiceRestart.class);
@@ -106,22 +102,16 @@ public class LogoutService extends Service {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
-
                 if (counter == sessionTimeOut) {
                     SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
                     editor.clear();
                     editor.apply();
 
-                    if (!isTaskRemoved) {
-                        Intent intent = new Intent(context, SplashActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                                Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                                Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        if (context instanceof BaseActivity) {
-                            ((BaseActivity) context).finishAffinity();
-                        }
-                    }
+                    Intent intent = new Intent(context, SplashActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                            Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                     stopTimerTask();
                 } else {
                     counter = ++counter;

@@ -52,6 +52,8 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getAaGanWadiInfrastructureData();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
         infraStructureAdapter = new InfraStructureAdapter(context, infrastructureData, infraStructureImageList, itemClickListener);

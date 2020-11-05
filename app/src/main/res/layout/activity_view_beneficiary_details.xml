@@ -52,7 +52,7 @@
                 android:textSize="@dimen/font_16" />
 
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-                android:id="@+id/sp_provinces"
+                android:id="@+id/sp_beneficiary_criteria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
@@ -80,6 +80,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/textsize_14sp"
+                android:visibility="gone"
                 app:spinner_arrow_gravity="end"
                 app:spinner_arrow_padding="@dimen/margin_10"
                 app:spinner_divider_color="@color/white"

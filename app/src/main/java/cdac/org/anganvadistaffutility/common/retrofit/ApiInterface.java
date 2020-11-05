@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.common.retrofit;
 
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
+import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
@@ -117,5 +118,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<InfraStructureDetailData> getInfrastructureDetails(@Field("filterby") String filterType,
                                                             @Field("infra_id") String infraID);
+
+
+    // Get Beneficiary Criteria List
+
+    @GET("api_js_Beneficiary_Master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    Call<BeneficiaryCriteria> getBeneficiaryCriteria();
 
 }
