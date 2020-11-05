@@ -49,7 +49,6 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getBeneficiaryCriteriaData();
         } else {
-
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
