@@ -121,7 +121,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
     private void getAaGanWadiInfrastructureData() {
 
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.USER_AWC_ITEMS);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<UserInfrastructureData> call = apiInterface.userInfrastructureData(appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UserInfrastructureData>() {
             @Override

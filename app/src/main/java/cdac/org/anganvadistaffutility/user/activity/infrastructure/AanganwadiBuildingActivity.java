@@ -1,12 +1,14 @@
 package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -32,12 +35,14 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import retrofit2.Call;
 
-public class AanganwadiBuildingActivity extends BaseActivity {
+public class AanganwadiBuildingActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout relativeLayout;
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     String infra_id;
+    AppCompatButton submit_btn, update_btn;
+    AwcBuildingAdapter awcBuildingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,12 @@ public class AanganwadiBuildingActivity extends BaseActivity {
 
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
+        update_btn = findViewById(R.id.update_btn);
+        submit_btn = findViewById(R.id.submit_btn);
+
+        update_btn.setOnClickListener(this);
+        submit_btn.setOnClickListener(this);
+
 
         infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -88,7 +99,7 @@ public class AanganwadiBuildingActivity extends BaseActivity {
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
 
-                AwcBuildingAdapter awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
+                awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
             }
 
@@ -111,10 +122,28 @@ public class AanganwadiBuildingActivity extends BaseActivity {
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.update_btn) {
+            submit_btn.setVisibility(View.VISIBLE);
+            update_btn.setVisibility(View.GONE);
+
+        }
+
+        if (v.getId() == R.id.submit_btn) {
+            update_btn.setVisibility(View.VISIBLE);
+            submit_btn.setVisibility(View.GONE);
+
+            Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     private static class AwcBuildingAdapter extends RecyclerView.Adapter<MyViewHolders> {
 
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
+
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -125,14 +154,26 @@ public class AanganwadiBuildingActivity extends BaseActivity {
         @Override
         public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+            @SuppressLint("InflateParams")
             View view = LayoutInflater.from(context).inflate(R.layout.aw_building_items, null);
             return new MyViewHolders(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
+
             infrastructureData.get(position);
-            holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
+            holder.checkBox.setTag(position);
+
+            if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                holder.checkBox.setChecked(true);
+                Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+            } else {
+                holder.checkBox.setChecked(false);
+
+            }
+
+            // holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
             holder.setData(context, infrastructureData.get(position));
 
 
@@ -146,17 +187,22 @@ public class AanganwadiBuildingActivity extends BaseActivity {
         }
     }
 
-    private static class MyViewHolders extends RecyclerView.ViewHolder {
+    public static class MyViewHolders extends RecyclerView.ViewHolder {
         AppCompatTextView item_name;
         private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
         CheckBox checkBox;
+
 
         public MyViewHolders(@NonNull View itemView) {
             super(itemView);
 
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
+
+            checkBox.setClickable(false);
+
         }
+
 
         public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
@@ -174,6 +220,8 @@ public class AanganwadiBuildingActivity extends BaseActivity {
 
 
         }
+
+
     }
 
 }

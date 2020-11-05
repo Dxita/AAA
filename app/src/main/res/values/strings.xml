@@ -255,6 +255,7 @@
     <string name="search">Search</string>
     <string name="enter_beneficiary_details">Enter any one of the beneficiary details:</string>
     <string name="or_end">OR/AND</string>
+    <string name="_25_">25</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>
