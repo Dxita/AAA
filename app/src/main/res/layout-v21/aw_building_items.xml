@@ -7,41 +7,44 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:elevation="@dimen/margin_10"
-        app:cardBackgroundColor="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/margin_10"
+        app:cardBackgroundColor="@android:color/transparent">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-
-            android:id="@+id/item_tv"
-            android:layout_weight="1"
-            android:padding="@dimen/margin_10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textsize_17sp"
-            android:layout_margin="@dimen/margin_08"
-            android:text="@string/item_name"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_10"
-            android:layout_marginStart="@dimen/margin_05"
-            android:layout_marginRight="@dimen/margin_10"
-            android:layout_marginLeft="@dimen/margin_05" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_marginRight="@dimen/margin_08"
+                android:layout_marginLeft="@dimen/margin_08"
+                android:layout_width="@dimen/margin_30"
+                android:layout_height="@dimen/margin_30"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_user_admin" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/item_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_08"
+                android:layout_weight="1"
+                android:padding="@dimen/margin_10"
+                android:text="@string/item_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_17sp" />
 
             <CheckBox
                 android:id="@+id/checkbox"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

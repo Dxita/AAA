@@ -50,18 +50,37 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/update_btn"
-            android:text="@string/update"
-            android:enabled="false"
+
+        <RelativeLayout
+
             android:layout_weight="1"
-            android:layout_margin="@dimen/margin_05"
-            android:textColor="@color/white"
-            android:padding="@dimen/margin_10"
-            android:textSize="@dimen/textsize_14sp"
-            android:background="@android:color/darker_gray"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/update_btn"
+                android:text="@string/update"
+                android:layout_margin="@dimen/margin_05"
+                android:textColor="@color/white"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_14sp"
+                android:background="@android:color/darker_gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:visibility="gone"
+                android:id="@+id/submit_btn"
+                android:text="@string/submit_btn"
+                android:layout_margin="@dimen/margin_05"
+                android:textColor="@color/white"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_14sp"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel_btn"

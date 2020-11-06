@@ -49,9 +49,6 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_awc_infrastructure);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         relativeLayout = findViewById(R.id.relativeLayout);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
