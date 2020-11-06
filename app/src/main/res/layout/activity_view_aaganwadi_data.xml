@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -22,12 +22,11 @@
                 android:src="@drawable/app_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_user_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_05"
-                android:layout_marginLeft="@dimen/margin_05"
-                android:text="@string/welcome_text"
+                android:text="@string/admin_text"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_18" />
@@ -67,10 +66,8 @@
                             android:layout_width="@dimen/margin_200"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardElevation="@dimen/margin_05"
                             app:cardUseCompatPadding="true">
@@ -104,10 +101,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                            android:layout_marginRight="@dimen/activity_horizontal_margin"
                             app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                     </RelativeLayout>
@@ -134,10 +129,8 @@
                             android:layout_width="@dimen/margin_200"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardElevation="@dimen/margin_05"
                             app:cardUseCompatPadding="true">
@@ -171,10 +164,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                            android:layout_marginRight="@dimen/activity_horizontal_margin"
                             app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                     </RelativeLayout>

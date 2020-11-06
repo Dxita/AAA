@@ -184,6 +184,9 @@ public class BaseActivity extends AppCompatActivity {
             }
         }*/
 
+        // adminNumberList.add("9784544208");
+        // adminNumberList.add("7014259658");
+
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
                 adminNumberList.clear();
@@ -324,6 +327,10 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+
+        if (!appPreferences.isUserLoggedIn()) {
+            stopService(new Intent(context, LogoutService.class));
+        }
     }
 }
 

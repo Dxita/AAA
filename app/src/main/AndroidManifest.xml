@@ -201,12 +201,12 @@
         <service
             android:name=".common.service.LogoutService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="true" />
 
         <receiver
             android:name=".common.receiver.ServiceRestart"
             android:enabled="true"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="restartservice" />
             </intent-filter>

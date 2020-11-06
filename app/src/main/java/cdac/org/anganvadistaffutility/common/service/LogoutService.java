@@ -28,7 +28,7 @@ public class LogoutService extends Service {
 
     protected int counter = 1;
     private AppPreferences appPreferences;
-    private final static int sessionTimeOut = 900;   // 15 minutes
+    private final static int sessionTimeOut = 180;   // 15 minutes
     private static final int ID_SERVICE = 101;
 
 
@@ -45,6 +45,7 @@ public class LogoutService extends Service {
         Notification notification = notificationBuilder.setOngoing(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setPriority(PRIORITY_MIN)
+                //   .setContentTitle("App is running count::" + counter++)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .build();
 
@@ -55,10 +56,18 @@ public class LogoutService extends Service {
     private String createNotificationChannel(NotificationManager notificationManager) {
         String channelId = "com.rajposhan";
         String channelName = "Log out service";
-        NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
-        channel.setImportance(NotificationManager.IMPORTANCE_NONE);
-        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+
+        int importance = NotificationManager.IMPORTANCE_MIN;
+        NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
+        // channel.setDescription("App is running count::" + counter++);
+        // Register the channel with the system; you can't change the importance
+        // or other notification behaviors after this
         notificationManager.createNotificationChannel(channel);
+
+       /* NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
+        channel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        notificationManager.createNotificationChannel(channel);*/
         return channelId;
     }
 
@@ -66,10 +75,8 @@ public class LogoutService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
-        if (appPreferences.isUserLoggedIn()) {
-            startTimer();
-        }
-        return START_STICKY;
+        startTimer();
+        return START_REDELIVER_INTENT;
     }
 
     @Override
@@ -95,10 +102,12 @@ public class LogoutService extends Service {
     private Timer timer;
     protected TimerTask timerTask;
 
-    public void startTimer() {
+    private void startTimer() {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
+
+                //   Log.e("Logout Service", "" + counter);
 
                 if (counter == sessionTimeOut) {
                     SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
@@ -107,7 +116,7 @@ public class LogoutService extends Service {
                     sendFinishMessage();
                     stopTimerTask();
                 } else {
-                    counter = ++counter;
+                    counter += 1;
                 }
             }
         };

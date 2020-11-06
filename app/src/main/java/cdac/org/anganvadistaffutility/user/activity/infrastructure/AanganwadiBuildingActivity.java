@@ -1,13 +1,5 @@
 package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,9 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +126,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         if (v.getId() == R.id.update_btn) {
             submit_btn.setVisibility(View.VISIBLE);
             update_btn.setVisibility(View.GONE);
-
+            awcBuildingAdapter.myViewHolders.checkBox.setEnabled(true);
         }
 
         if (v.getId() == R.id.submit_btn) {
@@ -143,7 +142,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
-
+        MyViewHolders myViewHolders;
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -162,6 +161,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
 
+            myViewHolders = holder;
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
 
@@ -199,7 +199,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
 
-            checkBox.setClickable(false);
+            checkBox.setEnabled(false);
 
         }
 
