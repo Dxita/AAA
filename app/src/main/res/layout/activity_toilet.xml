@@ -58,7 +58,7 @@
             android:layout_height="wrap_content">
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/update_btn"
-                android:text="@string/update"
+                android:text="@string/edit"
                 android:layout_margin="@dimen/margin_05"
                 android:textColor="@color/white"
                 android:padding="@dimen/margin_10"

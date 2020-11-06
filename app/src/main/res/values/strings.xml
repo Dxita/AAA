@@ -257,6 +257,7 @@
     <string name="or_end">OR/AND</string>
     <string name="_25_">25</string>
     <string name="infrastructure_details">Infrastructure Details</string>
+    <string name="edit">Edit</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

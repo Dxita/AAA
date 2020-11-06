@@ -42,7 +42,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
     String infra_id;
     AppCompatButton submit_btn, update_btn;
     AwcBuildingAdapter awcBuildingAdapter;
-
+    MyViewHolders myViewHolders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,7 +139,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
 
     private static class AwcBuildingAdapter extends RecyclerView.Adapter<MyViewHolders> {
-
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         MyViewHolders myViewHolders;
@@ -175,6 +174,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
             // holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
             holder.setData(context, infrastructureData.get(position));
+
 
 
         }
