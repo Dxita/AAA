@@ -4,8 +4,10 @@ import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -21,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.Credentials;
@@ -57,15 +60,22 @@ public class BaseActivity extends AppCompatActivity {
     private final int PHONE_RESOLVE_HINT = 2;
     private final int EMAIL_RESOLVE_HINT = 3;
 
-    private final int NO_HINTS_AVAILABLE = 1002;
-    private final int SELECT_NONE = 1001;
-
     private RelativeLayout relativeLay;
     public AppPreferences appPreferences;
     public Context context;
     public ApiInterface apiInterface;
     protected List<String> adminNumberList;
     // private TelephonyManager telephonyManager;
+
+    protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String message = intent.getStringExtra("message");
+            if (message.equalsIgnoreCase("logout")) {
+                finishAffinity();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -245,6 +255,8 @@ public class BaseActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PHONE_RESOLVE_HINT) {
+            int NO_HINTS_AVAILABLE = 1002;
+            int SELECT_NONE = 1001;
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
                     Credential credential = data.getParcelableExtra(Credential.EXTRA_KEY);
@@ -287,8 +299,19 @@ public class BaseActivity extends AppCompatActivity {
 
         if (appPreferences.isUserLoggedIn()) {
             stopService(new Intent(context, LogoutService.class));
-            startService(new Intent(context, LogoutService.class));
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(new Intent(context, LogoutService.class));
+            } else {
+                startService(new Intent(context, LogoutService.class));
+            }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("logout"));
     }
 
     @Override
@@ -300,10 +323,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        if (!appPreferences.isUserLoggedIn()) {
-            stopService(new Intent(context, LogoutService.class));
-        }
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
     }
 }
 

@@ -7,62 +7,60 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cdac.org.anganvadistaffutility.common.activity.SplashActivity;
+import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
 
+import static androidx.core.app.NotificationCompat.PRIORITY_MIN;
+
 public class LogoutService extends Service {
 
-    private Context context;
     protected int counter = 1;
     private AppPreferences appPreferences;
     private final static int sessionTimeOut = 900;   // 15 minutes
+    private static final int ID_SERVICE = 101;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        context = this;
-        appPreferences = new AppPreferences(context);
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
-            startMyOwnForeground();
-        } else {
-            startForeground(1, new Notification());
-        }
+        appPreferences = new AppPreferences(this);
+
+        // Create the Foreground Service
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? createNotificationChannel(notificationManager) : "";
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId);
+        Notification notification = notificationBuilder.setOngoing(true)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setPriority(PRIORITY_MIN)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                .build();
+
+        startForeground(ID_SERVICE, notification);
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private void startMyOwnForeground() {
-        String NOTIFICATION_CHANNEL_ID = "com.rajposhan";
-        String channelName = "User Session Out Service";
-        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        assert manager != null;
-        manager.createNotificationChannel(chan);
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        Notification notification = notificationBuilder.setOngoing(true)
-                .setContentTitle("")
-                .setPriority(NotificationManager.IMPORTANCE_MIN)
-                .setCategory(Notification.CATEGORY_SERVICE)
-                .build();
-        startForeground(2, notification);
+    private String createNotificationChannel(NotificationManager notificationManager) {
+        String channelId = "com.rajposhan";
+        String channelName = "Log out service";
+        NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
+        channel.setImportance(NotificationManager.IMPORTANCE_NONE);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        notificationManager.createNotificationChannel(channel);
+        return channelId;
     }
-
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -73,7 +71,6 @@ public class LogoutService extends Service {
         }
         return START_STICKY;
     }
-
 
     @Override
     public void onDestroy() {
@@ -102,16 +99,12 @@ public class LogoutService extends Service {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
+
                 if (counter == sessionTimeOut) {
                     SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
                     editor.clear();
                     editor.apply();
-
-                    Intent intent = new Intent(context, SplashActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                            Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                    sendFinishMessage();
                     stopTimerTask();
                 } else {
                     counter = ++counter;
@@ -119,6 +112,12 @@ public class LogoutService extends Service {
             }
         };
         timer.schedule(timerTask, 1000, 1000); //
+    }
+
+    private void sendFinishMessage() {
+        Intent intent = new Intent("logout");
+        intent.putExtra("message", "logout");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
     public void stopTimerTask() {
