@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
     AppCompatButton submit_btn, update_btn;
     AwcBuildingAdapter awcBuildingAdapter;
     MyViewHolders myViewHolders;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,8 +138,8 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         }*/
 
         if (v.getId() == R.id.submit_btn) {
-           // update_btn.setVisibility(View.VISIBLE);
-          //  submit_btn.setVisibility(View.GONE);
+            // update_btn.setVisibility(View.VISIBLE);
+            //  submit_btn.setVisibility(View.GONE);
 
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
         }
@@ -148,6 +150,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         MyViewHolders myViewHolders;
+        private int mCheckedPostion = 0;// no selection by default
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -167,21 +170,24 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
 
             myViewHolders = holder;
-            infrastructureData.get(position);
+           infrastructureData.get(position);
+
+
             holder.checkBox.setTag(position);
 
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 holder.checkBox.setChecked(true);
+
+
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
             } else {
                 holder.checkBox.setChecked(false);
 
             }
 
+
             // holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
             holder.setData(context, infrastructureData.get(position));
-
-
 
         }
 
@@ -205,7 +211,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
 
-          //  checkBox.setEnabled(false);
+            //  checkBox.setEnabled(false);
 
         }
 
