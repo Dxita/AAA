@@ -56,6 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <androidx.appcompat.widget.AppCompatButton
+                android:visibility="gone"
                 android:id="@+id/update_btn"
                 android:text="@string/edit"
                 android:layout_margin="@dimen/margin_05"
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/submit_btn"
                 android:text="@string/submit_btn"
                 android:layout_margin="@dimen/margin_05"

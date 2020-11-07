@@ -82,8 +82,13 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener{
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            getAanganwadiBuildingData();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+        }
 
-        getAanganwadiBuildingData();
     }
 
     private void getAanganwadiBuildingData() {
@@ -124,15 +129,15 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.update_btn) {
+     /*   if (v.getId() == R.id.update_btn) {
             submit_btn.setVisibility(View.VISIBLE);
             update_btn.setVisibility(View.GONE);
 
-        }
+        }*/
 
         if (v.getId() == R.id.submit_btn) {
-            update_btn.setVisibility(View.VISIBLE);
-            submit_btn.setVisibility(View.GONE);
+           // update_btn.setVisibility(View.VISIBLE);
+            //submit_btn.setVisibility(View.GONE);
 
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
         }
@@ -199,7 +204,7 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener{
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
 
-            checkBox.setClickable(false);
+            //checkBox.setClickable(false);
 
         }
 
