@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -39,10 +40,11 @@ import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.LanguageActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
+import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
-import cdac.org.anganvadistaffutility.common.service.LogoutService;
+import cdac.org.anganvadistaffutility.common.service.UserLogoutService;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity;
@@ -67,12 +69,20 @@ public class BaseActivity extends AppCompatActivity {
     protected List<String> adminNumberList;
     // private TelephonyManager telephonyManager;
 
-    protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+
+            //  Log.e(TAG, "Log out broadcast received");
+
             String message = intent.getStringExtra("message");
             if (message.equalsIgnoreCase("logout")) {
+                SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+                editor.clear();
+                editor.apply();
                 finishAffinity();
+
+                //    Log.e(TAG, "User Logged out");
             }
         }
     };
@@ -184,8 +194,8 @@ public class BaseActivity extends AppCompatActivity {
             }
         }*/
 
-        // adminNumberList.add("9784544208");
-        // adminNumberList.add("7014259658");
+        //  adminNumberList.add("9784544208");
+        //  adminNumberList.add("7014259658");
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
@@ -301,6 +311,52 @@ public class BaseActivity extends AppCompatActivity {
         super.onUserInteraction();
 
         if (appPreferences.isUserLoggedIn()) {
+            if (AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
+                Intent intent = new Intent(context, UserLogoutService.class);
+                intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
+                startService(intent);
+            } else {
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction("restartservice");
+                broadcastIntent.setClass(this, ServiceRestart.class);
+                this.sendBroadcast(broadcastIntent);
+            }
+        }
+    }
+
+        /*  if (!isServiceRunning("cdac.org.anganvadistaffutility.common.service.UserLogoutService")) {
+
+                Log.e("Logout Service", "service not running");
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Intent i = new Intent(context, UserLogoutService.class);
+                    i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
+                    startService(i);
+                } else {
+                    Intent i = new Intent(context, UserLogoutService.class);
+                    i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
+                    startService(new Intent(context, LogoutService.class));
+                }
+            }*/
+
+
+    /* if (appPreferences.isUserLoggedIn()) {
+     *//*if (!isServiceRunning("cdac.org.anganvadistaffutility.common.service.UserLogoutService")) {
+                Intent i = new Intent(context, UserLogoutService.class);
+                i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
+                startService(i);
+            } else {*//*
+            Intent intent = new Intent(context, UserLogoutService.class);
+            intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
+            startService(intent);
+
+            Intent i = new Intent(context, UserLogoutService.class);
+            i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
+            startService(i);
+        }*/
+    //  }
+
+        /*if (appPreferences.isUserLoggedIn()) {
             stopService(new Intent(context, LogoutService.class));
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -308,8 +364,23 @@ public class BaseActivity extends AppCompatActivity {
             } else {
                 startService(new Intent(context, LogoutService.class));
             }
+        }*/
+
+
+    /*private boolean isServiceRunning(String serviceName) {
+        boolean serviceRunning = false;
+        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> l = am.getRunningServices(50);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : l) {
+            if (runningServiceInfo.service.getClassName().equals(serviceName)) {
+                if (runningServiceInfo.foreground) {
+                    //service run in foreground
+                    serviceRunning = true;
+                }
+            }
         }
-    }
+        return serviceRunning;
+    }*/
 
     @Override
     protected void onResume() {
@@ -326,10 +397,16 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
-        if (!appPreferences.isUserLoggedIn()) {
-            stopService(new Intent(context, LogoutService.class));
+        if (!appPreferences.isUserLoggedIn() && AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
+
+            //   Log.e("Activity Service", "activity destroy");
+
+            Intent intent = new Intent(context, UserLogoutService.class);
+            intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
+            startService(intent);
         }
     }
 }

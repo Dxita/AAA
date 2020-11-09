@@ -73,19 +73,6 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.28"
-                android:background="@drawable/header_border"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:padding="@dimen/margin_05"
-                android:singleLine="true"
-                android:text="@string/bil_name"
-                android:textColor="@color/white"
-                android:textSize="@dimen/textsize_14sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="0.30"
                 android:background="@drawable/header_border"
                 android:ellipsize="end"
@@ -93,6 +80,19 @@
                 android:padding="@dimen/margin_05"
                 android:singleLine="true"
                 android:text="@string/payment_month"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.28"
+                android:background="@drawable/header_border"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:padding="@dimen/margin_05"
+                android:singleLine="true"
+                android:text="@string/bil_name"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textsize_14sp" />
 

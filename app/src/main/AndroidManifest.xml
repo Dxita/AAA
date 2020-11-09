@@ -199,19 +199,29 @@
             android:name=".user.activity.ViewBeneficiaryDetailsActivity"
             android:screenOrientation="portrait" />
 
+        <!--  <service
+              android:name=".common.service.LogoutService"
+              android:enabled="true"
+              android:exported="true" />-->
+
         <service
-            android:name=".common.service.LogoutService"
+            android:name=".common.service.UserLogoutService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
 
         <receiver
             android:name=".common.receiver.ServiceRestart"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="restartservice" />
             </intent-filter>
         </receiver>
+
+        <receiver
+            android:name=".common.service.UserLogoutService$AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
         <receiver
             android:name=".common.receiver.SmsBroadcastReceiver"

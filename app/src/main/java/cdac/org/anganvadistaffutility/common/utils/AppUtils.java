@@ -1,6 +1,7 @@
 package cdac.org.anganvadistaffutility.common.utils;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
@@ -32,6 +33,8 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 
 
 public class AppUtils {
@@ -169,5 +172,21 @@ public class AppUtils {
 
     public static int previousYear() {
         return 2015;
+    }
+
+    public static final String serviceName = "cdac.org.anganvadistaffutility.common.service.UserLogoutService";
+
+    public static boolean isLogoutServiceRunning(Context context, String serviceName) {
+        boolean serviceRunning = false;
+        ActivityManager am = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> l = am.getRunningServices(50);
+        for (ActivityManager.RunningServiceInfo runningServiceInfo : l) {
+            if (runningServiceInfo.service.getClassName().equals(serviceName)) {
+                if (runningServiceInfo.foreground) {
+                    serviceRunning = true;
+                }
+            }
+        }
+        return serviceRunning;
     }
 }
