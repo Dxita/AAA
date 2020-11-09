@@ -40,7 +40,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     String infra_id;
-    AppCompatButton submit_btn, update_btn;
+    AppCompatButton submit_btn, update_btn, cancel_btn;
     DrinkingWaterAdapter drinkingWaterAdapter;
 
     @Override
@@ -68,10 +68,10 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
         recyclerView = findViewById(R.id.recycler_view);
         update_btn = findViewById(R.id.update_btn);
         submit_btn = findViewById(R.id.submit_btn);
-
+        cancel_btn = findViewById(R.id.cancel_btn);
         update_btn.setOnClickListener(this);
         submit_btn.setOnClickListener(this);
-
+        cancel_btn.setOnClickListener(this);
 
         infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -124,23 +124,24 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-     /*   if (v.getId() == R.id.update_btn) {
-            submit_btn.setVisibility(View.VISIBLE);
-            update_btn.setVisibility(View.GONE);
 
-        }
-*/
         if (v.getId() == R.id.submit_btn) {
             //update_btn.setVisibility(View.VISIBLE);
             //    submit_btn.setVisibility(View.GONE);
-
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
+        }
+        if (v.getId() == R.id.cancel_btn) {
+            // update_btn.setVisibility(View.VISIBLE);
+            //  submit_btn.setVisibility(View.GONE);
+            finish();
         }
     }
 
     private class DrinkingWaterAdapter extends RecyclerView.Adapter<MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
+        private CheckBox lastChecked = null;
+        private int lastCheckedPos = 0;
 
         public DrinkingWaterAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -161,14 +162,33 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
             holder.checkBox.setTag(position);
 
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                lastChecked = holder.checkBox;
+                lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
-                Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-            } else {
-                holder.checkBox.setChecked(false);
 
+
+                Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
             }
 
-            // holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v;
+                    int clickedPos = ((Integer) cb.getTag()).intValue();
+
+                    if (cb.isChecked()) {
+                        if (lastChecked != null) {
+                            lastChecked.setChecked(false);
+
+                        }
+
+                        lastChecked = cb;
+                        lastCheckedPos = clickedPos;
+                        Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                    } else
+                        lastChecked = null;
+                }
+            });
             holder.setData(context, infrastructureData.get(position));
 
         }

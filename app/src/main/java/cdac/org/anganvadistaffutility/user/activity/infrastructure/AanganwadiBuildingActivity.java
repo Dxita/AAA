@@ -41,7 +41,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     String infra_id;
-    AppCompatButton submit_btn, update_btn;
+    AppCompatButton submit_btn, update_btn, cancel_btn;
     AwcBuildingAdapter awcBuildingAdapter;
     MyViewHolders myViewHolders;
 
@@ -73,10 +73,11 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         recyclerView = findViewById(R.id.recycler_view);
         update_btn = findViewById(R.id.update_btn);
         submit_btn = findViewById(R.id.submit_btn);
+        cancel_btn = findViewById(R.id.cancel_btn);
 
         update_btn.setOnClickListener(this);
         submit_btn.setOnClickListener(this);
-
+        cancel_btn.setOnClickListener(this);
 
         infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -101,7 +102,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
-                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+               Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -131,26 +132,25 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-      /*  if (v.getId() == R.id.update_btn) {
-            submit_btn.setVisibility(View.VISIBLE);
-            update_btn.setVisibility(View.GONE);
-            awcBuildingAdapter.myViewHolders.checkBox.setEnabled(true);
-        }*/
-
         if (v.getId() == R.id.submit_btn) {
             // update_btn.setVisibility(View.VISIBLE);
             //  submit_btn.setVisibility(View.GONE);
-
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
         }
-    }
 
+        if (v.getId() == R.id.cancel_btn) {
+            // update_btn.setVisibility(View.VISIBLE);
+            //  submit_btn.setVisibility(View.GONE);
+            finish();
+        }
+    }
 
     private static class AwcBuildingAdapter extends RecyclerView.Adapter<MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         MyViewHolders myViewHolders;
-        private int mCheckedPostion = 0;// no selection by default
+        private static CheckBox lastChecked = null;
+        private static int lastCheckedPos = 0;
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -168,25 +168,42 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
-
             myViewHolders = holder;
-           infrastructureData.get(position);
+            infrastructureData.get(position);
 
 
             holder.checkBox.setTag(position);
 
+
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                lastChecked = holder.checkBox;
+                lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
 
 
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-            } else {
-                holder.checkBox.setChecked(false);
-
             }
 
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v;
+                    int clickedPos = ((Integer) cb.getTag()).intValue();
 
-            // holder.checkBox.setChecked(infrastructureData.get(position).getStatus().equalsIgnoreCase("yes"));
+                    if (cb.isChecked()) {
+                        if (lastChecked != null) {
+                            lastChecked.setChecked(false);
+
+                        }
+
+                        lastChecked = cb;
+                        lastCheckedPos = clickedPos;
+                        Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                    } else
+                        lastChecked = null;
+                }
+            });
+
             holder.setData(context, infrastructureData.get(position));
 
         }
