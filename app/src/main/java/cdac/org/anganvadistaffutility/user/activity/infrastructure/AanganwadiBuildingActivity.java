@@ -68,7 +68,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
             infra_id = (String) savedInstanceState.getSerializable("infra_id");
         }
 
-
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
         update_btn = findViewById(R.id.update_btn);
@@ -90,13 +89,9 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
-
-
     }
 
     private void getAanganwadiBuildingData() {
-
-
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
@@ -106,7 +101,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
-
                 awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
             }
@@ -135,7 +129,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
             //  submit_btn.setVisibility(View.GONE);
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
         }
-
         if (v.getId() == R.id.cancel_btn) {
             // update_btn.setVisibility(View.VISIBLE);
             //  submit_btn.setVisibility(View.GONE);
@@ -158,7 +151,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         @NonNull
         @Override
         public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
             @SuppressLint("InflateParams")
             View view = LayoutInflater.from(context).inflate(R.layout.aw_building_items, null);
             return new MyViewHolders(view);
@@ -173,8 +165,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
-
-
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
             }
 
@@ -182,17 +172,15 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
-                    int clickedPos = ((Integer) cb.getTag()).intValue();
-
+                    int clickedPos = (Integer) cb.getTag();
                     if (cb.isChecked()) {
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
-
                         }
-
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+
                     } else
                         lastChecked = null;
                 }
@@ -226,7 +214,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
             if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
                 name = infrastructureData.getTidInfraNamee();
-
             } else {
                 name = infrastructureData.getTidInfraNameh();
             }

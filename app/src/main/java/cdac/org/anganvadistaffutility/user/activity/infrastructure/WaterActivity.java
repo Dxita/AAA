@@ -108,10 +108,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
-
         }));
-
-
     }
 
     @Override
@@ -124,7 +121,6 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-
         if (v.getId() == R.id.submit_btn) {
             //update_btn.setVisibility(View.VISIBLE);
             //    submit_btn.setVisibility(View.GONE);
@@ -162,12 +158,10 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
             holder.checkBox.setTag(position);
 
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
-                lastChecked = holder.checkBox;
-                lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
-
-
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+            } else {
+                holder.checkBox.setChecked(false);
             }
 
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
@@ -175,68 +169,43 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
                     int clickedPos = ((Integer) cb.getTag()).intValue();
-
                     if (cb.isChecked()) {
-                        if (lastChecked != null) {
-                            lastChecked.setChecked(false);
-
-                        }
-
-                        lastChecked = cb;
-                        lastCheckedPos = clickedPos;
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-                    } else
-                        lastChecked = null;
+                    }
                 }
             });
             holder.setData(context, infrastructureData.get(position));
-
         }
-
 
         @Override
         public int getItemCount() {
             return infrastructureData.size();
-
         }
     }
-
 
     public static class MyViewHolders extends RecyclerView.ViewHolder {
         AppCompatTextView item_name;
         private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
         CheckBox checkBox;
 
-
         public MyViewHolders(@NonNull View itemView) {
             super(itemView);
-
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
-
             // checkBox.setClickable(false);
-
         }
-
 
         public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
             String name = "";
             String qty = "";
-
             if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
                 name = infrastructureData.getTidInfraNamee();
-
             } else {
                 name = infrastructureData.getTidInfraNameh();
             }
             //  name = infrastructureData.getTidInfraNamee();
             item_name.setText(name);
-
-
         }
-
-
     }
-
 }

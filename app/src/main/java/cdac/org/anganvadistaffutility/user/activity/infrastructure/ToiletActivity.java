@@ -162,8 +162,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             holder.checkBox.setTag(position);
 
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
-                lastChecked = holder.checkBox;
-                lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
             }
@@ -174,20 +172,16 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                     CheckBox cb = (CheckBox) v;
                     int clickedPos = ((Integer) cb.getTag()).intValue();
                     if (cb.isChecked()) {
-                        if (lastChecked != null) {
-                            lastChecked.setChecked(false);
-                        }
-                        lastChecked = cb;
-                        lastCheckedPos = clickedPos;
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-                    } else
-                        lastChecked = null;
+                    }
                 }
             });
 
             holder.edit_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    holder.edtx_qty.requestFocus();
+                    holder.edtx_qty.setCursorVisible(true);
                     holder.edtx_qty.setFocusable(true);
                     holder.edtx_qty.setFocusableInTouchMode(true); // user touches widget on phone with touch screen
                     holder.edtx_qty.setClickable(true); // user navigat
@@ -215,7 +209,9 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             checkBox = itemView.findViewById(R.id.checkbox);
             edtx_qty = itemView.findViewById(R.id.qty_edtx);
             edit_icon = itemView.findViewById(R.id.edit_icon);
+
             edtx_qty.setFocusable(false);
+            edtx_qty.setCursorVisible(false);
             edtx_qty.setFocusableInTouchMode(false); // user touches widget on phone with touch screen
             edtx_qty.setClickable(false); // user navigat
         }

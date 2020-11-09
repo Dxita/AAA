@@ -23,19 +23,17 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
-            if (appPreferences.isSetLanguagePref()) {
-                if (appPreferences.istypeuser()) {
-                    startActivity(new Intent(this, UserSectionActivity.class));
-                } else if (appPreferences.istypeadmin()) {
-                    startActivity(new Intent(this, ViewAaGanWadiDataActivity.class));
-                } else if (appPreferences.istypeadmin()) {
-                    startActivity(new Intent(this, PublicLoginActivity.class));
-                } else {
-                    startActivity(new Intent(this, UserTypeActivity.class));
-                }
+
+            if (appPreferences.istypeuser()) {
+                startActivity(new Intent(this, UserSectionActivity.class));
+            } else if (appPreferences.istypeadmin()) {
+                startActivity(new Intent(this, ViewAaGanWadiDataActivity.class));
+            } else if (appPreferences.istypeadmin()) {
+                startActivity(new Intent(this, PublicLoginActivity.class));
             } else {
-                startActivity(new Intent(context, SelectLanguageActivity.class));
+                startActivity(new Intent(this, SelectLanguageActivity.class));
             }
+
             finish();
         }, 2000);
     }

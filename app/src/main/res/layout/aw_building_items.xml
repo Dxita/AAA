@@ -34,7 +34,6 @@
                 android:layout_weight="1"
                 android:padding="@dimen/margin_10"
                 android:text="@string/item_name"
-                android:textColor="@color/black"
                 android:textSize="@dimen/textsize_17sp" />
 
             <CheckBox
