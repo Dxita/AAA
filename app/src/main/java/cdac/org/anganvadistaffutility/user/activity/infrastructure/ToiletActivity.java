@@ -53,7 +53,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_toilet);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -77,7 +76,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         update_btn.setOnClickListener(this);
         submit_btn.setOnClickListener(this);
         cancel_btn.setOnClickListener(this);
-
         infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
@@ -93,7 +91,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void getData() {
-
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
@@ -113,9 +110,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
-
         }));
-
     }
 
     @Override
@@ -133,7 +128,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             //submit_btn.setVisibility(View.GONE);
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
         }
-
         if (v.getId() == R.id.cancel_btn) {
             // update_btn.setVisibility(View.VISIBLE);
             //  submit_btn.setVisibility(View.GONE);
@@ -141,9 +135,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-
     private static class AwcBuildingAdapter extends RecyclerView.Adapter<MyViewHolders> {
-
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         private static CheckBox lastChecked = null;
@@ -169,13 +161,10 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
 
-
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
-
-
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
             }
 
@@ -184,13 +173,10 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
                     int clickedPos = ((Integer) cb.getTag()).intValue();
-
                     if (cb.isChecked()) {
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
-
                         }
-
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
@@ -208,15 +194,11 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                 }
             });
             holder.setData(context, infrastructureData.get(position));
-
-
         }
-
 
         @Override
         public int getItemCount() {
             return infrastructureData.size();
-
         }
     }
 
@@ -227,21 +209,16 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         AppCompatEditText edtx_qty;
         AppCompatImageView edit_icon;
 
-
         public MyViewHolders(@NonNull View itemView) {
             super(itemView);
-
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
-            edtx_qty= itemView.findViewById(R.id.qty_edtx);
-            edit_icon=itemView.findViewById(R.id.edit_icon);
-            //checkBox.setClickable(false);
+            edtx_qty = itemView.findViewById(R.id.qty_edtx);
+            edit_icon = itemView.findViewById(R.id.edit_icon);
             edtx_qty.setFocusable(false);
             edtx_qty.setFocusableInTouchMode(false); // user touches widget on phone with touch screen
             edtx_qty.setClickable(false); // user navigat
-
         }
-
 
         public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
@@ -250,11 +227,11 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
             if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
                 name = infrastructureData.getTidInfraNamee();
-                qty=infrastructureData.getTjaidQty();
+                qty = infrastructureData.getTjaidQty();
 
             } else {
                 name = infrastructureData.getTidInfraNameh();
-                qty=infrastructureData.getTjaidQty();
+                qty = infrastructureData.getTjaidQty();
             }
             //  name = infrastructureData.getTidInfraNamee();
             item_name.setText(name);

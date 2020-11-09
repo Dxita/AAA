@@ -54,14 +54,11 @@ public class ElectricityActivity extends AppCompatActivity {
             infra_id = (String) savedInstanceState.getSerializable("infra_id");
         }
 
-
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-
         ElectricityAdapter electricityAdapter = new ElectricityAdapter(ElectricityActivity.this, personNames);
         recyclerView.setAdapter(electricityAdapter);
 

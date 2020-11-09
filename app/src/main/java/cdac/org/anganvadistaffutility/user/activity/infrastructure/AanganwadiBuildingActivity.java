@@ -102,7 +102,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
-               Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -118,8 +118,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
             }
 
         }));
-
-
     }
 
     @Override
@@ -170,11 +168,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
             myViewHolders = holder;
             infrastructureData.get(position);
-
-
             holder.checkBox.setTag(position);
-
-
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
@@ -203,11 +197,8 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                         lastChecked = null;
                 }
             });
-
             holder.setData(context, infrastructureData.get(position));
-
         }
-
 
         @Override
         public int getItemCount() {
@@ -221,17 +212,12 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
         CheckBox checkBox;
 
-
         public MyViewHolders(@NonNull View itemView) {
             super(itemView);
 
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
-
-            //  checkBox.setEnabled(false);
-
         }
-
 
         public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
@@ -246,11 +232,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
             }
             //  name = infrastructureData.getTidInfraNamee();
             item_name.setText(name);
-
-
         }
-
-
     }
-
 }

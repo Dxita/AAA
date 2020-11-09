@@ -56,7 +56,6 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -72,12 +71,10 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         recyclerView = findViewById(R.id.recycler_view);
         update_btn = findViewById(R.id.update_btn);
         submit_btn = findViewById(R.id.submit_btn);
-
         update_btn.setOnClickListener(this);
         submit_btn.setOnClickListener(this);
         cancel_btn = findViewById(R.id.cancel_btn);
         cancel_btn.setOnClickListener(this);
-
         infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
@@ -89,12 +86,9 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
-
     }
 
     private void getAanganwadiBuildingData() {
-
-
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
@@ -104,7 +98,6 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
-
                 awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
             }
@@ -114,10 +107,7 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
-
         }));
-
-
     }
 
     @Override
@@ -130,22 +120,17 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
         if (v.getId() == R.id.submit_btn) {
             // update_btn.setVisibility(View.VISIBLE);
             //submit_btn.setVisibility(View.GONE);
             Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
         }
         if (v.getId() == R.id.cancel_btn) {
-            // update_btn.setVisibility(View.VISIBLE);
-            //  submit_btn.setVisibility(View.GONE);
             finish();
         }
     }
 
-
     private static class AwcBuildingAdapter extends RecyclerView.Adapter<MyViewHolders> {
-
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         private static CheckBox lastChecked = null;
@@ -159,7 +144,6 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         @NonNull
         @Override
         public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
             @SuppressLint("InflateParams")
             View view = LayoutInflater.from(context).inflate(R.layout.aw_building_items, null);
             return new MyViewHolders(view);
@@ -167,19 +151,14 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
-
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
-
             holder.checkBox.setTag(position);
-
 
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
-
-
                 Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
             }
 
@@ -188,13 +167,10 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
                     int clickedPos = ((Integer) cb.getTag()).intValue();
-
                     if (cb.isChecked()) {
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
-
                         }
-
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
@@ -203,15 +179,12 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
                 }
             });
             holder.setData(context, infrastructureData.get(position));
-
-
         }
 
 
         @Override
         public int getItemCount() {
             return infrastructureData.size();
-
         }
     }
 
@@ -220,17 +193,11 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
         CheckBox checkBox;
 
-
         public MyViewHolders(@NonNull View itemView) {
             super(itemView);
-
             item_name = itemView.findViewById(R.id.item_tv);
             checkBox = itemView.findViewById(R.id.checkbox);
-
-            //checkBox.setClickable(false);
-
         }
-
 
         public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
             this.infrastructureData = infrastructureData;
@@ -245,10 +212,6 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
             }
             //  name = infrastructureData.getTidInfraNamee();
             item_name.setText(name);
-
-
         }
-
-
     }
 }
