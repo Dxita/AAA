@@ -89,7 +89,6 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void getDrinkingWaterData() {
-
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
@@ -99,7 +98,6 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
-
                 drinkingWaterAdapter = new DrinkingWaterAdapter(context, infrastructureData);
                 recyclerView.setAdapter(drinkingWaterAdapter);
             }
