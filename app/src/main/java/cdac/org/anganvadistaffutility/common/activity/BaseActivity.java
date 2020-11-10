@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -67,22 +66,14 @@ public class BaseActivity extends AppCompatActivity {
     public Context context;
     public ApiInterface apiInterface;
     protected List<String> adminNumberList;
-    // private TelephonyManager telephonyManager;
 
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            //  Log.e(TAG, "Log out broadcast received");
-
             String message = intent.getStringExtra("message");
             if (message.equalsIgnoreCase("logout")) {
-                SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-                editor.clear();
-                editor.apply();
                 finishAffinity();
-
-                //    Log.e(TAG, "User Logged out");
             }
         }
     };
@@ -93,7 +84,6 @@ public class BaseActivity extends AppCompatActivity {
 
         context = this;
         appPreferences = new AppPreferences(context);
-        //  telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         resetTitles();
     }
 
@@ -184,18 +174,8 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
 
-        /* else {
-            if (telephonyManager != null) {
-                String number = telephonyManager.getLine1Number();
-                if (number != null && !number.isEmpty()) {
-                    number = number.replaceAll("[\\D]", "").replaceFirst("91-", "").replaceFirst("91", "");
-                    adminNumberList.add(number);
-                }
-            }
-        }*/
-
-        //  adminNumberList.add("9784544208");
-        //  adminNumberList.add("7014259658");
+         adminNumberList.add("9784544208");
+         adminNumberList.add("7014259658");
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
@@ -324,64 +304,6 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-        /*  if (!isServiceRunning("cdac.org.anganvadistaffutility.common.service.UserLogoutService")) {
-
-                Log.e("Logout Service", "service not running");
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    Intent i = new Intent(context, UserLogoutService.class);
-                    i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
-                    startService(i);
-                } else {
-                    Intent i = new Intent(context, UserLogoutService.class);
-                    i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
-                    startService(new Intent(context, LogoutService.class));
-                }
-            }*/
-
-
-    /* if (appPreferences.isUserLoggedIn()) {
-     *//*if (!isServiceRunning("cdac.org.anganvadistaffutility.common.service.UserLogoutService")) {
-                Intent i = new Intent(context, UserLogoutService.class);
-                i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
-                startService(i);
-            } else {*//*
-            Intent intent = new Intent(context, UserLogoutService.class);
-            intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
-            startService(intent);
-
-            Intent i = new Intent(context, UserLogoutService.class);
-            i.setAction(UserLogoutService.ACTION_START_FOREGROUND_SERVICE);
-            startService(i);
-        }*/
-    //  }
-
-        /*if (appPreferences.isUserLoggedIn()) {
-            stopService(new Intent(context, LogoutService.class));
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(new Intent(context, LogoutService.class));
-            } else {
-                startService(new Intent(context, LogoutService.class));
-            }
-        }*/
-
-
-    /*private boolean isServiceRunning(String serviceName) {
-        boolean serviceRunning = false;
-        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
-        List<ActivityManager.RunningServiceInfo> l = am.getRunningServices(50);
-        for (ActivityManager.RunningServiceInfo runningServiceInfo : l) {
-            if (runningServiceInfo.service.getClassName().equals(serviceName)) {
-                if (runningServiceInfo.foreground) {
-                    //service run in foreground
-                    serviceRunning = true;
-                }
-            }
-        }
-        return serviceRunning;
-    }*/
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -401,9 +323,6 @@ public class BaseActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
         if (!appPreferences.isUserLoggedIn() && AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
-
-            //   Log.e("Activity Service", "activity destroy");
-
             Intent intent = new Intent(context, UserLogoutService.class);
             intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
             startService(intent);
