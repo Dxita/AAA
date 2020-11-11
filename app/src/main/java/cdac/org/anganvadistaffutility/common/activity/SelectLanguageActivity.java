@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.common.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import java.util.Locale;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
@@ -38,6 +41,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         continue_button_layout = findViewById(R.id.button_language_activity);
 
 
+
         if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
             english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
             hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
@@ -54,6 +58,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
+
         switch (view.getId()) {
             case R.id.continue_button:
                 startActivity(new Intent(context, UserTypeActivity.class));
@@ -62,16 +67,16 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
             case R.id.english_text:
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
-                setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
-                appPreferences.setLanguagePref(true);
+
+               setAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+                //    appPreferences.setLanguagePref(true);
                 break;
             case R.id.hindi_text:
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
-                appPreferences.setLanguagePref(true);
+                //  appPreferences.setLanguagePref(true);
                 break;
         }
     }
-
 }

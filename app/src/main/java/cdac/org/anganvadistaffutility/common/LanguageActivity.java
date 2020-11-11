@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.common;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,12 +28,14 @@ public class LanguageActivity extends BaseActivity implements View.OnClickListen
         continue_button.setOnClickListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch(view.getId())
         {
             case R.id.continue_button:
                 startActivity(new Intent(context, UserTypeActivity.class));
+                break;
         }
     }
 }

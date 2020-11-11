@@ -6,9 +6,12 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.public_u.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 
@@ -22,8 +25,11 @@ public class SplashActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(() -> {
 
+        new Handler().postDelayed(() -> {
+            if (!appPreferences.isUserLoggedIn()) {
+                setAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
+            }
             if (appPreferences.istypeuser()) {
                 startActivity(new Intent(this, UserSectionActivity.class));
             } else if (appPreferences.istypeadmin()) {

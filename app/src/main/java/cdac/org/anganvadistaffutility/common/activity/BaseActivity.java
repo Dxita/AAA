@@ -111,6 +111,15 @@ public class BaseActivity extends AppCompatActivity {
         finishAffinity();
     }
 
+    public void setDefaultAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
+        LocaleManager.setNewLocale(this, language);
+        Intent intent = mContext.getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(new Intent(context, SelectLanguageActivity.class));
+        finishAffinity();
+    }
+
+
     public void changeAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
@@ -174,8 +183,8 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
 
-         adminNumberList.add("9784544208");
-         adminNumberList.add("7014259658");
+        adminNumberList.add("9784544208");
+        adminNumberList.add("7014259658");
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
