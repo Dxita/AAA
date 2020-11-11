@@ -112,10 +112,6 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setDefaultAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
         LocaleManager.setNewLocale(this, language);
-        Intent intent = mContext.getIntent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(new Intent(context, SelectLanguageActivity.class));
-        finishAffinity();
     }
 
     public void changeAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
@@ -314,6 +310,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("logout"));
     }
 

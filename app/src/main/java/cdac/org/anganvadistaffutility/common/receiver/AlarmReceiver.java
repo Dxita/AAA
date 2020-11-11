@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -28,8 +27,5 @@ public class AlarmReceiver extends BroadcastReceiver {
         Intent stopServiceIntent = new Intent(context, UserLogoutService.class);
         stopServiceIntent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
         context.startService(stopServiceIntent);
-
-      //  Log.e("Service", "User Logged Out");
-
     }
 }

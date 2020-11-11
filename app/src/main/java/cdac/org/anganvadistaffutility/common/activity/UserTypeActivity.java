@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -43,7 +44,6 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.user_type_admin) {
-            //   startActivity(new Intent(context, ViewAaGanWadiDataActivity.class));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (AppUtils.hasPermissions(context, AppUtils.PHONE_PERMISSIONS)) {
                     fetchAdminPhoneNumber(relativeLayout);
@@ -80,7 +80,9 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     protected void onDestroy() {
 
         if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH)) {
-            LocaleManager.setLanguagePref(context, LocaleManager.HINDI);
+            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+            }
         }
         super.onDestroy();
     }

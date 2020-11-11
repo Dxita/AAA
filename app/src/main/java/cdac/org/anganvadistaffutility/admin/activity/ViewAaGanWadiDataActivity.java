@@ -1,8 +1,10 @@
 package cdac.org.anganvadistaffutility.admin.activity;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -46,7 +48,7 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
 
     @Override
     public void onBackPressed() {
-       // super.onBackPressed();
+        // super.onBackPressed();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.app_name);
@@ -63,7 +65,11 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
     private void logout() {
         AppUtils.showToast(context, getResources().getString(R.string.logout_success));
 
-        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+            ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+        }
+
+        /*SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         mPreferences.edit().clear().apply();
 
         SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
@@ -75,6 +81,6 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finishAffinity();
+        finishAffinity();*/
     }
 }

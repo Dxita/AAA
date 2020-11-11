@@ -58,12 +58,25 @@ public class AppUtils {
     public static final String[] CALL_PERMISSIONS = {Manifest.permission.CALL_PHONE};
     public static final String[] PHONE_PERMISSIONS = {Manifest.permission.READ_PHONE_STATE};
 
-    public static boolean isNetworkConnected(Context context) {
+    /*public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
+    }*/
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (NetworkInfo networkInfo : info)
+                    if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+        }
+        return false;
     }
 
     public static void showToast(Context context, String message) {

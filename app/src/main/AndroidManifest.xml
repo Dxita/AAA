@@ -200,6 +200,10 @@
             android:name=".user.activity.ViewBeneficiaryDetailsActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".common.activity.NoInternetActivity"
+            android:screenOrientation="portrait" />
+
         <!--  <service
               android:name=".common.service.LogoutService"
               android:enabled="true"

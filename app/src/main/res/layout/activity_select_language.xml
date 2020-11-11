@@ -4,13 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
         android:id="@+id/select_language_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_app_bg"
-        android:visibility="visible">
+        android:background="@drawable/custom_app_bg">
 
         <LinearLayout
             android:layout_width="match_parent"

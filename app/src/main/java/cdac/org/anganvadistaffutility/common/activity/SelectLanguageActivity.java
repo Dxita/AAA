@@ -1,7 +1,8 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
-import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -28,6 +29,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_select_language);
@@ -50,7 +52,6 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         continue_button.setOnClickListener(this);
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -78,7 +79,9 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     protected void onDestroy() {
 
         if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH) && !isContinue) {
-            LocaleManager.setLanguagePref(context, LocaleManager.HINDI);
+            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+            }
         }
         super.onDestroy();
     }

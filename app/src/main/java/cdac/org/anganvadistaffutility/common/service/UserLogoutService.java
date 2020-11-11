@@ -18,10 +18,9 @@ import android.os.IBinder;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.SplashActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.receiver.AlarmReceiver;
 import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
@@ -81,13 +80,13 @@ public class UserLogoutService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel("my_service", "My Background Service");
         } else {
-            Intent intent = new Intent();
+            Intent intent = new Intent(this, SplashActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "my_service");
 
             NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle();
-            bigTextStyle.setBigContentTitle("Logout foreground service.");
-            bigTextStyle.bigText("Android foreground service is a android service which can run in foreground always, it can be controlled by user via notification.");
+            // bigTextStyle.setBigContentTitle("Logout foreground service.");
+            bigTextStyle.bigText("User is logged in currently.Inactivity for 15 min. will automatically log out user.");
             builder.setStyle(bigTextStyle);
 
             builder.setWhen(System.currentTimeMillis());
@@ -106,7 +105,7 @@ public class UserLogoutService extends Service {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private void createNotificationChannel(String channelId, String channelName) {
-        Intent resultIntent = new Intent(this, BaseActivity.class);
+        Intent resultIntent = new Intent(this, SplashActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(resultIntent);
         PendingIntent resultPendingIntent =
@@ -160,6 +159,7 @@ public class UserLogoutService extends Service {
         alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+
         /*alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + AlarmManager.INTERVAL_FIFTEEN_MINUTES,
                 0, alarmIntent);*/
 
@@ -182,12 +182,6 @@ public class UserLogoutService extends Service {
         if (alarmMgr != null) {
             alarmMgr.cancel(alarmIntent);
         }
-    }
-
-    public void sendFinishMessage() {
-        Intent intent = new Intent("logout");
-        intent.putExtra("message", "logout");
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     private void stopForegroundService() {

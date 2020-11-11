@@ -254,5 +254,5 @@
     <string name="_25_">25</string>
     <string name="infrastructure_details">इन्फ्रास्ट्रक्चर विवरण</string>
     <string name="edit">संपादित करें</string>
-
+    <string name="retry">पुनः प्रयास करें</string>
 </resources>
