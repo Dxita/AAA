@@ -67,6 +67,7 @@ public class AppPreferences {
     public boolean isSetLanguagePref() {
         return sharedPreferences.getBoolean(LANGUAGE_SET, false);
     }
+
     public void setTypeUser(boolean value) {
         editor = sharedPreferences.edit();
         editor.putBoolean(TYPE_USER, value);

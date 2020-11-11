@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.public_u.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
@@ -75,17 +76,12 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    @Override
+    protected void onDestroy() {
 
-    /*@Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(UserTypeActivity.this);
-        builder.setTitle(R.string.app_name);
-        builder.setIcon(R.drawable.app_logo);
-        builder.setMessage(getString(R.string.exit_text))
-                .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), (dialog, id) -> finishAffinity())
-                .setNegativeButton(getString(R.string.no), (dialog, id) -> dialog.cancel());
-        AlertDialog alert = builder.create();
-        alert.show();
-    }*/
+        if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH)) {
+            LocaleManager.setLanguagePref(context, LocaleManager.HINDI);
+        }
+        super.onDestroy();
+    }
 }

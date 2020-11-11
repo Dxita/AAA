@@ -23,7 +23,7 @@ public class LocaleManager {
 
     public static final String ENGLISH = "en";
     public static final String HINDI = "hi";
-    private static final String LANGUAGE_KEY = "language_key";
+    public static final String LANGUAGE_KEY = "language_key";
 
     public static Context setLocale(Context mContext) {
         return updateResources(mContext, getLanguagePref(mContext));
@@ -39,7 +39,7 @@ public class LocaleManager {
         return mPreferences.getString(LANGUAGE_KEY, HINDI);
     }
 
-    private static void setLanguagePref(Context mContext, String localeKey) {
+    public static void setLanguagePref(Context mContext, String localeKey) {
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         mPreferences.edit().putString(LANGUAGE_KEY, localeKey).apply();
     }

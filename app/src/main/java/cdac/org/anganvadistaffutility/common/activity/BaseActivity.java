@@ -37,7 +37,6 @@ import java.util.List;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
-import cdac.org.anganvadistaffutility.common.LanguageActivity;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
@@ -107,7 +106,7 @@ public class BaseActivity extends AppCompatActivity {
         LocaleManager.setNewLocale(this, language);
         Intent intent = mContext.getIntent();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(new Intent(context, LanguageActivity.class));
+        startActivity(new Intent(context, SelectLanguageActivity.class));
         finishAffinity();
     }
 
@@ -118,7 +117,6 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(new Intent(context, SelectLanguageActivity.class));
         finishAffinity();
     }
-
 
     public void changeAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
         LocaleManager.setNewLocale(this, language);

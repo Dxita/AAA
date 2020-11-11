@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -90,6 +91,9 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
 
     private void logout() {
         AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        mPreferences.edit().clear().apply();
 
         SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
         editor.clear();
