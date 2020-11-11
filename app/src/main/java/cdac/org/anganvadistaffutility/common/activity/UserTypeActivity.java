@@ -84,6 +84,7 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
             }
         }
+
         super.onDestroy();
     }
 }

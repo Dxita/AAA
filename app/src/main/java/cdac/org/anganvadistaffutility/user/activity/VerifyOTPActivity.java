@@ -1,7 +1,9 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -25,6 +27,7 @@ import cdac.org.anganvadistaffutility.common.activity.GeneratePasswordActivity;
 import cdac.org.anganvadistaffutility.common.callback.OtpReceivedInterface;
 import cdac.org.anganvadistaffutility.common.receiver.SmsBroadcastReceiver;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 
 public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterface, View.OnClickListener {
@@ -160,7 +163,16 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
+        if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH)) {
+            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+            }
+        }
+
         stopOtpTimer();
+
+        super.onDestroy();
     }
+
 }

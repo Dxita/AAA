@@ -1,7 +1,9 @@
 package cdac.org.anganvadistaffutility.user.activity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,15 +106,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.logout) {
-            SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-            editor.clear();
-            editor.apply();
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            startActivity(intent);
-            finishAffinity();
 
             AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+
+            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+            }
         }
     }
 

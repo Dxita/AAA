@@ -1,6 +1,8 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,6 +18,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
 import retrofit2.Call;
@@ -97,4 +100,15 @@ public class GeneratePasswordActivity extends BaseActivity implements View.OnCli
         }));
     }
 
+    @Override
+    protected void onDestroy() {
+
+        if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH)) {
+            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+            }
+        }
+
+        super.onDestroy();
+    }
 }
