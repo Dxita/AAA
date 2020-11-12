@@ -17,7 +17,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -182,8 +181,8 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
 
-        adminNumberList.add("9784544208");
-        adminNumberList.add("7014259658");
+      //  adminNumberList.add("9784544208");
+      //  adminNumberList.add("7014259658");
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
@@ -334,8 +333,6 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-
-        Log.e("BaseActivity", "onDestroy");
 
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
