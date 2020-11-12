@@ -1,9 +1,9 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
-import android.app.ActivityManager;
 import android.content.Intent;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -79,9 +79,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     protected void onDestroy() {
 
         if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH) && !isContinue) {
-            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
-                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
-            }
+            clearUserData();
         }
         super.onDestroy();
     }

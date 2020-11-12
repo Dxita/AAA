@@ -1,6 +1,5 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
-import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -80,11 +79,8 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
     protected void onDestroy() {
 
         if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH)) {
-            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
-                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
-            }
+            clearUserData();
         }
-
         super.onDestroy();
     }
 }

@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.common.activity;
 import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -110,8 +112,11 @@ public class BaseActivity extends AppCompatActivity {
         finishAffinity();
     }
 
-    public void setDefaultAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
-        LocaleManager.setNewLocale(this, language);
+    public void setDefaultAppLocale(AppCompatActivity mContext) {
+        LocaleManager.setLocale(this);
+        Intent intent = mContext.getIntent();
+        mContext.finish();
+        startActivity(intent);
     }
 
     public void changeAppLocale(AppCompatActivity mContext, @LocaleManager.LocaleDef String language) {
@@ -307,22 +312,30 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void clearUserData() {
+        if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+            ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+        }
+    }
+
     @Override
     protected void onResume() {
-        super.onResume();
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("logout"));
+        super.onResume();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
         finish();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+
+        Log.e("BaseActivity", "onDestroy");
 
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
@@ -331,6 +344,8 @@ public class BaseActivity extends AppCompatActivity {
             intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
             startService(intent);
         }
+
+        super.onDestroy();
     }
 }
 
