@@ -181,8 +181,8 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
 
-      //  adminNumberList.add("9784544208");
-      //  adminNumberList.add("7014259658");
+        //  adminNumberList.add("9784544208");
+        //  adminNumberList.add("7014259658");
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
@@ -309,6 +309,13 @@ public class BaseActivity extends AppCompatActivity {
                 this.sendBroadcast(broadcastIntent);
             }
         }
+    }
+
+    protected boolean isClassAvailable() {
+        ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> taskList = manager.getRunningTasks(10);
+        return taskList.get(0).numActivities != 1 ||
+                !taskList.get(0).topActivity.getClassName().equals(this.getClass().getName());
     }
 
     protected void clearUserData() {
