@@ -2,23 +2,37 @@ package cdac.org.anganvadistaffutility.common.activity;
 
 import android.Manifest;
 import android.accounts.AccountManager;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,10 +45,14 @@ import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.AccountPicker;
 
+import org.spongycastle.math.ntru.polynomial.Constants;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.TimerTask;
 
+import cdac.org.anganvadistaffutility.App;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
@@ -46,6 +64,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.service.UserLogoutService;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
@@ -54,19 +73,26 @@ import retrofit2.Call;
 import static android.content.pm.PackageManager.GET_META_DATA;
 
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements LogoutListener {
 
     public static final String TAG = BaseActivity.class.getSimpleName();
 
+
     private final int PHONE_RESOLVE_HINT = 2;
     private final int EMAIL_RESOLVE_HINT = 3;
-
+    private BroadcastReceiver br;
     private RelativeLayout relativeLay;
     public AppPreferences appPreferences;
     public Context context;
     public ApiInterface apiInterface;
     protected List<String> adminNumberList;
 
+
+    private Boolean isUserTimedOut = false;
+    private static Dialog mDialog;
+    private AlarmManager alarmMgr; //TO CALL OUT THE CLASS OF THE ALARM SERVICE
+    private PendingIntent alarmIntent;// FOR TARGET FUNCTION TO PERFORM WITH BROADCASTRECEIVER
+    public static final long DISCONNECT_TIMEOUT = 900000;
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -78,6 +104,9 @@ public class BaseActivity extends AppCompatActivity {
         }
     };
 
+    public BaseActivity() {
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +114,12 @@ public class BaseActivity extends AppCompatActivity {
         context = this;
         appPreferences = new AppPreferences(context);
         resetTitles();
+
+
+        ((App) getApplication()).registerSessionListener(this);
+        ((App) getApplication()).startUserSession();
+
+
     }
 
     @Override
@@ -123,6 +158,7 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = mContext.getIntent();
         mContext.finish();
         startActivity(intent);
+        //overridePendingTransition(0, 0);
     }
 
     protected void sendOtpToServer(RelativeLayout relativeLayout, String mobileNumber, String otp) {
@@ -180,7 +216,6 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         }
-
         //  adminNumberList.add("9784544208");
         //  adminNumberList.add("7014259658");
 
@@ -293,23 +328,24 @@ public class BaseActivity extends AppCompatActivity {
         }*/
     }
 
-    @Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
+    /*  @Override
+       public void onUserInteraction() {
+           super.onUserInteraction();
 
-        if (appPreferences.isUserLoggedIn()) {
-            if (AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
-                Intent intent = new Intent(context, UserLogoutService.class);
-                intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
-                startService(intent);
-            } else {
-                Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction("restartservice");
-                broadcastIntent.setClass(this, ServiceRestart.class);
-                this.sendBroadcast(broadcastIntent);
-            }
-        }
-    }
+           if (appPreferences.isUserLoggedIn()) {
+               if (AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
+                   Intent intent = new Intent(context, UserLogoutService.class);
+                   intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
+                   startService(intent);
+               } else {
+                   Intent broadcastIntent = new Intent();
+                   broadcastIntent.setAction("restartservice");
+                   broadcastIntent.setClass(this, ServiceRestart.class);
+                   this.sendBroadcast(broadcastIntent);
+               }
+           }
+       }*/
+
 
     protected boolean isClassAvailable() {
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
@@ -326,9 +362,25 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("logout"));
         super.onResume();
+
+        resetDisconnectTimer();
+        if (isUserTimedOut) {
+            //show TimerOut dialog
+            alertbox();
+        } else {
+            ((App) getApplication()).onUserInteracted();
+        }
+
+
+    }
+
+    @Override
+    public void onSessionLogout() {
+
+
+        isUserTimedOut = true;
+
     }
 
     @Override
@@ -340,8 +392,13 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
 
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        alarmMgr.cancel(alarmIntent);
+        unregisterReceiver(br);
+
+    }
+     /*   LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
         if (!appPreferences.isUserLoggedIn() && AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
             Intent intent = new Intent(context, UserLogoutService.class);
@@ -349,7 +406,105 @@ public class BaseActivity extends AppCompatActivity {
             startService(intent);
         }
 
-        super.onDestroy();
+        super.onDestroy();*/
+
+
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onStart() {
+        super.onStart();// CALLING ON SUPER CLASS METHOD OF ALARM MGR
+
+
+            Log.i("RootActivity:SampleBootReceiver", "On Timeout after 1 min");
+
+
+            setupAlarm(); // this could be called in onCreate() instead
+
+
+
     }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        resetDisconnectTimer();
+        Log.e(TAG, "User interacting with screen");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        stopDisconnectTimer();
+        alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + DISCONNECT_TIMEOUT, alarmIntent);
+
+
+    }
+
+    private void setupAlarm() {
+        br = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context c, Intent i) {
+                alertbox();
+            }
+        };
+        registerReceiver(br, new IntentFilter("com.myapp.logout"));
+        alarmIntent = PendingIntent.getBroadcast(this, 0, new Intent("com.myapp.logout"), 0);
+        alarmMgr = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
+    }
+
+
+    private static final Handler disconnectHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            // todo
+            return true;
+        }
+    });
+
+    private final Runnable disconnectCallback = new Runnable() {
+        @Override
+        public void run() {
+
+            alertbox();
+            // Perform any required operation on disconnect
+        }
+    };
+
+    private void alertbox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
+        builder.setTitle(R.string.app_name);
+        builder.setIcon(R.drawable.app_logo);
+        builder.setMessage(getString(R.string.session))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.yes), (dialog, id) -> logout());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void logout() {
+        AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+
+        if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+            ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+        }
+    }
+
+    public void resetDisconnectTimer() {
+        disconnectHandler.removeCallbacks(disconnectCallback);
+        disconnectHandler.postDelayed(disconnectCallback, DISCONNECT_TIMEOUT);
+    }
+
+    public void stopDisconnectTimer() {
+        disconnectHandler.removeCallbacks(disconnectCallback);
+    }
+
+
 }
 

@@ -43,6 +43,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
             english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
             hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
+
         } else {
             english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
             hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
@@ -64,12 +65,15 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
                 isContinue = true;
+                english_text.setClickable(false);
                 changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
+
                 break;
             case R.id.hindi_text:
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 isContinue = true;
+                hindi_text.setClickable(false);
                 changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
                 break;
         }

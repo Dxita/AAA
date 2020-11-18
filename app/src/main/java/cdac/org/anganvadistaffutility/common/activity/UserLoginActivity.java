@@ -65,7 +65,7 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
             @Override
             public void onSuccess(SetUserLogin body) {
                 if (body.getStatus().getStatusCode().equalsIgnoreCase(AppUtils.successStatus)) {
-                    AppUtils.showToast(context, body.getStatus().getMessage());
+                 //   AppUtils.showToast(context, body.getStatus().getMessage());
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     appPreferences.setUserLoggedIn(true);
                     appPreferences.setTypeUser(true);

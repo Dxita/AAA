@@ -85,7 +85,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             public void onSuccess(EmployeeDetails body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    AppUtils.showToast(context, body.getMessage());
+                    //AppUtils.showToast(context, body.getMessage());
 
                     EmployeeDetails.Data data = body.getData();
                     profileDetails = data.getProfile();
@@ -150,7 +150,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int id = item.getItemId( );
         if (id == R.id.nav_home) {
             HomeFragment homeFragment = new HomeFragment();
             setMyFragment(homeFragment);
