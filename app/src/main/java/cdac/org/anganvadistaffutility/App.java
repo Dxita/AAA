@@ -15,9 +15,9 @@ import cdac.org.anganvadistaffutility.common.utils.AppSignatureHelper;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class App extends Application {
-    private LogoutListener listener;
+    /*private LogoutListener listener;
     private Timer timer;
-    private static final long INACTIVE_TIMEOUT = 180000; // 3 min
+    private static final long INACTIVE_TIMEOUT = 180000; // 3 min*/
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate() {
@@ -37,7 +37,7 @@ public class App extends Application {
         LocaleManager.setLocale(this);
     }
 
-    public void startUserSession () {
+   /* public void startUserSession () {
         cancelTimer ();
 
         timer = new Timer ();
@@ -62,6 +62,6 @@ public class App extends Application {
 
     public void onUserInteracted () {
         startUserSession();
-    }
+    }*/
 
 }

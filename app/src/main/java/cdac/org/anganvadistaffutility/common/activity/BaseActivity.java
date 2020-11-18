@@ -73,8 +73,8 @@ import retrofit2.Call;
 import static android.content.pm.PackageManager.GET_META_DATA;
 
 
-public class BaseActivity extends AppCompatActivity implements LogoutListener {
-
+public class BaseActivity extends AppCompatActivity{
+//implement LogoutListner
     public static final String TAG = BaseActivity.class.getSimpleName();
 
 
@@ -116,8 +116,8 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         resetTitles();
 
 
-        ((App) getApplication()).registerSessionListener(this);
-        ((App) getApplication()).startUserSession();
+     /*   ((App) getApplication()).registerSessionListener(this);
+        ((App) getApplication()).startUserSession();*/
 
 
     }
@@ -328,7 +328,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         }*/
     }
 
-    /*  @Override
+      @Override
        public void onUserInteraction() {
            super.onUserInteraction();
 
@@ -344,7 +344,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
                    this.sendBroadcast(broadcastIntent);
                }
            }
-       }*/
+       }
 
 
     protected boolean isClassAvailable() {
@@ -364,24 +364,24 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     protected void onResume() {
         super.onResume();
 
-        resetDisconnectTimer();
+   /*     resetDisconnectTimer();
         if (isUserTimedOut) {
             //show TimerOut dialog
             alertbox();
         } else {
             ((App) getApplication()).onUserInteracted();
         }
-
+*/
 
     }
 
-    @Override
+    /*@Override
     public void onSessionLogout() {
 
 
         isUserTimedOut = true;
 
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -392,13 +392,13 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+      /*  super.onDestroy();
 
         alarmMgr.cancel(alarmIntent);
         unregisterReceiver(br);
 
-    }
-     /*   LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+    }*/
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
         if (!appPreferences.isUserLoggedIn() && AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
             Intent intent = new Intent(context, UserLogoutService.class);
@@ -406,7 +406,8 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
             startService(intent);
         }
 
-        super.onDestroy();*/
+        super.onDestroy();
+    }
 
 
     @SuppressLint("LongLogTag")
@@ -414,23 +415,23 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     public void onStart() {
         super.onStart();// CALLING ON SUPER CLASS METHOD OF ALARM MGR
 
-
+/*
             Log.i("RootActivity:SampleBootReceiver", "On Timeout after 1 min");
 
 
-            setupAlarm(); // this could be called in onCreate() instead
+            setupAlarm(); // this could be called in onCreate() instead*/
 
 
 
     }
 
-    @Override
+   /* @Override
     public void onUserInteraction() {
         super.onUserInteraction();
         resetDisconnectTimer();
         Log.e(TAG, "User interacting with screen");
     }
-
+*/
     @Override
     protected void onPause() {
         super.onPause();
@@ -441,13 +442,13 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     protected void onStop() {
         super.onStop();
 
-        stopDisconnectTimer();
-        alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + DISCONNECT_TIMEOUT, alarmIntent);
+      /*  stopDisconnectTimer();
+        alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + DISCONNECT_TIMEOUT, alarmIntent);*/
 
 
     }
 
-    private void setupAlarm() {
+   /* private void setupAlarm() {
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context c, Intent i) {
@@ -504,7 +505,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     public void stopDisconnectTimer() {
         disconnectHandler.removeCallbacks(disconnectCallback);
     }
-
+*/
 
 }
 
