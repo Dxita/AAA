@@ -73,7 +73,7 @@ import retrofit2.Call;
 import static android.content.pm.PackageManager.GET_META_DATA;
 
 
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity {
 //implement LogoutListner
     public static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -116,7 +116,7 @@ public class BaseActivity extends AppCompatActivity{
         resetTitles();
 
 
-     /*   ((App) getApplication()).registerSessionListener(this);
+       /* ((App) getApplication()).registerSessionListener(this);
         ((App) getApplication()).startUserSession();*/
 
 
@@ -364,18 +364,17 @@ public class BaseActivity extends AppCompatActivity{
     protected void onResume() {
         super.onResume();
 
-   /*     resetDisconnectTimer();
+       /* resetDisconnectTimer();
         if (isUserTimedOut) {
             //show TimerOut dialog
             alertbox();
         } else {
             ((App) getApplication()).onUserInteracted();
-        }
-*/
+        }*/
 
     }
 
-    /*@Override
+   /* @Override
     public void onSessionLogout() {
 
 
@@ -392,13 +391,8 @@ public class BaseActivity extends AppCompatActivity{
 
     @Override
     protected void onDestroy() {
-      /*  super.onDestroy();
-
-        alarmMgr.cancel(alarmIntent);
-        unregisterReceiver(br);
-
-    }*/
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        super.onDestroy();
+  LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
 
         if (!appPreferences.isUserLoggedIn() && AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
             Intent intent = new Intent(context, UserLogoutService.class);
@@ -406,8 +400,13 @@ public class BaseActivity extends AppCompatActivity{
             startService(intent);
         }
 
-        super.onDestroy();
+
+       /* alarmMgr.cancel(alarmIntent);
+        unregisterReceiver(br);*/
+
     }
+
+
 
 
     @SuppressLint("LongLogTag")
@@ -415,8 +414,7 @@ public class BaseActivity extends AppCompatActivity{
     public void onStart() {
         super.onStart();// CALLING ON SUPER CLASS METHOD OF ALARM MGR
 
-/*
-            Log.i("RootActivity:SampleBootReceiver", "On Timeout after 1 min");
+           /* Log.i("RootActivity:SampleBootReceiver", "On Timeout after 1 min");
 
 
             setupAlarm(); // this could be called in onCreate() instead*/
@@ -425,13 +423,13 @@ public class BaseActivity extends AppCompatActivity{
 
     }
 
-   /* @Override
+ /*@Override
     public void onUserInteraction() {
         super.onUserInteraction();
         resetDisconnectTimer();
         Log.e(TAG, "User interacting with screen");
-    }
-*/
+    }*/
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -442,17 +440,18 @@ public class BaseActivity extends AppCompatActivity{
     protected void onStop() {
         super.onStop();
 
-      /*  stopDisconnectTimer();
+       /* stopDisconnectTimer();
         alarmMgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + DISCONNECT_TIMEOUT, alarmIntent);*/
 
 
     }
 
-   /* private void setupAlarm() {
+
+    private void setupAlarm() {
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context c, Intent i) {
-                alertbox();
+                //alertbox();
             }
         };
         registerReceiver(br, new IntentFilter("com.myapp.logout"));
@@ -461,7 +460,7 @@ public class BaseActivity extends AppCompatActivity{
     }
 
 
-    private static final Handler disconnectHandler = new Handler(new Handler.Callback() {
+   /* private static final Handler disconnectHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             // todo
@@ -506,6 +505,5 @@ public class BaseActivity extends AppCompatActivity{
         disconnectHandler.removeCallbacks(disconnectCallback);
     }
 */
-
 }
 
