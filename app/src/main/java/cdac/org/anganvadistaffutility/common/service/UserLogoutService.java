@@ -36,9 +36,8 @@ public class UserLogoutService extends Service {
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
 
-    protected int counter = 1;
     private AppPreferences appPreferences;
-    private final static int sessionTimeOut = 900;   // 15 minutes
+    private final static long sessionTimeOut = 60 * 1000 * 15;   // 900 seconds = 15 minutes
 
     public UserLogoutService() {
     }
@@ -167,14 +166,11 @@ public class UserLogoutService extends Service {
                 1000 * 60 * 15, alarmIntent);*/
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmMgr.setAndAllowWhileIdle(AlarmManager.RTC, System.currentTimeMillis() +
-                    60 * 1000 * 15, alarmIntent);
+            alarmMgr.setAndAllowWhileIdle(AlarmManager.RTC, System.currentTimeMillis() + sessionTimeOut, alarmIntent);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmMgr.setExact(AlarmManager.RTC, System.currentTimeMillis() +
-                    60 * 1000 * 15, alarmIntent);
+            alarmMgr.setExact(AlarmManager.RTC, System.currentTimeMillis() + sessionTimeOut, alarmIntent);
         } else {
-            alarmMgr.set(AlarmManager.RTC, System.currentTimeMillis() +
-                    60 * 1000 * 15, alarmIntent);
+            alarmMgr.set(AlarmManager.RTC, System.currentTimeMillis() + sessionTimeOut, alarmIntent);
         }
     }
 
