@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,10 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import pl.droidsonroids.gif.GifImageView;
 
 
 public class SelectLanguageActivity extends BaseActivity implements View.OnClickListener {
@@ -24,6 +27,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     RelativeLayout select_language_activity;
     LinearLayout continue_button_layout;
     Button continue_button;
+
     private boolean isContinue = false;
 
     @Override
@@ -34,6 +38,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_select_language);
 
+
         english_text = findViewById(R.id.english_text);
         hindi_text = findViewById(R.id.hindi_text);
         continue_button = findViewById(R.id.continue_button);
@@ -43,8 +48,14 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
             english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
             hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
+            hindi_text.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_check_circle_24, 0);
+            english_text.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            hindi_text.setEnabled(false);
 
         } else {
+            english_text.setEnabled(false);
+            hindi_text.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            english_text.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_check_circle_24, 0);
             english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
             hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
         }
@@ -53,6 +64,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         continue_button.setOnClickListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

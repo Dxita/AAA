@@ -21,9 +21,7 @@
                 android:layout_width="@dimen/margin_250"
                 android:layout_height="@dimen/margin_250"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/app_logo">
-
-            </androidx.appcompat.widget.AppCompatImageView>
+                app:srcCompat="@drawable/app_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -31,46 +29,54 @@
                 android:gravity="center"
                 android:text="@string/preferred_language"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_18">
+                android:textSize="@dimen/textsize_18" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/hindi_text"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@drawable/bg_lan_selected"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/hindi"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize_25">
+                android:gravity="center">
 
-            </androidx.appcompat.widget.AppCompatTextView>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/hindi_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/bg_lan_selected"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/margin_08"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="@string/hindi"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_25" />
+            </RelativeLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/english_text"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@drawable/bg_lan_unselected"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/english"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textsize_25">
+                android:gravity="center">
 
-            </androidx.appcompat.widget.AppCompatTextView>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:drawablePadding="@dimen/margin_08"
+                    android:id="@+id/english_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/bg_lan_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="@string/english"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_25" />
 
-
+            </RelativeLayout>
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/button_language_activity"
@@ -85,9 +91,7 @@
                 android:gravity="center"
                 android:text="@string/you_can_change_text"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_14sp">
-
-            </androidx.appcompat.widget.AppCompatTextView>
+                android:textSize="@dimen/textsize_14sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/continue_button"
@@ -97,12 +101,10 @@
                 android:background="@drawable/buttonbg"
                 android:text="@string/continue_text"
                 android:textColor="@color/white" />
-
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_app_bg"
