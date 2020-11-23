@@ -73,6 +73,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 startActivity(new Intent(context, UserTypeActivity.class));
                 finish();
                 break;
+
             case R.id.english_text:
                 english_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_selected));
                 hindi_text.setBackground(ContextCompat.getDrawable(context, R.drawable.bg_lan_unselected));
