@@ -10,7 +10,6 @@ public class ApiUtils {
     public static final String BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String PROFILE_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String PAYMENT_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
-
     public static final String USER_AW_DETAILS_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
 
     public static final String SEND_OTP_TO_SERVER_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";

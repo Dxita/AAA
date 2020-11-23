@@ -255,4 +255,10 @@
     <string name="infrastructure_details">इन्फ्रास्ट्रक्चर विवरण</string>
     <string name="edit">संपादित करें</string>
     <string name="retry">पुनः प्रयास करें</string>
+
+    <string name="update_beneficiary_mapping_master">लाभार्थी विवरण की पुष्टि करें</string>
+    <string name="verifying_status">सत्यापन की स्थिति</string>
+    <string name="pcts_anm_id">पीसीटीएस एएनएम आईडी</string>
+    <string name="pcts_asha_id">पीसीटीएस आशा आईडी</string>
+    <string name="mother_name_id">माँ का नाम / आई.डी.</string>
 </resources>

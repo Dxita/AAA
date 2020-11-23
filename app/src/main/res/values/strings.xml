@@ -25,7 +25,7 @@
     <string name="father_name">Father Name</string>
     <string name="husband_name">Husband Name</string>
     <string name="address">Address</string>
-    <string name="welcome_text">" Welcome to Rajposhan"</string>
+    <string name="welcome_text">Welcome to Rajposhan</string>
     <string name="public_text">Public</string>
 
     <string name="setup_text">Set up Password</string>
@@ -259,6 +259,11 @@
     <string name="infrastructure_details">Infrastructure Details</string>
     <string name="edit">Edit</string>
     <string name="retry">Try Again</string>
+    <string name="update_beneficiary_mapping_master">Verify Beneficiary  Details</string>
+    <string name="verifying_status">Verifying Status</string>
+    <string name="pcts_anm_id">PCTS ANM ID</string>
+    <string name="pcts_asha_id">PCTS ASHA ID</string>
+    <string name="mother_name_id">Mother Name/ ID</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

@@ -122,7 +122,7 @@ public interface ApiInterface {
 
     // Get Beneficiary Criteria List
 
-    @GET("api_js_Beneficiary_Master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @POST("api_js_Beneficiary_Master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<BeneficiaryCriteria> getBeneficiaryCriteria();
 
 }

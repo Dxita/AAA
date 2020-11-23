@@ -1,5 +1,6 @@
-package cdac.org.anganvadistaffutility.user.activity;
+package cdac.org.anganvadistaffutility.user.activity.beneficiary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -51,7 +52,6 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
-
         AppCompatButton btn_search = findViewById(R.id.btn_search);
         btn_search.setOnClickListener(this);
     }
@@ -82,19 +82,16 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
     private void initBeneficiaryCriteriaSpinner(List<String> beneficiaryCriteriaList) {
         SmartMaterialSpinner<String> sp_beneficiary_criteria = findViewById(R.id.sp_beneficiary_criteria);
         sp_beneficiary_criteria.setItem(beneficiaryCriteriaList);
-
         sp_beneficiary_criteria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(context, beneficiaryCriteriaList.get(position), Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
     }
-
 
     @Override
     public void onClick(View view) {
@@ -106,6 +103,10 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
 
             if (mobileNumber.length() == 0 && aadharNumber.length() == 0 && janadharNumber.length() == 0 && bhamashahNumber.length() == 0) {
                 AppUtils.showToast(context, getResources().getString(R.string.fill_required_field));
+            }
+            else {
+                startActivity(new Intent(context,BeneficiarySearchResultActivity.class));
+
             }
         }
     }

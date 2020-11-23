@@ -31,13 +31,13 @@ import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 public class UserInfraStructureAdapter extends RecyclerView.Adapter<UserInfraStructureAdapter.ViewHolder> {
     private final Context mContext;
     private final List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureData;
-    private final List<Integer> infraImageList;
+   // private final List<Integer> infraImageList;
     protected UserInfraStructureAdapter.ItemClickListener mListener;
 
-    public UserInfraStructureAdapter(Context context, List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureData, List<Integer> infraStructureImageList, ItemClickListener itemClickListener) {
+    public UserInfraStructureAdapter(Context context, List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureData, ItemClickListener itemClickListener) {
         this.mContext = context;
         this.infrastructureData = infrastructureData;
-        this.infraImageList = infraStructureImageList;
+        //this.infraImageList = infraStructureImageList;
         this.mListener = itemClickListener;
     }
 
@@ -52,7 +52,7 @@ public class UserInfraStructureAdapter extends RecyclerView.Adapter<UserInfraStr
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(infrastructureData.get(position),infraImageList.get(position));
+        holder.setData(infrastructureData.get(position));
 
     }
 
@@ -87,7 +87,7 @@ public class UserInfraStructureAdapter extends RecyclerView.Adapter<UserInfraStr
             }
         }
 
-        public void setData(UserInfrastructureData.Data.InfrastructureDatum infrastructureDatum, int drawable) {
+        public void setData(UserInfrastructureData.Data.InfrastructureDatum infrastructureDatum) {
             this.infrastructureDatum = infrastructureDatum;
             String name = "";
             if (LocaleManager.getLocale(mContext.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
@@ -96,7 +96,7 @@ public class UserInfraStructureAdapter extends RecyclerView.Adapter<UserInfraStr
                 name = infrastructureDatum.getTimInfraNameh();
             }
             txt_infra_name.setText(name);
-            img_infra_name.setImageResource(drawable);
+          //  img_infra_name.setImageResource(drawable);
         }
     }
 }
