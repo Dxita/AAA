@@ -10,7 +10,7 @@
         android:id="@+id/largeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_margin="@dimen/margin_15"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -33,7 +33,6 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_above="@id/btn_search"
         android:layout_below="@id/largeLabel"
@@ -49,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/sr_no"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -67,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/verifying_status"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -88,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/mobile_no"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -108,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/fatherhusband_name"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -128,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/mother_name_id"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -148,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/pcts_anm_id"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -168,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/pcts_asha_id"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -181,7 +180,7 @@
                 android:enabled="false"
                 android:padding="@dimen/margin_08"
                 android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"/>
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -189,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/aadhar_no"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -209,7 +208,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/janaadhar_no"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -229,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
                 android:text="@string/bhamasha_no"
-                android:textColor="@color/black"
+                android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -243,8 +242,6 @@
                 android:padding="@dimen/margin_08"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
-
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -218,7 +218,7 @@
     <string name="otp_not_received">अभी तक प्राप्त नहीं हुआ?</string>
     <string name="resend_code"><u>पुन: कोड भेजे</u></string>
 
-    <string name="time_remain">Resend in</string>
+    <string name="time_remain">पुन: भेजें</string>
     <string name="time_remaining">%02d:%02d</string>
     <string name="log_out">लॉग आउट</string>
 
@@ -230,15 +230,15 @@
     <string name="next_financial_year">वित्तीय वर्ष चालू वित्तीय वर्ष से अधिक नहीं हो सकता है</string>
     <string name="previous_financial_year">वित्तीय वर्ष 2015 से कम नहीं हो सकता है</string>
 
-    <string name="sr_no">Sr. No.</string>
-    <string name="bil_name">Bill Name</string>
-    <string name="payment_month">Payment Month</string>
-    <string name="amount">Amount (Rs.)</string>
+    <string name="sr_no">अनु क्रमांक</string>
+    <string name="bil_name">बिल का नाम</string>
+    <string name="payment_month">भुगतान का महीना</string>
+    <string name="amount">राशि (रु)</string>
 
-    <string name="infra_item">Infrastructure Item</string>
+    <string name="infra_item">अवसंरचना मद</string>
     <string name="update">अपडेट करें</string>
-    <string name="item_name">Item Name</string>
-    <string name="qty">"Item Quantity "</string>
+    <string name="item_name">वस्तु का नाम</string>
+    <string name="qty">वस्तु की मात्रा</string>
     <string name="session">सत्र मध्यांतर।</string>
 
     <string name="alert">चेतावनी</string>
@@ -261,4 +261,9 @@
     <string name="pcts_anm_id">पीसीटीएस एएनएम आईडी</string>
     <string name="pcts_asha_id">पीसीटीएस आशा आईडी</string>
     <string name="mother_name_id">माँ का नाम / आई.डी.</string>
+
+    <string name="mother_details">माँ का विवरण</string>
+    <string name="category_details">श्रेणी विवरण</string>
+    <string name="id_card_details">आईडी कार्ड विवरण</string>
+    <string name="infant_details">शिशु विवरण</string>
 </resources>

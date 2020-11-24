@@ -87,6 +87,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(context, beneficiaryCriteriaList.get(position), Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -103,10 +104,9 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
 
             if (mobileNumber.length() == 0 && aadharNumber.length() == 0 && janadharNumber.length() == 0 && bhamashahNumber.length() == 0) {
                 AppUtils.showToast(context, getResources().getString(R.string.fill_required_field));
-            }
-            else {
-                startActivity(new Intent(context,BeneficiarySearchResultActivity.class));
-
+            } else {
+                startActivity(new Intent(context, BeneficiarySearchResultActivity.class));
+                finish();
             }
         }
     }

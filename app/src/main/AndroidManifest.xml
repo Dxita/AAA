@@ -32,7 +32,8 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity"></activity>
+        <activity android:name=".user.activity.beneficiary.MotherMappingActivity"></activity>
+        <activity android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity" />
         <activity
             android:name=".user.activity.infrastructure.KitchenActivity"
             android:screenOrientation="portrait" />
