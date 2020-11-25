@@ -33,6 +33,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
+import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 
@@ -134,6 +135,18 @@ public class AppUtils {
     public static List<PaymentDetails.Empdatum> convertToGet(String list) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<PaymentDetails.Empdatum>>() {
+        }.getType();
+        return gson.fromJson(list, type);
+    }
+
+    public static String convertBeneficiaryToPut(ArrayList<BeneficiarySearchData.DataFound> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<BeneficiarySearchData.DataFound> convertBeneficiaryToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<BeneficiarySearchData.DataFound>>() {
         }.getType();
         return gson.fromJson(list, type);
     }

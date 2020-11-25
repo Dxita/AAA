@@ -2,6 +2,8 @@ package cdac.org.anganvadistaffutility.user.activity.beneficiary;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -21,16 +23,22 @@ import java.util.Objects;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.SalaryDetailsTblActivity;
+import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity;
+import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
+import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import retrofit2.Call;
 
 public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View.OnClickListener {
 
     private AppCompatEditText edt_mobile, edt_aadhar_id, edt_janadhar_id, edt_bhamashah_id;
     private RelativeLayout relativeLayout;
+    String mobileNumber,aadharNumber,janadharNumber,bhamashahNumber;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,17 +105,60 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_search) {
-            String mobileNumber = Objects.requireNonNull(edt_mobile.getText()).toString().trim();
-            String aadharNumber = Objects.requireNonNull(edt_aadhar_id.getText()).toString().trim();
-            String janadharNumber = Objects.requireNonNull(edt_janadhar_id.getText()).toString().trim();
-            String bhamashahNumber = Objects.requireNonNull(edt_bhamashah_id.getText()).toString().trim();
+             mobileNumber = Objects.requireNonNull(edt_mobile.getText()).toString().trim();
+             aadharNumber = Objects.requireNonNull(edt_aadhar_id.getText()).toString().trim();
+             janadharNumber = Objects.requireNonNull(edt_janadhar_id.getText()).toString().trim();
+             bhamashahNumber = Objects.requireNonNull(edt_bhamashah_id.getText()).toString().trim();
 
             if (mobileNumber.length() == 0 && aadharNumber.length() == 0 && janadharNumber.length() == 0 && bhamashahNumber.length() == 0) {
                 AppUtils.showToast(context, getResources().getString(R.string.fill_required_field));
             } else {
-                startActivity(new Intent(context, BeneficiarySearchResultActivity.class));
-                finish();
+                if (AppUtils.isNetworkConnected(context)) {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                    getBeneficiarySearchData();
+                } else {
+                    AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+                }
+
+
             }
         }
+    }
+
+    private void getBeneficiarySearchData() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BENEFICIARY_SEARCH_DATA);
+        Call<BeneficiarySearchData> call = apiInterface.getBeneficiarSearchData("1",aadharNumber,mobileNumber,janadharNumber,bhamashahNumber);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<BeneficiarySearchData>() {
+            @Override
+            public void onSuccess(BeneficiarySearchData body) {
+                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                    AppUtils.showToast(context, body.getMessage());
+
+                    BeneficiarySearchData.Data data = body.getData();
+                    List<BeneficiarySearchData.DataFound> beneficiarySearch = data.getDataFound();
+                    ArrayList<BeneficiarySearchData.DataFound> beneficiarySearchArrayList = new ArrayList<>(beneficiarySearch);
+
+                    if (!beneficiarySearchArrayList.isEmpty()) {
+                        Intent intent = new Intent(context, BeneficiarySearchResultActivity.class);
+                        intent.putExtra("search_results",beneficiarySearchArrayList);
+                        Log.d("check", String.valueOf(beneficiarySearchArrayList ));
+                        startActivity(intent);
+                    }
+                    /*BeneficiarySearchData.Data data = body.getData();
+                    beneficiary_searchdata= (ArrayList<BeneficiarySearchData.Data.DataFound>) data.getDataFound();*/
+
+
+                  /*  startActivity(new Intent(context, BeneficiarySearchResultActivity.class).putExtra("benefeciary_data", beneficiary_searchdata));
+                    finish();*/
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, context.getResources().getString(R.string.error_in_fetch_data));
+            }
+        }));
     }
 }

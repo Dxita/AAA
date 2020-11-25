@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/custom_app_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/tools"
+    app:ignore="NamespaceTypo">
+
+
+    <androidx.appcompat.widget.Toolbar
+
+        android:theme="@style/ToolbarTheme"
+        android:id="@+id/toolbar"
+        tool:title="@string/basic_info"
+        android:layout_width="match_parent"
+        tool:titleTextColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true" >
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="@dimen/margin_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/district"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/s_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:enabled="false"
+                android:padding="@dimen/margin_08"
+                android:singleLine="false"
+                android:textColor="@color/grey" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/project"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/verifying_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:enabled="false"
+                android:padding="@dimen/margin_08"
+                android:singleLine="false"
+                android:textColor="@color/grey" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/sector"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/mobile_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:enabled="false"
+                android:padding="@dimen/margin_08"
+                android:singleLine="false"
+                android:textColor="@color/grey" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/aanganwadi_center"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/father_husband_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:enabled="false"
+                android:padding="@dimen/margin_08"
+                android:singleLine="false"
+                android:textColor="@color/grey" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/pcts_anm_id"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/pcts_anm_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:enabled="false"
+                android:padding="@dimen/margin_08"
+                android:singleLine="false"
+                android:textColor="@color/grey" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/pcts_asha_id"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/pcts_asha_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:enabled="false"
+                android:padding="@dimen/margin_08"
+                android:singleLine="false"
+                android:textColor="@color/grey"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

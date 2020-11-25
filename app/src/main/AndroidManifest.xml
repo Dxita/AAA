@@ -32,7 +32,13 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.beneficiary.MotherMappingActivity"></activity>
+        <activity android:name=".user.activity.beneficiary.BasicInformationActivity"></activity>
+        <activity android:name=".user.activity.beneficiary.InfantDetailsActivity" />
+        <activity android:name=".user.activity.beneficiary.BenefeciaryBankDetailsActivity" />
+        <activity android:name=".user.activity.beneficiary.IdCardDetailsActivity" />
+        <activity android:name=".user.activity.beneficiary.CategoryActivity" />
+        <activity android:name=".user.activity.beneficiary.MotherDetailsActivity" />
+        <activity android:name=".user.activity.beneficiary.MotherMappingActivity" />
         <activity android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity" />
         <activity
             android:name=".user.activity.infrastructure.KitchenActivity"

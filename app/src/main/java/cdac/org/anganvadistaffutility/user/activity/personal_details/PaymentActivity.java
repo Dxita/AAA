@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -99,6 +100,7 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
                         intent.putExtra("fromYear", fromYear);
                         intent.putExtra("toYear", toYear);
                         intent.putExtra("salary_data", AppUtils.convertToPut(empDatumArrayList));
+
                         startActivity(intent);
                     }
                 } else {

@@ -266,4 +266,33 @@
     <string name="category_details">श्रेणी विवरण</string>
     <string name="id_card_details">आईडी कार्ड विवरण</string>
     <string name="infant_details">शिशु विवरण</string>
+
+
+    <string name="basic_info">मूलभूत जानकारी</string>
+    <string name="aanganwadi_center">आंगनवाड़ी केंद्र</string>
+    <string name="beneficiary_type">लाभार्थी प्रकार</string>
+    <string name="mother_name">मां का नाम</string>
+    <string name="age_of_mother">माता की आयु</string>
+    <string name="height_cm">ऊंचाई (सेंटिमीटर)</string>
+    <string name="live_child">लाइव चाइल्ड</string>
+    <string name="husband">पति</string>
+    <string name="father">पिता जी</string>
+    <string name="husband_father_name">पति / पिता का नाम</string>
+    <string name="lmc_date">एलएमसी दिनांक</string>
+    <string name="registration_date">पंजीकरण की तारीख</string>
+    <string name="delivery_date">डिलीवरी की तारीख</string>
+    <string name="husband_father">पति / पिता</string>
+    <string name="domicile_status">अधिवास की स्थिति</string>
+    <string name="cast_english">अंग्रेजी में जाति</string>
+    <string name="cast_hindi">हिंदी में जाति</string>
+    <string name="caste_category">जाति श्रेणी</string>
+    <string name="ghumantu">घुमंतू</string>
+    <string name="bpl">गरीबी रेखा से नीचे</string>
+    <string name="nfsa_eligible">एनएफएसए योग्यता</string>
+    <string name="bpl_card_number">बीपीएल कार्ड नंबर</string>
+    <string name="ration_card_number">राशन कार्ड नंबर</string>
+    <string name="account_name">खाते का नाम</string>
+    <string name="sahariya">सहरिया</string>
+    <string name="kathodi">केथोड़ी</string>
+    <string name="none">कोई नहीं</string>
 </resources>

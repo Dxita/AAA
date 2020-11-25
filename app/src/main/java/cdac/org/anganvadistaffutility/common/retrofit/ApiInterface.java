@@ -10,6 +10,7 @@ import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
+import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
@@ -125,4 +126,11 @@ public interface ApiInterface {
     @POST("api_js_Beneficiary_Master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<BeneficiaryCriteria> getBeneficiaryCriteria();
 
+    @POST("api_js_Beneficiary_search_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<BeneficiarySearchData> getBeneficiarSearchData(@Field("mother_type") String motherType,
+                                                        @Field("adhar_number") String adhar_number,
+                                                        @Field("mobile_number") String mobile_number,
+                                                        @Field("janadhar_number") String janadhar_number,
+                                                        @Field("bhamasha_number") String bhamasha_number);
 }
