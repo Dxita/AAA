@@ -32,7 +32,7 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.beneficiary.BasicInformationActivity"></activity>
+        <activity android:name=".user.activity.beneficiary.BasicInformationActivity" />
         <activity android:name=".user.activity.beneficiary.InfantDetailsActivity" />
         <activity android:name=".user.activity.beneficiary.BenefeciaryBankDetailsActivity" />
         <activity android:name=".user.activity.beneficiary.IdCardDetailsActivity" />
@@ -189,10 +189,10 @@
               android:enabled="true"
               android:exported="true" />
         -->
-        <service
+     <!--   <service
             android:name=".common.service.UserLogoutService"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="false" />-->
 
         <receiver
             android:name=".common.receiver.ServiceRestart"

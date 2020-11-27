@@ -46,64 +46,89 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/margin_05">
+                android:padding="@dimen/margin_10">
 
                 <RadioButton
 
-                    android:id="@+id/rb_yes"
+                    android:id="@+id/rb_domicileyes"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <RadioButton
-                    android:id="@+id/rb_no"
+                    android:id="@+id/rb_domicileno"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textSize="@dimen/textsize_15sp" />
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_05"
-                android:text="@string/cast_english"
+                android:text="@string/caste"
                 android:textColor="@color/peach"
                 android:textSize="@dimen/textsize_14sp">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/verifying_status"
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_05"
-                android:enabled="false"
-                android:padding="@dimen/margin_08"
-                android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/margin_10">
+
+                <RadioButton
+                    android:id="@+id/sc"
+                    android:layout_width="@dimen/margin_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sc"
+                    android:textSize="@dimen/textsize_15sp" />
+
+                <RadioButton
+                    android:id="@+id/st"
+                    android:layout_width="@dimen/margin_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/st"
+                    android:textSize="@dimen/textsize_15sp" />
+
+                <RadioButton
+                    android:id="@+id/general"
+                    android:layout_width="@dimen/margin_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/general"
+                    android:textSize="@dimen/textsize_15sp" />
+            </RadioGroup>
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/margin_05"
-                android:text="@string/cast_hindi"
-                android:textColor="@color/peach"
-                android:textSize="@dimen/textsize_14sp">
+            <!--    <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_05"
+                    android:text="@string/cast_hindi"
+                    android:textColor="@color/peach"
+                    android:textSize="@dimen/textsize_14sp">
 
-            </androidx.appcompat.widget.AppCompatTextView>
+                </androidx.appcompat.widget.AppCompatTextView>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/mobile_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_05"
-                android:enabled="false"
-                android:padding="@dimen/margin_08"
-                android:singleLine="false"
-                android:textColor="@color/grey" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/cast_hindi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_05"
+                    android:enabled="false"
+                    android:padding="@dimen/margin_10"
+                    android:textSize="@dimen/textsize_15sp"
+                    android:singleLine="false"
+                    android:textColor="@color/grey" />-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -120,28 +145,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/margin_05">
+                android:padding="@dimen/margin_10">
 
                 <RadioButton
                     android:id="@+id/sahariya"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/sahariya" />
+                    android:text="@string/sahariya"
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <RadioButton
                     android:id="@+id/kathodi"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/kathodi" />
+                    android:text="@string/kathodi"
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <RadioButton
                     android:id="@+id/none"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/none" />
+                    android:text="@string/none"
+                    android:textSize="@dimen/textsize_15sp" />
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -156,21 +184,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/margin_05">
+                android:padding="@dimen/margin_10">
 
                 <RadioButton
-                    android:id="@+id/yes"
+                    android:id="@+id/ghumantu_yes"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <RadioButton
-                    android:id="@+id/no"
+                    android:id="@+id/ghumantu_no"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textSize="@dimen/textsize_15sp" />
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -185,21 +215,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/margin_05">
+                android:padding="@dimen/margin_10">
 
                 <RadioButton
                     android:id="@+id/bpl_yes"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <RadioButton
                     android:id="@+id/bpl_no"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textSize="@dimen/textsize_15sp" />
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -214,21 +246,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/margin_05">
+                android:padding="@dimen/margin_10">
 
                 <RadioButton
                     android:id="@+id/nfsa_yes"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/yes" />
+                    android:text="@string/yes"
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <RadioButton
                     android:id="@+id/nfsa_no"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/no" />
+                    android:text="@string/no"
+                    android:textSize="@dimen/textsize_15sp" />
             </RadioGroup>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

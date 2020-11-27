@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/custom_app_bg"
@@ -34,11 +35,11 @@
 
 
     <LinearLayout
-        android:background="@drawable/custom_app_bg"
-        android:layout_below="@id/largeLabel"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/largeLabel"
+        android:background="@drawable/custom_app_bg"
+        android:orientation="vertical">
 
 
         <androidx.recyclerview.widget.RecyclerView

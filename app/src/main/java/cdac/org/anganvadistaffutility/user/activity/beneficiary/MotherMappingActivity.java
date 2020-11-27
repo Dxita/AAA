@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,17 +21,26 @@ import java.util.Arrays;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.activity.LogoutListener;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
+import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
+import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.BankActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.CardActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.JobActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.PaymentActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity;
+import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
+import retrofit2.Call;
 
 public class MotherMappingActivity extends BaseActivity {
     ArrayList personNames;
     RecyclerView recyclerView;
     ArrayList personImages = new ArrayList<>(Arrays.asList(R.drawable.ic_user_admin, R.drawable.mother_icon, R.drawable.ic_baseline_category_24, R.drawable.cards, R.drawable.bank, R.drawable.ic_creche_house));
+    private RelativeLayout relativeLayout;
+    BeneficiarySearchData.Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +48,7 @@ public class MotherMappingActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mother_mapping);
-
+        relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
         //relativeLayout = findViewById(R.id.relativeLayout);
         personNames = new ArrayList<>(Arrays.asList((getResources().getString(R.string.basic_info)), getResources().getString(R.string.mother_details), getResources().getString(R.string.category_details),
@@ -49,7 +60,41 @@ public class MotherMappingActivity extends BaseActivity {
         MotherMappingAdapter motherMappingAdapter = new MotherMappingAdapter(context, personNames, personImages);
         recyclerView.setAdapter(motherMappingAdapter); // set the Adapter to RecyclerView
 
+        if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            getBeneficiarySearchData();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+        }
 
+    }
+
+
+    private void getBeneficiarySearchData() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BENEFICIARY_SEARCH_DATA);
+        Call<BeneficiarySearchData> call = apiInterface.getBeneficiarSearchData("1", appPreferences.getAadharNo(), appPreferences.getMobileNumber(), appPreferences.getJanaadharno(), appPreferences.getBhamashano());
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<BeneficiarySearchData>() {
+            @Override
+            public void onSuccess(BeneficiarySearchData body) {
+                if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                    AppUtils.showToast(context, body.getMessage());
+
+                    data = body.getData();
+
+
+                    Log.d("check", String.valueOf(data));
+
+                    //startActivity(new Intent(context, BeneficiarySearchResultActivity.class).putExtra("benefeciary_data", data));
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, context.getResources().getString(R.string.error_in_fetch_data));
+            }
+        }));
     }
 
     public class MotherMappingAdapter extends RecyclerView.Adapter<MyViewHold> {
@@ -80,25 +125,25 @@ public class MotherMappingActivity extends BaseActivity {
                 public void onClick(View view) {
                     // open another activity on item click
                     if (position == 0) {
-                        startActivity(new Intent(context, BasicInformationActivity.class));
+                        startActivity(new Intent(context, BasicInformationActivity.class).putExtra("basic_info", data));
                     }
                     if (position == 1) {
-                        startActivity(new Intent(context, MotherDetailsActivity.class));
+                        startActivity(new Intent(context, MotherDetailsActivity.class).putExtra("mother_details", data));
                     }
                     if (position == 2) {
-                        startActivity(new Intent(context, CategoryActivity.class));
+                        startActivity(new Intent(context, CategoryActivity.class).putExtra("category", data));
                     }
 
                     if (position == 3) {
-                        startActivity(new Intent(context, IdCardDetailsActivity.class));
+                        startActivity(new Intent(context, IdCardDetailsActivity.class).putExtra("id_cards_details", data));
                     }
 
                     if (position == 4) {
-                        startActivity(new Intent(context, BenefeciaryBankDetailsActivity.class));
+                        startActivity(new Intent(context, BenefeciaryBankDetailsActivity.class).putExtra("bank_details", data));
                     }
 
                     if (position == 5) {
-                        startActivity(new Intent(context, InfantDetailsActivity.class));
+                        startActivity(new Intent(context, InfantDetailsActivity.class).putExtra("infant_details", data));
                     } else {
 
                     }

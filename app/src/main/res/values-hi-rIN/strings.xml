@@ -295,4 +295,10 @@
     <string name="sahariya">सहरिया</string>
     <string name="kathodi">केथोड़ी</string>
     <string name="none">कोई नहीं</string>
+
+    <string name="caste">जाति</string>
+    <string name="general">सामान्य</string>
+    <string name="sc">अनुसूचित जाति</string>
+    <string name="st">अनुसूची जनजाति</string>
+    <string name="pregnant_woman">गर्भवती महिला</string>
 </resources>

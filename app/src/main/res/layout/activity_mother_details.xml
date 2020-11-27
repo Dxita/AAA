@@ -43,11 +43,12 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/beneficiary_type"
+                android:textSize="@dimen/textsize_15sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -64,10 +65,11 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/mother_name"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/textsize_15sp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -88,7 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -108,8 +111,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
+                android:textSize="@dimen/textsize_15sp"
                 android:textColor="@color/grey" />
 
 
@@ -126,10 +130,11 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/mobile_no"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/textsize_15sp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -146,10 +151,11 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/live_child"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/textsize_15sp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey"/>
 
@@ -170,10 +176,10 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
-
                     android:layout_weight="1"
                     android:id="@+id/rb_husband"
                     android:text="@string/husband"
+                    android:textSize="@dimen/textsize_15sp"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"/>
 
@@ -181,6 +187,7 @@
                     android:layout_weight="1"
                     android:id="@+id/rb_father"
                     android:text="@string/father"
+                    android:textSize="@dimen/textsize_15sp"
                     android:layout_width="@dimen/margin_0"
                     android:layout_height="wrap_content"/>
             </RadioGroup>
@@ -199,10 +206,11 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/husband_father_name"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/textsize_15sp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey"/>
 
@@ -224,7 +232,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey"/>
 
@@ -242,11 +251,12 @@
                 android:drawablePadding="@dimen/margin_10"
                 android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
                 android:id="@+id/registration_date"
+                android:textSize="@dimen/textsize_15sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey"/>
 
@@ -262,13 +272,14 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:drawablePadding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
                 android:id="@+id/delivery_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
                 android:textColor="@color/grey"/>
         </LinearLayout>

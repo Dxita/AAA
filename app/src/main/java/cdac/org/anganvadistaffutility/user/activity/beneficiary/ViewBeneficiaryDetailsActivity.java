@@ -38,7 +38,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
 
     private AppCompatEditText edt_mobile, edt_aadhar_id, edt_janadhar_id, edt_bhamashah_id;
     private RelativeLayout relativeLayout;
-    String mobileNumber,aadharNumber,janadharNumber,bhamashahNumber;
+    String mobileNumber, aadharNumber, janadharNumber, bhamashahNumber;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,10 +105,10 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_search) {
-             mobileNumber = Objects.requireNonNull(edt_mobile.getText()).toString().trim();
-             aadharNumber = Objects.requireNonNull(edt_aadhar_id.getText()).toString().trim();
-             janadharNumber = Objects.requireNonNull(edt_janadhar_id.getText()).toString().trim();
-             bhamashahNumber = Objects.requireNonNull(edt_bhamashah_id.getText()).toString().trim();
+            mobileNumber = Objects.requireNonNull(edt_mobile.getText()).toString().trim();
+            aadharNumber = Objects.requireNonNull(edt_aadhar_id.getText()).toString().trim();
+            janadharNumber = Objects.requireNonNull(edt_janadhar_id.getText()).toString().trim();
+            bhamashahNumber = Objects.requireNonNull(edt_bhamashah_id.getText()).toString().trim();
 
             if (mobileNumber.length() == 0 && aadharNumber.length() == 0 && janadharNumber.length() == 0 && bhamashahNumber.length() == 0) {
                 AppUtils.showToast(context, getResources().getString(R.string.fill_required_field));
@@ -119,15 +119,13 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
                 } else {
                     AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
                 }
-
-
             }
         }
     }
 
     private void getBeneficiarySearchData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BENEFICIARY_SEARCH_DATA);
-        Call<BeneficiarySearchData> call = apiInterface.getBeneficiarSearchData("1",aadharNumber,mobileNumber,janadharNumber,bhamashahNumber);
+        Call<BeneficiarySearchData> call = apiInterface.getBeneficiarSearchData("1", aadharNumber, mobileNumber, janadharNumber, bhamashahNumber);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<BeneficiarySearchData>() {
             @Override
             public void onSuccess(BeneficiarySearchData body) {
@@ -136,21 +134,12 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
                     AppUtils.showToast(context, body.getMessage());
 
                     BeneficiarySearchData.Data data = body.getData();
-                    List<BeneficiarySearchData.DataFound> beneficiarySearch = data.getDataFound();
-                    ArrayList<BeneficiarySearchData.DataFound> beneficiarySearchArrayList = new ArrayList<>(beneficiarySearch);
+                    appPreferences.setMobileNumber(body.getData().getTjmMobileno());
+                    appPreferences.setAadharno(body.getData().getTbmAadharNo());
+                    appPreferences.setJanaadharno(body.getData().getTbmJanaadhar());
+                    appPreferences.setBhamashano(body.getData().getTbmBhamashahId());
 
-                    if (!beneficiarySearchArrayList.isEmpty()) {
-                        Intent intent = new Intent(context, BeneficiarySearchResultActivity.class);
-                        intent.putExtra("search_results",beneficiarySearchArrayList);
-                        Log.d("check", String.valueOf(beneficiarySearchArrayList ));
-                        startActivity(intent);
-                    }
-                    /*BeneficiarySearchData.Data data = body.getData();
-                    beneficiary_searchdata= (ArrayList<BeneficiarySearchData.Data.DataFound>) data.getDataFound();*/
-
-
-                  /*  startActivity(new Intent(context, BeneficiarySearchResultActivity.class).putExtra("benefeciary_data", beneficiary_searchdata));
-                    finish();*/
+                    startActivity(new Intent(context, BeneficiarySearchResultActivity.class).putExtra("benefeciary_data", data));
                 }
             }
 

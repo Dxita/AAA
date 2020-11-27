@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -77,7 +78,8 @@ public class UserLogoutService extends Service {
     /* Used to build and start foreground service. */
     private void startForegroundService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createNotificationChannel("my_service", "My Background Service");
+
+          // createNotificationChannel("my_service", "My Background Service");
         } else {
             Intent intent = new Intent(this, SplashActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
@@ -94,7 +96,6 @@ public class UserLogoutService extends Service {
             builder.setLargeIcon(largeIconBitmap);
             builder.setPriority(Notification.PRIORITY_MAX);
             builder.setFullScreenIntent(pendingIntent, true);
-
             Notification notification = builder.build();
             startForeground(1, notification);
         }

@@ -295,6 +295,11 @@
     <string name="sahariya">Sahariya</string>
     <string name="kathodi">Kathodi</string>
     <string name="none">None</string>
+    <string name="caste">Caste</string>
+    <string name="general">General</string>
+    <string name="sc">Schedule Caste</string>
+    <string name="st">Schedule Tribe</string>
+    <string name="pregnant_woman">Pregnant Woman</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

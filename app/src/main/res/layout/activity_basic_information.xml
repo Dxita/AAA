@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/custom_app_bg"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/tools"
+    android:background="@drawable/custom_app_bg"
     app:ignore="NamespaceTypo">
 
 
     <androidx.appcompat.widget.Toolbar
 
-        android:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
-        tool:title="@string/basic_info"
         android:layout_width="match_parent"
-        tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true" >
+        android:theme="@style/ToolbarTheme"
+        tool:title="@string/basic_info"
+        tool:titleTextColor="@color/white">
 
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.core.widget.NestedScrollView
 
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
-            android:layout_margin="@dimen/margin_12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -43,14 +43,15 @@
                 android:textSize="@dimen/textsize_14sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/s_no"
+                android:id="@+id/district"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -63,14 +64,15 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/verifying_status"
+                android:id="@+id/project"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -84,14 +86,15 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/mobile_no"
+                android:id="@+id/sector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -104,14 +107,15 @@
             </androidx.appcompat.widget.AppCompatTextView>
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/father_husband_name"
+                android:id="@+id/aanganwadi_center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -130,9 +134,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -150,9 +155,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
                 android:singleLine="false"
-                android:textColor="@color/grey"/>
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
         </LinearLayout>
 

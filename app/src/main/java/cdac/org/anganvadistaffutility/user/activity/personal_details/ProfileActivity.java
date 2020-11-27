@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.user.activity.personal_details;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class ProfileActivity extends BaseActivity {
         TextView awc_address = findViewById(R.id.awc_address);
 
         EmployeeDetails.Profile profileDetails = (EmployeeDetails.Profile) getIntent().getParcelableExtra("profile_details");
+        Log.d("check", String.valueOf(profileDetails));
         if (profileDetails != null) {
 
             if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {

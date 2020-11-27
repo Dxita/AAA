@@ -139,18 +139,6 @@ public class AppUtils {
         return gson.fromJson(list, type);
     }
 
-    public static String convertBeneficiaryToPut(ArrayList<BeneficiarySearchData.DataFound> list) {
-        Gson gson = new Gson();
-        return gson.toJson(list);
-    }
-
-    public static List<BeneficiarySearchData.DataFound> convertBeneficiaryToGet(String list) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<BeneficiarySearchData.DataFound>>() {
-        }.getType();
-        return gson.fromJson(list, type);
-    }
-
     public static String convertUserToPut(ArrayList<AdminUserData.Empdatum> list) {
         Gson gson = new Gson();
         return gson.toJson(list);

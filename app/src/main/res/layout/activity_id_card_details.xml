@@ -47,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -67,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -88,7 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -108,7 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 
@@ -129,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_05"
                 android:enabled="false"
-                android:padding="@dimen/margin_08"
+                android:padding="@dimen/margin_10"
+                android:textSize="@dimen/textsize_15sp"
                 android:singleLine="false"
                 android:textColor="@color/grey" />
 

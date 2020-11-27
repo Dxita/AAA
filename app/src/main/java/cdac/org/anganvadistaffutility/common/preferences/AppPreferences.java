@@ -17,6 +17,11 @@ public class AppPreferences {
 
     private static final String TYPE_ADMIN = "IS_TYPE_ADMIN";
     private static final String TYPE_PUBLIC = "IS_TYPE_PUBLIC";
+    private static final String MOBILENO = "MOBILE_NO";
+
+    private static final String AADHARNO = "AADHAR_NO";
+    private static final String JANAADHARNO = "JANAADHAR_NO";
+    private static final String BHAMASHANO = "BHAMASHA_NO";
 
     private SharedPreferences.Editor editor;
 
@@ -107,5 +112,45 @@ public class AppPreferences {
 
     public String getAwcId() {
         return sharedPreferences.getString(AWCID, "");
+    }
+
+    public String getMobileNumber() {
+        return sharedPreferences.getString(MOBILENO, "");
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(MOBILENO, mobileNumber);
+        editor.apply();
+    }
+
+    public String getAadharNo() {
+        return sharedPreferences.getString(AADHARNO, "");
+    }
+
+    public void setAadharno(String aadharno) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AADHARNO, aadharno);
+        editor.apply();
+    }
+
+    public String getJanaadharno() {
+        return sharedPreferences.getString(JANAADHARNO, "");
+    }
+
+    public void setJanaadharno(String janaadharno) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(JANAADHARNO, janaadharno);
+        editor.apply();
+    }
+
+    public String getBhamashano() {
+        return sharedPreferences.getString(BHAMASHANO, "");
+    }
+
+    public void setBhamashano(String bhamashano) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(BHAMASHANO, bhamashano);
+        editor.apply();
     }
 }

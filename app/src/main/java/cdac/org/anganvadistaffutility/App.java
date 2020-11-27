@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+import androidx.multidex.MultiDex;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,11 +14,15 @@ import java.util.TimerTask;
 import cdac.org.anganvadistaffutility.common.activity.LogoutListener;
 import cdac.org.anganvadistaffutility.common.utils.AppSignatureHelper;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.logout.ApplockManager;
 
 public class App extends Application {
-    /*private LogoutListener listener;
+     public static App myAutoLogoutApp;
+
+
+    private LogoutListener listener;
     private Timer timer;
-    private static final long INACTIVE_TIMEOUT = 180000;*/
+    private static final long INACTIVE_TIMEOUT = 900000;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -25,11 +30,17 @@ public class App extends Application {
         super.onCreate();
         AppSignatureHelper appSignatureHelper = new AppSignatureHelper(this);
         appSignatureHelper.getAppSignatures();
+
+
+        myAutoLogoutApp = this;
+        ApplockManager.getInstance().enableDefaultAppLockIfAvailable(this);
+        ApplockManager.getInstance().startWaitThread(myAutoLogoutApp);
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleManager.setLocale(base));
+        //MultiDex.install(this);
     }
 
     @Override
@@ -38,7 +49,21 @@ public class App extends Application {
         LocaleManager.setLocale(this);
     }
 
-  /*  public void startUserSession() {
+    public void touch() {
+        ApplockManager.getInstance().updateTouch();
+    }
+
+    public void setStopTrue() {
+        ApplockManager.getInstance().setStopTrue();
+    }
+
+    public void setStopFalse() {
+        ApplockManager.getInstance().setStopFalse();
+        ApplockManager.getInstance().startWaitThread(App.myAutoLogoutApp);
+    }
+
+
+    public void startUserSession() {
         cancelTimer();
 
         timer = new Timer();
@@ -64,5 +89,4 @@ public class App extends Application {
     public void onUserInteracted() {
         startUserSession();
     }
-*/
 }
