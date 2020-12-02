@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +40,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     private RelativeLayout relativeLayout;
     private UserInfraStructureAdapter userInfraStructureAdapter;
     private List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureData;
- //   private List<Integer> infraStructureImageList;
+     private List<Integer> infraStructureImageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
         relativeLayout = findViewById(R.id.relativeLayout);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         infrastructureData = new ArrayList<>();
-      //  infraStructureImageList = new ArrayList<>();
+        infraStructureImageList = new ArrayList<>();
         UserInfraStructureAdapter.ItemClickListener itemClickListener = this;
         AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
         recyclerView.setLayoutManager(manager);
@@ -65,7 +66,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
-        userInfraStructureAdapter = new UserInfraStructureAdapter(context, infrastructureData, itemClickListener);
+        userInfraStructureAdapter = new UserInfraStructureAdapter(context, infrastructureData,infraStructureImageList,itemClickListener);
         recyclerView.setAdapter(userInfraStructureAdapter);
     }
 
@@ -122,9 +123,12 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
             public void onSuccess(UserInfrastructureData body) {
                 // AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+
                 infrastructureData.addAll(body.getData().getInfrastructureData());
                 infrastructureData = body.getData().getInfrastructureData();
-                //   setCustomInfraImages();
+
+
+                     setCustomInfraImages();
                 //setCustomInfraImages();
                 userInfraStructureAdapter.notifyDataSetChanged();
 
@@ -164,7 +168,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
     }
 
-   /* private void setCustomInfraImages() {
+    private void setCustomInfraImages() {
         for (UserInfrastructureData.Data.InfrastructureDatum infrastructureDatum : infrastructureData) {
             if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("building")) {
                 infraStructureImageList.add(R.drawable.ic_aaganwadi_building);
@@ -187,7 +191,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
                 infraStructureImageList.add(R.drawable.app_logo);
             }
         }
-    }*/
+    }
 
 
 }

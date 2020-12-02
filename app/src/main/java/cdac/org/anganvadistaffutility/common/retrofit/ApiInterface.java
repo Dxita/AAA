@@ -7,6 +7,7 @@ import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
+import cdac.org.anganvadistaffutility.public_u.activity.data.VerifyPublicData;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
@@ -14,6 +15,7 @@ import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
+import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
@@ -133,4 +135,16 @@ public interface ApiInterface {
                                                         @Field("mobile_number") String mobile_number,
                                                         @Field("janadhar_number") String janadhar_number,
                                                         @Field("bhamasha_number") String bhamasha_number);
+
+    @POST("api_js_infrastructur_update_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<UpdateInfrastructureData> updateInfrastructureData(@Field("tjaid_awc_id") String tjaid_awc_id,
+                                                            @Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
+                                                            @Field("tjaid_tid_infra_detail_id") String tjaid_tid_infra_detail_id,
+                                                            @Field("tjaid_qty")String tjaid_qty);
+
+    @POST("api_js_public_user_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<VerifyPublicData> verifyPublic(@Field("mobileno") String mobileNumber);
+
 }

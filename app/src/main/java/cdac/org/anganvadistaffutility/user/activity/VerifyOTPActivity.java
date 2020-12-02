@@ -31,13 +31,11 @@ public class VerifyOTPActivity extends BaseActivity implements OtpReceivedInterf
 
     private static final int TIME_LIMIT = 1000 * 60 * 10; // 10 min
     private static final int TIME_INTERVAL = 1000; // 1 sec
-
     private EditText et_input_otp;
     private TextView mobile_number_text;
     private TextView txt_time_remaining;
     private LinearLayout ll_resend_otp, ll_resend_timer;
     private RelativeLayout relativeLayout;
-
     private CountDownTimer countDownTimer;
     private String mobileNumber = "";
 

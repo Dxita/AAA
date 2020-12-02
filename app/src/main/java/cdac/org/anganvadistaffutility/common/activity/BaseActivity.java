@@ -194,6 +194,39 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         }));
     }
 
+    protected void sendOtpToServerPublic(RelativeLayout relativeLayout, String mobileNumber, String otp) {
+        apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
+        Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyOTPDetails>() {
+            @Override
+            public void onSuccess(VerifyOTPDetails body) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                if (body.getResult().getStatus().getStatusCode() == 0) {
+                    AppUtils.showToast(context, body.getData().getResponseMessage());
+
+                    if (context instanceof VerifyOTPActivity) {
+                        finish();
+                    }
+                    appPreferences.saveGeneratedOtp(body.getData().getOtp());
+                    startActivity(new Intent(context, VerifyOTPActivity.class)
+                            .putExtra("mobile_number", body.getData().getMobile()));
+
+                    if (context instanceof VerifyUserActivity) {
+                        finish();
+                    }
+                } else {
+                    AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                    AppUtils.showToast(context, body.getData().getResponseMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+            }
+        }));
+    }
+
     public void fetchAdminPhoneNumber(RelativeLayout relativeLayout) {
         adminNumberList = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {

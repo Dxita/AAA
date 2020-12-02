@@ -32,8 +32,8 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.adapter.AwcBuildingAdapter;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
+import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import retrofit2.Call;
 
 public class AreaActivity extends BaseActivity implements View.OnClickListener {
@@ -42,7 +42,9 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     String infra_id;
     AppCompatButton submit_btn, update_btn, cancel_btn;
-    AwcBuildingAdapter awcBuildingAdapter;
+   AwcBuildingAdapter awcBuildingAdapter;
+   String tjaid_tim_infra_id;
+    public static String item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,7 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
                 infrastructureData = body.getData().getInfrastructureData();
                 awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
+                tjaid_tim_infra_id=infrastructureData.get(0).getTidTimInfraId();
             }
 
             @Override
@@ -124,11 +127,127 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         if (v.getId() == R.id.submit_btn) {
             // update_btn.setVisibility(View.VISIBLE);
             //submit_btn.setVisibility(View.GONE);
-            Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
-        }
+            if (AppUtils.isNetworkConnected(context)) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                updateInfrastructure();
+            } else {
+                AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+            }        }
         if (v.getId() == R.id.cancel_btn) {
             finish();
         }
+    }
+
+    private void updateInfrastructure() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tjaid_tim_infra_id,item,"0");
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
+            @Override
+            public void onSuccess(UpdateInfrastructureData body) {
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+               /* infrastructureData = new ArrayList<>();
+                infrastructureData = body.getData().getInfrastructureData();
+                awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
+                recyclerView.setAdapter(awcBuildingAdapter);*/
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+            }
+
+        }));
+    }
+
+
+    public static class AwcBuildingAdapter extends RecyclerView.Adapter<AwcBuildingAdapter.MyViewHolders> {
+        Context context;
+        List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
+        AanganwadiBuildingActivity.AwcBuildingAdapter.MyViewHolders myViewHolders;
+        private CheckBox lastChecked = null;
+        private int lastCheckedPos = 0;
+
+        public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
+            this.context = context;
+            this.infrastructureData = infrastructureData;
+        }
+
+        @NonNull
+        @Override
+        public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            @SuppressLint("InflateParams")
+            View view = LayoutInflater.from(context).inflate(R.layout.aw_building_items, null);
+            return new AwcBuildingAdapter.MyViewHolders(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
+            infrastructureData.get(position);
+            holder.checkBox.setTag(position);
+            if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                lastChecked = holder.checkBox;
+                lastCheckedPos = 0;
+                holder.checkBox.setChecked(true);
+
+            }
+
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v;
+                    int clickedPos = (Integer) cb.getTag();
+                    if (cb.isChecked()) {
+                        if (lastChecked != null) {
+                            lastChecked.setChecked(false);
+                        }
+                        lastChecked = cb;
+                        lastCheckedPos = clickedPos;
+
+
+                    } else
+                        lastChecked = null;
+                }
+            });
+            item = infrastructureData.get(position).getTidInfraDetailId();
+            holder.setData(context, infrastructureData.get(position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return infrastructureData.size();
+
+        }
+
+        static class MyViewHolders extends RecyclerView.ViewHolder {
+            AppCompatTextView item_name;
+            private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
+            CheckBox checkBox;
+
+            public MyViewHolders(@NonNull View itemView) {
+                super(itemView);
+
+                item_name = itemView.findViewById(R.id.item_tv);
+                checkBox = itemView.findViewById(R.id.checkbox);
+            }
+
+            public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {
+                this.infrastructureData = infrastructureData;
+                String name = "";
+                String qty = "";
+
+                if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
+                    name = infrastructureData.getTidInfraNamee();
+                } else {
+                    name = infrastructureData.getTidInfraNameh();
+                }
+                //  name = infrastructureData.getTidInfraNamee();
+                item_name.setText(name);
+            }
+        }
+
+
     }
 
 }

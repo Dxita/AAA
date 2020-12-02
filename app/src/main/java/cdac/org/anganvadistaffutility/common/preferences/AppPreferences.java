@@ -22,6 +22,7 @@ public class AppPreferences {
     private static final String AADHARNO = "AADHAR_NO";
     private static final String JANAADHARNO = "JANAADHAR_NO";
     private static final String BHAMASHANO = "BHAMASHA_NO";
+    private static final String INFRA_ID = "INFRAID";
 
     private SharedPreferences.Editor editor;
 
@@ -151,6 +152,16 @@ public class AppPreferences {
     public void setBhamashano(String bhamashano) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(BHAMASHANO, bhamashano);
+        editor.apply();
+    }
+
+    public String getInfraId() {
+        return sharedPreferences.getString(INFRA_ID, "");
+    }
+
+    public void setInfraId(String infraId) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(INFRA_ID, infraId);
         editor.apply();
     }
 }

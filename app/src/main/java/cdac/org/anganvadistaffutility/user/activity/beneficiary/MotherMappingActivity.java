@@ -81,8 +81,6 @@ public class MotherMappingActivity extends BaseActivity {
                     AppUtils.showToast(context, body.getMessage());
 
                     data = body.getData();
-
-
                     Log.d("check", String.valueOf(data));
 
                     //startActivity(new Intent(context, BeneficiarySearchResultActivity.class).putExtra("benefeciary_data", data));

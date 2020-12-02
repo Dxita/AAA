@@ -15,7 +15,7 @@ public class ApiUtils {
     public static final String SEND_OTP_TO_SERVER_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String SET_USER_PASSWORD = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String LOGIN_USER = "http://164.100.222.241/rajposhan/rajposhan_2/";
-    public static final String USER_AWC_ITEMS = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
+    public static final String UPDATE_INFRASTRUCTURE = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
     public static final String AW_BUILDING_DATA = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String GET_BENEFICIARY_CRITERIA = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String BENEFICIARY_SEARCH_DATA = "http://10.68.114.57/projects/rajposhan_v2_5_2_test/";
