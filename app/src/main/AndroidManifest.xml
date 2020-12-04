@@ -32,14 +32,30 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.beneficiary.BasicInformationActivity" />
-        <activity android:name=".user.activity.beneficiary.InfantDetailsActivity" />
-        <activity android:name=".user.activity.beneficiary.BenefeciaryBankDetailsActivity" />
-        <activity android:name=".user.activity.beneficiary.IdCardDetailsActivity" />
-        <activity android:name=".user.activity.beneficiary.CategoryActivity" />
-        <activity android:name=".user.activity.beneficiary.MotherDetailsActivity" />
-        <activity android:name=".user.activity.beneficiary.MotherMappingActivity" />
-        <activity android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity" />
+        <activity
+            android:name=".user.activity.beneficiary.BasicInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.InfantDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.BenefeciaryBankDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.IdCardDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.CategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.MotherDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.MotherMappingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user.activity.infrastructure.KitchenActivity"
             android:screenOrientation="portrait" />
@@ -189,10 +205,10 @@
               android:enabled="true"
               android:exported="true" />
         -->
-     <!--   <service
-            android:name=".common.service.UserLogoutService"
-            android:enabled="true"
-            android:exported="false" />-->
+        <!--   <service
+               android:name=".common.service.UserLogoutService"
+               android:enabled="true"
+               android:exported="false" />-->
 
         <receiver
             android:name=".common.receiver.ServiceRestart"
