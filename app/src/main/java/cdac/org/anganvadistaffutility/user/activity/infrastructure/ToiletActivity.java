@@ -171,8 +171,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
     public static class ToiletAdapter extends RecyclerView.Adapter<ToiletAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
-        private CheckBox lastChecked = null;
-        private int lastCheckedPos = 0;
+        private final CheckBox lastChecked = null;
+        private final int lastCheckedPos = 0;
 
         public ToiletAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;

@@ -57,7 +57,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/skyblue"
+                    app:cardBackgroundColor="@color/peach"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -123,7 +123,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/peach"
+                    app:cardBackgroundColor="@color/skyblue"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 

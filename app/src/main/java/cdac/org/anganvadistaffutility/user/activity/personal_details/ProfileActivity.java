@@ -27,7 +27,7 @@ public class ProfileActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_profile);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -41,7 +41,7 @@ public class ProfileActivity extends BaseActivity {
         TextView awc_name = findViewById(R.id.awc_name);
         TextView awc_address = findViewById(R.id.awc_address);
 
-        EmployeeDetails.Profile profileDetails = (EmployeeDetails.Profile) getIntent().getParcelableExtra("profile_details");
+        EmployeeDetails.Profile profileDetails = getIntent().getParcelableExtra("profile_details");
         Log.d("check", String.valueOf(profileDetails));
         if (profileDetails != null) {
 

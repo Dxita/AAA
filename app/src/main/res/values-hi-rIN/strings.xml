@@ -1,40 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">राजपोषण</string>
-    <string name="verify_user">उपयोगकर्ता की पुष्टि करें</string>
-    <string name="get_employee_data">कर्मचारी डेटा प्राप्त करें</string>
 
-    <string name="menu_profile">प्रोफ़ाइल</string>
     <string name="menu_home">मुख पृष्ठ</string>
-    <string name="menu_bank">बैंक विवरण</string>
-    <string name="menu_cards">कार्ड</string>
-    <string name="menu_job">नौकरी विवरण</string>
-    <string name="menu_payments">भुगतान</string>
 
-    <string name="hello_blank_fragment">हैलो खाली टुकड़ा</string>
-    <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">नेविगेशन दराज खोलें</string>
     <string name="navigation_drawer_close">नेविगेशन ड्रॉअर बंद करें</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">नेविगेशन हेडर</string>
-    <string name="action_settings">समायोजन</string>
 
-    <string name="personal_information">व्यक्तिगत जानकारी</string>
     <string name="category">वर्ग</string>
-    <string name="father_name">पिता का नाम</string>
-    <string name="husband_name">पति का नाम</string>
     <string name="address">पता</string>
     <string name="welcome_text">"राजपोषण में आपका स्वागत है"</string>
     <string name="public_text">जनता</string>
 
 
     <string name="setup_text">पासवर्ड सेट करें</string>
-    <string name="enter_text">पास वर्ड दर्ज करें</string>
     <string name="confirm_text">पासवर्ड की पुष्टि कीजिये</string>
     <string name="generate_text">पासवर्ड उत्पन्न करें</string>
-    <string name="enter">पास वर्ड दर्ज करें</string>
     <string name="login_txt">लॉग इन करें</string>
-    <string name="password">कुंजिका</string>
     <string name="awc_id">आंगनवाड़ी केन्द्र आईडी</string>
     <string name="fatherhusband_name">पिता / पति का नाम</string>
     <string name="mobile_no">मोबाइल नंबर</string>
@@ -69,7 +52,6 @@
     <string name="user_text">उपयोगकर्ता</string>
     <string name="otp_txt">OTP कोड सत्यापित किया जा रहा है</string>
     <string name="validate_text">ओटीपी सत्यापित करें</string>
-    <string name="getotp">OTP प्राप्त करें</string>
     <string name="country_code">+91</string>
 
     <string name="your_info_is_safe_text">आपकी जानकारी हमारे पास सुरक्षित है</string>
@@ -88,15 +70,12 @@
     <string name="no_internet_connection">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
 
     <string name="employee_id">कर्मचारी पहचान संख्या</string>
-    <string name="month">महीना</string>
-    <string name="textView">Text here</string>
     <string name="download">डाउनलोड</string>
     <string name="awc_name">आंगनवाड़ी केंद्र का नाम</string>
     <string name="awc_address">आंगनवाड़ी केंद्र का पता</string>
 
     <string name="retired">सेवा निवृत </string>
     <string name="employed">कार्यरत</string>
-    <string name="Rs">\u20B9</string>
 
     <string name="change_your_language">अपनी भाषा बदलें</string>
 
@@ -105,9 +84,6 @@
     <string name="show_kpi">मुख्य प्रदर्शन संकेतक</string>
     <string name="payment_data">भुगतान डेटा </string>
     <string name="error_in_fetch_data">डेटा लाने में त्रुटि</string>
-    <string name="employee_data">कर्मचारी डेटा</string>
-    <string name="total_employees">कुल कर्मचारी</string>
-    <string name="registered_employees">पंजीकृत कर्मचारी</string>
     <string name="view_users_data">उपयोगकर्ता डेटा</string>
     <string name="view_infra_data">इंफ्रास्ट्रक्चर डेटा</string>
     <string name="enter_employee_id">कर्मचारी पहचान संख्या दर्ज करें:</string>
@@ -123,14 +99,10 @@
     <string name="download_salary_slip">वेतन पर्ची डाउनलोड करें</string>
 
 
-    <string name="id">आईडी</string>
-    <string name="payment">भुगतान</string>
-    <string name="months">महीना</string>
     <string name="logout">लॉग आउट</string>
 
     <string name="no_app_available_to_view_pdf">पीडीएफ देखने के लिए कोई एप्लिकेशन उपलब्ध नहीं है</string>
     <string name="enter_your_password">यहां अपना पासवर्ड डालें</string>
-    <string name="enter_your_password_to_login">लॉगिन करने के लिए अपना पासवर्ड डालें</string>
     <string name="login_with_your_password">अपने पासवर्ड के साथ लॉग इन करें</string>
 
     <string name="password_guidelines">पासवर्ड में कम से कम 8 अक्षर होने चाहिए</string>
@@ -142,11 +114,6 @@
 
     <string name="first_name">पहला नाम</string>
     <string name="last_name">उपनाम</string>
-    <string name="registration">पंजीकरण</string>
-    <string name="phone_number">फ़ोन नंबर</string>
-    <string name="register">रजिस्टर करें</string>
-    <string name="already_a_user">पहले से ही एक उपयोगकर्ता?</string>
-    <string name="new_user">नया उपयोगकर्ता ?</string>
 
     <string name="building_details">भवन का विवरण</string>
     <string name="public_infrastructure">सार्वजनिक अवसंरचना</string>
@@ -163,42 +130,21 @@
     <string name="electricity">बिजली</string>
     <string name="kitchen">रसोई</string>
     <string name="sector">क्षेत्र</string>
-    <string name="aw_details">आंगनवाड़ी विवरण</string>
-    <string name="infrastructure">भूमिकारूप व्यवस्था</string>
     <string name="creche_details">क्रेच विवरण</string>
     <string name="property_type">संपत्ति के प्रकार  </string>
 
     <string name="Commercial">व्यावसायिक</string>
     <string name="residential">"आवासीय"</string>
     <string name="others">अन्य</string>
-    <string name="select_aw_facilities">अपने आंगनवाड़ी भवन में उपलब्ध सुविधाओं का चयन करें</string>
-    <string name="drinkink_water_faciltity">पीने के पानी की सुविधा है?</string>
-    <string name="electricity_faciltity">बिजली की सुविधा है?</string>
-    <string name="kitchen_faciltity">रसोई की सुविधा है?</string>
-    <string name="toilet_faciltity">टॉलीट की सुविधा है?</string>
-    <string name="open_area_facility">ओपन एरिया की सुविधा है?</string>
 
 
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
-    <string name="drinking_water_type">पीने के पानी के प्रकार का चयन करें</string>
-    <string name="Mineral_water">शुद्ध पानी</string>
-    <string name="normal_water">सामान्य पानी</string>
-    <string name="both">दोनों</string>
     <string name="cancel">रद्द करना</string>
-
-    <string name="kitchen_type">रसोई के प्रकार का चयन करें</string>
-    <string name="open_kitchen">ओपन एरिया किचन</string>
-    <string name="non_open_kitchen">गैर खुली रसोई</string>
-    <string name="indian_toilet">भारतीय शौचालय</string>
-    <string name="western_toilet">पश्चिमी शौचालय</string>
-    <string name="toilet_type">शौचालय का प्रकार चुनें</string>
 
     <string name="infra_data">इन्फ्रास्ट्रक्चर डेटा</string>
 
     <string name="personal_data">व्यक्तिगत डेटा</string>
-    <string name="GPSAlertDialogTitle">GPS सेट कर रहा है</string>
-    <string name="GPSAlertDialogMessage">GPS सक्षम नहीं है। क्या आप सेटिंग मेन्यू में जाना चाहते हैं</string>
 
     <string name="call">कॉल</string>
     <string name="email">ईमेल</string>
@@ -208,9 +154,6 @@
 
     <string name="project_wise_reg_users">परियोजना समझदार पंजीकृत उपयोगकर्ता</string>
     <string name="project_wise_unreg_users">परियोजना समझदार अपंजीकृत उपयोगकर्ता</string>
-
-    <string name="project_name">परियोजना का नाम:</string>
-    <string name="project_code">परियोजना क्रमांक:</string>
 
     <string name="enter_valid_otp">कृपया मान्य OTP दर्ज करें</string>
     <string name="otp_verified">OTP सफलतापूर्वक सत्यापित किया गया</string>
@@ -223,7 +166,6 @@
     <string name="log_out">लॉग आउट</string>
 
     <string name="logout_success">लॉगआउट सफलतापूर्वक</string>
-    <string name="forgot_password">पासवर्ड भूल गए? यहाँ क्लिक करें</string>
 
     <string name="exit_text">क्या बाहर जाना चाहते हो?</string>
 
@@ -235,14 +177,9 @@
     <string name="payment_month">भुगतान का महीना</string>
     <string name="amount">राशि (रु)</string>
 
-    <string name="infra_item">अवसंरचना मद</string>
-    <string name="update">अपडेट करें</string>
     <string name="item_name">वस्तु का नाम</string>
-    <string name="qty">वस्तु की मात्रा</string>
     <string name="session">सत्र मध्यांतर।</string>
 
-    <string name="alert">चेतावनी</string>
-    <string name="ok">ठीक</string>
     <string name="aanganwadi_building">आंगनवाड़ी भवन</string>
 
     <string name="beneficiary_criteria">लाभार्थी मानदंड</string>
@@ -251,13 +188,11 @@
     <string name="search">खोजें</string>
     <string name="enter_beneficiary_details">लाभार्थी का कोई भी एक विवरण दर्ज करें:</string>
     <string name="or_end">या/तथा</string>
-    <string name="_25_">25</string>
     <string name="infrastructure_details">इन्फ्रास्ट्रक्चर विवरण</string>
     <string name="edit">संपादित करें</string>
     <string name="retry">पुनः प्रयास करें</string>
 
     <string name="update_beneficiary_mapping_master">लाभार्थी विवरण की पुष्टि करें</string>
-    <string name="verifying_status">सत्यापन की स्थिति</string>
     <string name="pcts_anm_id">पीसीटीएस एएनएम आईडी</string>
     <string name="pcts_asha_id">पीसीटीएस आशा आईडी</string>
     <string name="mother_name_id">माँ का नाम / आई.डी.</string>
@@ -283,8 +218,6 @@
     <string name="delivery_date">डिलीवरी की तारीख</string>
     <string name="husband_father">पति / पिता</string>
     <string name="domicile_status">अधिवास की स्थिति</string>
-    <string name="cast_english">अंग्रेजी में जाति</string>
-    <string name="cast_hindi">हिंदी में जाति</string>
     <string name="caste_category">जाति श्रेणी</string>
     <string name="ghumantu">घुमंतू</string>
     <string name="bpl">गरीबी रेखा से नीचे</string>

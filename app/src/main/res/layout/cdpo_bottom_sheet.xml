@@ -97,7 +97,6 @@
             app:srcCompat="@drawable/app_logo" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_cdpo_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -119,7 +118,6 @@
             app:srcCompat="@drawable/app_logo" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_cdpo_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

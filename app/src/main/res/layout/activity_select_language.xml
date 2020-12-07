@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="@string/preferred_language"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_18" />
@@ -96,6 +97,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/continue_button"
                 android:layout_width="match_parent"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_18"
                 android:background="@drawable/buttonbg"

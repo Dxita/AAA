@@ -24,7 +24,7 @@ AppCompatEditText district,project, sector,pcts_anm_id,pcts_asha_id;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_basic_information);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -36,7 +36,7 @@ AppCompatEditText district,project, sector,pcts_anm_id,pcts_asha_id;
         pcts_asha_id=findViewById(R.id.pcts_asha_id);
 
 
-        BeneficiarySearchData.Data basic_info = (BeneficiarySearchData.Data) getIntent().getParcelableExtra("basic_info");
+        BeneficiarySearchData.Data basic_info = getIntent().getParcelableExtra("basic_info");
         Log.d("data", String.valueOf(basic_info));
         if (basic_info != null) {
             district.setText(basic_info.getTjmDistId());

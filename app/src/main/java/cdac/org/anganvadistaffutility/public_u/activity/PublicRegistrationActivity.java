@@ -30,9 +30,9 @@ public class PublicRegistrationActivity extends BaseActivity implements View.OnC
 
         setContentView(R.layout.activity_public_registeration);
         register_btn = findViewById(R.id.register_btn);
-        Spinner spin = (Spinner) findViewById(R.id.spinner1);
-        Spinner spin2 = (Spinner) findViewById(R.id.spinner2);
-        Spinner spin3 = (Spinner) findViewById(R.id.spinner3);
+        Spinner spin = findViewById(R.id.spinner1);
+        Spinner spin2 = findViewById(R.id.spinner2);
+        Spinner spin3 = findViewById(R.id.spinner3);
 
         spin.setOnItemSelectedListener(this);
         register_btn.setOnClickListener(this);

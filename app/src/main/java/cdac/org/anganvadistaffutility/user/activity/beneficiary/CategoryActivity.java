@@ -27,7 +27,7 @@ public class CategoryActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_category);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -60,7 +60,7 @@ public class CategoryActivity extends BaseActivity {
         nfsa_no.setClickable(false);
 
 
-        BeneficiarySearchData.Data category = (BeneficiarySearchData.Data) getIntent().getParcelableExtra("category");
+        BeneficiarySearchData.Data category = getIntent().getParcelableExtra("category");
         Log.d("data", String.valueOf(category));
         if (category != null) {
             // beneficiary_type.setText();

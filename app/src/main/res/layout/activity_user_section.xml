@@ -57,7 +57,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/skyblue"
+                    app:cardBackgroundColor="@color/peach"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -69,10 +69,8 @@
                             android:layout_width="@dimen/margin_200"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardElevation="@dimen/margin_05">
 
@@ -123,7 +121,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/green"
+                    app:cardBackgroundColor="@color/skyblue"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -145,7 +143,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/public_layout_bg"
+                                android:background="@drawable/user_layout_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -188,7 +186,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/peach"
+                    app:cardBackgroundColor="@color/green"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -200,17 +198,15 @@
                             android:layout_width="@dimen/margin_200"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardElevation="@dimen/margin_05">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/user_layout_bg"
+                                android:background="@drawable/public_layout_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -254,10 +250,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="bottom|end"
-            custom:color="@color/dark_peach_bg"
+            app:backgroundTint="@color/dark_peach_bg"
+            app:tint="@null"
             custom:options_color="@color/sky"
             custom:options_menu="@menu/fab_menu"
             custom:src="@drawable/ic_baseline_settings_24" />
+
+
+        <!-- <com.github.ag.floatingactionmenu.OptionsFabLayout
+             android:id="@+id/fab_menu"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:gravity="bottom|end"
+             custom:color="@color/colorPrimaryDark"
+             custom:options_color="@color/sky"
+             custom:options_menu="@menu/fab_menu"
+             custom:src="@drawable/ic_baseline_settings_24" />-->
 
     </RelativeLayout>
 

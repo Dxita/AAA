@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/appbg">
+        android:background="@drawable/childmom">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:text="@string/phone_verification"
                 android:textColor="@color/black"
@@ -31,17 +33,28 @@
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:gravity="center"
                 android:text="@string/phone_verification_text"
-                android:textColor="@color/grey"
+                android:textColor="@color/black"
                 android:textSize="@dimen/font_16" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:gravity="center"
-                android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatEditText
+
+
+                 <!--   <com.google.android.material.textfield.TextInputEditText
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:enabled="false"
+                        android:maxLength="10"
+                        android:padding="@dimen/margin_10"
+                        android:singleLine="true"
+                        android:text="@string/country_code"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_16"  />-->
+
+
+              <!--  <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -53,9 +66,32 @@
                     android:singleLine="true"
                     android:text="@string/country_code"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_16" />
+                    android:textSize="@dimen/font_16" />-->
 
-                <androidx.appcompat.widget.AppCompatEditText
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:hint="@string/enter_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_user_mobile_no"
+                        android:layout_margin="@dimen/margin_20"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:maxLength="10"
+                        android:textSize="@dimen/font_16" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+             <!--   <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edt_user_mobile_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,9 +103,9 @@
                     android:padding="@dimen/margin_10"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_16" />
+                    android:textSize="@dimen/font_16" />-->
             </LinearLayout>
-        </LinearLayout>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -89,6 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/activity_horizontal_margin"
+            android:textStyle="bold"
             android:background="@drawable/buttonbg"
             android:foreground="?android:attr/selectableItemBackground"
             android:padding="@dimen/activity_horizontal_margin"

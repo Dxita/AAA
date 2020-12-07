@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -52,7 +53,6 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/first_name"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_45"
                     android:layout_marginLeft="@dimen/margin_15"
@@ -67,7 +67,6 @@
                     android:textSize="@dimen/textsize_15sp" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/last_name"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_45"
                     android:layout_marginLeft="@dimen/margin_15"
@@ -181,12 +180,10 @@
 
                         <RadioGroup
                             android:orientation="horizontal"
-                            android:id="@+id/radio_group"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <RadioButton
-                                android:id="@+id/radio_button1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/margin_08"
@@ -195,7 +192,6 @@
                                 android:textSize="@dimen/textsize_14sp" />
 
                             <RadioButton
-                                android:id="@+id/radio_button2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/margin_10"
@@ -204,7 +200,6 @@
                                 android:textSize="@dimen/textsize_14sp" />
 
                             <RadioButton
-                                android:id="@+id/radio_button3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/others"

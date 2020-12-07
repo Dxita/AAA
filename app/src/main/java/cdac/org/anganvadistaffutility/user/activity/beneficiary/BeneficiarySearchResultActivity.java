@@ -42,7 +42,7 @@ public class BeneficiarySearchResultActivity extends BaseActivity implements Vie
         janaadhar_no = findViewById(R.id.janaadhar_no);
         bhamasha_no = findViewById(R.id.bhamasha_no);
 
-        BeneficiarySearchData.Data data = (BeneficiarySearchData.Data) getIntent().getParcelableExtra("benefeciary_data");
+        BeneficiarySearchData.Data data = getIntent().getParcelableExtra("benefeciary_data");
         Log.d("data", String.valueOf(data));
 
         if (data != null) {

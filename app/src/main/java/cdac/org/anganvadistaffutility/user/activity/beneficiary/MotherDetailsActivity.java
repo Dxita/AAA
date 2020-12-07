@@ -28,7 +28,7 @@ public class MotherDetailsActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mother_details);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -48,7 +48,7 @@ public class MotherDetailsActivity extends BaseActivity {
 
         rb_father.setClickable(false);
         rb_husband.setClickable(false);
-        BeneficiarySearchData.Data mother_details = (BeneficiarySearchData.Data) getIntent().getParcelableExtra("mother_details");
+        BeneficiarySearchData.Data mother_details = getIntent().getParcelableExtra("mother_details");
         Log.d("data", String.valueOf(mother_details));
         if (mother_details != null) {
             // beneficiary_type.setText();

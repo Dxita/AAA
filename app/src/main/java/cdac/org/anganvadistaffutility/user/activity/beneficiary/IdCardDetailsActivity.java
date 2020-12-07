@@ -25,7 +25,7 @@ AppCompatEditText bpl_card_number,ration_card_number,aadhar_no,janaadhar_no,bham
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_id_card_details);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -36,7 +36,7 @@ AppCompatEditText bpl_card_number,ration_card_number,aadhar_no,janaadhar_no,bham
         janaadhar_no=findViewById(R.id.janaadhar_no);
         bhamasha_no=findViewById(R.id.bhamasha_no);
 
-        BeneficiarySearchData.Data id_cards_details = (BeneficiarySearchData.Data) getIntent().getParcelableExtra("id_cards_details");
+        BeneficiarySearchData.Data id_cards_details = getIntent().getParcelableExtra("id_cards_details");
         Log.d("data", String.valueOf(id_cards_details));
         if (id_cards_details != null) {
             bpl_card_number.setText(id_cards_details.getTjmBplcardNo());

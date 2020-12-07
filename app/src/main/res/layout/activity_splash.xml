@@ -29,17 +29,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/logo"
             android:layout_centerInParent="true"
-
+            android:textStyle="bold"
             android:drawablePadding="@dimen/margin_08"
             android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_22" />
+            android:textSize="@dimen/textsize_25" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/a"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_200"
+            android:layout_height="@dimen/margin_250"
             android:layout_alignParentBottom="true"
             android:scaleType="fitXY"
             android:src="@drawable/jpr" />

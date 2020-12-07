@@ -29,7 +29,7 @@ import cdac.org.anganvadistaffutility.admin.data.DistrictWiseEmployeeDetails;
 
 public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWisePieChartAdapter.ViewHolder> {
 
-    private Context mContext;
+    private final Context mContext;
     protected List<DistrictWiseEmployeeDetails> districtWiseEmployeeDetailsList;
     protected ItemClickListener mListener;
     protected int fixListSize = 7;

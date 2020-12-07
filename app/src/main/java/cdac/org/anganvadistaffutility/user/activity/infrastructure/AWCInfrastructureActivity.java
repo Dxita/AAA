@@ -77,14 +77,14 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
             case android.R.id.home:
                 onBackPressed();
                 return true;
-            case R.id.change_your_language:
+            case R.id.fab_change_language:
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
                     changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
                 } else {
                     changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
                 }
                 return true;
-            case R.id.log_out:
+            case R.id.fab_logout:
                 SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
                 editor.clear();
                 editor.apply();

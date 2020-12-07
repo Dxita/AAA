@@ -26,7 +26,7 @@ public class BenefeciaryBankDetailsActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_benefeciary_bank_details);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Profile Details");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -36,7 +36,7 @@ public class BenefeciaryBankDetailsActivity extends BaseActivity {
         account_name=findViewById(R.id.account_name);
         address=findViewById(R.id.address);
 
-        BeneficiarySearchData.Data bank_details = (BeneficiarySearchData.Data) getIntent().getParcelableExtra("bank_details");
+        BeneficiarySearchData.Data bank_details = getIntent().getParcelableExtra("bank_details");
         Log.d("data", String.valueOf(bank_details));
         if (bank_details != null) {
             ifsc_code.setText(bank_details.getTjmIfscCode());

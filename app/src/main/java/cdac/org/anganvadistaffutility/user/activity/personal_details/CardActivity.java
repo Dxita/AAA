@@ -23,7 +23,7 @@ public class CardActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_card);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -34,7 +34,7 @@ public class CardActivity extends BaseActivity {
         TextView janaadhar_no = findViewById(R.id.janaadhar_no);
         TextView janaadhar_self_no = findViewById(R.id.janaadhar_self_no);
 
-        EmployeeDetails.Card cardDetails = (EmployeeDetails.Card) getIntent().getParcelableExtra("card_details");
+        EmployeeDetails.Card cardDetails = getIntent().getParcelableExtra("card_details");
         if (cardDetails != null) {
             pan_card_no.setText(cardDetails.getPanNumber());
             bhamashah_no.setText(cardDetails.getBhamashahNumber());

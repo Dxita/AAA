@@ -30,7 +30,7 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 public class PublicOTPVerificationActivity extends BaseActivity implements OtpReceivedInterface, View.OnClickListener {
 
     SmsBroadcastReceiver mSmsBroadcastReceiver;
-    private int RESOLVE_HINT = 2;
+    private final int RESOLVE_HINT = 2;
     EditText inputMobileNumber, inputOtp;
     Button btnGetOtp, btnVerifyOtp;
     RelativeLayout layoutInput, layoutVerify;

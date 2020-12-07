@@ -22,11 +22,11 @@ public class BuildingDetailsActivity extends BaseActivity implements View.OnClic
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_building_details);
 
-        chk1 = (CheckBox) findViewById(R.id.chk1);
-        chk2 = (CheckBox) findViewById(R.id.chk2);
-        chk3 = (CheckBox) findViewById(R.id.chk3);
-        chk4 = (CheckBox) findViewById(R.id.chk4);
-        chk5 = (CheckBox) findViewById(R.id.chk5);
+        chk1 = findViewById(R.id.chk1);
+        chk2 = findViewById(R.id.chk2);
+        chk3 = findViewById(R.id.chk3);
+        chk4 = findViewById(R.id.chk4);
+        chk5 = findViewById(R.id.chk5);
 
 
     }

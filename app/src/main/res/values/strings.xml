@@ -1,40 +1,22 @@
 <resources>
     <string name="app_name">RajPoshan</string>
-    <string name="verify_user">Verify User</string>
-    <string name="get_employee_data">Get Employee Data</string>
 
-    <string name="menu_profile">Profile</string>
     <string name="menu_home">Home</string>
-    <string name="menu_bank">Bank Details</string>
-    <string name="menu_cards">Cards</string>
-    <string name="menu_job">Job Details</string>
-    <string name="menu_payments">Payments</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title" translatable="false">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="personal_information">Personal Information</string>
     <string name="category">Category</string>
-    <string name="father_name">Father Name</string>
-    <string name="husband_name">Husband Name</string>
     <string name="address">Address</string>
     <string name="welcome_text">Welcome to Rajposhan</string>
     <string name="public_text">Public</string>
 
     <string name="setup_text">Set up Password</string>
-    <string name="enter_text">Enter password</string>
     <string name="confirm_text">Confirm password</string>
     <string name="generate_text">Password</string>
-    <string name="enter">Enter Password</string>
     <string name="login_txt">LOGIN</string>
-    <string name="password">Password</string>
     <string name="awc_id">Aanganwadi Centre ID</string>
 
     <string name="fatherhusband_name">Father/Husband Name</string>
@@ -72,7 +54,6 @@
     <string name="user_text">User</string>
     <string name="otp_txt">Verifying your code</string>
     <string name="validate_text">Validate OTP</string>
-    <string name="getotp">Get OTP</string>
     <string name="country_code">+91</string>
 
     <string name="your_info_is_safe_text">Your information is safe with us</string>
@@ -92,8 +73,6 @@
 
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="employee_id">Employee ID</string>
-    <string name="month">Month</string>
-    <string name="textView">Text here</string>
     <string name="download">Download</string>
 
     <string name="awc_name">Aanganwadi Centre Name</string>
@@ -106,10 +85,7 @@
     <string name="show_kpi">Key Performance Indicators</string>
     <string name="payment_data">View Payment Data</string>
     <string name="error_in_fetch_data">Error in fetch data</string>
-    <string name="employee_data">Employee Data</string>
 
-    <string name="total_employees">Total Employees</string>
-    <string name="registered_employees">Registered Employees</string>
     <string name="view_users_data">View Users Data</string>
 
     <string name="view_infra_data">View Infrastructure Data</string>
@@ -119,7 +95,6 @@
     <string name="change_your_language">Change your language</string>
 
 
-    <string name="Rs">\u20B9</string>
     <string name="enter_financial_year">Enter Financial Year:</string>
     <string name="from_year">fromYear</string>
     <string name="toYear">toYear</string>
@@ -128,14 +103,10 @@
     <string name="should_have_4_digits">Should have 4 digits</string>
     <string name="download_salary_slip">Download Salary Slip</string>
 
-    <string name="id">ID</string>
-    <string name="payment">PAYMENT</string>
-    <string name="months">MONTH</string>
     <string name="logout">LOG OUT</string>
 
     <string name="no_app_available_to_view_pdf">No Application available to view PDF</string>
     <string name="enter_your_password">Enter your password here</string>
-    <string name="enter_your_password_to_login">Enter your password to login</string>
     <string name="login_with_your_password">Log In with your password</string>
 
     <string name="password_guidelines">Password should have at least 8 characters</string>
@@ -146,14 +117,8 @@
 
     <string name="follow_password_guidlines">Please follow password guidelines</string>
 
-    <string name="registration">Registration</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="register">Register</string>
-
-    <string name="already_a_user">Already a user?</string>
-    <string name="new_user">New User?</string>
 
     <string name="building_details">Building Details</string>
     <string name="public_infrastructure">Public Infrastructure</string>
@@ -171,35 +136,17 @@
     <string name="electricity">Electricity</string>
     <string name="kitchen">Kitchen</string>
     <string name="sector">Sector</string>
-    <string name="infrastructure">Infrastructure</string>
-    <string name="aw_details">Aanganwadi Details</string>
     <string name="creche_details">Crèche Details</string>
     <string name="property_type">Property Type</string>
 
     <string name="Commercial">Commercial</string>
     <string name="residential">"Residential "</string>
     <string name="others">Others</string>
-    <string name="select_aw_facilities">Select avalilable facilities in your Aanganwadi building</string>
-    <string name="drinkink_water_faciltity">Have drinking water facility?</string>
-    <string name="electricity_faciltity">Have Electricity facility?</string>
-    <string name="kitchen_faciltity">Have Kitchen facility?</string>
-    <string name="toilet_faciltity">Have Toliet facility?</string>
-    <string name="open_area_facility">Have Open area facility?</string>
 
     <string name="yes">YES</string>
     <string name="no">NO</string>
-    <string name="drinking_water_type">Select drinking water type</string>
-    <string name="Mineral_water">Mineral Water</string>
-    <string name="normal_water">Normal Water</string>
-    <string name="both">Both</string>
     <string name="cancel">Cancel</string>
 
-    <string name="kitchen_type">Select kitchen type</string>
-    <string name="open_kitchen">Open Kitchen</string>
-    <string name="non_open_kitchen">Non open kitchen</string>
-    <string name="indian_toilet">Indian toilet</string>
-    <string name="western_toilet">Western toilet</string>
-    <string name="toilet_type">Select toilet type</string>
     <string name="infra_data">Infrastructure Data</string>
     <string name="personal_data">Personal Data</string>
 
@@ -212,11 +159,6 @@
     <string name="project_wise_reg_users">Project Wise Registered Users</string>
     <string name="project_wise_unreg_users">Project Wise UnRegistered Users</string>
 
-    <string name="project_name">Project Name: </string>
-    <string name="project_code">Project Code: </string>
-
-    <string name="GPSAlertDialogTitle">GPS is setting</string>
-    <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
     <string name="enter_valid_otp">Please enter valid OTP</string>
     <string name="otp_verified">OTP Verified Successfully</string>
 
@@ -228,7 +170,6 @@
     <string name="log_out">Log out</string>
 
     <string name="logout_success">Logout successfully</string>
-    <string name="forgot_password">Forgot Password? Click here</string>
     <string name="exit_text">Are you sure you want to exit?</string>
 
     <string name="next_financial_year">Financial year can not be greater than current financial year</string>
@@ -239,14 +180,9 @@
     <string name="payment_month">Payment Month</string>
     <string name="amount">Amount (Rs.)</string>
 
-    <string name="infra_item">Infrastructure Item</string>
-    <string name="update">Update</string>
     <string name="item_name">Item Name</string>
-    <string name="qty">Item Quantity</string>
 
     <string name="session">Session Timeout.</string>
-    <string name="alert">Alert</string>
-    <string name="ok">OK</string>
     <string name="aanganwadi_building">Aanganwadi Building</string>
 
     <string name="beneficiary_criteria">Beneficiary Criteria</string>
@@ -255,12 +191,10 @@
     <string name="search">Search</string>
     <string name="enter_beneficiary_details">Enter any one of the beneficiary details:</string>
     <string name="or_end">OR/AND</string>
-    <string name="_25_">25</string>
     <string name="infrastructure_details">Infrastructure Details</string>
     <string name="edit">Edit</string>
     <string name="retry">Try Again</string>
     <string name="update_beneficiary_mapping_master">Verify Beneficiary  Details</string>
-    <string name="verifying_status">Verifying Status</string>
     <string name="pcts_anm_id">PCTS ANM ID</string>
     <string name="pcts_asha_id">PCTS ASHA ID</string>
     <string name="mother_name_id">Mother Name/ ID</string>
@@ -283,8 +217,6 @@
     <string name="delivery_date">Delivery Date</string>
     <string name="husband_father">Husband/Father</string>
     <string name="domicile_status">Domicile Status</string>
-    <string name="cast_english">Caste in English</string>
-    <string name="cast_hindi">Caste in Hindi</string>
     <string name="caste_category">Caste Category</string>
     <string name="ghumantu">Ghumantu</string>
     <string name="bpl">BPL</string>

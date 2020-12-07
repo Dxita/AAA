@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custom_app_bg">
+    android:background="@drawable/childmother">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
