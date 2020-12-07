@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ViewAaganwadiDataActivity">
+    tools:context=".admin.activity.ViewAaGanWadiDataActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textStyle="bold"
                 android:layout_marginStart="@dimen/margin_05"
                 android:layout_marginLeft="@dimen/margin_05"
                 android:text="@string/welcome_text"
@@ -56,7 +57,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/peach"
+                    app:cardBackgroundColor="@color/new_user_bg"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05"
                     app:cardUseCompatPadding="true">
@@ -69,10 +70,8 @@
                             android:layout_width="@dimen/margin_200"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:layout_marginStart="@dimen/activity_horizontal_margin"
-                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             app:cardBackgroundColor="@android:color/transparent"
                             app:cardElevation="@dimen/margin_05"
                             app:cardUseCompatPadding="true">
@@ -80,7 +79,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/user_layout_bg"
+                                android:background="@drawable/new_user_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -123,7 +122,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/green"
+                    app:cardBackgroundColor="@color/lightgreen"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05"
                     app:cardUseCompatPadding="true">
@@ -147,7 +146,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/public_layout_bg"
+                                android:background="@drawable/new_bg_public"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 

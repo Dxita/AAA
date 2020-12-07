@@ -65,7 +65,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onSuccess(VerifyUser body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
-                    //       AppUtils.showToast(context, body.getMessage());
+                         AppUtils.showToast(context, body.getMessage());
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     appPreferences.setAwcId(body.getData().getEmpdata().getAwcid());
                     if (body.getData().getEmpdata().getPasswordset()) {

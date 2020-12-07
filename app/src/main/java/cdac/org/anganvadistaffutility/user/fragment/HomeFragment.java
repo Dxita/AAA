@@ -117,7 +117,7 @@ public class HomeFragment extends Fragment {
             public void onSuccess(EmployeeDetails body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    AppUtils.showToast(context, body.getMessage());
+                 //   AppUtils.showToast(context, body.getMessage());
 
                     EmployeeDetails.Data data = body.getData();
                     profileDetails = data.getProfile();

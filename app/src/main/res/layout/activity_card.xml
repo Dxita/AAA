@@ -37,123 +37,112 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
+                android:padding="@dimen/margin_08"
                 android:text="@string/asha_id"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/asha_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/margin_08"
                 android:text="@string/aadhar_no"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/aadhar_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="08dp"
+                android:padding="@dimen/margin_08"
                 android:text="@string/janaadhar_no"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
-            </androidx.appcompat.widget.AppCompatTextView>
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/janaadhar_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-
-                android:text="@string/bhamasha_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
+                android:padding="@dimen/margin_08"
+                android:text="@string/bhamasha_no"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/bhamasha_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
-
-
-
-
-
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="08dp"
+                android:padding="@dimen/margin_08"
                 android:text="@string/janaadhar_self_no"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/janaadhar_self_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
+                android:padding="@dimen/margin_08"
                 android:text="@string/pan_card_no"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/pan_card_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey"/>
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
 
 

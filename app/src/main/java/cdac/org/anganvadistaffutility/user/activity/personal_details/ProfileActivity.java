@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
@@ -32,14 +33,14 @@ public class ProfileActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        TextView name = findViewById(R.id.name);
-        TextView dob = findViewById(R.id.dob);
-        TextView category = findViewById(R.id.category);
-        TextView father_husband_name = findViewById(R.id.father_husband_name);
-        TextView mobile_no = findViewById(R.id.mobile_no);
-        TextView awc_id = findViewById(R.id.awc_id);
-        TextView awc_name = findViewById(R.id.awc_name);
-        TextView awc_address = findViewById(R.id.awc_address);
+        AppCompatEditText name = findViewById(R.id.name);
+        AppCompatEditText dob = findViewById(R.id.dob);
+        AppCompatEditText category = findViewById(R.id.category);
+        AppCompatEditText father_husband_name = findViewById(R.id.father_husband_name);
+        AppCompatEditText mobile_no = findViewById(R.id.mobile_no);
+        AppCompatEditText awc_id = findViewById(R.id.awc_id);
+        AppCompatEditText awc_name = findViewById(R.id.awc_name);
+        AppCompatEditText awc_address = findViewById(R.id.awc_address);
 
         EmployeeDetails.Profile profileDetails = getIntent().getParcelableExtra("profile_details");
         Log.d("check", String.valueOf(profileDetails));

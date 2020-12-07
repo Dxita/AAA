@@ -100,7 +100,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
-                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+              Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -203,7 +203,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
-                    int clickedPos = ((Integer) cb.getTag()).intValue();
+                    int clickedPos = (Integer) cb.getTag();
                     if (cb.isChecked()) {
 
                         Log.d("item", String.valueOf(item));
@@ -234,7 +234,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             return infrastructureData.size();
         }
 
-        class MyViewHolders extends RecyclerView.ViewHolder {
+        static class MyViewHolders extends RecyclerView.ViewHolder {
             AppCompatTextView item_name;
             private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
             CheckBox checkBox;

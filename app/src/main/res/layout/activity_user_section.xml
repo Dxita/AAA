@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textStyle="bold"
                 android:layout_marginStart="@dimen/margin_08"
                 android:layout_marginLeft="@dimen/margin_08"
                 android:text="@string/welcome_text"
@@ -57,7 +58,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/peach"
+                    app:cardBackgroundColor="@color/new_user_bg"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -77,7 +78,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/admin_layout_bg"
+                                android:background="@drawable/new_user_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -103,10 +104,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                            android:layout_marginRight="@dimen/activity_horizontal_margin"
                             app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                     </RelativeLayout>
@@ -121,7 +120,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/skyblue"
+                    app:cardBackgroundColor="@color/purple"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -143,7 +142,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/user_layout_bg"
+                                android:background="@drawable/admin_layout_new_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -186,7 +185,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/green"
+                    app:cardBackgroundColor="@color/lightgreen"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">
 
@@ -206,7 +205,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/public_layout_bg"
+                                android:background="@drawable/new_bg_public"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -232,10 +231,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                            android:layout_marginRight="@dimen/activity_horizontal_margin"
                             app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                     </RelativeLayout>
@@ -250,8 +247,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="bottom|end"
-            app:backgroundTint="@color/dark_peach_bg"
-            app:tint="@null"
+            app:color="@color/colorPrimary"
             custom:options_color="@color/sky"
             custom:options_menu="@menu/fab_menu"
             custom:src="@drawable/ic_baseline_settings_24" />

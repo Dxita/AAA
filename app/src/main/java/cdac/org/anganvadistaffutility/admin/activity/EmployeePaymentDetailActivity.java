@@ -101,7 +101,7 @@ public class EmployeePaymentDetailActivity extends BaseActivity implements TextW
             @Override
             public void onSuccess(PaymentDetails body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, body.getMessage());
+               // AppUtils.showToast(context, body.getMessage());
 
                 PaymentDetails.Data data = body.getData();
                 List<PaymentDetails.Empdatum> paymentDetails = data.getEmpdata();

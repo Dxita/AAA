@@ -37,117 +37,112 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
+                android:padding="@dimen/margin_08"
                 android:text="@string/bank_ac_no"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/bank_ac_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
-            <androidx.appcompat.widget.AppCompatTextView
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
-                android:text="@string/ifsc_code"
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
+                android:padding="@dimen/margin_08"
+                android:text="@string/ifsc_code"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/ifsc_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/margin_08"
                 android:text="@string/branch_code"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/margin_15">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/branch_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="08dp"
+                android:padding="@dimen/margin_08"
                 android:text="@string/branch_name"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/branch_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey"  />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="08dp"
+                android:padding="@dimen/margin_08"
                 android:text="@string/branch_address"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/branch_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_08"
+                android:padding="@dimen/margin_08"
                 android:text="@string/aadhar_acc_no"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/textsize_15sp">
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/aadhar_acc_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_05"
-                android:background="@color/sky"
+                android:enabled="false"
                 android:padding="@dimen/margin_10"
-                android:textColor="@color/grey" />
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
         </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
@@ -27,11 +28,11 @@ public class JobActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        TextView employment_status = findViewById(R.id.employment_status);
-        TextView doj = findViewById(R.id.doj);
-        TextView payslab_amount = findViewById(R.id.payslab_amount);
-        TextView qualification = findViewById(R.id.qualification);
-        TextView designation = findViewById(R.id.designation);
+        AppCompatEditText employment_status = findViewById(R.id.employment_status);
+        AppCompatEditText doj = findViewById(R.id.doj);
+        AppCompatEditText payslab_amount = findViewById(R.id.payslab_amount);
+        AppCompatEditText qualification = findViewById(R.id.qualification);
+        AppCompatEditText designation = findViewById(R.id.designation);
 
         EmployeeDetails.Job jobDetails = getIntent().getParcelableExtra("job_details");
         if (jobDetails != null) {

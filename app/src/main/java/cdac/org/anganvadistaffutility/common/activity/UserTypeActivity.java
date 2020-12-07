@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -60,7 +61,8 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
                 startActivity(new Intent(context, VerifyUserActivity.class));
             }
         } else if (view.getId() == R.id.user_type_public) {
-            startActivity(new Intent(context, PublicLoginActivity.class));
+            Toast.makeText(context, "under development", Toast.LENGTH_SHORT).show();
+         //   startActivity(new Intent(context, PublicLoginActivity.class));
         }
     }
 

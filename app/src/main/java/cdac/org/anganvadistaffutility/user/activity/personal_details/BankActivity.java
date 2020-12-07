@@ -6,6 +6,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
@@ -15,7 +16,7 @@ import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 
 public class BankActivity extends BaseActivity {
-    TextView bank_ac_no, ifsc_code, branch_code, branch_name, branch_address, aadhar_acc_no;
+    AppCompatEditText bank_ac_no, ifsc_code, branch_code, branch_name, branch_address, aadhar_acc_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

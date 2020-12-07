@@ -90,7 +90,7 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
 
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
-                    AppUtils.showToast(context, body.getMessage());
+                  //  AppUtils.showToast(context, body.getMessage());
                     PaymentDetails.Data data = body.getData();
                     List<PaymentDetails.Empdatum> paymentDetails = data.getEmpdata();
                     ArrayList<PaymentDetails.Empdatum> empDatumArrayList = new ArrayList<>(paymentDetails);

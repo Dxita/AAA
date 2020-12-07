@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="@string/otp_txt"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_25" />

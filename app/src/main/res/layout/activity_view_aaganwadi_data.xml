@@ -23,6 +23,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_user_type"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_05"
@@ -53,7 +54,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/peach"
+                    app:cardBackgroundColor="@color/purple"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05"
                     app:cardUseCompatPadding="true">
@@ -75,7 +76,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/user_layout_bg"
+                                android:background="@drawable/admin_layout_new_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 
@@ -116,7 +117,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/green"
+                    app:cardBackgroundColor="@color/new_user_bg"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05"
                     app:cardUseCompatPadding="true">
@@ -138,7 +139,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/public_layout_bg"
+                                android:background="@drawable/new_user_bg"
                                 android:orientation="vertical"
                                 android:padding="@dimen/margin_25">
 

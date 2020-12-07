@@ -67,7 +67,7 @@
             android:layout_marginRight="@dimen/margin_05"
             android:layout_weight="0.20"
             android:textSize="@dimen/textsize_14sp"
-            android:background="@color/dark_peach_bg"
+            android:background="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/call"
             android:textColor="#fff" />
@@ -77,7 +77,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.20"
-            android:background="@color/dark_peach_bg"
+            android:background="@color/colorPrimary"
             android:textSize="@dimen/textsize_14sp"
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/email"

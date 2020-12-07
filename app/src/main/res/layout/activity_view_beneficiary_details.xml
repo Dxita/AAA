@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
+            android:textStyle="bold"
             android:text="@string/welcome_text"
             android:textAllCaps="true"
             android:textColor="@color/black"

@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_08"
+            android:textStyle="bold"
             android:layout_marginLeft="@dimen/margin_08"
             android:text="@string/add_building_details"
             android:textAllCaps="true"

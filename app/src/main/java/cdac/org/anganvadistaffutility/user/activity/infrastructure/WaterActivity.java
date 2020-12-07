@@ -73,10 +73,9 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
 
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
-        update_btn = findViewById(R.id.update_btn);
         submit_btn = findViewById(R.id.submit_btn);
         cancel_btn = findViewById(R.id.cancel_btn);
-        update_btn.setOnClickListener(this);
+
         submit_btn.setOnClickListener(this);
         cancel_btn.setOnClickListener(this);
 
@@ -108,6 +107,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
                 recyclerView.setAdapter(drinkingWaterAdapter);
                 tim_infra_id = infrastructureData.get(0).getTidTimInfraId();
 
+
             }
 
             @Override
@@ -129,14 +129,17 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.submit_btn) {
-            //update_btn.setVisibility(View.VISIBLE);
-            //    submit_btn.setVisibility(View.GONE);
+            // update_btn.setVisibility(View.VISIBLE);
+            //  submit_btn.setVisibility(View.GONE);
+            //  Toast.makeText(context, "submitted", Toast.LENGTH_SHORT).show();
+
             if (AppUtils.isNetworkConnected(context)) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
                 updateInfrastructure();
             } else {
                 AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
             }
+
         }
         if (v.getId() == R.id.cancel_btn) {
             // update_btn.setVisibility(View.VISIBLE);
@@ -147,7 +150,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(),tim_infra_id,item,qantity);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -245,11 +248,20 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
                     holder.edtx_qty.setClickable(true); // user navigate
                 }
             });
-
             holder.setData(context, infrastructureData.get(position));
+
+
             item = infrastructureData.get(position).getTidInfraDetailId();
-            qantity = holder.edtx_qty.getText().toString().trim();
-            Log.d("data", qantity);
+
+            if (!(holder.edtx_qty== null)){
+                qantity = holder.edtx_qty.getText().toString();
+
+            }
+            else {
+                qantity= infrastructureData.get(position).getTjaidQty();
+            }
+
+
         }
 
         @Override

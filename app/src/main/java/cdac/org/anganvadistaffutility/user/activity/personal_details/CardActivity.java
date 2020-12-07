@@ -6,6 +6,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
@@ -27,12 +28,12 @@ public class CardActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        TextView pan_card_no = findViewById(R.id.pan_card_no);
-        TextView bhamashah_no = findViewById(R.id.bhamasha_no);
-        TextView aadhar_no = findViewById(R.id.aadhar_no);
-        TextView asha_id = findViewById(R.id.asha_id);
-        TextView janaadhar_no = findViewById(R.id.janaadhar_no);
-        TextView janaadhar_self_no = findViewById(R.id.janaadhar_self_no);
+        AppCompatEditText pan_card_no = findViewById(R.id.pan_card_no);
+        AppCompatEditText bhamashah_no = findViewById(R.id.bhamasha_no);
+        AppCompatEditText aadhar_no = findViewById(R.id.aadhar_no);
+        AppCompatEditText asha_id = findViewById(R.id.asha_id);
+        AppCompatEditText janaadhar_no = findViewById(R.id.janaadhar_no);
+        AppCompatEditText janaadhar_self_no = findViewById(R.id.janaadhar_self_no);
 
         EmployeeDetails.Card cardDetails = getIntent().getParcelableExtra("card_details");
         if (cardDetails != null) {
