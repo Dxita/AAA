@@ -147,8 +147,8 @@
     <string name="no">NO</string>
     <string name="cancel">Cancel</string>
 
-    <string name="infra_data">Infrastructure Data</string>
-    <string name="personal_data">Personal Data</string>
+    <string name="infra_data">Anganwadi Infrastructure Details</string>
+    <string name="personal_data">Personal details</string>
 
     <string name="call">Call</string>
     <string name="email">E-Mail</string>

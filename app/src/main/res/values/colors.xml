@@ -12,22 +12,15 @@
     <color name="blue">#34495e</color>
     <color name="red">#AC4A43</color>
     <color name="green">#84af5d</color>
-    <color name="pink">#FF77A5</color>
-    <color name="skyblue">#65C2CD</color>
     <color name="peach">#20639B</color>
     <color name="grey">#424040</color>
     <color name="sky">#D4E3E3</color>
-    <color name="blue_bg">#158391</color>
     <color name="dark_peach_bg">#BF4B44</color>
     <color name="dark_green_bg">#2F7A32</color>
-    <color name="bg">#EBF8D3</color>
 
-    <color name="new_admin_clr">#5dbcd2</color>
-    <color name="new_grey_bg">#39454e</color>
     <color name="new_public_bg">#33c4b3</color>
     <color name="new_user_bg">#D1804F</color>
     <color name="darkorange">#773E1C</color>
-    <color name="lightpeach">#DD827C</color>
     <color name="darkpurple">#1F5481</color>
     <color name="purple">#6290B6</color>
     <color name="lightgreen">#718F4E</color>

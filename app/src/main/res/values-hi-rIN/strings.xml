@@ -142,9 +142,9 @@
     <string name="no">नहीं</string>
     <string name="cancel">रद्द करना</string>
 
-    <string name="infra_data">इन्फ्रास्ट्रक्चर डेटा</string>
+    <string name="infra_data">आंगनवाडी आधारभूत सुविधा विवरण</string>
 
-    <string name="personal_data">व्यक्तिगत डेटा</string>
+    <string name="personal_data">व्यक्तिगत्त विवरण</string>
 
     <string name="call">कॉल</string>
     <string name="email">ईमेल</string>

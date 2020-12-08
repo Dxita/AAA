@@ -70,7 +70,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<BeneficiaryCriteria>() {
             @Override
             public void onSuccess(BeneficiaryCriteria body) {
-                AppUtils.showToast(context, body.getMessage());
+                //AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 List<String> beneficiaryCriteriaList = new ArrayList<>();
                 for (BeneficiaryCriteria.Beneficiary beneficiary : body.getData().getBeneficiary()) {
@@ -82,7 +82,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+              //  AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
     }
@@ -124,7 +124,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
     }
 
     private void getBeneficiarySearchData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BENEFICIARY_SEARCH_DATA);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<BeneficiarySearchData> call = apiInterface.getBeneficiarSearchData("1", aadharNumber, mobileNumber, janadharNumber, bhamashahNumber);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<BeneficiarySearchData>() {
             @Override

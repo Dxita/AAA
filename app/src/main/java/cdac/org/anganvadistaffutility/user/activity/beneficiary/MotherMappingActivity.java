@@ -71,7 +71,7 @@ public class MotherMappingActivity extends BaseActivity {
 
 
     private void getBeneficiarySearchData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BENEFICIARY_SEARCH_DATA);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<BeneficiarySearchData> call = apiInterface.getBeneficiarSearchData("1", appPreferences.getAadharNo(), appPreferences.getMobileNumber(), appPreferences.getJanaadharno(), appPreferences.getBhamashano());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<BeneficiarySearchData>() {
             @Override

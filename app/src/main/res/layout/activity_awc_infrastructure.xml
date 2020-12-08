@@ -28,10 +28,10 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
             android:textStyle="bold"
-            android:text="@string/infrastructure_details"
+            android:text="@string/infra_data"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_17sp" />
+            android:textSize="@dimen/textsize_14sp" />
 
     </LinearLayout>
 
