@@ -2,6 +2,7 @@ package cdac.org.anganvadistaffutility.admin.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.MyValueFormatter;
 import cdac.org.anganvadistaffutility.admin.data.DistrictWiseEmployeeDetails;
 
 public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWisePieChartAdapter.ViewHolder> {
@@ -88,19 +90,18 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
 
             for (int j = 0; j < districtWiseEmployeeDetails.size(); j++) {
                 if (position == 0 && j < fixListSize) {
+
                     noOfEmp1.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
-                            , districtWiseEmployeeDetails.get(j).getDistrict_id())
-                    );
+                            , districtWiseEmployeeDetails.get(j).getDistrict_id()));
+
 
                     dataSet = new PieDataSet(noOfEmp1, "");
                     pieData = new PieData(dataSet);
-
                 } else if (position == 1 && j >= fixListSize && j < 2 * fixListSize) {
                     noOfEmp2.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
-
                     dataSet = new PieDataSet(noOfEmp2, "");
                     pieData = new PieData(dataSet);
 
@@ -108,7 +109,6 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
                     noOfEmp3.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
-
                     dataSet = new PieDataSet(noOfEmp3, "");
                     pieData = new PieData(dataSet);
 
@@ -116,7 +116,6 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
                     noOfEmp4.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
-
                     dataSet = new PieDataSet(noOfEmp4, "");
                     pieData = new PieData(dataSet);
 
@@ -124,7 +123,6 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
                     noOfEmp5.add(new PieEntry(Integer.parseInt(districtWiseEmployeeDetails.get(j).getDistrict_employees()),
                             districtWiseEmployeeDetails.get(j).getDistrict_name_english() + " (" + districtWiseEmployeeDetails.get(j).getDistrict_employees() + ")"
                             , districtWiseEmployeeDetails.get(j).getDistrict_id()));
-
                     dataSet = new PieDataSet(noOfEmp5, "");
                     pieData = new PieData(dataSet);
                 }

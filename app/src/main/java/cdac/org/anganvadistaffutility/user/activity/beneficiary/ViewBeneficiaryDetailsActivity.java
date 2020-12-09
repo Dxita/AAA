@@ -39,6 +39,8 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
     private AppCompatEditText edt_mobile, edt_aadhar_id, edt_janadhar_id, edt_bhamashah_id;
     private RelativeLayout relativeLayout;
     String mobileNumber, aadharNumber, janadharNumber, bhamashahNumber;
+    String spinner_item;
+    SmartMaterialSpinner<String> sp_beneficiary_criteria;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +55,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
         edt_aadhar_id = findViewById(R.id.edt_aadhar_id);
         edt_janadhar_id = findViewById(R.id.edt_janadhar_id);
         edt_bhamashah_id = findViewById(R.id.edt_bhamashah_id);
-
+        sp_beneficiary_criteria = findViewById(R.id.sp_beneficiary_criteria);
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getBeneficiaryCriteriaData();
@@ -73,33 +75,37 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
                 //AppUtils.showToast(context, body.getMessage());
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 List<String> beneficiaryCriteriaList = new ArrayList<>();
+
+
                 for (BeneficiaryCriteria.Beneficiary beneficiary : body.getData().getBeneficiary()) {
                     beneficiaryCriteriaList.add(beneficiary.getTbmBeneficiaryNamee());
+                    sp_beneficiary_criteria.setItem(beneficiaryCriteriaList);
+
+                    sp_beneficiary_criteria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                            Toast.makeText(context, beneficiaryCriteriaList.get(position), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
+                    });
                 }
-                initBeneficiaryCriteriaSpinner(beneficiaryCriteriaList);
+                //initBeneficiaryCriteriaSpinner(beneficiaryCriteriaList);
             }
 
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-              //  AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+                //  AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
     }
 
     private void initBeneficiaryCriteriaSpinner(List<String> beneficiaryCriteriaList) {
-        SmartMaterialSpinner<String> sp_beneficiary_criteria = findViewById(R.id.sp_beneficiary_criteria);
-        sp_beneficiary_criteria.setItem(beneficiaryCriteriaList);
-        sp_beneficiary_criteria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(context, beneficiaryCriteriaList.get(position), Toast.LENGTH_SHORT).show();
-            }
+        // sp_beneficiary_criteria.setItem(beneficiaryCriteriaList);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
     }
 
     @Override

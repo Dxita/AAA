@@ -1,13 +1,20 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,7 +26,7 @@ import androidx.core.content.ContextCompat;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import pl.droidsonroids.gif.GifImageView;
-
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class SelectLanguageActivity extends BaseActivity implements View.OnClickListener {
 
@@ -27,8 +34,8 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     RelativeLayout select_language_activity;
     LinearLayout continue_button_layout;
     Button continue_button;
-
     private boolean isContinue = false;
+    PhotoViewAttacher mAttacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_select_language);
 
+        showImage();
 
         english_text = findViewById(R.id.english_text);
         hindi_text = findViewById(R.id.hindi_text);
@@ -101,4 +109,33 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         super.onDestroy();
     }
 
+    public void showImage() {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.custom_fullimage_dialoge,
+                (ViewGroup) findViewById(R.id.layout_root));
+
+        ImageView image = layout.findViewById(R.id.fullimage);
+        ImageView close  = layout.findViewById(R.id.close);
+        image.setImageResource(R.drawable.cv9);
+        mAttacher = new PhotoViewAttacher(image);
+        image.requestLayout();
+        dialog.setContentView(layout);
+        dialog.show();
+
+        dialog.setCanceledOnTouchOutside(true);
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+    }
 }

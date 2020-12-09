@@ -89,6 +89,8 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
+
+
     }
 
     private void getAanganwadiBuildingData() {

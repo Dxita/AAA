@@ -81,7 +81,6 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
       /*  List<LegendEntry> legendEntries = new ArrayList<>();
         legendEntries.add(new LegendEntry("Registered Employees", Legend.LegendForm.SQUARE, 11f, 11f,
                 null, ContextCompat.getColor(context, R.color.green)));
-
         legendEntries.add(new LegendEntry("UnRegistered Employees", Legend.LegendForm.SQUARE, 11f, 11f,
                 null, ContextCompat.getColor(context, R.color.red)));*/
 
@@ -108,7 +107,7 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
             @Override
             public void onSuccess(AdminUserData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-             //   AppUtils.showToast(context, body.getMessage());
+                //   AppUtils.showToast(context, body.getMessage());
 
                 empData = body.getData();
                 if (empData.getEmpdata().size() > 0) {
@@ -129,11 +128,16 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
     private void setUserData(AdminUserData.Data data) {
         for (AdminUserData.Empdatum empDatum : data.getEmpdata()) {
-            totalRegisteredEmployees = totalRegisteredEmployees + Integer.parseInt(empDatum.getRegistered());
-            totalUnRegisteredEmployees = totalUnRegisteredEmployees + Integer.parseInt(empDatum.getUnregistered());
+
+            if ((!empDatum.getRegistered().equalsIgnoreCase("0"))) {
+                totalRegisteredEmployees = totalRegisteredEmployees + Integer.parseInt(empDatum.getRegistered());
+                totalUnRegisteredEmployees = totalUnRegisteredEmployees + Integer.parseInt(empDatum.getUnregistered());
+            }
         }
 
+
         List<PieEntry> NoOfEmp = new ArrayList<>();
+
         NoOfEmp.add(new PieEntry(totalRegisteredEmployees, "Registered Employees " + "(" + totalRegisteredEmployees + ")"));
         NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, "UnRegistered Employees " + "(" + totalUnRegisteredEmployees + ")"));
 
@@ -175,9 +179,12 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         if (h.getX() == 0.0) {
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "registered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
+
+
         } else {
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "unregistered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
+
         }
     }
 

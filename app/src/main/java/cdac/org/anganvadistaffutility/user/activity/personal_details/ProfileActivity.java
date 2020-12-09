@@ -46,13 +46,14 @@ public class ProfileActivity extends BaseActivity {
         Log.d("check", String.valueOf(profileDetails));
         if (profileDetails != null) {
 
-            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+           /* if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
                 name.setText(profileDetails.getEmployeeNameHindi() + " (" + profileDetails.getEmployeeNameEnglish() + ")");
                 dob.setText(profileDetails.getDateOfBirth());
 
             } else {
                 name.setText(profileDetails.getEmployeeNameEnglish() + " (" + profileDetails.getEmployeeNameHindi() + ")");
-            }
+            }*/
+            name.setText(profileDetails.getEmployeeNameEnglish());
             dob.setText(profileDetails.getDateOfBirth());
             category.setText(profileDetails.getCategory());
             awc_id.setText(profileDetails.getAwcid());

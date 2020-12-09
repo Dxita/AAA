@@ -35,6 +35,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
+import cdac.org.anganvadistaffutility.user.data.Model;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import retrofit2.Call;
 
@@ -83,7 +84,6 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getDrinkingWaterData();
@@ -91,7 +91,10 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
+
     }
+
+
 
     private void getDrinkingWaterData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
@@ -171,7 +174,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
         }));
     }
 
-    public static class DrinkingWaterAdapter extends RecyclerView.Adapter<DrinkingWaterAdapter.MyViewHolders> {
+    public class DrinkingWaterAdapter extends RecyclerView.Adapter<DrinkingWaterAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         public CheckBox lastChecked = null;
@@ -270,7 +273,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
         }
 
 
-        public static class MyViewHolders extends RecyclerView.ViewHolder {
+        public class MyViewHolders extends RecyclerView.ViewHolder {
             CheckBox checkBox;
             AppCompatEditText edtx_qty;
             AppCompatImageView edit_icon;

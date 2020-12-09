@@ -35,6 +35,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
+import cdac.org.anganvadistaffutility.user.data.Model;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import retrofit2.Call;
 
@@ -49,6 +50,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
     public static String item;
     public static String qantity;
     String tim_infra_id;
+    public List<Model> mModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -81,6 +84,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         submit_btn.setOnClickListener(this);
         cancel_btn.setOnClickListener(this);
         infrastructureData = new ArrayList<>();
+        mModelList = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -93,7 +97,11 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         }
 
     }
+    private List<Model> getListData() {
+        mModelList.add(new Model(item));
 
+        return mModelList;
+    }
     private void getData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
@@ -147,7 +155,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, String.valueOf(getListData()), qantity);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -168,7 +176,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         }));
     }
 
-    public static class ToiletAdapter extends RecyclerView.Adapter<ToiletAdapter.MyViewHolders> {
+    public class ToiletAdapter extends RecyclerView.Adapter<ToiletAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
         private final CheckBox lastChecked = null;
@@ -225,6 +233,9 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             });
             holder.setData(context, infrastructureData.get(position));
             item = infrastructureData.get(position).getTidInfraDetailId();
+
+
+            Log.d("data", String.valueOf(mModelList));
             qantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString().trim();
             Log.d("data", qantity);
         }
@@ -234,7 +245,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             return infrastructureData.size();
         }
 
-        static class MyViewHolders extends RecyclerView.ViewHolder {
+        class MyViewHolders extends RecyclerView.ViewHolder {
             AppCompatTextView item_name;
             private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
             CheckBox checkBox;

@@ -70,20 +70,29 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                 currentDistrictID = Integer.parseInt(empDatum.getTjdmDistrictId());
 
                 // To make sum of all same district data and finally add to district list
-                if (previousDistrictID != -1 && previousDistrictID != currentDistrictID) {
-                    districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
-                }
 
-                if (previousDistrictID == currentDistrictID) {
-                    districtWiseEmployees = districtWiseEmployees + Integer.parseInt(empDatum.getRegistered());
-                } else {
-                    districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
-                    districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
-                    districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
-                    districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
-                }
-                districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
+                    if (previousDistrictID != -1 && previousDistrictID != currentDistrictID) {
+                        districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
+                    }
+                    if (previousDistrictID == currentDistrictID) {
+
+                        districtWiseEmployees = districtWiseEmployees + Integer.parseInt(empDatum.getRegistered());
+
+
+                    } else {
+                        districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
+                        districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
+                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
+                        districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
+                    }
+
+                    districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
+
+              /*  Collections.sort(districtWiseEmployeeDetailsList, Collections.reverseOrder());
+                DistrictWisePieChartAdapter districtWisePieChartAdapter = new DistrictWisePieChartAdapter(this, districtWiseEmployeeDetailsList, itemClickListener);
+                recyclerView.setAdapter(districtWisePieChartAdapter);*/
             }
+
         } else {
             for (AdminUserData.Empdatum empDatum : empDatumList) {
                 previousDistrictID = currentDistrictID;
