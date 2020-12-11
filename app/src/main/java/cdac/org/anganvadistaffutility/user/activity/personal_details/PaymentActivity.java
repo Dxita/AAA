@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,9 +31,10 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import retrofit2.Call;
 
 
-public class PaymentActivity extends BaseActivity implements TextWatcher {
+public class
+PaymentActivity extends BaseActivity implements TextWatcher {
 
-    private AppCompatEditText from_year, to_year;
+     AppCompatEditText from_year, to_year;
     private RelativeLayout relativeLayout;
 
     @Override
@@ -52,6 +54,16 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
         relativeLayout = findViewById(R.id.relativeLayout);
         from_year.addTextChangedListener(this);
 
+
+        from_year.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_DEL) {
+                    to_year.getText().clear();
+                }
+                return false;
+            }
+        });
         generate_slip_button.setOnClickListener(view -> {
             String f_year = Objects.requireNonNull(from_year.getText()).toString().trim();
             String t_year = Objects.requireNonNull(to_year.getText()).toString().trim();
@@ -71,6 +83,8 @@ public class PaymentActivity extends BaseActivity implements TextWatcher {
             }
         });
     }
+
+
 
 
     @Override

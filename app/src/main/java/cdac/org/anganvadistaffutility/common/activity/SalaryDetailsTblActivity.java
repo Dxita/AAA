@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.common.activity;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -76,6 +77,7 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         setRecyclerView();
     }
 
+    @SuppressLint("SetTextI18n")
     private void initView() {
         recycler_view = findViewById(R.id.recycler_view);
         AppCompatButton btn_download_salary_slip = findViewById(R.id.btn_download_salary_slip);
@@ -83,9 +85,9 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         TextView txt_emp_id = findViewById(R.id.txt_emp_id);
         TextView txt_emp_name = findViewById(R.id.txt_emp_name);
 
-        txt_financial_year.setText("Payment Data of Financial Year: " + fromYear + "-" + toYear.substring(2, 4));
-        txt_emp_id.setText("Employee ID: " + empDatumList.get(0).getEmployeeId());
-        txt_emp_name.setText("Employee Name: " + empDatumList.get(0).getEmployeeNameEnglish());
+        txt_financial_year.setText(getResources().getString(R.string.payment_year) + " " +fromYear + "-" + toYear.substring(2, 4));
+        txt_emp_id.setText( getResources().getString(R.string.employee_id) +" "+empDatumList.get(0).getEmployeeId());
+        txt_emp_name.setText(getResources().getString(R.string.employee_name)  +" "+ empDatumList.get(0).getEmployeeNameEnglish());
         btn_download_salary_slip.setOnClickListener(this);
     }
 

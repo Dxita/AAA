@@ -176,6 +176,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         }));
     }
 
+
+
     public class ToiletAdapter extends RecyclerView.Adapter<ToiletAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
@@ -285,4 +287,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
         }
     }
+
+
 }

@@ -191,7 +191,6 @@
     <string name="search">Search</string>
     <string name="enter_beneficiary_details">Enter any one of the beneficiary details:</string>
     <string name="or_end">OR/AND</string>
-    <string name="infrastructure_details">Infrastructure Details</string>
     <string name="edit">Edit</string>
     <string name="retry">Try Again</string>
     <string name="update_beneficiary_mapping_master">Verify Beneficiary  Details</string>
@@ -232,6 +231,8 @@
     <string name="sc">Schedule Caste</string>
     <string name="st">Schedule Tribe</string>
     <string name="pregnant_woman">Pregnant Woman</string>
+    <string name="payment_year">Payment Data of Financial Year:</string>
+    <string name="employee_name">Employee Name</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

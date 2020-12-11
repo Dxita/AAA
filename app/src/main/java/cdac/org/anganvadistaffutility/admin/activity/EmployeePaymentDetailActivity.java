@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -47,6 +48,17 @@ public class EmployeePaymentDetailActivity extends BaseActivity implements TextW
 
         et_from_year.addTextChangedListener(this);
         btn_get_employee_payment_details.setOnClickListener(this);
+
+
+        et_from_year.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_DEL) {
+                    et_to_year.getText().clear();
+                }
+                return false;
+            }
+        });
     }
 
     @Override

@@ -69,7 +69,7 @@
     <string name="payment_details">भुगतान विवरण</string>
     <string name="no_internet_connection">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
 
-    <string name="employee_id">कर्मचारी पहचान संख्या</string>
+    <string name="employee_id">कर्मचारी पहचान संख्या: </string>
     <string name="download">डाउनलोड</string>
     <string name="awc_name">आंगनवाड़ी केंद्र का नाम</string>
     <string name="awc_address">आंगनवाड़ी केंद्र का पता</string>
@@ -188,7 +188,6 @@
     <string name="search">खोजें</string>
     <string name="enter_beneficiary_details">लाभार्थी का कोई भी एक विवरण दर्ज करें:</string>
     <string name="or_end">या/तथा</string>
-    <string name="infrastructure_details">इन्फ्रास्ट्रक्चर विवरण</string>
     <string name="edit">संपादित करें</string>
     <string name="retry">पुनः प्रयास करें</string>
 
@@ -234,4 +233,6 @@
     <string name="sc">अनुसूचित जाति</string>
     <string name="st">अनुसूची जनजाति</string>
     <string name="pregnant_woman">गर्भवती महिला</string>
+    <string name="payment_year">वित्तीय वर्ष का भुगतान डेटा: </string>
+    <string name="employee_name">कर्मचारी का नाम: </string>
 </resources>

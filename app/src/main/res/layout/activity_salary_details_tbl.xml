@@ -20,6 +20,8 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:paddingLeft="@dimen/margin_10"
+        android:paddingRight="@dimen/margin_10"
         android:id="@+id/ll_emp_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,6 +116,8 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingLeft="@dimen/margin_10"
+        android:paddingRight="@dimen/margin_10"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

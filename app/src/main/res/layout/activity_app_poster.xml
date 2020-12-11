@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".common.AppPosterActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/appposter" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/emblem"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_120"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_20"
+        app:srcCompat="@drawable/emblem" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/textsize_30sp"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_below="@id/emblem"
+        android:text="@string/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_60"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/footer" />
+
+</RelativeLayout>

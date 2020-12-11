@@ -32,6 +32,7 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
+        <activity android:name=".common.activity.SplashActivity"></activity>
         <activity
             android:name=".user.activity.beneficiary.BasicInformationActivity"
             android:screenOrientation="portrait" />
@@ -90,7 +91,7 @@
             android:name=".user.activity.UserSectionActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".common.activity.SplashActivity"
+            android:name=".common.AppPosterActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action
@@ -205,11 +206,12 @@
               android:enabled="true"
               android:exported="true" />
         -->
-        <!--   <service
+        <!--
+   <service
                android:name=".common.service.UserLogoutService"
                android:enabled="true"
-               android:exported="false" />-->
-
+               android:exported="false" />
+        -->
         <receiver
             android:name=".common.receiver.ServiceRestart"
             android:enabled="true"
