@@ -31,6 +31,7 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
     private DistrictWisePieChartAdapter.ItemClickListener itemClickListener;
     private String userType = "";
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,22 +72,26 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
 
                 // To make sum of all same district data and finally add to district list
 
-                    if (previousDistrictID != -1 && previousDistrictID != currentDistrictID) {
-                        districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
-                    }
-                    if (previousDistrictID == currentDistrictID) {
+                if (previousDistrictID != -1 && previousDistrictID != currentDistrictID) {
+                    districtWiseEmployeeDetailsList.add(districtWiseEmployeeDetails);
+                }
+                if (previousDistrictID == currentDistrictID) {
 
-                        districtWiseEmployees = districtWiseEmployees + Integer.parseInt(empDatum.getRegistered());
+                    districtWiseEmployees = districtWiseEmployees + Integer.parseInt(empDatum.getRegistered());
 
 
-                    } else {
-                        districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
-                        districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
-                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
-                        districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
-                    }
+                } else {
+                    districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
+                    districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
+                    districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
+                    districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
+                       /* if ((!empDatum.getRegistered().equalsIgnoreCase("0")))
+                        {
+                            districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
+                        }*/
+                }
 
-                    districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
+                districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
 
               /*  Collections.sort(districtWiseEmployeeDetailsList, Collections.reverseOrder());
                 DistrictWisePieChartAdapter districtWisePieChartAdapter = new DistrictWisePieChartAdapter(this, districtWiseEmployeeDetailsList, itemClickListener);

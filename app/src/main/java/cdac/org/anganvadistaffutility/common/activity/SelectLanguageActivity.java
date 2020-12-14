@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -36,7 +37,6 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
     Button continue_button;
     private boolean isContinue = false;
     PhotoViewAttacher mAttacher;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +70,8 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         english_text.setOnClickListener(this);
         hindi_text.setOnClickListener(this);
         continue_button.setOnClickListener(this);
+
+
     }
 
     @SuppressLint("NonConstantResourceId")

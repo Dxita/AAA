@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_05"
-                android:layout_marginLeft="@dimen/margin_05"
                 android:text="@string/show_kpi"
                 android:textAllCaps="true"
                 android:textColor="@color/black"

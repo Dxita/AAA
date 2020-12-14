@@ -8,17 +8,21 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.MPPointF;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +41,6 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
     private RelativeLayout relativeLayout;
     private PieChart pieChart;
-
     private AdminUserData.Data empData;
     private int totalRegisteredEmployees = 0;
     private int totalUnRegisteredEmployees = 0;
@@ -71,11 +74,10 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         pieChart.setRotationAngle(270);
         pieChart.setRotationEnabled(true);
         pieChart.setHighlightPerTapEnabled(true);
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        //  pieChart.animateY(1400, Easing.EaseInOutQuad);
 
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setEntryLabelTextSize(14f);
-
         pieChart.setOnChartValueSelectedListener(this);
 
       /*  List<LegendEntry> legendEntries = new ArrayList<>();
@@ -151,19 +153,18 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
         dataSet.setDrawIcons(false);
         dataSet.setSliceSpace(3f);
-        //   dataSet.setIconsOffset(new MPPointF(0, 40));
+        //    dataSet.setIconsOffset(new MPPointF(40, 40));
         dataSet.setSelectionShift(4f);
 
         List<Integer> colors = new ArrayList<>();
         colors.add(ContextCompat.getColor(context, R.color.green));
-        colors.add(ContextCompat.getColor(context, R.color.red));
+        colors.add(ContextCompat.getColor(context, R.color.colorPrimary));
 
         PieData pieData = new PieData(dataSet);
         pieData.setValueFormatter(new PercentFormatter());
         pieData.setValueTextSize(12f);
-        pieData.setValueTextColor(Color.BLACK);
+        pieData.setValueTextColor(Color.WHITE);
         pieChart.setData(pieData);
-        //    pieChart.setDrawEntryLabels(true);
         dataSet.setColors(colors);
 
         // undo all highlights
@@ -180,11 +181,9 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "registered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
 
-
         } else {
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "unregistered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
-
         }
     }
 

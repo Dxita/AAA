@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -98,9 +100,10 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
         List<PieEntry> projectDetails = new ArrayList<>();
         if (userType.equalsIgnoreCase("registered_user")) {
             for (ProjectWiseEmployeeDetails projectWiseEmployeeDetail : projectWiseEmployeeDetailsList) {
-                projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_registered_users()),
-                        projectWiseEmployeeDetail.getProject_name_english() + " (" + projectWiseEmployeeDetail.getProject_registered_users() + ")"
-                        , projectWiseEmployeeDetail.getProject_code()));
+                 projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_registered_users()),
+                            projectWiseEmployeeDetail.getProject_name_english() + " (" + projectWiseEmployeeDetail.getProject_registered_users() + ")"
+                            , projectWiseEmployeeDetail.getProject_code()));
+
             }
         } else {
             for (ProjectWiseEmployeeDetails projectWiseEmployeeDetail : projectWiseEmployeeDetailsList) {
@@ -186,6 +189,7 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback);
     }
 
+    @SuppressLint("SetTextI18n")
     private void toggleBottomSheet(String projectCode, String projectName, String name, String mobile, String email) {
         if (ll_bottom_sheet.getVisibility() == View.GONE) {
             ll_bottom_sheet.setVisibility(View.VISIBLE);

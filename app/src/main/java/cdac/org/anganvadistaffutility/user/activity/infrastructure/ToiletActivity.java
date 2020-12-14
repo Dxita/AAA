@@ -50,7 +50,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
     public static String item;
     public static String qantity;
     String tim_infra_id;
-    public List<Model> mModelList;
+    //   public List<Model> mModelList;
+    ArrayList<Integer> item_list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,10 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+
+        if ((!(item_list == null))) {
+            item_list.clear();
+        }
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -84,7 +89,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         submit_btn.setOnClickListener(this);
         cancel_btn.setOnClickListener(this);
         infrastructureData = new ArrayList<>();
-        mModelList = new ArrayList<>();
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -97,18 +102,19 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         }
 
     }
-    private List<Model> getListData() {
-        mModelList.add(new Model(item));
 
-        return mModelList;
-    }
+    /*    private List<Model> getListData() {
+            mModelList.add(new Model(item));
+
+            return mModelList;
+        }*/
     private void getData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
-              Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -155,7 +161,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, String.valueOf(getListData()), qantity);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -175,7 +181,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
         }));
     }
-
 
 
     public class ToiletAdapter extends RecyclerView.Adapter<ToiletAdapter.MyViewHolders> {
@@ -216,8 +221,11 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                     int clickedPos = (Integer) cb.getTag();
                     if (cb.isChecked()) {
 
-                        Log.d("item", String.valueOf(item));
+                /*     item_list.add(Integer.valueOf(item));
+                        Log.d("item", String.valueOf(item));*/
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                    } else {
+                        item_list.remove(Integer.valueOf(item));
                     }
                 }
             });
@@ -235,11 +243,12 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             });
             holder.setData(context, infrastructureData.get(position));
             item = infrastructureData.get(position).getTidInfraDetailId();
-
-
-            Log.d("data", String.valueOf(mModelList));
             qantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString().trim();
-            Log.d("data", qantity);
+
+            // item_list.add(Integer.valueOf(item));
+            //Log.d("arraylist", String.valueOf(item_list));
+
+
         }
 
         @Override
