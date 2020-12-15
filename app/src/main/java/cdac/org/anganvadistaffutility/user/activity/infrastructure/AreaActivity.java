@@ -42,8 +42,8 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     String infra_id;
     AppCompatButton submit_btn, update_btn, cancel_btn;
-   AwcBuildingAdapter awcBuildingAdapter;
-   String tjaid_tim_infra_id;
+    AwcBuildingAdapter awcBuildingAdapter;
+    String tjaid_tim_infra_id;
     public static String item;
 
     @Override
@@ -97,13 +97,13 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
-           Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
                 awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
-                tjaid_tim_infra_id=infrastructureData.get(0).getTidTimInfraId();
+                tjaid_tim_infra_id = infrastructureData.get(0).getTidTimInfraId();
             }
 
             @Override
@@ -132,15 +132,16 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
                 updateInfrastructure();
             } else {
                 AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
-            }        }
+            }
+        }
         if (v.getId() == R.id.cancel_btn) {
             finish();
         }
     }
 
     private void updateInfrastructure() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tjaid_tim_infra_id,item,"0");
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tjaid_tim_infra_id, item, "0");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {

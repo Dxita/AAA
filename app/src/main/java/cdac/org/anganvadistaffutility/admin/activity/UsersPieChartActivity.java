@@ -181,7 +181,8 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "registered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
 
-        } else {
+        }
+        else {
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "unregistered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
         }

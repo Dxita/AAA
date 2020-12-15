@@ -95,7 +95,6 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-
     private void getDrinkingWaterData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
@@ -152,8 +151,8 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void updateInfrastructure() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(),tim_infra_id,item,qantity);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -256,12 +255,11 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
 
             item = infrastructureData.get(position).getTidInfraDetailId();
 
-            if (!(holder.edtx_qty== null)){
+            if (!(holder.edtx_qty == null)) {
                 qantity = holder.edtx_qty.getText().toString();
 
-            }
-            else {
-                qantity= infrastructureData.get(position).getTjaidQty();
+            } else {
+                qantity = infrastructureData.get(position).getTjaidQty();
             }
 
 

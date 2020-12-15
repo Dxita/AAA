@@ -26,6 +26,7 @@ import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -44,7 +45,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
     AppCompatButton submit_btn, update_btn, cancel_btn;
     AwcBuildingAdapter awcBuildingAdapter;
     public static String item;
-
+AppPreferences appPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,11 +151,11 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), appPreferences.getInfraId(),item,"0");
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), appPreferences.getInfraId(), item, "0");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
-           Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                /* infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -177,6 +178,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         MyViewHolders myViewHolders;
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
+        String last_position;
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -193,10 +195,12 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
+
             myViewHolders = holder;
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
@@ -207,14 +211,19 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
-                    int clickedPos = (Integer) cb.getTag();
+                    AppPreferences appPreferences = null;
+                     int clickedPos = (Integer) cb.getTag();
+
+                  //  int clickedPos = appPreferences.setLastCheckedPos(infrastructureData.get(position).getTidInfraNamee());
                     if (cb.isChecked()) {
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
+
+                           // Toast.makeText(context, ""+lastChecked, Toast.LENGTH_SHORT).show();
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
-
+                        Toast.makeText(context, ""+lastCheckedPos, Toast.LENGTH_SHORT).show();
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
 
                     } else

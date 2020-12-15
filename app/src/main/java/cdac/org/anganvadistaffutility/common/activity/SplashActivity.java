@@ -18,7 +18,8 @@ import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 
 public class SplashActivity extends BaseActivity {
     private ImageView logo;
-    private static int splashTimeOut=5000;
+    private static int splashTimeOut = 5000;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,24 @@ public class SplashActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        logo=(ImageView)findViewById(R.id.logo);
+        logo = (ImageView) findViewById(R.id.logo);
+
+       /* new Handler().postDelayed(() -> {
+            if (appPreferences.istypeuser()) {
+                startActivity(new Intent(this, UserSectionActivity.class));
+            } else if (appPreferences.istypeadmin()) {
+                startActivity(new Intent(this, ViewAaGanWadiDataActivity.class));
+            } else if (appPreferences.istypeadmin()) {
+                startActivity(new Intent(this, PublicLoginActivity.class));
+            } else {
+                startActivity(new Intent(this, SelectLanguageActivity.class));
+            }
+
+            finish();
+        }, splashTimeOut);
+
+        Animation myanim = AnimationUtils.loadAnimation(this,R.anim.anim);
+        logo.startAnimation(myanim);*/
 
         new Handler().postDelayed(() -> {
             if (appPreferences.istypeuser()) {
@@ -41,24 +59,6 @@ public class SplashActivity extends BaseActivity {
 
             finish();
         }, 3000);
-
-        Animation myanim = AnimationUtils.loadAnimation(this,R.anim.anim);
-        logo.startAnimation(myanim);
-
-       /* new Handler().postDelayed(() -> {
-            if (appPreferences.istypeuser()) {
-                startActivity(new Intent(this, UserSectionActivity.class));
-            } else if (appPreferences.istypeadmin()) {
-                startActivity(new Intent(this, ViewAaGanWadiDataActivity.class));
-            } else if (appPreferences.istypeadmin()) {
-                startActivity(new Intent(this, PublicLoginActivity.class));
-            } else {
-                startActivity(new Intent(this, SelectLanguageActivity.class));
-            }
-
-            finish();
-        }, 3000);*/
-
 
 
     }
