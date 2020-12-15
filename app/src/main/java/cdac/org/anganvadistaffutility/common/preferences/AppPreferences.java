@@ -169,10 +169,10 @@ public class AppPreferences {
         return sharedPreferences.getString(LAST_CHECKED_POS, "");
     }
 
-    public int setLastCheckedPos(String lastCheckedPos) {
+    public void setLastCheckedPos(String lastCheckedPos) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(LAST_CHECKED_POS, lastCheckedPos);
         editor.apply();
-        return 0;
+
     }
 }

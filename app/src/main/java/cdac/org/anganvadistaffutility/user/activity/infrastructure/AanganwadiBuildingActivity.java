@@ -45,7 +45,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
     AppCompatButton submit_btn, update_btn, cancel_btn;
     AwcBuildingAdapter awcBuildingAdapter;
     public static String item;
-AppPreferences appPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -195,11 +195,12 @@ AppPreferences appPreferences;
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
-
+            AppPreferences appPreferences1 = null;
             myViewHolders = holder;
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+
 
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
@@ -211,19 +212,20 @@ AppPreferences appPreferences;
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
-                    AppPreferences appPreferences = null;
-                     int clickedPos = (Integer) cb.getTag();
-
-                  //  int clickedPos = appPreferences.setLastCheckedPos(infrastructureData.get(position).getTidInfraNamee());
+                /*    if (appPreferences1 != null) {
+                        appPreferences1.setLastCheckedPos(infrastructureData.get(position).getTidInfraNamee());
+                    }*/
+                    int clickedPos = (Integer) cb.getTag();
+                    // int clickedPos = Integer.parseInt(appPreferences1.getLastCheckedPos());
                     if (cb.isChecked()) {
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
-
-                           // Toast.makeText(context, ""+lastChecked, Toast.LENGTH_SHORT).show();
+                            // appPreferences1.setLastCheckedPos(infrastructureData.get(position).getTidInfraNamee());
+                            // Toast.makeText(context, ""+lastChecked, Toast.LENGTH_SHORT).show();
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
-                        Toast.makeText(context, ""+lastCheckedPos, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "" + lastCheckedPos, Toast.LENGTH_SHORT).show();
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
 
                     } else
