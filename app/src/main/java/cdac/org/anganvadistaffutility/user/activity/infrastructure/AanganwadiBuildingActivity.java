@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,12 +40,15 @@ import retrofit2.Call;
 public class AanganwadiBuildingActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout relativeLayout;
+
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     String infra_id;
     AppCompatButton submit_btn, update_btn, cancel_btn;
     AwcBuildingAdapter awcBuildingAdapter;
     public static String item;
+    public static String last_position;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +155,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), appPreferences.getInfraId(), item, "0");
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), appPreferences.getInfraId(), item, "0", last_position, "0");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -178,7 +182,6 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
         MyViewHolders myViewHolders;
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
-        String last_position;
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -195,12 +198,13 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
-            AppPreferences appPreferences1 = null;
             myViewHolders = holder;
             infrastructureData.get(position);
+
             holder.checkBox.setTag(position);
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
-
+                last_position = infrastructureData.get(position).getTidInfraDetailId();
+                Log.d("id_of_item", last_position);
 
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
@@ -212,20 +216,14 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
-                /*    if (appPreferences1 != null) {
-                        appPreferences1.setLastCheckedPos(infrastructureData.get(position).getTidInfraNamee());
-                    }*/
                     int clickedPos = (Integer) cb.getTag();
-                    // int clickedPos = Integer.parseInt(appPreferences1.getLastCheckedPos());
+
                     if (cb.isChecked()) {
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
-                            // appPreferences1.setLastCheckedPos(infrastructureData.get(position).getTidInfraNamee());
-                            // Toast.makeText(context, ""+lastChecked, Toast.LENGTH_SHORT).show();
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
-                        Toast.makeText(context, "" + lastCheckedPos, Toast.LENGTH_SHORT).show();
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
 
                     } else

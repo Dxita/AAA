@@ -49,6 +49,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
     DrinkingWaterAdapter drinkingWaterAdapter;
     public static String item;
     public static String qantity;
+    public static  String last_position;
     String tim_infra_id;
 
     @Override
@@ -152,7 +153,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity,"0","0");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -198,6 +199,7 @@ public class WaterActivity extends BaseActivity implements View.OnClickListener 
             holder.checkBox.setTag(position);
 
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                last_position = infrastructureData.get(position).getTidInfraDetailId();
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);

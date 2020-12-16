@@ -50,8 +50,12 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
     public static String item;
     public static String qantity;
     String tim_infra_id;
+    String itemsData = "", quantityData = "";
     //   public List<Model> mModelList;
-    ArrayList<Integer> item_list = new ArrayList<>();
+    ArrayList<String> arrayListitems = new ArrayList<>();
+    ArrayList<String> arrayListquantity = new ArrayList<>();
+    ArrayList<String> last_item_position = new ArrayList<>();
+    ArrayList<String> last_quantity = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +68,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-
-        if ((!(item_list == null))) {
-            item_list.clear();
-        }
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -103,13 +103,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    /*    private List<Model> getListData() {
-            mModelList.add(new Model(item));
-
-            return mModelList;
-        }*/
     private void getData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AW_BUILDING_DATA);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
@@ -161,7 +156,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id, item, qantity);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tim_infra_id,
+                itemsData, quantityData, String.valueOf(last_item_position), String.valueOf(last_quantity));
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -206,29 +202,83 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
 
+
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
 
-            if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
-                holder.checkBox.setChecked(true);
-                Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+            //saving last checked position into arraylist
+            for (int j = 0; j < infrastructureData.size(); j++) {
+                if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+
+                    if (!(last_item_position == null)) {
+                        last_item_position.add(infrastructureData.get(position).getTidInfraNamee());
+                        Log.d("quant", String.valueOf(last_item_position));
+                    } else {
+                        infrastructureData.get(position).getTidInfraDetailId();
+                    }
+
+                    if (!(last_quantity == null)) {
+                        last_quantity.add(infrastructureData.get(position).getTjaidQty());
+
+                    } else {
+                        infrastructureData.get(position).getTjaidQty();
+                    }
+
+                    holder.checkBox.setChecked(true);
+                    Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                }
             }
 
+
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+                    final boolean isChecked = holder.checkBox.isChecked();
+
+                    CheckBox cb = (CheckBox) arg0;
+                    int clickedPos = (Integer) cb.getTag();
+                    if (cb.isChecked()) {
+
+                        //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                    } else {
+                    }
+
+                    //saving data in arraylist
+                    for (int i = 0; i < infrastructureData.size(); i++) {
+                        if (isChecked) {
+
+                            if (!arrayListitems.contains(infrastructureData.get(position).getTidInfraDetailId())) {
+
+                                arrayListitems.add(i, infrastructureData.get(position).getTidInfraDetailId());
+                                itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
+
+                            } else {
+                                itemsData = infrastructureData.get(position).getTidInfraDetailId();
+                            }
+                        } else {
+                            arrayListitems.remove(infrastructureData.get(position).getTidInfraNamee());
+                            itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
+                        }
+
+                    }
+                }
+            });
+
+           /* holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
                     int clickedPos = (Integer) cb.getTag();
                     if (cb.isChecked()) {
 
-                /*     item_list.add(Integer.valueOf(item));
-                        Log.d("item", String.valueOf(item));*/
+                *//*     item_list.add(Integer.valueOf(item));
+                        Log.d("item", String.valueOf(item));*//*
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
                         item_list.remove(Integer.valueOf(item));
                     }
                 }
-            });
+            });*/
 
             holder.edit_icon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -243,7 +293,34 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
             });
             holder.setData(context, infrastructureData.get(position));
             item = infrastructureData.get(position).getTidInfraDetailId();
+
+            //getting quantaties in list
             qantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString().trim();
+            for (int k = 0; k < infrastructureData.size(); k++) {
+                if (!arrayListquantity.contains(infrastructureData.get(position).getTjaidQty())) {
+
+                    arrayListquantity.add(k, qantity);
+                    quantityData = arrayListquantity.toString().replace("[", "").replace("]", "").trim();
+                    Log.d("aahhjxnjjhcj", quantityData);
+                } else {
+                    quantityData = infrastructureData.get(position).getTjaidQty();
+                }
+            }
+
+        /*    for (int i = 0; i < infrastructureData.size(); i++) {
+                if (isChecked) {
+
+                    if (!arrayListitems.contains(infrastructureData.get(position).getTidInfraNamee()))
+                        arrayListitems.add(i, infrastructureData.get(position).getTidInfraNamee());
+                    itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
+                    Log.d("aahhjxnjjhcj", itemsData);
+                } else {
+                    arrayListitems.remove(infrastructureData.get(position).getTidInfraNamee());
+                    itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
+                }
+
+            }*/
+
 
             // item_list.add(Integer.valueOf(item));
             //Log.d("arraylist", String.valueOf(item_list));
@@ -272,7 +349,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                 edtx_qty.setFocusable(false);
                 edtx_qty.setCursorVisible(false);
                 edtx_qty.setFocusableInTouchMode(false); // user touches widget on phone with touch screen
-                edtx_qty.setClickable(false); // user navigat
+                edtx_qty.setClickable(false); // user navigation
+
             }
 
             public void setData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData) {

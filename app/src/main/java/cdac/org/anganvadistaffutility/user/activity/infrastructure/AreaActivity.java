@@ -32,6 +32,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.public_u.activity.PublicInfraActivity;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import retrofit2.Call;
@@ -45,6 +46,7 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
     AwcBuildingAdapter awcBuildingAdapter;
     String tjaid_tim_infra_id;
     public static String item;
+    public static String last_position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +143,7 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tjaid_tim_infra_id, item, "0");
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(appPreferences.getAwcId(), tjaid_tim_infra_id, item, "0",last_position,"0");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -188,6 +190,7 @@ public class AreaActivity extends BaseActivity implements View.OnClickListener {
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                last_position = infrastructureData.get(position).getTidInfraDetailId();
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
