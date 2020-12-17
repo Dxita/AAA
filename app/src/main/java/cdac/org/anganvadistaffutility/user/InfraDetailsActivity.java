@@ -285,6 +285,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 checkBox = itemView.findViewById(R.id.checkbox);
                 edtx_qty = itemView.findViewById(R.id.qty_edtx);
                 checkBox.setClickable(false);
+
             }
 
 

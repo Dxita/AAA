@@ -460,7 +460,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
  @Override
     public void onUserInteraction() {
         super.onUserInteraction();
-        App.myAutoLogoutApp.touch();
+        //App.myAutoLogoutApp.touch();
         resetDisconnectTimer();
         Log.e(TAG, "User interacting with screen");
     }

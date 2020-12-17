@@ -50,6 +50,7 @@
                 android:layout_marginLeft="@dimen/margin_10"
                 android:layout_marginRight="@dimen/margin_10"
                 android:cursorVisible="true"
+
                 android:enabled="true"
                 android:gravity="center"
                 android:inputType="number"

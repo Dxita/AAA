@@ -14,7 +14,6 @@ import java.util.TimerTask;
 import cdac.org.anganvadistaffutility.common.activity.LogoutListener;
 import cdac.org.anganvadistaffutility.common.utils.AppSignatureHelper;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.logout.ApplockManager;
 
 public class App extends Application {
      public static App myAutoLogoutApp;
@@ -33,8 +32,8 @@ public class App extends Application {
 
 
         myAutoLogoutApp = this;
-        ApplockManager.getInstance().enableDefaultAppLockIfAvailable(this);
-        ApplockManager.getInstance().startWaitThread(myAutoLogoutApp);
+       /* ApplockManager.getInstance().enableDefaultAppLockIfAvailable(this);
+        ApplockManager.getInstance().startWaitThread(myAutoLogoutApp);*/
     }
 
     @Override
@@ -49,7 +48,7 @@ public class App extends Application {
         LocaleManager.setLocale(this);
     }
 
-    public void touch() {
+   /* public void touch() {
         ApplockManager.getInstance().updateTouch();
     }
 
@@ -61,7 +60,7 @@ public class App extends Application {
         ApplockManager.getInstance().setStopFalse();
         ApplockManager.getInstance().startWaitThread(App.myAutoLogoutApp);
     }
-
+*/
 
     public void startUserSession() {
         cancelTimer();

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -43,7 +44,7 @@ public class EditActivity extends BaseActivity {
 
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
-    InfraDetailsActivity.AwcBuildingAdapter awcBuildingAdapter;
+    AwcBuildingAdapter awcBuildingAdapter;
 
     public static String infra_id, item_nameE, item_nameH,tim_accept_status;
 
@@ -86,14 +87,7 @@ public class EditActivity extends BaseActivity {
             tim_accept_status= (String) savedInstanceState.getSerializable("tim_accept_status");
         }
 
-        if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle(item_nameH);
 
-        } else {
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle(item_nameE);
-        }
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
 
@@ -126,7 +120,7 @@ public class EditActivity extends BaseActivity {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
-                awcBuildingAdapter = new InfraDetailsActivity.AwcBuildingAdapter(context, infrastructureData);
+                awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
                 recyclerView.setAdapter(awcBuildingAdapter);
                 appPreferences.setInfraId(infrastructureData.get(0).getTidTimInfraId());
             }
@@ -154,9 +148,7 @@ public class EditActivity extends BaseActivity {
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
 
-        private int VIEW_TYPE_ONE = 1;
-        private int VIEW_TYPE_TWO = 2;
-
+        private int selectedPosition = -1;// no selection by default
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -177,20 +169,36 @@ public class EditActivity extends BaseActivity {
         public void onBindViewHolder(@NonNull AwcBuildingAdapter.MyViewHolders holder, int position) {
             myViewHolders = holder;
             infrastructureData.get(position);
-            holder.checkBox.setChecked(true);
-            holder.checkBox.setTag(position);
-            if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+
+         //   holder.checkBox.setTag(position);
+          /*  if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
 
-            }
+            }*/
+
+
+            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                        if (selectedPosition == position) {
+
+                            holder.checkBox.setChecked(true);
+                        } else {
+                            holder.checkBox.setChecked(false);
+                        }
+
+
+                }
+            });
+
+
             holder.setData(context, infrastructureData.get(position));
 
             if (tim_accept_status.equals("1")){
                 holder.edtx_qty.setVisibility(View.GONE);
-
-
 
             }
             else {
@@ -218,6 +226,10 @@ public class EditActivity extends BaseActivity {
                 item_name = itemView.findViewById(R.id.item_tv);
                 checkBox = itemView.findViewById(R.id.checkbox);
                 edtx_qty = itemView.findViewById(R.id.qty_edtx);
+                edtx_qty.setFocusable(false);
+                edtx_qty.setCursorVisible(false);
+                edtx_qty.setFocusableInTouchMode(false); // user touches widget on phone with touch screen
+                edtx_qty.setClickable(false); // user navigation
                // checkBox.setClickable(false);
             }
 
