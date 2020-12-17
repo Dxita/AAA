@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_app_bg">
+
+    <LinearLayout
+        android:id="@+id/largeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_60"
+            android:src="@drawable/app_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_05"
+            android:text="@string/add_AWC_Infrastructure_Facilities"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_search"
+        android:layout_below="@id/largeLabel">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/facility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/facility"
+                android:singleLine="true"
+                android:textSize="@dimen/textsize_15sp" />
+
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_beneficiary_criteria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                app:smsp_floatingLabelColor="@color/black"
+                app:smsp_floatingLabelSize="@dimen/textsize_14sp"
+                app:smsp_floatingLabelText="@string/beneficiary_criteria"
+                app:smsp_hint="@string/Availbility_in_Infrastructure"
+                app:smsp_hintColor="@color/black"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
+
+            <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/beneficiary_criteria"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/textsize_14sp"
+                android:visibility="gone"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="@string/quantity"
+                android:inputType="number"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:textSize="@dimen/textsize_15sp" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/peach"
+        android:text="@string/submit_btn"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_14sp" />
+
+</RelativeLayout>

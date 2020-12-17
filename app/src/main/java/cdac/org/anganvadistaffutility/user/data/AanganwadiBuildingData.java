@@ -1,11 +1,15 @@
 package cdac.org.anganvadistaffutility.user.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AanganwadiBuildingData {
+public class AanganwadiBuildingData  {
 
     @SerializedName("status")
     @Expose
@@ -67,7 +71,7 @@ public class AanganwadiBuildingData {
         }
 
 
-        public class InfrastructureDatum {
+        public static class InfrastructureDatum implements Parcelable {
 
             @SerializedName("tid_tim_infra_id")
             @Expose
@@ -87,6 +91,27 @@ public class AanganwadiBuildingData {
             @SerializedName("status")
             @Expose
             private String status;
+
+            protected InfrastructureDatum(Parcel in) {
+                tidTimInfraId = in.readString();
+                tidInfraDetailId = in.readString();
+                tidInfraNamee = in.readString();
+                tidInfraNameh = in.readString();
+                tjaidQty = in.readString();
+                status = in.readString();
+            }
+
+            public static final Creator<InfrastructureDatum> CREATOR = new Creator<InfrastructureDatum>() {
+                @Override
+                public InfrastructureDatum createFromParcel(Parcel in) {
+                    return new InfrastructureDatum(in);
+                }
+
+                @Override
+                public InfrastructureDatum[] newArray(int size) {
+                    return new InfrastructureDatum[size];
+                }
+            };
 
             public String getTidTimInfraId() {
                 return tidTimInfraId;
@@ -134,6 +159,21 @@ public class AanganwadiBuildingData {
 
             public void setStatus(String status) {
                 this.status = status;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(tidTimInfraId);
+                dest.writeString(tidInfraDetailId);
+                dest.writeString(tidInfraNamee);
+                dest.writeString(tidInfraNameh);
+                dest.writeString(tjaidQty);
+                dest.writeString(status);
             }
         }
 

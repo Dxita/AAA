@@ -233,6 +233,13 @@
     <string name="pregnant_woman">Pregnant Woman</string>
     <string name="payment_year">Payment Data of Financial Year:</string>
     <string name="employee_name">Employee Name</string>
+    <string name="add">Add</string>
+    <string name="Availbility_in_Infrastructure">Availbility in Infrastructure</string>
+    <string name="facility">Facility</string>
+    <string name="quantity">Quantity</string>
+    <string name="AWC_Infrastructure_Facilities">AWC Infrastructure Facilities</string>
+    <string name="edit_AWC_Infrastructure_Facilities">Edit AWC Infrastructure Facilities</string>
+    <string name="add_AWC_Infrastructure_Facilities">Add AWC Infrastructure Facilities</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

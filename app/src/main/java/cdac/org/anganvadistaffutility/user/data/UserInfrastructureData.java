@@ -52,6 +52,9 @@ public class UserInfrastructureData {
         this.data = data;
     }
 
+
+
+
     public static class Data {
 
         @SerializedName("infrastructureData")
@@ -68,23 +71,18 @@ public class UserInfrastructureData {
 
         public static class InfrastructureDatum {
 
-            @SerializedName("tim_infra_id")
-            @Expose
-            private String timInfraId;
             @SerializedName("tim_infra_namee")
             @Expose
             private String timInfraNamee;
             @SerializedName("tim_infra_nameh")
             @Expose
             private String timInfraNameh;
-
-            public String getTimInfraId() {
-                return timInfraId;
-            }
-
-            public void setTimInfraId(String timInfraId) {
-                this.timInfraId = timInfraId;
-            }
+            @SerializedName("tim_infra_id")
+            @Expose
+            private String timInfraId;
+            @SerializedName("tim_accept_status")
+            @Expose
+            private String timAcceptStatus;
 
             public String getTimInfraNamee() {
                 return timInfraNamee;
@@ -100,6 +98,22 @@ public class UserInfrastructureData {
 
             public void setTimInfraNameh(String timInfraNameh) {
                 this.timInfraNameh = timInfraNameh;
+            }
+
+            public String getTimInfraId() {
+                return timInfraId;
+            }
+
+            public void setTimInfraId(String timInfraId) {
+                this.timInfraId = timInfraId;
+            }
+
+            public String getTimAcceptStatus() {
+                return timAcceptStatus;
+            }
+
+            public void setTimAcceptStatus(String timAcceptStatus) {
+                this.timAcceptStatus = timAcceptStatus;
             }
         }
     }

@@ -29,6 +29,7 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.InfraDetailsActivity;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.AanganwadiBuildingActivity;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.CrecheActivity;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.ElectricityActivity;
@@ -127,9 +128,9 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
                 infrastructureData.addAll(body.getData().getInfrastructureData());
                 infrastructureData = body.getData().getInfrastructureData();
 
-
                      setCustomInfraImages();
                 //setCustomInfraImages();
+
                 userInfraStructureAdapter.notifyDataSetChanged();
 
             }
@@ -145,10 +146,14 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
     @Override
     public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
+
+      startActivity(new Intent(context, InfraDetailsActivity.class).putExtra("infra_id", item.getTimInfraId()).putExtra("item_nameE",item.getTimInfraNamee()).putExtra("item_nameH",item.getTimInfraNameh())
+      .putExtra("tim_accept_status",item.getTimAcceptStatus()));
+
         // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
         // Log.d("id_infra",item.getTimInfraId());
-        if (item.getTimInfraNamee().toLowerCase().contains("building")) {
-            startActivity(new Intent(context, AanganwadiBuildingActivity.class).putExtra("infra_id", item.getTimInfraId()));
+       /* if (item.getTimInfraNamee().toLowerCase().contains("building")) {
+            startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
         } else if (item.getTimInfraNamee().toLowerCase().contains("creche")) {
             startActivity(new Intent(context, CrecheActivity.class).putExtra("infra_id", item.getTimInfraId()));
         } else if (item.getTimInfraNamee().toLowerCase().contains("electricity")) {
@@ -162,7 +167,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
         } else if (item.getTimInfraNamee().toLowerCase().contains("area")) {
             startActivity(new Intent(context, AreaActivity.class).putExtra("infra_id", item.getTimInfraId()));
         }
-
+*/
         //     AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
 
 

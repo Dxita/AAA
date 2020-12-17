@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+
     android:background="@drawable/custom_app_bg"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".user.activity.infrastructure.AanganwadiBuildingActivity">
 
@@ -18,7 +20,6 @@
         android:layout_alignParentStart="true"
         android:background="@color/colorPrimary"
         android:theme="@style/ToolbarTheme"
-        tool:title="@string/aanganwadi_building"
         tool:titleTextColor="@color/white" />
 
     <androidx.core.widget.NestedScrollView
@@ -43,43 +44,11 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:layout_margin="@dimen/margin_15"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/add"
-                android:text="@string/add"
-                android:layout_margin="@dimen/margin_05"
-                android:textColor="@color/white"
-                android:padding="@dimen/margin_10"
-                android:textSize="@dimen/textsize_14sp"
-                android:background="@color/colorPrimary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/edit"
-            android:layout_margin="@dimen/margin_05"
-            android:textColor="@color/white"
-            android:text="@string/edit"
-            android:background="@color/peach"
-            android:padding="@dimen/margin_10"
-            android:textSize="@dimen/textsize_14sp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+   <androidx.appcompat.widget.AppCompatButton
+       android:textColor="@color/white"
+       android:background="@color/colorPrimaryDark"
+       android:layout_alignParentBottom="true"
+       android:text="@string/submit_btn"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatButton>
 </RelativeLayout>

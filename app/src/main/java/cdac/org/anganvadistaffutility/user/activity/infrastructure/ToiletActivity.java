@@ -193,7 +193,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
         @NonNull
         @Override
         public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
             @SuppressLint("InflateParams")
             View view = LayoutInflater.from(context).inflate(R.layout.toilet_rv_items, null);
             return new MyViewHolders(view);
@@ -201,8 +200,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public void onBindViewHolder(@NonNull MyViewHolders holder, int position) {
-
-
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
 
@@ -212,7 +209,7 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
                     if (!(last_item_position == null)) {
                         last_item_position.add(infrastructureData.get(position).getTidInfraNamee());
-                        Log.d("quant", String.valueOf(last_item_position));
+                        //   Log.d("quant", String.valueOf(last_item_position));
                     } else {
                         infrastructureData.get(position).getTidInfraDetailId();
                     }
@@ -223,7 +220,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                     } else {
                         infrastructureData.get(position).getTjaidQty();
                     }
-
                     holder.checkBox.setChecked(true);
                     Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                 }
@@ -248,10 +244,8 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                         if (isChecked) {
 
                             if (!arrayListitems.contains(infrastructureData.get(position).getTidInfraDetailId())) {
-
                                 arrayListitems.add(i, infrastructureData.get(position).getTidInfraDetailId());
                                 itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
-
                             } else {
                                 itemsData = infrastructureData.get(position).getTidInfraDetailId();
                             }
@@ -259,7 +253,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                             arrayListitems.remove(infrastructureData.get(position).getTidInfraNamee());
                             itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
                         }
-
                     }
                 }
             });
@@ -288,9 +281,9 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                     holder.edtx_qty.setFocusable(true);
                     holder.edtx_qty.setFocusableInTouchMode(true); // user touches widget on phone with touch screen
                     holder.edtx_qty.setClickable(true); // user navigate
-
                 }
             });
+
             holder.setData(context, infrastructureData.get(position));
             item = infrastructureData.get(position).getTidInfraDetailId();
 
@@ -309,7 +302,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
         /*    for (int i = 0; i < infrastructureData.size(); i++) {
                 if (isChecked) {
-
                     if (!arrayListitems.contains(infrastructureData.get(position).getTidInfraNamee()))
                         arrayListitems.add(i, infrastructureData.get(position).getTidInfraNamee());
                     itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
@@ -318,14 +310,10 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                     arrayListitems.remove(infrastructureData.get(position).getTidInfraNamee());
                     itemsData = arrayListitems.toString().replace("[", "").replace("]", "").trim();
                 }
-
             }*/
-
 
             // item_list.add(Integer.valueOf(item));
             //Log.d("arraylist", String.valueOf(item_list));
-
-
         }
 
         @Override
@@ -362,7 +350,6 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
                     name = infrastructureData.getTidInfraNamee();
                     qty = infrastructureData.getTjaidQty();
 
-
                 } else {
                     name = infrastructureData.getTidInfraNameh();
                     qty = infrastructureData.getTjaidQty();
@@ -374,6 +361,5 @@ public class ToiletActivity extends BaseActivity implements View.OnClickListener
 
         }
     }
-
 
 }

@@ -32,7 +32,11 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".common.activity.SplashActivity"
+        <activity android:name=".user.activity.infrastructure.EditActivity"></activity>
+        <activity android:name=".user.activity.infrastructure.AddActivity" />
+        <activity android:name=".user.InfraDetailsActivity" />
+        <activity
+            android:name=".common.activity.SplashActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".user.activity.beneficiary.BasicInformationActivity"
