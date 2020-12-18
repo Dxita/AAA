@@ -46,7 +46,7 @@ public class EditActivity extends BaseActivity {
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     AwcBuildingAdapter awcBuildingAdapter;
 
-    public static String infra_id, item_nameE, item_nameH,tim_accept_status;
+    public static String infra_id, item_nameE, item_nameH, tim_accept_status;
 
   /*  AppCompatEditText facility, quantity, Availbility_in_Infrastructure;
     String infra_id;
@@ -72,19 +72,19 @@ public class EditActivity extends BaseActivity {
                 infra_id = null;
                 item_nameE = null;
                 item_nameH = null;
-                tim_accept_status=null;
+                tim_accept_status = null;
             } else {
                 infra_id = extras.getString("infra_id");
                 item_nameH = extras.getString("item_nameH");
                 item_nameE = extras.getString("item_nameE");
-                tim_accept_status=extras.getString("tim_accept_status");
+                tim_accept_status = extras.getString("tim_accept_status");
 
             }
         } else {
             infra_id = (String) savedInstanceState.getSerializable("infra_id");
             item_nameH = (String) savedInstanceState.getSerializable("item_nameH");
             item_nameE = (String) savedInstanceState.getSerializable("item_nameE");
-            tim_accept_status= (String) savedInstanceState.getSerializable("tim_accept_status");
+            tim_accept_status = (String) savedInstanceState.getSerializable("tim_accept_status");
         }
 
 
@@ -133,6 +133,7 @@ public class EditActivity extends BaseActivity {
 
         }));
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -148,7 +149,7 @@ public class EditActivity extends BaseActivity {
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
 
-        private int selectedPosition = -1;// no selection by default
+        private int selectedPosition;// no selection by default
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
             this.context = context;
@@ -170,38 +171,48 @@ public class EditActivity extends BaseActivity {
             myViewHolders = holder;
             infrastructureData.get(position);
 
-         //   holder.checkBox.setTag(position);
+            holder.checkBox.setTag(position);
+            lastChecked = holder.checkBox;
+            lastCheckedPos = 0;
           /*  if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
 
             }*/
-
-
-            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                public void onClick(View view) {
+                    if (tim_accept_status.equals("1")) {
+                        final boolean isChecked = holder.checkBox.isChecked();
 
-                        if (selectedPosition == position) {
+                        CheckBox cb = (CheckBox) view;
+                        int clickedPos = (Integer) cb.getTag();
+                        if (cb.isChecked()) {
+                            if (lastChecked != null) {
+                                lastChecked.setChecked(false);
+                            }
+                            lastChecked = cb;
+                            lastCheckedPos = clickedPos;
+                            Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
 
-                            holder.checkBox.setChecked(true);
+                            //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                         } else {
-                            holder.checkBox.setChecked(false);
+                            lastChecked = null;
                         }
+                    } else {
 
-
+                    }
                 }
             });
 
 
             holder.setData(context, infrastructureData.get(position));
 
-            if (tim_accept_status.equals("1")){
+            if (tim_accept_status.equals("1")) {
                 holder.edtx_qty.setVisibility(View.GONE);
 
-            }
-            else {
+            } else {
                 holder.edtx_qty.setVisibility(View.VISIBLE);
             }
 
@@ -220,17 +231,14 @@ public class EditActivity extends BaseActivity {
             private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
             CheckBox checkBox;
             AppCompatEditText edtx_qty;
+
             public MyViewHolders(@NonNull View itemView) {
                 super(itemView);
 
                 item_name = itemView.findViewById(R.id.item_tv);
                 checkBox = itemView.findViewById(R.id.checkbox);
                 edtx_qty = itemView.findViewById(R.id.qty_edtx);
-                edtx_qty.setFocusable(false);
-                edtx_qty.setCursorVisible(false);
-                edtx_qty.setFocusableInTouchMode(false); // user touches widget on phone with touch screen
-                edtx_qty.setClickable(false); // user navigation
-               // checkBox.setClickable(false);
+                // checkBox.setClickable(false);
             }
 
 
@@ -239,12 +247,11 @@ public class EditActivity extends BaseActivity {
                 String name = "";
                 String qty = "";
 
-                if (tim_accept_status.equals("2")){
+                if (tim_accept_status.equals("2")) {
 
                     qty = infrastructureData.getTjaidQty();
-                }
-                else {
-                    qty="";
+                } else {
+                    qty = "";
                 }
 
                 if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {

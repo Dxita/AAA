@@ -212,7 +212,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
 
             }
 
-            /*holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v;
@@ -229,7 +229,7 @@ public class AanganwadiBuildingActivity extends BaseActivity implements View.OnC
                     } else
                         lastChecked = null;
                 }
-            });*/
+            });
             item = infrastructureData.get(position).getTidInfraDetailId();
             holder.setData(context, infrastructureData.get(position));
         }

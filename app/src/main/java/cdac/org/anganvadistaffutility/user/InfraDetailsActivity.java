@@ -285,7 +285,10 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 checkBox = itemView.findViewById(R.id.checkbox);
                 edtx_qty = itemView.findViewById(R.id.qty_edtx);
                 checkBox.setClickable(false);
-
+                edtx_qty.setFocusable(false);
+                edtx_qty.setCursorVisible(false);
+                edtx_qty.setFocusableInTouchMode(false); // user touches widget on phone with touch screen
+                edtx_qty.setClickable(false); // user navigation
             }
 
 
