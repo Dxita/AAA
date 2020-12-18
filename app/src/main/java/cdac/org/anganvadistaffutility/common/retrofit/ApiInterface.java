@@ -138,12 +138,12 @@ public interface ApiInterface {
 
     @POST("api_js_infrastructur_update_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
-    Call<UpdateInfrastructureData> updateInfrastructureData(@Field("tjaid_awc_id") String tjaid_awc_id,
-                                                            @Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
-                                                            @Field("tjaid_tid_infra_detail_id") String tjaid_tid_infra_detail_id,
-                                                            @Field("tjaid_qty")String tjaid_qty,
-                                                            @Field("last_tjaid_tid_infra_detail_id")String last_tjaid_tid_infra_detail_id,
-                                                            @Field("last_tjaid_qty")String last_tjaid_qty);
+    Call<UpdateInfrastructureData> updateInfrastructureData(@Field("infra_id") String infra_id,
+                                                            @Field("awc_id") String awc_id,
+                                                            @Field("tim_accept_status") String tim_accept_status,
+                                                            @Field("qty")String qty,
+                                                            @Field("infra_detail_id")String infra_detail_id,
+                                                            @Field("last_infra_detail_id")String last_infra_detail_id);
 
 
 

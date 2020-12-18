@@ -90,7 +90,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
     }
 
     private void getInfraDetails() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.ADMIN_INFRA_DETAILS_BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
         Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", infraID);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
             @Override

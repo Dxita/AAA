@@ -45,15 +45,16 @@
             <androidx.appcompat.widget.AppCompatEditText
 
                 android:id="@+id/qty_edtx"
+                android:text="0"
                 android:layout_width="@dimen/margin_50"
                 android:layout_height="@dimen/margin_50"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/margin_10"
                 android:layout_marginRight="@dimen/margin_10"
                 android:cursorVisible="true"
-
                 android:enabled="true"
                 android:gravity="center"
+                android:hint="@string/qty"
                 android:inputType="number"
                 android:padding="@dimen/margin_10"
                 android:singleLine="true"
@@ -61,14 +62,14 @@
                 android:textSize="@dimen/textsize_17sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:visibility="gone"
                 android:id="@+id/edit_icon"
                 android:layout_width="@dimen/margin_20"
                 android:layout_height="@dimen/margin_20"
-
                 android:layout_gravity="center_vertical"
+
                 android:layout_marginLeft="@dimen/margin_08"
                 android:layout_marginRight="@dimen/margin_08"
+                android:visibility="gone"
                 app:srcCompat="@drawable/edit" />
 
 

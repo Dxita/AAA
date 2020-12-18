@@ -227,7 +227,6 @@
     <string name="sahariya">सहरिया</string>
     <string name="kathodi">केथोड़ी</string>
     <string name="none">कोई नहीं</string>
-
     <string name="caste">जाति</string>
     <string name="general">सामान्य</string>
     <string name="sc">अनुसूचित जाति</string>
@@ -235,11 +234,12 @@
     <string name="pregnant_woman">गर्भवती महिला</string>
     <string name="payment_year">वित्तीय वर्ष का भुगतान डेटा: </string>
     <string name="employee_name">कर्मचारी का नाम: </string>
-    <string name="add">जोड़ना</string>
-    <string name="Availbility_in_Infrastructure">Availbility in Infrastructure:</string>
-    <string name="facility">Facility</string>
-    <string name="quantity">Quantity</string>
-    <string name="AWC_Infrastructure_Facilities">AWC Infrastructure Facilities</string>
-    <string name="edit_AWC_Infrastructure_Facilities">Edit AWC Infrastructure Facilities</string>
-    <string name="add_AWC_Infrastructure_Facilities">Add AWC Infrastructure Facilities</string>
+    <string name="add">नया रिकॉर्ड जोड़ें</string>
+    <string name="Availbility_in_Infrastructure">अवसंरचना अवहेलना</string>
+    <string name="facility">सुविधा</string>
+    <string name="quantity">मात्रा</string>
+    <string name="AWC_Infrastructure_Facilities">AWC इन्फ्रास्ट्रक्चर सुविधाएं</string>
+    <string name="edit_AWC_Infrastructure_Facilities">एडब्ल्यूसी इन्फ्रास्ट्रक्चर सुविधाएं संपादित करें</string>
+    <string name="add_AWC_Infrastructure_Facilities">ऐडब्ल्यूसी इन्फ्रास्ट्रक्चर सुविधाएं जोड़ें</string>
+    <string name="qty">मात्रा</string>
 </resources>

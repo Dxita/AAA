@@ -45,7 +45,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
 
-   public static String infra_id, item_nameE, item_nameH,tim_accept_status;
+   public static String infra_id, item_nameE, item_nameH,tim_accept_status,last_infra_detail_id;
     AppCompatButton add, edit;
     AwcBuildingAdapter awcBuildingAdapter;
 
@@ -157,9 +157,8 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
             }
         }
-
         if (v.getId() == R.id.edit) {
-            startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", infra_id).putExtra("tim_accept_status",tim_accept_status));
+            startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", infra_id).putExtra("tim_accept_status",tim_accept_status).putExtra("last_infra_detail_id",last_infra_detail_id));
         }
        /* if (v.getId() == R.id.edit) {
             if (AppUtils.isNetworkConnected(context)) {
@@ -169,28 +168,6 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
             }
         }*/
-    }
-
-    private void gotoEditScreen() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
-            @Override
-            public void onSuccess(AanganwadiBuildingData body) {
-
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                infrastructureData = new ArrayList<>();
-                infrastructureData = body.getData().getInfrastructureData();
-                startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", infra_id));
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
-            }
-
-        }));
     }
 
     private void gotoAddScreen() {
@@ -235,8 +212,6 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
         @NonNull
         @Override
         public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-
                         View view = LayoutInflater.from(context).inflate(R.layout.toilet_rv_items, null);
                         return new AwcBuildingAdapter.MyViewHolders(view);
 
@@ -247,15 +222,20 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             myViewHolders = holder;
             infrastructureData.get(position);
 
+
             holder.checkBox.setTag(position);
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
 
-            }
-            holder.setData(context, infrastructureData.get(position));
 
+                last_infra_detail_id=infrastructureData.get(position).getTidInfraDetailId();
+                Log.d("last_infra_detail_id",last_infra_detail_id);
+                holder.setQtyData(context, infrastructureData.get(position));
+            }
+
+            holder.setData(context, infrastructureData.get(position));
             if (tim_accept_status.equals("1")){
                 holder.edtx_qty.setVisibility(View.GONE);
             }
@@ -263,9 +243,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 holder.edtx_qty.setVisibility(View.VISIBLE);
             }
 
-
         }
-
 
         @Override
         public int getItemCount() {
@@ -312,6 +290,22 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 }
                 //  name = infrastructureData.getTidInfraNamee();
                 item_name.setText(name);
+                edtx_qty.setText(qty);
+            }
+
+            public void setQtyData(Context context, AanganwadiBuildingData.Data.InfrastructureDatum infrastructureDatum) {
+                this.infrastructureData = infrastructureDatum;
+                String qty = "";
+
+                if (tim_accept_status.equals("2")){
+
+                    qty = infrastructureDatum.getTjaidQty();
+                }
+                else {
+                    qty="";
+                }
+                //  name = infrastructureData.getTidInfraNamee();
+
                 edtx_qty.setText(qty);
             }
         }

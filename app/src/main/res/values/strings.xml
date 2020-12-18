@@ -240,6 +240,7 @@
     <string name="AWC_Infrastructure_Facilities">AWC Infrastructure Facilities</string>
     <string name="edit_AWC_Infrastructure_Facilities">Edit AWC Infrastructure Facilities</string>
     <string name="add_AWC_Infrastructure_Facilities">Add AWC Infrastructure Facilities</string>
+    <string name="qty">Qty.</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>
