@@ -1,10 +1,12 @@
 package cdac.org.anganvadistaffutility.admin.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -56,7 +59,6 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         pieChart = findViewById(R.id.pieChart);
 
         infraID = getIntent().getStringExtra("infra_id");
-
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
         pieChart.getLegend().setEnabled(false);
@@ -90,7 +92,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
     }
 
     private void getInfraDetails() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", infraID);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
             @Override
@@ -175,6 +177,17 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
+        Toast.makeText(context, "under development",
+                Toast.LENGTH_SHORT).show();
+
+        /*List<InfraStructureDetailData.Infradatum> infradata = infraDetailsData.getInfradata();
+        ArrayList<InfraStructureDetailData.Infradatum> infraDatumArrayList = new ArrayList<>(infradata);
+
+
+            startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("filter_by", "dist")
+                    .putExtra("infra_data", AppUtils.convertInfradataToPut(infraDatumArrayList)));
+*/
+
 
     }
 

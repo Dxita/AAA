@@ -45,7 +45,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
 
-   public static String infra_id, item_nameE, item_nameH,tim_accept_status,last_infra_detail_id;
+    public static String infra_id, item_nameE, item_nameH, tim_accept_status, last_infra_detail_id;
     AppCompatButton add, edit;
     AwcBuildingAdapter awcBuildingAdapter;
 
@@ -68,12 +68,12 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 item_nameE = null;
                 item_nameH = null;
 
-                tim_accept_status=null;
+                tim_accept_status = null;
             } else {
                 infra_id = extras.getString("infra_id");
                 item_nameH = extras.getString("item_nameH");
                 item_nameE = extras.getString("item_nameE");
-                tim_accept_status=extras.getString("tim_accept_status");
+                tim_accept_status = extras.getString("tim_accept_status");
                 Log.d("id", infra_id);
                 Log.d("E", item_nameE);
 
@@ -82,7 +82,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             infra_id = (String) savedInstanceState.getSerializable("infra_id");
             item_nameH = (String) savedInstanceState.getSerializable("item_nameH");
             item_nameE = (String) savedInstanceState.getSerializable("item_nameE");
-            tim_accept_status= (String) savedInstanceState.getSerializable("tim_accept_status");
+            tim_accept_status = (String) savedInstanceState.getSerializable("tim_accept_status");
         }
 
         if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
@@ -110,10 +110,11 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
         }
 
 
-         add.setOnClickListener(this);
+        add.setOnClickListener(this);
         edit.setOnClickListener(this);
 
     }
+
 
     private void getAanganwadiBuildingData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
@@ -148,6 +149,18 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            getAanganwadiBuildingData();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+        }
+
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.add) {
             if (AppUtils.isNetworkConnected(context)) {
@@ -158,7 +171,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             }
         }
         if (v.getId() == R.id.edit) {
-            startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", infra_id).putExtra("tim_accept_status",tim_accept_status).putExtra("last_infra_detail_id",last_infra_detail_id));
+            startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", infra_id).putExtra("tim_accept_status", tim_accept_status).putExtra("last_infra_detail_id", last_infra_detail_id));
         }
        /* if (v.getId() == R.id.edit) {
             if (AppUtils.isNetworkConnected(context)) {
@@ -176,7 +189,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
             @Override
             public void onSuccess(AanganwadiBuildingData body) {
-              ;
+                ;
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -200,8 +213,8 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
 
-       private int VIEW_TYPE_ONE = 1;
-       private int VIEW_TYPE_TWO = 2;
+        private int VIEW_TYPE_ONE = 1;
+        private int VIEW_TYPE_TWO = 2;
 
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
@@ -212,8 +225,8 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
         @NonNull
         @Override
         public MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(context).inflate(R.layout.toilet_rv_items, null);
-                        return new AwcBuildingAdapter.MyViewHolders(view);
+            View view = LayoutInflater.from(context).inflate(R.layout.toilet_rv_items, null);
+            return new AwcBuildingAdapter.MyViewHolders(view);
 
         }
 
@@ -222,7 +235,6 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             myViewHolders = holder;
             infrastructureData.get(position);
 
-
             holder.checkBox.setTag(position);
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
@@ -230,16 +242,18 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 holder.checkBox.setChecked(true);
 
 
-                last_infra_detail_id=infrastructureData.get(position).getTidInfraDetailId();
-                Log.d("last_infra_detail_id",last_infra_detail_id);
-                holder.setQtyData(context, infrastructureData.get(position));
+                //holder.setQtyData(context,infrastructureData.get(position));
+                last_infra_detail_id = infrastructureData.get(position).getTidInfraDetailId();
+                Log.d("last_infra_detail_id", last_infra_detail_id);
+
+
             }
 
+
             holder.setData(context, infrastructureData.get(position));
-            if (tim_accept_status.equals("1")){
+            if (tim_accept_status.equals("1")) {
                 holder.edtx_qty.setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 holder.edtx_qty.setVisibility(View.VISIBLE);
             }
 
@@ -256,6 +270,7 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             private AanganwadiBuildingData.Data.InfrastructureDatum infrastructureData;
             CheckBox checkBox;
             AppCompatEditText edtx_qty;
+
             public MyViewHolders(@NonNull View itemView) {
                 super(itemView);
 
@@ -275,12 +290,11 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 String name = "";
                 String qty = "";
 
-                if (tim_accept_status.equals("2")){
+                if (tim_accept_status.equals("2")) {
 
                     qty = infrastructureData.getTjaidQty();
-                }
-                else {
-                    qty="";
+                } else {
+                    qty = "";
                 }
 
                 if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
@@ -297,12 +311,11 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 this.infrastructureData = infrastructureDatum;
                 String qty = "";
 
-                if (tim_accept_status.equals("2")){
+                if (tim_accept_status.equals("2")) {
 
                     qty = infrastructureDatum.getTjaidQty();
-                }
-                else {
-                    qty="";
+                } else {
+                    qty = "";
                 }
                 //  name = infrastructureData.getTidInfraNamee();
 

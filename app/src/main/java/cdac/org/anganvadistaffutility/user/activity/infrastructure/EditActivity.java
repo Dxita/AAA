@@ -16,6 +16,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,8 +51,8 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     AwcBuildingAdapter awcBuildingAdapter;
-    public static String infra_id, item_nameE, item_nameH, tim_accept_status, infradetail_id,last_infra_detail_id;
-    public static String quantity_edtx="";
+    public static String infra_id, item_nameE, item_nameH, tim_accept_status, infradetail_id, last_infra_detail_id;
+    public static String quantity_edtx = "";
   /*  AppCompatEditText facility, quantity, Availbility_in_Infrastructure;
     String infra_id;
     private RelativeLayout relativeLayout;
@@ -94,7 +95,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
 
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
-        submit=findViewById(R.id.submit);
+        submit = findViewById(R.id.submit);
         submit.setOnClickListener(this);
         infrastructureData = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -129,7 +130,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                 recyclerView.setAdapter(awcBuildingAdapter);
                 appPreferences.setInfraId(infrastructureData.get(0).getTidTimInfraId());
 
-                last_infra_detail_id=infrastructureData.get(0).getTidInfraDetailId();
+                last_infra_detail_id = infrastructureData.get(0).getTidInfraDetailId();
             }
 
             @Override
@@ -151,7 +152,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.submit){
+        if (v.getId() == R.id.submit) {
             if (AppUtils.isNetworkConnected(context)) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
                 updateInfrastructure();
@@ -163,7 +164,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
 
     private void updateInfrastructure() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(infra_id,appPreferences.getAwcId(),tim_accept_status,quantity_edtx,infradetail_id,last_infra_detail_id);
+        Call<UpdateInfrastructureData> call = apiInterface.updateInfrastructureData(infra_id, appPreferences.getAwcId(), tim_accept_status, quantity_edtx, infradetail_id, last_infra_detail_id);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
@@ -192,7 +193,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         AwcBuildingAdapter.MyViewHolders myViewHolders;
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
-        public static String quantity_edtx;
         private int selectedPosition;// no selection by default
 
         public AwcBuildingAdapter(Context context, List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData) {
@@ -216,7 +216,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             infrastructureData.get(position);
 
 
-
             holder.checkBox.setTag(position);
             lastChecked = holder.checkBox;
             lastCheckedPos = 0;
@@ -237,6 +236,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                     //  if (tim_accept_status.equals("1")) {
                     final boolean isChecked = holder.checkBox.isChecked();
 
+
                     String qt;
                     CheckBox cb = (CheckBox) view;
                     int clickedPos = (Integer) cb.getTag();
@@ -247,63 +247,36 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
-                        infradetail_id=infrastructureData.get(position).getTidInfraDetailId();
+                        infradetail_id = infrastructureData.get(position).getTidInfraDetailId();
 
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
 
-                        if (tim_accept_status.equalsIgnoreCase("2")){
-                            String str= Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                            quantity_edtx=str;
-                            Log.d("q",str);
-                        }
-                        else {
-                            quantity_edtx ="0";
-
-                        }
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-                    }
-
-                    else {
-                        quantity_edtx ="0";
+                    } else {
                         lastChecked = null;
                     }
-                  /*  if (tim_accept_status.equals("1")){
-                        quantity_edtx="0";
-                    }
-                    if(tim_accept_status.equals("2")){
-                        quantity_edtx=holder.edtx_qty.getText().toString();
-                    }*/
+
 
                 }
             });
-
 
             holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    quantity_edtx="0";
-
-                }
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    if(tim_accept_status.equals("2")){
-                        quantity_edtx= Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                    }
-                    else {
-                        quantity_edtx="0";
-                    }
+                    // TODO Auto-generated method stub
                 }
-
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    // TODO Auto-generated method stub
+                }
                 @Override
                 public void afterTextChanged(Editable s) {
-
+                    quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                    Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                    // Place the logic here for your output edittext
                 }
-
-                //...
             });
+
             holder.setData(context, infrastructureData.get(position));
 
             if (tim_accept_status.equals("1")) {

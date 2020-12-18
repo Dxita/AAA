@@ -32,7 +32,8 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".admin.activity.PieChartProjectActivity"></activity>
+        <activity android:name=".admin.activity.DistrictWiseInfraActivity"></activity>
+        <activity android:name=".admin.activity.PieChartProjectActivity" />
         <activity android:name=".user.activity.infrastructure.EditActivity" />
         <activity android:name=".user.activity.infrastructure.AddActivity" />
         <activity android:name=".user.InfraDetailsActivity" />
