@@ -128,6 +128,8 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
     @Override
     public void onItemClick(Object item) {
 
-            startActivity(new Intent(context,ProjectWisePieChartActivity.class).putExtra("district_id",infraDetailData.getDistrict()));
+
+        Toast.makeText(context, "under development", Toast.LENGTH_SHORT).show();
+            //startActivity(new Intent(context,ProjectWisePieChartActivity.class).putExtra("district_id",infraDetailData.getDistrict()));
     }
 }
