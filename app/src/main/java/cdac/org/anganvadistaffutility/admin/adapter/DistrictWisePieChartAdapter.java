@@ -35,6 +35,7 @@ public class DistrictWisePieChartAdapter extends RecyclerView.Adapter<DistrictWi
     protected int fixListSize = 7;
     private int totalListSize = 0;
 
+
     public class ViewHolder extends RecyclerView.ViewHolder implements OnChartValueSelectedListener {
         protected PieChart pieChart;
         protected TextView txt_page_count;

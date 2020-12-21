@@ -28,6 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,7 +46,7 @@ import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import retrofit2.Call;
 
-public class EditActivity extends BaseActivity implements View.OnClickListener {
+public class EditActivity extends BaseActivity implements View.OnClickListener{
     private RelativeLayout relativeLayout;
     AppCompatButton submit;
     RecyclerView recyclerView;
@@ -187,6 +188,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
+
     public static class AwcBuildingAdapter extends RecyclerView.Adapter<AwcBuildingAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
@@ -222,40 +224,27 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
 
             if (holder.checkBox.isChecked()) {
 
-
             }
-          /*  if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
-                lastChecked = holder.checkBox;
-                lastCheckedPos = 0;
-                holder.checkBox.setChecked(true);
 
-            }*/
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //  if (tim_accept_status.equals("1")) {
                     final boolean isChecked = holder.checkBox.isChecked();
-
-
-                    String qt;
                     CheckBox cb = (CheckBox) view;
                     int clickedPos = (Integer) cb.getTag();
                     if (cb.isChecked()) {
-
                         if (lastChecked != null) {
                             lastChecked.setChecked(false);
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         infradetail_id = infrastructureData.get(position).getTidInfraDetailId();
-
                         Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
-
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
                         lastChecked = null;
                     }
-
 
                 }
             });
@@ -292,6 +281,9 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         public int getItemCount() {
             return infrastructureData.size();
         }
+
+
+
 
         static class MyViewHolders extends RecyclerView.ViewHolder {
             AppCompatTextView item_name;

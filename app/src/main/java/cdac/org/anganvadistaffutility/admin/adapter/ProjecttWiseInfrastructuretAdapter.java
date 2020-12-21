@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -25,30 +26,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.ProjectWisePieChartActivity;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
+import cdac.org.anganvadistaffutility.admin.data.InfraProjectWiseData;
 
-public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<DistrictWiseInfrastructuretAdapter.ViewHolder> {
-    private final Context mContext;
-    protected List<InfraDetailData> infraDetailData;
-    protected ItemClickListener mListener;
+public class ProjecttWiseInfrastructuretAdapter extends RecyclerView.Adapter<ProjecttWiseInfrastructuretAdapter.ViewHolder> {
+
+    private Context mContext;
+    protected List<InfraProjectWiseData> infraDetailData;
+    protected ProjecttWiseInfrastructuretAdapter.ItemClickListener mListener;
     protected int fixListSize = 7;
-    private int totalListSize = 0;
+    private static int totalListSize = 0;
 
-
-    public DistrictWiseInfrastructuretAdapter(Context mContext, List<InfraDetailData> infraDetailDataList, ItemClickListener itemClickListener) {
-
+    public ProjecttWiseInfrastructuretAdapter(ProjectWisePieChartActivity mContext,
+                                              List<InfraProjectWiseData> infraDetailProjectDataList, ItemClickListener itemClickListener) {
         this.mContext = mContext;
-        this.infraDetailData = infraDetailDataList;
+        this.infraDetailData = infraDetailProjectDataList;
         this.mListener = itemClickListener;
-
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.recycle_item_district_wise_details, parent, false);
-        return new ViewHolder(v);
+        return new ProjecttWiseInfrastructuretAdapter.ViewHolder(v);
     }
 
     @Override
@@ -57,6 +60,7 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
     }
 
 
+    @Override
     public int getItemCount() {
         if (infraDetailData.size() % fixListSize == 0) {
             totalListSize = infraDetailData.size() / fixListSize;
@@ -74,7 +78,7 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
         protected PieChart pieChart;
         protected TextView txt_page_count;
         protected View layout;
-        protected List<InfraDetailData> infraDetailData;
+        protected List<InfraProjectWiseData> infraDetailData;
 
         public ViewHolder(@NonNull View v) {
             super(v);
@@ -109,7 +113,8 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
         }
 
 
-        public void setData(int position, List<InfraDetailData> infraDetailData) {
+        @SuppressLint("SetTextI18n")
+        public void setData(int position, List<InfraProjectWiseData> infraDetailData) {
             this.infraDetailData = infraDetailData;
 
             int pagePosition = position + 1;
@@ -142,7 +147,7 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
                 if (position == 0 && j < fixListSize) {
 
                     noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                   /*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
                             infraDetailData.get(j).getDistrict() + " (" + infraDetailData.get(j).getInfraCount() + ")"
                             , infraDetailData.get(j).getDistrictID()));
@@ -152,106 +157,106 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
 
                 } else if (position == 1 && j >= fixListSize && j < 2 * fixListSize) {
                     noOfEmp2.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp2, "");
                     pieData = new PieData(dataSet);
 
                 } else if (position == 2 && j >= 2 * fixListSize && j < 3 * fixListSize) {
                     noOfEmp3.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp3, "");
                     pieData = new PieData(dataSet);
 
                 } else if (position == 3 && j >= 3 * fixListSize && j < 4 * fixListSize) {
                     noOfEmp4.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp4, "");
                     pieData = new PieData(dataSet);
 
                 } else if (position == 4 && j >= 4 * fixListSize && j < 5 * fixListSize) {
                     noOfEmp5.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp5, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 5 && j >= 5 * fixListSize && j < 6 * fixListSize) {
                     noOfEmp6.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp6, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 6 && j >= 6 * fixListSize && j < 7 * fixListSize) {
                     noOfEmp7.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp7, "");
                     pieData = new PieData(dataSet);
 
                 } else if (position == 7 && j >= 7 * fixListSize && j < 8 * fixListSize) {
                     noOfEmp8.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp8, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 8 && j >= 8 * fixListSize && j < 9 * fixListSize) {
                     noOfEmp9.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp9, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 9 && j >= 9 * fixListSize && j < 10 * fixListSize) {
                     noOfEmp10.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp10, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 10 && j >= 10 * fixListSize && j < 11 * fixListSize) {
                     noOfEmp11.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp11, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 11 && j >= 11 * fixListSize && j < 12 * fixListSize) {
                     noOfEmp12.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp12, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 12 && j >= 12 * fixListSize && j < 13 * fixListSize) {
                     noOfEmp13.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp13, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 13 && j >= 13 * fixListSize && j < 14 * fixListSize) {
                     noOfEmp14.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp14, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 14 && j >= 14 * fixListSize && j < 15 * fixListSize) {
                     noOfEmp15.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp15, "");
                     pieData = new PieData(dataSet);
                 } else if (position == 15 && j >= 15 * fixListSize && j < 16 * fixListSize) {
                     noOfEmp16.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp16, "");
                     pieData = new PieData(dataSet);
                 }
                 else if (position == 16 && j >= 16 * fixListSize && j < 17 * fixListSize) {
                     noOfEmp17.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp17, "");
                     pieData = new PieData(dataSet);
                 }
                 else if (position == 17 && j >= 17 * fixListSize && j < 18 * fixListSize) {
                     noOfEmp18.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp18, "");
                     pieData = new PieData(dataSet);
                 }
                 else if (position == 18 && j >= 18 * fixListSize && j < 19 * fixListSize) {
                     noOfEmp19.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp19, "");
                     pieData = new PieData(dataSet);
                 }
 
                 else if (position == 19 && j >= 19 * fixListSize && j < 20 * fixListSize) {
                     noOfEmp20.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                            infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp20, "");
                     pieData = new PieData(dataSet);
                 }

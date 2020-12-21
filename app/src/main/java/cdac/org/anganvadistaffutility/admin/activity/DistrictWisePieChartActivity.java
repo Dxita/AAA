@@ -2,8 +2,10 @@ package cdac.org.anganvadistaffutility.admin.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -85,6 +87,7 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                     districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
                     districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
                     districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
+                    Log.d("emp", String.valueOf(districtWiseEmployees));
                        /* if ((!empDatum.getRegistered().equalsIgnoreCase("0")))
                         {
                             districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());

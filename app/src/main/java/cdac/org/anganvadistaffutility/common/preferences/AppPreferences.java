@@ -23,6 +23,8 @@ public class AppPreferences {
     private static final String JANAADHARNO = "JANAADHAR_NO";
     private static final String BHAMASHANO = "BHAMASHA_NO";
     private static final String INFRA_ID = "INFRAID";
+
+    private static final String ADMIN_INFRA_ID = "ADMIN_INFRAID";
     private static final String LAST_CHECKED_POS = "LAST_CHECKED_POSITION";
     private SharedPreferences.Editor editor;
 
@@ -174,5 +176,15 @@ public class AppPreferences {
         editor.putString(LAST_CHECKED_POS, lastCheckedPos);
         editor.apply();
 
+    }
+
+    public String getAdminInfraId() {
+        return sharedPreferences.getString(ADMIN_INFRA_ID, "");
+    }
+
+    public void setAdminInfraId(String adminInfraId) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(ADMIN_INFRA_ID, adminInfraId);
+        editor.apply();
     }
 }

@@ -74,11 +74,11 @@ public class PieChartProjectActivity extends BaseActivity implements OnChartValu
 
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            getAdminUserData();
+        //    getAdminUserData();
         }
     }
 
-    private void getAdminUserData() {
+  /*  private void getAdminUserData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.UPDATE_INFRASTRUCTURE);
         Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", infraID);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
@@ -102,7 +102,7 @@ public class PieChartProjectActivity extends BaseActivity implements OnChartValu
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
-    }
+    }*/
 
     private void setUserData(InfraStructureDetailData.Data detailData) {
         List<InfraDetailData> infraDetailDataList = new ArrayList<>();

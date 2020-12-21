@@ -36,6 +36,7 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.AddActivity;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.EditActivity;
+import cdac.org.anganvadistaffutility.user.activity.infrastructure.InfrastructureDetailListner;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import retrofit2.Call;
 
@@ -236,17 +237,14 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             infrastructureData.get(position);
 
             holder.checkBox.setTag(position);
+
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
-
-
                 //holder.setQtyData(context,infrastructureData.get(position));
                 last_infra_detail_id = infrastructureData.get(position).getTidInfraDetailId();
                 Log.d("last_infra_detail_id", last_infra_detail_id);
-
-
             }
 
 

@@ -32,11 +32,20 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".admin.activity.DistrictWiseInfraActivity"></activity>
-        <activity android:name=".admin.activity.PieChartProjectActivity" />
-        <activity android:name=".user.activity.infrastructure.EditActivity" />
-        <activity android:name=".user.activity.infrastructure.AddActivity" />
-        <activity android:name=".user.InfraDetailsActivity" />
+        <activity android:name=".admin.activity.DistrictWiseInfraActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".admin.activity.PieChartProjectActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".user.activity.infrastructure.EditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.infrastructure.AddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.InfraDetailsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".common.activity.SplashActivity"
             android:screenOrientation="portrait" />

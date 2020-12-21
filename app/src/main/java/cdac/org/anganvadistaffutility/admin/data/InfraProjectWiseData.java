@@ -1,6 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.data;
 
-public class InfraDetailData implements Comparable<InfraDetailData>{
+public class InfraProjectWiseData implements  Comparable<InfraProjectWiseData> {
 
     String infraCount;
 
@@ -33,33 +33,12 @@ public class InfraDetailData implements Comparable<InfraDetailData>{
     String infraDetailID;
 
 
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    String district;
-
-    public String getDistrictID() {
-        return districtID;
-    }
-
-    public void setDistrictID(String districtID) {
-        this.districtID = districtID;
-    }
-
-    String districtID;
-
-
     public String getProjectname() {
         return projectName;
     }
 
     public void setProjectName(String projectName) {
-        this.projectName = district;
+        this.projectName = projectName;
     }
 
     String projectName;
@@ -76,7 +55,7 @@ public class InfraDetailData implements Comparable<InfraDetailData>{
     String projectCode;
 
     @Override
-    public int compareTo(InfraDetailData infraDetailData) {
-        return this.getDistrict().compareTo(infraDetailData.getDistrict());
+    public int compareTo(InfraProjectWiseData infraProjectWiseData) {
+        return this.getProjectcode().compareTo(infraProjectWiseData.getProjectcode());
     }
 }
