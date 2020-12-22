@@ -124,14 +124,7 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
             List<PieEntry> noOfEmp8 = new ArrayList<>();
             List<PieEntry> noOfEmp9 = new ArrayList<>();
             List<PieEntry> noOfEmp10 = new ArrayList<>();
-            List<PieEntry> noOfEmp11 = new ArrayList<>();
-            List<PieEntry> noOfEmp12 = new ArrayList<>();
-            List<PieEntry> noOfEmp13 = new ArrayList<>();
-            List<PieEntry> noOfEmp14 = new ArrayList<>();
-            List<PieEntry> noOfEmp15 = new ArrayList<>();
-            List<PieEntry> noOfEmp16 = new ArrayList<>(); List<PieEntry> noOfEmp17 = new ArrayList<>(); List<PieEntry> noOfEmp18 = new ArrayList<>();
-            List<PieEntry> noOfEmp19 = new ArrayList<>();
-            List<PieEntry> noOfEmp20 = new ArrayList<>();
+
 
 
 
@@ -198,61 +191,6 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
                     noOfEmp10.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
                             infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                     dataSet = new PieDataSet(noOfEmp10, "");
-                    pieData = new PieData(dataSet);
-                } else if (position == 10 && j >= 10 * fixListSize && j < 11 * fixListSize) {
-                    noOfEmp11.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp11, "");
-                    pieData = new PieData(dataSet);
-                } else if (position == 11 && j >= 11 * fixListSize && j < 12 * fixListSize) {
-                    noOfEmp12.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp12, "");
-                    pieData = new PieData(dataSet);
-                } else if (position == 12 && j >= 12 * fixListSize && j < 13 * fixListSize) {
-                    noOfEmp13.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp13, "");
-                    pieData = new PieData(dataSet);
-                } else if (position == 13 && j >= 13 * fixListSize && j < 14 * fixListSize) {
-                    noOfEmp14.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp14, "");
-                    pieData = new PieData(dataSet);
-                } else if (position == 14 && j >= 14 * fixListSize && j < 15 * fixListSize) {
-                    noOfEmp15.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp15, "");
-                    pieData = new PieData(dataSet);
-                } else if (position == 15 && j >= 15 * fixListSize && j < 16 * fixListSize) {
-                    noOfEmp16.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp16, "");
-                    pieData = new PieData(dataSet);
-                }
-                else if (position == 16 && j >= 16 * fixListSize && j < 17 * fixListSize) {
-                    noOfEmp17.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp17, "");
-                    pieData = new PieData(dataSet);
-                }
-                else if (position == 17 && j >= 17 * fixListSize && j < 18 * fixListSize) {
-                    noOfEmp18.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp18, "");
-                    pieData = new PieData(dataSet);
-                }
-                else if (position == 18 && j >= 18 * fixListSize && j < 19 * fixListSize) {
-                    noOfEmp19.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp19, "");
-                    pieData = new PieData(dataSet);
-                }
-
-                else if (position == 19 && j >= 19 * fixListSize && j < 20 * fixListSize) {
-                    noOfEmp20.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                            infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                    dataSet = new PieDataSet(noOfEmp20, "");
                     pieData = new PieData(dataSet);
                 }
             }

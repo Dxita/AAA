@@ -32,10 +32,10 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".admin.activity.DistrictWiseInfraActivity"
+        <activity android:name=".admin.activity.Infrastructure.DistrictWiseInfraActivity"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".admin.activity.PieChartProjectActivity"
+            android:name=".admin.activity.Infrastructure.PieChartProjectActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".user.activity.infrastructure.EditActivity"
@@ -44,7 +44,7 @@
             android:name=".user.activity.infrastructure.AddActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.InfraDetailsActivity"
+            android:name=".user.activity.infrastructure.InfraDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".common.activity.SplashActivity"
@@ -72,27 +72,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.KitchenActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.WaterActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.AreaActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.ToiletActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.ElectricityActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.CrecheActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.infrastructure.AanganwadiBuildingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".common.LanguageActivity"

@@ -9,16 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -29,10 +26,6 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.InfraDetailsActivity;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.AanganwadiBuildingActivity;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.CrecheActivity;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.ElectricityActivity;
 import cdac.org.anganvadistaffutility.user.adapter.UserInfraStructureAdapter;
 import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import retrofit2.Call;

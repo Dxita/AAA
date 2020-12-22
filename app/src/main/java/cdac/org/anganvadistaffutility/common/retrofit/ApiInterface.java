@@ -11,6 +11,7 @@ import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.public_u.activity.data.VerifyPublicData;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
+import cdac.org.anganvadistaffutility.user.data.AddNewInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
@@ -116,6 +117,13 @@ public interface ApiInterface {
     Call<AanganwadiBuildingData> aanganwadiBuildingData(@Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
                                                         @Field("tjaid_awc_id") String tjaid_awc_id);
 
+    //add new infra spinner list(user side)
+    @POST("api_js_infrastructure_detail_by_infra_and_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AddNewInfrastructureData> addNewInfraList(@Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
+                                                          @Field("tjaid_awc_id") String tjaid_awc_id);
+
+
     //  InfraStructure Details (Admin Side)
 
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
@@ -129,7 +137,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<InfraDetailProjectData> getInfrastructureProjectDetails(@Field("filterby") String filterType,
                                                           @Field("infra_id") String infraID,
-                                                          @Field("dist_id")String dist_id);
+                                                          @Field("distid")String district_id);
 
 
     // Get Beneficiary Criteria List

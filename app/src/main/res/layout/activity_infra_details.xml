@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    tools:context=".user.activity.infrastructure.AanganwadiBuildingActivity">
+ >
 
 
     <androidx.appcompat.widget.Toolbar
@@ -59,8 +59,8 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/add"
-                android:text="@string/add"
+                android:id="@+id/goback"
+                android:text="@string/go_back"
                 android:layout_margin="@dimen/margin_05"
                 android:textColor="@color/white"
                 android:padding="@dimen/margin_10"

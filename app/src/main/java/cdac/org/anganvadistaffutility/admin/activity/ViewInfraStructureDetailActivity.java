@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.Infrastructure.DistrictWiseInfraActivity;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -182,7 +183,23 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         ArrayList<InfraStructureDetailData.Infradatum> infraDatumArrayList = new ArrayList<>(infradata);
 */
 
-            startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id",infraDetailData.getInfraDetailID()));
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", appPreferences.getAdminInfraId(), infraDetailData.getInfraDetailID());
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
+            @Override
+            public void onSuccess(InfraStructureDetailData body) {
+                //    AppUtils.showToast(context, body.getMessage());
+
+                startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id",infraDetailData.getInfraDetailID()));
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+            }
+        }));
 
 
 

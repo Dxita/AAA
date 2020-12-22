@@ -241,6 +241,10 @@
     <string name="edit_AWC_Infrastructure_Facilities">Edit AWC Infrastructure Facilities</string>
     <string name="add_AWC_Infrastructure_Facilities">Add AWC Infrastructure Facilities</string>
     <string name="qty">Qty.</string>
+    <string name="project_wise_available_infra_data">Project Wise Infrastructure Availability</string>
+    <string name="infra_district">District Wise Infrastructure Availability</string>
+    <string name="infra_detail">Available Infrastructures</string>
+    <string name="go_back">Go Back</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

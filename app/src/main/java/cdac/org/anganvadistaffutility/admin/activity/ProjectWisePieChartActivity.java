@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -32,35 +30,21 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.admin.adapter.DistrictWiseInfrastructuretAdapter;
-import cdac.org.anganvadistaffutility.admin.adapter.ProjecttWiseInfrastructuretAdapter;
-import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
-import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
-import cdac.org.anganvadistaffutility.admin.data.InfraProjectWiseData;
-import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
-import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
-import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import retrofit2.Call;
 
 
-public class ProjectWisePieChartActivity extends BaseActivity implements ProjecttWiseInfrastructuretAdapter.ItemClickListener{
+public class ProjectWisePieChartActivity extends BaseActivity implements OnChartValueSelectedListener {
 
-    private RecyclerView recyclerView;
-    private InfraDetailProjectData.Data infraDetailsData;
-    private int infraCount = 0;
-    private int currentInfraDetailID = -1;
-    private InfraProjectWiseData infraDetailProjectData;
-    private String district_id;
-    private ProjecttWiseInfrastructuretAdapter.ItemClickListener itemClickListener;
-
+    private LinearLayout ll_bottom_sheet;
+    private PieChart pieChart;
+    private List<ProjectWiseEmployeeDetails> projectWiseEmployeeDetailsList;
+    private String userType = "";
+    private String cdpoMobile = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,85 +53,206 @@ public class ProjectWisePieChartActivity extends BaseActivity implements Project
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_project_wise_pie_chart);
-        district_id = getIntent().getStringExtra("district_id");
+
+        String projectData = getIntent().getStringExtra("project_data");
+        userType = getIntent().getStringExtra("user_type");
+        projectWiseEmployeeDetailsList = AppUtils.convertProjectToGet(projectData);
+
         TextView txt_title = findViewById(R.id.txt_title);
-
-       itemClickListener = this;
-
-
-        recyclerView = findViewById(R.id.recycler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-
-        if (AppUtils.isNetworkConnected(context)) {
-
-            getInfraDistrictData();
+        if (userType.equalsIgnoreCase("registered_user")) {
+            txt_title.setText(getResources().getString(R.string.project_wise_reg_users));
+        } else {
+            txt_title.setText(getResources().getString(R.string.project_wise_unreg_users));
         }
+        /*txt_title.setText(getResources().getString(R.string.project_name) + projectName + "\n"
+                + getResources().getString(R.string.project_code) + projectCode);*/
+
+        pieChart = findViewById(R.id.pieChart);
+        pieChart.setUsePercentValues(true);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.getLegend().setEnabled(false);
+        pieChart.setExtraOffsets(16, 16, 16, 16);
+
+        pieChart.setDragDecelerationFrictionCoef(0.95f);
+        pieChart.setDrawHoleEnabled(false);
+        pieChart.setHoleColor(Color.WHITE);
+
+        pieChart.setTransparentCircleColor(Color.WHITE);
+        pieChart.setTransparentCircleAlpha(0);
+
+        pieChart.setHoleRadius(0f);
+        pieChart.setTransparentCircleRadius(0f);
+        pieChart.setDrawCenterText(false);
+        pieChart.setRotationAngle(270);
+        pieChart.setRotationEnabled(true);
+        pieChart.setHighlightPerTapEnabled(true);
+        pieChart.animateY(1400, Easing.EaseInOutQuad);
+
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setEntryLabelTextSize(14f);
+        pieChart.setOnChartValueSelectedListener(this);
+        setProjectData();
+
+        setBottomSheet();
     }
 
-    private void getInfraDistrictData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraDetailProjectData> call = apiInterface.getInfrastructureProjectDetails("proj", appPreferences.getAdminInfraId(), district_id);
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
-            @Override
-            public void onSuccess(InfraDetailProjectData body) {
-                //    AppUtils.showToast(context, body.getMessage());
+    private void setProjectData() {
+        List<PieEntry> projectDetails = new ArrayList<>();
+        if (userType.equalsIgnoreCase("registered_user")) {
+            for (ProjectWiseEmployeeDetails projectWiseEmployeeDetail : projectWiseEmployeeDetailsList) {
+                projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_registered_users()),
+                        projectWiseEmployeeDetail.getProject_name_english() + " (" + projectWiseEmployeeDetail.getProject_registered_users() + ")"
+                        , projectWiseEmployeeDetail.getProject_code()));
 
-
-                infraDetailsData = body.getData();
-
-                if (infraDetailsData.getInfradata().size() > 0) {
-                    setUserData(infraDetailsData);
-                }
             }
-
-            @Override
-            public void onFailure(Throwable t) {
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+        } else {
+            for (ProjectWiseEmployeeDetails projectWiseEmployeeDetail : projectWiseEmployeeDetailsList) {
+                projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_unregistered_users()),
+                        projectWiseEmployeeDetail.getProject_name_english() + " (" + projectWiseEmployeeDetail.getProject_unregistered_users() + ")"
+                        , projectWiseEmployeeDetail.getProject_code()));
             }
-        }));
-    }
-
-    private void setUserData(InfraDetailProjectData.Data detailData) {
-        int previousInfraDetailID;
-        List<InfraProjectWiseData> infraDetailProjectDataList = new ArrayList<>();
-        //  List<PieEntry> chartInfraCount = new ArrayList<>();
-
-        for (InfraDetailProjectData.Infradatum infraDatum : detailData.getInfradata()) {
-            previousInfraDetailID = currentInfraDetailID;
-            currentInfraDetailID = Integer.parseInt(infraDatum.getProjectname());
-
-            // To make sum of all same infra detail data and finally add to list
-            // add same id data only once
-            if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
-                if (!infraDetailProjectDataList.isEmpty()) {
-                    infraDetailProjectDataList.remove(infraDetailProjectDataList.size() - 1);
-                }
-            }
-            if (infraDetailProjectDataList != null) {
-                infraDetailProjectDataList.add(infraDetailProjectData);
-            }
-
-            if (previousInfraDetailID == currentInfraDetailID) {
-                //infraCount = infraCount + Integer.parseInt(infraDatum.getCount());
-                infraCount = Integer.parseInt(infraDatum.getCount());
-            } else {
-                infraDetailProjectData = new InfraProjectWiseData();
-                infraDetailProjectData.setProjectCode(infraDatum.getProjectcode());
-                infraDetailProjectData.setProjectName(infraDatum.getProjectname());
-                infraCount = Integer.parseInt(infraDatum.getCount());
-            }
-            infraDetailProjectData.setInfraCount("" + infraCount);
         }
 
-        Collections.sort(infraDetailProjectDataList, Collections.reverseOrder());
-        ProjecttWiseInfrastructuretAdapter projecttWiseInfrastructuretAdapter = new ProjecttWiseInfrastructuretAdapter(this, infraDetailProjectDataList, itemClickListener);
-        recyclerView.setAdapter(projecttWiseInfrastructuretAdapter);
+        PieDataSet dataSet = new PieDataSet(projectDetails, "");
+        dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        dataSet.setYValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
+
+        dataSet.setValueLinePart1Length(0.5f);
+        dataSet.setValueLinePart2Length(1.2f);
+        dataSet.setValueLineVariableLength(true);
+
+        dataSet.setDrawIcons(false);
+        dataSet.setSliceSpace(3f);
+        //   dataSet.setIconsOffset(new MPPointF(0, 40));
+        dataSet.setSelectionShift(4f);
+
+        PieData pieData = new PieData(dataSet);
+        pieData.setValueFormatter(new PercentFormatter());
+        pieData.setValueTextSize(12f);
+        pieData.setValueTextColor(Color.BLACK);
+        pieChart.setData(pieData);
+        //    pieChart.setDrawEntryLabels(true);
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+
+        // undo all highlights
+        pieChart.highlightValues(null);
+        pieChart.invalidate();
     }
 
     @Override
-    public void onItemClick(Object item) {
+    public void onValueSelected(Entry e, Highlight h) {
+        for (ProjectWiseEmployeeDetails projectWiseEmployeeDetails : projectWiseEmployeeDetailsList) {
+            if (projectWiseEmployeeDetails.getProject_code().equalsIgnoreCase(e.getData().toString())) {
+                /*if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }*/
+                toggleBottomSheet(projectWiseEmployeeDetails.getProject_code(), projectWiseEmployeeDetails.getProject_name_english(),
+                        projectWiseEmployeeDetails.getProject_head_name(), projectWiseEmployeeDetails.getProject_head_phone(),
+                        projectWiseEmployeeDetails.getProject_head_email());
+            }
+        }
+    }
 
+    @Override
+    public void onNothingSelected() {
+    }
+
+    private void setBottomSheet() {
+        ll_bottom_sheet = findViewById(R.id.bottom_sheet);
+        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(ll_bottom_sheet);
+        bottomSheetBehavior.setHideable(false);
+        BottomSheetBehavior.BottomSheetCallback bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                    case BottomSheetBehavior.STATE_HALF_EXPANDED:
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        break;
+                    case BottomSheetBehavior.STATE_EXPANDED: {
+                        // btnBottomSheet.setText("Close Sheet");
+                    }
+                    break;
+                    case BottomSheetBehavior.STATE_COLLAPSED: {
+                        // btnBottomSheet.setText("Expand Sheet");
+                    }
+                    break;
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        };
+        bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void toggleBottomSheet(String projectCode, String projectName, String name, String mobile, String email) {
+        if (ll_bottom_sheet.getVisibility() == View.GONE) {
+            ll_bottom_sheet.setVisibility(View.VISIBLE);
+        }
+       /* if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        } else {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }*/
+
+        cdpoMobile = mobile;
+        TextView txt_cdpo_name = ll_bottom_sheet.findViewById(R.id.txt_cdpo_name);
+        TextView txt_project_name = ll_bottom_sheet.findViewById(R.id.txt_project_name);
+        TextView txt_project_code = ll_bottom_sheet.findViewById(R.id.txt_project_code);
+        Button btn_call = ll_bottom_sheet.findViewById(R.id.btn_call);
+        Button btn_email = ll_bottom_sheet.findViewById(R.id.btn_email);
+
+        txt_cdpo_name.setText("CDPO Name: " + name);
+        txt_project_name.setText("Project Name: " + projectName);
+        txt_project_code.setText("Project Code: " + projectCode);
+
+        btn_call.setOnClickListener(view -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (AppUtils.hasPermissions(context, AppUtils.CALL_PERMISSIONS)) {
+                    makePhoneCall(mobile);
+                } else {
+                    requestPermissions(AppUtils.CALL_PERMISSIONS, AppUtils.CALL_PERMISSION_REQUEST_CODE);
+                }
+            } else {
+                makePhoneCall(mobile);
+            }
+        });
+
+        btn_email.setOnClickListener(view -> {
+            sendEmail(email);
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == AppUtils.CALL_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall(cdpoMobile);
+            }
+        }
+    }
+
+    private void makePhoneCall(String mobile) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + mobile));
+        startActivity(callIntent);
+    }
+
+    private void sendEmail(String email) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+
+        //need this to prompts email client only
+        emailIntent.setType("message/rfc822");
+        startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
     }
 }

@@ -1,6 +1,5 @@
-package cdac.org.anganvadistaffutility.admin.activity;
+package cdac.org.anganvadistaffutility.admin.activity.Infrastructure;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,24 +7,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.adapter.DistrictWiseInfrastructuretAdapter;
-import cdac.org.anganvadistaffutility.admin.adapter.DistrictWisePieChartAdapter;
-import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
-import cdac.org.anganvadistaffutility.admin.data.DistrictWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
-import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
@@ -37,6 +29,7 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
     private RecyclerView recyclerView;
     private InfraStructureDetailData.Data infraDetailsData;
     private int infraCount = 0;
+    RelativeLayout relativeLayout;
     private int currentInfraDetailID = -1;
     private InfraDetailData infraDetailData;
     private String infra_detail_id;
@@ -50,7 +43,7 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_demo);
         TextView txt_title = findViewById(R.id.txt_title);
-
+        relativeLayout = findViewById(R.id.relativeLayout);
         //  itemClickListener = this;
         infra_detail_id = getIntent().getStringExtra("infra_detail_id");
         itemClickListener = this;
@@ -60,19 +53,22 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
         recyclerView.setLayoutManager(layoutManager);
 
         if (AppUtils.isNetworkConnected(context)) {
-
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getInfraDistrictData();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
+
     }
 
     private void getInfraDistrictData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", appPreferences.getAdminInfraId(), "");
+        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", appPreferences.getAdminInfraId(), infra_detail_id);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
             @Override
             public void onSuccess(InfraStructureDetailData body) {
                 //    AppUtils.showToast(context, body.getMessage());
-
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
 
                 infraDetailsData = body.getData();
 
@@ -83,6 +79,7 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
 
             @Override
             public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
@@ -120,16 +117,30 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
             infraDetailData.setInfraCount("" + infraCount);
         }
 
-        Collections.sort(infraDetailDataList, Collections.reverseOrder());
+        //    Collections.sort(infraDetailDataList, Collections.reverseOrder());
         DistrictWiseInfrastructuretAdapter districtWiseInfrastructuretAdapter = new DistrictWiseInfrastructuretAdapter(this, infraDetailDataList, itemClickListener);
         recyclerView.setAdapter(districtWiseInfrastructuretAdapter);
     }
 
     @Override
     public void onItemClick(Object item) {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        Call<InfraDetailProjectData> call = apiInterface.getInfrastructureProjectDetails("proj", appPreferences.getAdminInfraId(), infraDetailData.getDistrictID());
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
+            @Override
+            public void onSuccess(InfraDetailProjectData body) {
+               // AppUtils.showToast(context, body.getMessage());
+                startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("district_id", infraDetailData.getDistrictID()));
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+            }
+        }));
 
 
-        Toast.makeText(context, "under development", Toast.LENGTH_SHORT).show();
-            //startActivity(new Intent(context,ProjectWisePieChartActivity.class).putExtra("district_id",infraDetailData.getDistrict()));
+        //
     }
 }

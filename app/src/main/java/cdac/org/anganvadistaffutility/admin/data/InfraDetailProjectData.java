@@ -52,6 +52,7 @@ public class InfraDetailProjectData {
         this.data = data;
     }
 
+
     public static class Data {
 
         @SerializedName("infradata")
@@ -65,6 +66,7 @@ public class InfraDetailProjectData {
         public void setInfradata(List<Infradatum> infradata) {
             this.infradata = infradata;
         }
+
     }
 
     public static class Infradatum {
@@ -87,6 +89,15 @@ public class InfraDetailProjectData {
         @SerializedName("projectcode")
         @Expose
         private String projectcode;
+        @SerializedName("cdpo_name")
+        @Expose
+        private String cdpoName;
+        @SerializedName("cdpo_email")
+        @Expose
+        private String cdpoEmail;
+        @SerializedName("cdpo_mobileno")
+        @Expose
+        private String cdpoMobileno;
 
         public String getCount() {
             return count;
@@ -136,5 +147,28 @@ public class InfraDetailProjectData {
             this.projectcode = projectcode;
         }
 
+        public String getCdpoName() {
+            return cdpoName;
+        }
+
+        public void setCdpoName(String cdpoName) {
+            this.cdpoName = cdpoName;
+        }
+
+        public String getCdpoEmail() {
+            return cdpoEmail;
+        }
+
+        public void setCdpoEmail(String cdpoEmail) {
+            this.cdpoEmail = cdpoEmail;
+        }
+
+        public String getCdpoMobileno() {
+            return cdpoMobileno;
+        }
+
+        public void setCdpoMobileno(String cdpoMobileno) {
+            this.cdpoMobileno = cdpoMobileno;
+        }
     }
 }

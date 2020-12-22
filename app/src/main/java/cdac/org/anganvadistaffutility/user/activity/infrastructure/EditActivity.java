@@ -1,7 +1,6 @@
 package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -13,22 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,11 +33,8 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.InfraDetailsActivity;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
-import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
-import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import retrofit2.Call;
 
 public class EditActivity extends BaseActivity implements View.OnClickListener{
@@ -169,7 +160,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
-                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                /* infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -240,7 +231,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         infradetail_id = infrastructureData.get(position).getTidInfraDetailId();
-                        Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
+                 //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
                         lastChecked = null;
@@ -261,7 +252,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
                 @Override
                 public void afterTextChanged(Editable s) {
                     quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                    Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
                     // Place the logic here for your output edittext
                 }
             });
