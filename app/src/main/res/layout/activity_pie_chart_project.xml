@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeLayout"
-    android:layout_width="match_parent"
+
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_height="match_parent"
-    android:background="@drawable/custom_app_bg">
+    android:layout_width="match_parent"
+    android:id="@+id/relativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:background="@drawable/custom_app_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -43,6 +46,7 @@
             android:scrollbars="vertical" />
 
     </LinearLayout>
+    <include android:visibility="gone" layout="@layout/cdpo_bottom_sheet"/>
 
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

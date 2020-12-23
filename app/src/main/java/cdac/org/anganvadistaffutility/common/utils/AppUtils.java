@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
+import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
@@ -172,6 +173,19 @@ public class AppUtils {
     public static List<ProjectWiseEmployeeDetails> convertProjectToGet(String list) {
         Gson gson = new Gson();
         Type type = new TypeToken<List<ProjectWiseEmployeeDetails>>() {
+        }.getType();
+        return gson.fromJson(list, type);
+    }
+
+
+    public static String convertDistToPut(ArrayList<InfraDetailData> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<InfraStructureDetailData> convertDistrictToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<InfraStructureDetailData>>() {
         }.getType();
         return gson.fromJson(list, type);
     }

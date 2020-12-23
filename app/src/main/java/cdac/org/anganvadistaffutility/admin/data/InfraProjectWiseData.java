@@ -45,7 +45,7 @@ public class InfraProjectWiseData implements  Comparable<InfraProjectWiseData> {
 
 
     public String getProjectcode() {
-        return projectName;
+        return projectCode;
     }
 
     public void setProjectCode(String projectCode) {
@@ -53,6 +53,39 @@ public class InfraProjectWiseData implements  Comparable<InfraProjectWiseData> {
     }
 
     String projectCode;
+
+    public String getCdpoName() {
+        return cdpoName;
+    }
+
+    public void setCdpoName(String cdpoName) {
+        this.cdpoName = cdpoName;
+    }
+
+    String cdpoName;
+
+
+    public String getCdpoNumber() {
+        return cdpoNumber;
+    }
+
+    public void setCdpoNumber(String cdpoNumber) {
+        this.cdpoNumber = cdpoNumber;
+    }
+
+    String cdpoNumber;
+
+
+    public String getCdpoEmail() {
+        return cdpoEmail;
+    }
+
+    public void setCdpoEmail(String cdpoEmail) {
+        this.cdpoEmail = cdpoEmail;
+    }
+
+    String cdpoEmail;
+
 
     @Override
     public int compareTo(InfraProjectWiseData infraProjectWiseData) {

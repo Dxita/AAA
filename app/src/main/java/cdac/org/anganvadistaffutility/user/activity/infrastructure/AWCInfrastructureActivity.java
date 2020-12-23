@@ -34,7 +34,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     private RelativeLayout relativeLayout;
     private UserInfraStructureAdapter userInfraStructureAdapter;
     private List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureData;
-     private List<Integer> infraStructureImageList;
+    private List<Integer> infraStructureImageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
-        userInfraStructureAdapter = new UserInfraStructureAdapter(context, infrastructureData,infraStructureImageList,itemClickListener);
+        userInfraStructureAdapter = new UserInfraStructureAdapter(context, infrastructureData, infraStructureImageList, itemClickListener);
         recyclerView.setAdapter(userInfraStructureAdapter);
     }
 
@@ -121,7 +121,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
                 infrastructureData.addAll(body.getData().getInfrastructureData());
                 infrastructureData = body.getData().getInfrastructureData();
 
-                     setCustomInfraImages();
+                setCustomInfraImages();
                 //setCustomInfraImages();
 
                 userInfraStructureAdapter.notifyDataSetChanged();
@@ -140,8 +140,8 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     @Override
     public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
 
-      startActivity(new Intent(context, InfraDetailsActivity.class).putExtra("infra_id", item.getTimInfraId()).putExtra("item_nameE",item.getTimInfraNamee()).putExtra("item_nameH",item.getTimInfraNameh())
-      .putExtra("tim_accept_status",item.getTimAcceptStatus()));
+        startActivity(new Intent(context, InfraDetailsActivity.class).putExtra("infra_id", item.getTimInfraId()).putExtra("item_nameE", item.getTimInfraNamee()).putExtra("item_nameH", item.getTimInfraNameh())
+                .putExtra("tim_accept_status", item.getTimAcceptStatus()));
 
         // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
         // Log.d("id_infra",item.getTimInfraId());

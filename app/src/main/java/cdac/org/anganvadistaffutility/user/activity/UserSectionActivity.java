@@ -19,6 +19,7 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.beneficiary.ViewBeneficiaryDetailsActivity;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.AWCInfrastructureActivity;
+import cdac.org.anganvadistaffutility.user.activity.infrastructure.AvailableInfraDetailsActivity;
 
 public class UserSectionActivity extends BaseActivity implements View.OnClickListener {
 
@@ -68,7 +69,7 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.infra_data_card) {
-            startActivity(new Intent(context, AWCInfrastructureActivity.class));
+            startActivity(new Intent(context, AvailableInfraDetailsActivity.class));
         } else if (view.getId() == R.id.personal_info_card) {
             startActivity(new Intent(context, HomeActivity.class));
         } else if (view.getId() == R.id.beneficiary_data_card) {

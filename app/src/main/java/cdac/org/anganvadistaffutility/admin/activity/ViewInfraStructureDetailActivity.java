@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -57,7 +58,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         relativeLayout = findViewById(R.id.relativeLayout);
         pieChart = findViewById(R.id.pieChart);
 
-       /* infraID = getIntent().getStringExtra("infra_id");*/
+        infraID = getIntent().getStringExtra("infra_id");
         appPreferences.setAdminInfraId(getIntent().getStringExtra("infra_id"));
 
         pieChart.setUsePercentValues(true);
@@ -94,7 +95,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     private void getInfraDetails() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", appPreferences.getAdminInfraId(),"");
+        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", infraID, "");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
             @Override
             public void onSuccess(InfraStructureDetailData body) {
@@ -178,29 +179,24 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
-        /*List<InfraStructureDetailData.Infradatum> infradata = infraDetailsData.getInfradata();
-        ArrayList<InfraStructureDetailData.Infradatum> infraDatumArrayList = new ArrayList<>(infradata);
-*/
-
+        //  List<InfraStructureDetailData.Infradatum> infradata = infraDetailsData.getInfradata();
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", appPreferences.getAdminInfraId(), infraDetailData.getInfraDetailID());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
             @Override
             public void onSuccess(InfraStructureDetailData body) {
                 //    AppUtils.showToast(context, body.getMessage());
-
-                startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id",infraDetailData.getInfraDetailID()));
-
+                startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id", infraDetailData.getInfraDetailID()));
 
             }
 
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
-            }
-        }));
 
+            }
+
+        }));
 
 
     }

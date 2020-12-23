@@ -9,15 +9,19 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.adapter.DistrictWiseInfrastructuretAdapter;
+import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
+import cdac.org.anganvadistaffutility.admin.data.DistrictWiseInfraData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
+import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
@@ -28,6 +32,7 @@ import retrofit2.Call;
 public class DistrictWiseInfraActivity extends BaseActivity implements DistrictWiseInfrastructuretAdapter.ItemClickListener {
     private RecyclerView recyclerView;
     private InfraStructureDetailData.Data infraDetailsData;
+    List<InfraStructureDetailData.Infradatum> getTjpmProjectInchargeCdpo;
     private int infraCount = 0;
     RelativeLayout relativeLayout;
     private int currentInfraDetailID = -1;
@@ -129,7 +134,8 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
             @Override
             public void onSuccess(InfraDetailProjectData body) {
-               // AppUtils.showToast(context, body.getMessage());
+                // AppUtils.showToast(context, body.getMessage());
+
                 startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("district_id", infraDetailData.getDistrictID()));
 
             }
@@ -140,7 +146,7 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
             }
         }));
 
-
         //
     }
+
 }

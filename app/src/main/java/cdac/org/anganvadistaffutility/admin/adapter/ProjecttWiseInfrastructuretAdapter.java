@@ -38,7 +38,7 @@ public class ProjecttWiseInfrastructuretAdapter extends RecyclerView.Adapter<Pro
     private Context mContext;
     protected List<InfraProjectWiseData> infraDetailData;
     protected ItemClickListener mListener;
-    protected int fixListSize =7;
+    protected int fixListSize = 7;
     private static int totalListSize = 0;
 
     public ProjecttWiseInfrastructuretAdapter(PieChartProjectActivity mContext,
