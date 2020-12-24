@@ -27,19 +27,88 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
-            android:textStyle="bold"
-            android:text="@string/infra_data"
+            android:text="@string/avail_infra_in_aw"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_14sp" />
+            android:textSize="@dimen/textsize_14sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/largeLabel"
+        android:layout_margin="@dimen/margin_05"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_10">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="@dimen/margin_0"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/available_infra_details"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_16" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quantity"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_16" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginBottom="@dimen/margin_80"
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/largeLabel"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_15"
+        android:orientation="horizontal">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_05"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/margin_10"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_14sp" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_05"
+            android:layout_weight="1"
+            android:background="@color/peach"
+            android:padding="@dimen/margin_10"
+            android:text="@string/edit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_14sp" />
+    </LinearLayout>
 
 </RelativeLayout>

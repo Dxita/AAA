@@ -208,7 +208,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
             myViewHolders = holder;
             infrastructureData.get(position);
 
-
             holder.checkBox.setTag(position);
             lastChecked = holder.checkBox;
             lastCheckedPos = 0;

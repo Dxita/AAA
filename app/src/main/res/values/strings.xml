@@ -233,7 +233,7 @@
     <string name="pregnant_woman">Pregnant Woman</string>
     <string name="payment_year">Payment Data of Financial Year:</string>
     <string name="employee_name">Employee Name</string>
-    <string name="add">Add</string>
+    <string name="add">Add New</string>
     <string name="Availbility_in_Infrastructure">Availbility in Infrastructure</string>
     <string name="facility">Facility</string>
     <string name="quantity">Quantity</string>
@@ -245,6 +245,9 @@
     <string name="infra_district">District Wise Infrastructure Availability</string>
     <string name="infra_detail">Available Infrastructures</string>
     <string name="go_back">Go Back</string>
+    <string name="avail_infra_in_aw">Available infrastructue facilities</string>
+    <string name="select_available_facility">"Select Available Infrastructure "</string>
+    <string name="available_infra_details">Available Infrastructure Detail</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

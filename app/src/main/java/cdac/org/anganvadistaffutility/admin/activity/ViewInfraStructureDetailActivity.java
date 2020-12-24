@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.admin.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -40,8 +41,11 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
     private RelativeLayout relativeLayout;
     private String infraID = "";
 
-    private InfraStructureDetailData.Data infraDetailsData;
+    //  private InfraStructureDetailData.Data infraDetailsData;
     private InfraDetailData infraDetailData;
+
+    private List<InfraStructureDetailData.Data> infraDetailsDataList;
+    //  private List<InfraDetailData> infraDetailDataList;
     private int infraCount = 0;
     private int previousInfraDetailID = -1;
     private int currentInfraDetailID = -1;
@@ -55,6 +59,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_view_infra_detail);
 
+        infraDetailsDataList = new ArrayList<>();
         relativeLayout = findViewById(R.id.relativeLayout);
         pieChart = findViewById(R.id.pieChart);
 
@@ -102,12 +107,24 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 //    AppUtils.showToast(context, body.getMessage());
 
-                infraDetailsData = body.getData();
+               /* infraDetailsData = body.getData();
+                infraDetailsData.setInfradata(body.getData().getInfradata());
+                Log.d("bhbhbhbhbhb", body.toString());
                 if (infraDetailsData.getInfradata().size() > 0) {
                     if (pieChart.getVisibility() == View.GONE) {
                         pieChart.setVisibility(View.VISIBLE);
                     }
                     setInfraDetailData(infraDetailsData);
+                }*/
+
+                infraDetailsDataList.add(body.getData());
+                for (int i = 0; i < infraDetailsDataList.size(); i++) {
+                    if (infraDetailsDataList.get(i).getInfradata().size() > 0) {
+                        if (pieChart.getVisibility() == View.GONE) {
+                            pieChart.setVisibility(View.VISIBLE);
+                        }
+                        setInfraDetailData(body.getData());
+                    }
                 }
             }
 
@@ -151,7 +168,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
         for (InfraDetailData infraDetailData : infraDetailDataList) {
             chartInfraCount.add(new PieEntry(Integer.parseInt(infraDetailData.getInfraCount()),
-                    infraDetailData.getInfraName() + "(" + infraDetailData.getInfraCount() + ")"));
+                    infraDetailData.getInfraName() + "(" + infraDetailData.getInfraCount() + ")" + infraDetailData.getInfraDetailID()));
         }
 
         PieDataSet dataSet = new PieDataSet(chartInfraCount, "");
@@ -179,30 +196,21 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        //  List<InfraStructureDetailData.Infradatum> infradata = infraDetailsData.getInfradata();
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", appPreferences.getAdminInfraId(), infraDetailData.getInfraDetailID());
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
-            @Override
-            public void onSuccess(InfraStructureDetailData body) {
-                //    AppUtils.showToast(context, body.getMessage());
-                startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id", infraDetailData.getInfraDetailID()));
+        int pos= (int) e.getX();
+        Log.d("dncnndjcn", String.valueOf(pos));
+      /*  int position = (int) h.getX();
+      *//*  InfraStructureDetailData.Infradatum infradata = infraDetailsData.getInfradata().get((int)h.getX());
 
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
-
-            }
-
-        }));
-
-
+        Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();*//*
+        InfraStructureDetailData.Infradatum infradatum = infraDetailsDataList.get(position).getInfradata().get(position);
+        Toast.makeText(context, "" + infradatum.getTidInfraDetailId(), Toast.LENGTH_SHORT).show();*/
+        startActivity(new Intent(context,DistrictWiseInfraActivity.class).putExtra("infra_detail_id",infraDetailData.getInfraDetailID()));
     }
 
     @Override
     public void onNothingSelected() {
         // do nothing
     }
+
+
 }

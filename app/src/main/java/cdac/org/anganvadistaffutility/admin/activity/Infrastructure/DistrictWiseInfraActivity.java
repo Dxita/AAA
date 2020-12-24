@@ -1,10 +1,13 @@
 package cdac.org.anganvadistaffutility.admin.activity.Infrastructure;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -127,24 +130,30 @@ public class DistrictWiseInfraActivity extends BaseActivity implements DistrictW
         recyclerView.setAdapter(districtWiseInfrastructuretAdapter);
     }
 
+
+
+
     @Override
     public void onItemClick(Object item) {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraDetailProjectData> call = apiInterface.getInfrastructureProjectDetails("proj", appPreferences.getAdminInfraId(), infraDetailData.getDistrictID());
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
-            @Override
-            public void onSuccess(InfraDetailProjectData body) {
-                // AppUtils.showToast(context, body.getMessage());
 
-                startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("district_id", infraDetailData.getDistrictID()));
 
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
-            }
-        }));
+            ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+            Call<InfraDetailProjectData> call = apiInterface.getInfrastructureProjectDetails("proj", appPreferences.getAdminInfraId(), infraDetailData.getDistrictID());
+            call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
+                @Override
+                public void onSuccess(InfraDetailProjectData body) {
+                    // AppUtils.showToast(context, body.getMessage());
+                    startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("district_id", infraDetailData.getDistrictID()));
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+                }
+            }));
+
+
 
         //
     }

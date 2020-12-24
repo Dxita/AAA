@@ -12,6 +12,7 @@ import cdac.org.anganvadistaffutility.public_u.activity.data.VerifyPublicData;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.AddNewInfrastructureData;
+import cdac.org.anganvadistaffutility.user.data.AvailableAwInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
@@ -121,7 +122,7 @@ public interface ApiInterface {
     @POST("api_js_infrastructure_detail_by_infra_and_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AddNewInfrastructureData> addNewInfraList(@Field("tjaid_tim_infra_id") String tjaid_tim_infra_id,
-                                                          @Field("tjaid_awc_id") String tjaid_awc_id);
+                                                   @Field("tjaid_awc_id") String tjaid_awc_id);
 
 
     //  InfraStructure Details (Admin Side)
@@ -130,14 +131,14 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<InfraStructureDetailData> getInfrastructureDetails(@Field("filterby") String filterType,
                                                             @Field("infra_id") String infraID,
-                                                            @Field("infra_detail_id")String infra_detail_id);
+                                                            @Field("infra_detail_id") String infra_detail_id);
 
     //Infra details)project wise in admin side)
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<InfraDetailProjectData> getInfrastructureProjectDetails(@Field("filterby") String filterType,
-                                                          @Field("infra_id") String infraID,
-                                                          @Field("distid")String district_id);
+                                                                 @Field("infra_id") String infraID,
+                                                                 @Field("distid") String district_id);
 
 
     // Get Beneficiary Criteria List
@@ -158,14 +159,21 @@ public interface ApiInterface {
     Call<UpdateInfrastructureData> updateInfrastructureData(@Field("infra_id") String infra_id,
                                                             @Field("awc_id") String awc_id,
                                                             @Field("tim_accept_status") String tim_accept_status,
-                                                            @Field("qty")String qty,
-                                                            @Field("infra_detail_id")String infra_detail_id,
-                                                            @Field("last_infra_detail_id")String last_infra_detail_id);
+                                                            @Field("qty") String qty,
+                                                            @Field("infra_detail_id") String infra_detail_id,
+                                                            @Field("last_infra_detail_id") String last_infra_detail_id);
 
 
-
+    //public side
     @POST("api_js_public_user_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<VerifyPublicData> verifyPublic(@Field("mobileno") String mobileNumber);
+
+
+    //available infrastructure detail data as per AWC(user side)
+    @POST("api_available_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AvailableAwInfraDetailData> availableInfrastructureData(@Field("tjaid_awc_id") String tjaid_awc_id);
+
 
 }

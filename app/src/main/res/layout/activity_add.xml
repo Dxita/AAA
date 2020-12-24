@@ -39,35 +39,22 @@
         android:layout_below="@id/largeLabel">
 
         <LinearLayout
-            android:padding="@dimen/margin_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/facility"
-                android:padding="@dimen/margin_05"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:hint="@string/facility"
-                android:singleLine="true"
-                android:textSize="@dimen/textsize_17sp" />
-
-
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-                android:padding="@dimen/margin_05"
                 android:id="@+id/sp_beneficiary_criteria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_horizontal_margin"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:padding="@dimen/margin_05"
                 app:smsp_floatingLabelColor="@color/colorPrimaryDark"
                 app:smsp_floatingLabelSize="@dimen/textsize_17sp"
                 app:smsp_floatingLabelText="@string/beneficiary_criteria"
-                app:smsp_hint="@string/Availbility_in_Infrastructure"
+                app:smsp_hint="@string/select_available_facility"
                 app:smsp_itemColor="@color/black"
                 app:smsp_itemListColor="@color/black"
                 app:smsp_multilineError="false"
@@ -97,17 +84,13 @@
                 app:spinner_popup_background="@color/peach"
                 app:spinner_popup_elevation="@dimen/margin_10" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/quantity"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginBottom="@dimen/margin_80"
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:padding="@dimen/margin_05"
-                android:hint="@string/quantity"
-                android:inputType="number"
-                android:maxLength="3"
-                android:singleLine="true"
-                android:textSize="@dimen/textsize_17sp" />
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
         </LinearLayout>

@@ -41,10 +41,10 @@ public class AddActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_add);
         relativeLayout=findViewById(R.id.relativeLayout);
-        facility_name=findViewById(R.id.facility);
 
 
-        if (savedInstanceState == null) {
+
+     /*   if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
                 infra_id = null;
@@ -61,7 +61,6 @@ public class AddActivity extends BaseActivity {
             item_nameE = (String) savedInstanceState.getSerializable("infra_namee");
         }
 
-
         if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
          facility_name.setText(item_nameH);
 
@@ -71,10 +70,10 @@ public class AddActivity extends BaseActivity {
         sp_beneficiary_criteria = findViewById(R.id.sp_beneficiary_criteria);
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            getBeneficiaryCriteriaData();
+           // getBeneficiaryCriteriaData();
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
-        }
+        }*/
     }
 
     private void getBeneficiaryCriteriaData() {
