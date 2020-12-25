@@ -37,7 +37,7 @@ import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import retrofit2.Call;
 
-public class EditActivity extends BaseActivity implements View.OnClickListener{
+public class EditActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout relativeLayout;
     AppCompatButton submit;
     RecyclerView recyclerView;
@@ -160,7 +160,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
-            Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                /* infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -177,7 +177,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
         }));
 
     }
-
 
 
     public static class AwcBuildingAdapter extends RecyclerView.Adapter<AwcBuildingAdapter.MyViewHolders> {
@@ -230,7 +229,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         infradetail_id = infrastructureData.get(position).getTidInfraDetailId();
-                 //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
+                        //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
                         lastChecked = null;
@@ -244,14 +243,16 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     // TODO Auto-generated method stub
                 }
+
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                     // TODO Auto-generated method stub
                 }
+
                 @Override
                 public void afterTextChanged(Editable s) {
                     quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                  //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
                     // Place the logic here for your output edittext
                 }
             });
@@ -271,8 +272,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener{
         public int getItemCount() {
             return infrastructureData.size();
         }
-
-
 
 
         static class MyViewHolders extends RecyclerView.ViewHolder {

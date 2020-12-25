@@ -167,7 +167,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         }
 
         for (InfraDetailData infraDetailData : infraDetailDataList) {
-                       chartInfraCount.add(new PieEntry(Integer.parseInt(infraDetailData.getInfraCount()),
+            chartInfraCount.add(new PieEntry(Integer.parseInt(infraDetailData.getInfraCount()),
                     infraDetailData.getInfraName() + "(" + infraDetailData.getInfraCount() + ")"));
         }
 
@@ -206,7 +206,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                 "Value: " + e.getY() + ", index: " + h.getX()
                         + ", DataSet index: " + h.getDataSetIndex());
 
-      startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id", infraDetailData.getInfraDetailID()));
+        startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id", infraDetailData.getInfraDetailID()));
     }
 
     @Override
