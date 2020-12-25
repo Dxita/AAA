@@ -240,13 +240,13 @@
     <string name="quantity">मात्रा</string>
     <string name="AWC_Infrastructure_Facilities">AWC इन्फ्रास्ट्रक्चर सुविधाएं</string>
     <string name="edit_AWC_Infrastructure_Facilities">एडब्ल्यूसी इन्फ्रास्ट्रक्चर सुविधाएं संपादित करें</string>
-    <string name="add_AWC_Infrastructure_Facilities">ऐडब्ल्यूसी इन्फ्रास्ट्रक्चर सुविधाएं जोड़ें</string>
+    <string name="add_AWC_Infrastructure_Facilities">नई आंगनवाड़ी आधारभूत सुविधा जोड़ें</string>
     <string name="qty">मात्रा</string>
     <string name="project_wise_available_infra_data">प्रोजेक्ट वाइज इन्फ्रास्ट्रक्चर उपलब्धता</string>
     <string name="infra_district">डिस्ट्रिक्ट वाइज इन्फ्रास्ट्रक्चर रिक्वायरमेंट उपलब्धता</string>
     <string name="infra_detail">उपलब्ध इन्फ्रास्ट्रक्चर</string>
     <string name="go_back">पिछली स्क्रीन</string>
-    <string name="avail_infra_in_aw">उपलब्ध अवसंरचनात्मक सुविधाएँ</string>
-    <string name="select_available_facility">उपलब्ध इन्फ्रास्ट्रक्चर का चयन करें</string>
-    <string name="available_infra_details">उपलब्ध इन्फ्रास्ट्रक्चर डिटेल</string>
+    <string name="avail_infra_in_aw">उपलब्ध आधारभूत सुविधाएँ</string>
+    <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
+    <string name="available_infra_details">उपलब्ध आधारभूत विवरण</string>
 </resources>

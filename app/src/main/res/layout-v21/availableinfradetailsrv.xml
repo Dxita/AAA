@@ -12,58 +12,61 @@
         app:cardBackgroundColor="@android:color/transparent">
 
         <LinearLayout
+            android:layout_marginRight="@dimen/margin_05"
+            android:layout_marginLeft="@dimen/margin_05"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/margin_30"
-                android:layout_height="@dimen/margin_30"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/margin_08"
-                android:layout_marginRight="@dimen/margin_08"
-                app:srcCompat="@drawable/ic_user_admin" />
+            <!--       <androidx.appcompat.widget.AppCompatImageView
+                       android:layout_width="@dimen/margin_20"
+                       android:layout_height="@dimen/margin_20"
+                       android:layout_gravity="center_vertical"
+                       app:srcCompat="@drawable/ic_user_admin" />-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/infra_name"
                 android:layout_width="wrap_content"
-                android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_08"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_08"
-                android:textSize="@dimen/font_16" />
+                android:layout_marginBottom="@dimen/margin_08"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:text="-"
-                android:padding="@dimen/margin_08"
-                android:layout_marginBottom="@dimen/margin_08"
-                android:layout_marginTop="@dimen/margin_08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_08"
+                android:layout_marginBottom="@dimen/margin_08"
+                android:text="-"
+                android:padding="@dimen/margin_05"
                 android:textSize="@dimen/textsize_17sp" />
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_tv"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_08"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_08"
-                android:textSize="@dimen/font_16" />
+                android:layout_marginBottom="@dimen/margin_08"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_15sp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
 
                 android:id="@+id/qty_tv"
-
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/margin_10"
                 android:layout_marginRight="@dimen/margin_10"
-                android:gravity="right"
                 android:layout_weight="1"
+                android:gravity="right"
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_17sp" />

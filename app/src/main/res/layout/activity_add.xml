@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
+            android:gravity="center"
             android:text="@string/add_AWC_Infrastructure_Facilities"
             android:textAllCaps="true"
             android:textColor="@color/black"
@@ -41,19 +42,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
             <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+
                 android:id="@+id/sp_beneficiary_criteria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:padding="@dimen/margin_05"
                 app:smsp_floatingLabelColor="@color/colorPrimaryDark"
-                app:smsp_floatingLabelSize="@dimen/textsize_17sp"
-                app:smsp_floatingLabelText="@string/beneficiary_criteria"
+                app:smsp_floatingLabelSize="@dimen/textsize_15sp"
+                app:smsp_floatingLabelText="@string/avail_infra_in_aw"
                 app:smsp_hint="@string/select_available_facility"
                 app:smsp_itemColor="@color/black"
                 app:smsp_itemListColor="@color/black"
@@ -63,16 +63,14 @@
             <com.skydoves.powerspinner.PowerSpinnerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:background="@color/peach"
                 android:gravity="start"
-                android:hint="@string/beneficiary_criteria"
+                android:hint="@string/avail_infra_in_aw"
                 android:padding="@dimen/margin_10"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="@dimen/textsize_14sp"
+                android:textSize="@dimen/font_16"
+                android:textStyle="bold"
                 android:visibility="gone"
                 app:spinner_arrow_gravity="end"
                 app:spinner_arrow_padding="@dimen/margin_10"
@@ -86,10 +84,10 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginBottom="@dimen/margin_80"
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_80"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

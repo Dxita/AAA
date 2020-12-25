@@ -16,6 +16,8 @@ import cdac.org.anganvadistaffutility.user.data.AvailableAwInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.RemainingInfraDetailData;
+import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
@@ -174,6 +176,17 @@ public interface ApiInterface {
     @POST("api_available_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AvailableAwInfraDetailData> availableInfrastructureData(@Field("tjaid_awc_id") String tjaid_awc_id);
+
+    //remaining infrastructure
+    @POST("api_reaming_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<RemainingInfrastructureData> remainingInfrastructureData(@Field("tjaid_awc_id") String tjaid_awc_id);
+
+//add remaining infra detail
+    @POST("api_reaming_infradetail_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<RemainingInfraDetailData> remainingInfraDetailData(@Field("tjaid_awc_id") String tjaid_awc_id,
+                                                            @Field("tjaid_tim_infra_id")String tjaid_tim_infra_id);
 
 
 }
