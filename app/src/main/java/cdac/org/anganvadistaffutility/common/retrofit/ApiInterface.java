@@ -11,6 +11,7 @@ import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.public_u.activity.data.VerifyPublicData;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
+import cdac.org.anganvadistaffutility.user.data.AddInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.AddNewInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.AvailableAwInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
@@ -187,6 +188,13 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<RemainingInfraDetailData> remainingInfraDetailData(@Field("tjaid_awc_id") String tjaid_awc_id,
                                                             @Field("tjaid_tim_infra_id")String tjaid_tim_infra_id);
+
+    @POST("api_add_reaming_infradetail_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AddInfrastructureData> addInfrastructureData(@Field("awc_id") String awc_id,
+                                                         @Field("infra_id")String infra_id,
+                                                         @Field("infra_detail_id")String infra_detail_id,
+                                                         @Field("quantity")String quantity);
 
 
 }
