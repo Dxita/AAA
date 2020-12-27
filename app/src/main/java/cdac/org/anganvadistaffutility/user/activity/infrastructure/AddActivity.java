@@ -56,7 +56,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     AppCompatButton btn_submit;
     private static String infra_id;
-    private static String infra_detail_id, quantity;
+    private static String infra_detail_id,quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,10 +249,10 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                             selectedPosition = position;
                             *//*    if (lastChecked != null) {
 
-                             *//**//*   lastChecked.setChecked(false);
+             *//**//*   lastChecked.setChecked(false);
                                 holder.edtx_qty.setText("1");*//**//*
                             }*//*
-                          *//*  lastChecked = cb;
+             *//*  lastChecked = cb;
                             lastCheckedPos = clickedPos;
 *//*
                             // Toast.makeText(context, empdata.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
@@ -287,44 +287,49 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
 
 
             } else {*/
-                holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
-                            selectedStrings.add(holder.checkBox.getText().toString());
-                            holder.edtx_qty.setEnabled(true);
-                            holder.edtx_qty.setText("1");
-                            infra_id = empdata.get(position).getTidTimInfraId();
-                            infra_detail_id = empdata.get(position).getTidInfraDetailId();
+            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        selectedStrings.add(holder.checkBox.getText().toString());
+                        holder.edtx_qty.setEnabled(true);
+                        holder.edtx_qty.setText("1");
+                        infra_id = empdata.get(position).getTidTimInfraId();
+                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
 
-                            holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-                                @Override
-                                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                    // TODO Auto-generated method stub
-                                }
+                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                // TODO Auto-generated method stub
+                            }
 
-                                @Override
-                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                    // TODO Auto-generated method stub
-                                }
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                // TODO Auto-generated method stub
+                            }
 
-                                @Override
-                                public void afterTextChanged(Editable s) {
+                            @Override
+                            public void afterTextChanged(Editable s) {
 
+                                if (quantity == null) {
+                                    quantity = "1";
+                                } else {
                                     quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                    //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                    //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
-                                    // Place the logic here for your output edittext
+
                                 }
-                            });
-                            Toast.makeText(context, "" + infra_id + infra_detail_id + quantity, Toast.LENGTH_SHORT).show();
+                                //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                                // Place the logic here for your output edittext
+                            }
+                        });
+                        Toast.makeText(context, "" + infra_id + infra_detail_id + quantity, Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            selectedStrings.remove(holder.checkBox.getText().toString());
-                        }
-
+                    } else {
+                        selectedStrings.remove(holder.checkBox.getText().toString());
                     }
-                });
+
+                }
+            });
 
 
             holder.setData(context, empdata.get(position));
