@@ -248,6 +248,7 @@
     <string name="avail_infra_in_aw">Available infrastructue facilities</string>
     <string name="select_available_facility">Select Available Infrastructure Facility</string>
     <string name="available_infra_details">Available Infrastructure Details</string>
+    <string name="avail_infra_and_deatils">Available infrastructure &amp; their details</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

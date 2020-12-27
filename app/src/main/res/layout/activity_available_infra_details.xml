@@ -46,32 +46,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:orientation="horizontal"
-            android:padding="@dimen/margin_10">
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="@dimen/margin_0"
-
-                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/margin_40"
                 android:layout_weight="1"
-                android:text="@string/available_infra_details"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/avail_infra_and_deatils"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_16" />
-
             <androidx.appcompat.widget.AppCompatTextView
+                android:padding="@dimen/margin_05"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/margin_40"
+                android:background="@color/colorPrimaryDark"
                 android:text="@string/quantity"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_16" />
+
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginBottom="@dimen/margin_80"
+
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_80"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>
