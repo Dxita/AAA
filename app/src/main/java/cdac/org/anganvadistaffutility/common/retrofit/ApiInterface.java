@@ -5,6 +5,7 @@ import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
+import cdac.org.anganvadistaffutility.admin.data.InfrasDetailSectorData;
 import cdac.org.anganvadistaffutility.admin.data.InfrastructureDetailSumData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
@@ -143,6 +144,12 @@ public interface ApiInterface {
     Call<InfraDetailProjectData> getInfrastructureProjectDetails(@Field("filterby") String filterType,
                                                                  @Field("infra_id") String infraID,
                                                                  @Field("distid") String district_id);
+//sector data(infra admin)
+    @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<InfrasDetailSectorData> getInfraDetailSectordata(@Field("filterby") String filterType,
+                                                          @Field("infra_id") String infraID,
+                                                          @Field("projid") String project_id);
 
 
     // Get Beneficiary Criteria List

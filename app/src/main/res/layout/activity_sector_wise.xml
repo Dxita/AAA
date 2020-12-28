@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_05"
-                android:text="@string/project_wise_available_infra_data"
+                android:text="@string/sector_wise"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/font_12"

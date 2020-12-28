@@ -1,6 +1,7 @@
 package cdac.org.anganvadistaffutility.admin.activity.Infrastructure;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,15 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -33,12 +31,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
-import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
-import cdac.org.anganvadistaffutility.admin.data.DistrictWiseInfraData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
+import cdac.org.anganvadistaffutility.admin.data.InfraProjectWiseData;
+import cdac.org.anganvadistaffutility.admin.data.InfraSectorWiseData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
-import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
+import cdac.org.anganvadistaffutility.admin.data.InfrasDetailSectorData;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
@@ -46,38 +44,36 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import retrofit2.Call;
 
-public class DistrictWiseInfraActivity extends BaseActivity {
+public class SectorWiseActivity extends BaseActivity {
     private RecyclerView recyclerView;
-    private InfraStructureDetailData.Data infraDetailsData;
-    List<InfraStructureDetailData.Infradatum> getTjpmProjectInchargeCdpo;
+    private InfrasDetailSectorData.Data infraDetailsData;
+    List<InfrasDetailSectorData.Infradatum> getTjpmProjectInchargeCdpo;
     private int infraCount = 0;
     RelativeLayout relativeLayout;
     private int currentInfraDetailID = -1;
-    private InfraDetailData infraDetailData;
-    private String infra_detail_id, infra_id;
-    //  private DistrictWiseInfrastructuretAdapter.ItemClickListener itemClickListener;
+    private InfraSectorWiseData infraDetailData;
+    private String project_id, infra_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_demo);
-        TextView txt_title = findViewById(R.id.txt_title);
+        setContentView(R.layout.activity_sector_wise);
 
-        infra_detail_id = getIntent().getStringExtra("infra_detail_id");
         infra_id = getIntent().getStringExtra("infra_id");
-        relativeLayout = findViewById(R.id.relativeLayout);
-        //  itemClickListener = this;
+        project_id = getIntent().getStringExtra("project_id");
+        TextView txt_title = findViewById(R.id.txt_title);
 
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
+
         if (AppUtils.isNetworkConnected(context)) {
-            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            // AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getInfraDistrictData();
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
@@ -86,13 +82,21 @@ public class DistrictWiseInfraActivity extends BaseActivity {
     }
 
     private void getInfraDistrictData() {
+
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraStructureDetailData> call = apiInterface.getInfrastructureDetails("dist", infra_id, infra_detail_id);
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraStructureDetailData>() {
+        Call<InfrasDetailSectorData> call = apiInterface.getInfraDetailSectordata("sec", infra_id, project_id);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfrasDetailSectorData>() {
             @Override
-            public void onSuccess(InfraStructureDetailData body) {
-                //    AppUtils.showToast(context, body.getMessage());
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+            public void onSuccess(InfrasDetailSectorData body) {
+                //      AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                //  AppUtils.showToast(context, body.getMessage());
+                //  infraDetailsData = body.getData();
+               /* if (infraDetailsData.getInfradata().size() > 0) {
+                    if (pieChart.getVisibility() == View.GONE) {
+                        pieChart.setVisibility(View.VISIBLE);
+                    }
+                    setUserData(infraDetailsData);
+                }*/
 
                 infraDetailsData = body.getData();
 
@@ -103,20 +107,20 @@ public class DistrictWiseInfraActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                //     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
     }
 
-    private void setUserData(InfraStructureDetailData.Data detailData) {
+    private void setUserData(InfrasDetailSectorData.Data detailData) {
         int previousInfraDetailID;
-        List<InfraDetailData> infraDetailDataList = new ArrayList<>();
+        List<InfraSectorWiseData> infraDetailDataList = new ArrayList<>();
         //  List<PieEntry> chartInfraCount = new ArrayList<>();
 
-        for (InfraStructureDetailData.Infradatum infraDatum : detailData.getInfradata()) {
+        for (InfrasDetailSectorData.Infradatum infraDatum : detailData.getInfradata()) {
             previousInfraDetailID = currentInfraDetailID;
-            currentInfraDetailID = Integer.parseInt(infraDatum.getDistid());
+            currentInfraDetailID = Integer.parseInt(infraDatum.getSectorid());
 
             // To make sum of all same infra detail data and finally add to list
             // add same id data only once
@@ -133,9 +137,9 @@ public class DistrictWiseInfraActivity extends BaseActivity {
                 //infraCount = infraCount + Integer.parseInt(infraDatum.getCount());
                 infraCount = Integer.parseInt(infraDatum.getCount());
             } else {
-                infraDetailData = new InfraDetailData();
-                infraDetailData.setDistrictID(infraDatum.getDistid());
-                infraDetailData.setDistrict(infraDatum.getDistrict());
+                infraDetailData = new InfraSectorWiseData();
+                infraDetailData.setSectorid(infraDatum.getSectorid());
+                infraDetailData.setSecnamee(infraDatum.getSecnamee());
                 infraCount = Integer.parseInt(infraDatum.getCount());
             }
             infraDetailData.setInfraCount("" + infraCount);
@@ -146,16 +150,15 @@ public class DistrictWiseInfraActivity extends BaseActivity {
         recyclerView.setAdapter(districtWiseInfrastructuretAdapter);
     }
 
-
-    public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<DistrictWiseInfrastructuretAdapter.ViewHolder> {
+    public static class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<DistrictWiseInfrastructuretAdapter.ViewHolder> {
         private final Context mContext;
-        protected List<InfraDetailData> infraDetailData;
+        protected List<InfraSectorWiseData> infraDetailData;
         //  protected ItemClickListener mListener;
         protected int fixListSize = 7;
         private int totalListSize = 0;
 
 
-        public DistrictWiseInfrastructuretAdapter(Context mContext, List<InfraDetailData> infraDetailDataList) {
+        public DistrictWiseInfrastructuretAdapter(Context mContext, List<InfraSectorWiseData> infraDetailDataList) {
 
             this.mContext = mContext;
             this.infraDetailData = infraDetailDataList;
@@ -198,7 +201,7 @@ public class DistrictWiseInfraActivity extends BaseActivity {
 
             protected TextView txt_page_count;
             protected View layout;
-            protected List<InfraDetailData> infraDetailData;
+            protected List<InfraSectorWiseData> infraDetailData;
 
             public ViewHolder(@NonNull View v) {
                 super(v);
@@ -232,7 +235,7 @@ public class DistrictWiseInfraActivity extends BaseActivity {
             }
 
 
-            public void setData(int position, List<InfraDetailData> infraDetailData) {
+            public void setData(int position, List<InfraSectorWiseData> infraDetailData) {
                 this.infraDetailData = infraDetailData;
 
                 int pagePosition = position + 1;
@@ -256,7 +259,7 @@ public class DistrictWiseInfraActivity extends BaseActivity {
                     if (position == 0 && j < fixListSize) {
 
                         noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                   /*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
                             infraDetailData.get(j).getDistrict() + " (" + infraDetailData.get(j).getInfraCount() + ")"
                             , infraDetailData.get(j).getDistrictID()));
@@ -266,51 +269,51 @@ public class DistrictWiseInfraActivity extends BaseActivity {
 
                     } else if (position == 1 && j >= fixListSize && j < 2 * fixListSize) {
                         noOfEmp2.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp2, "");
                         pieData = new PieData(dataSet);
 
                     } else if (position == 2 && j >= 2 * fixListSize && j < 3 * fixListSize) {
                         noOfEmp3.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp3, "");
                         pieData = new PieData(dataSet);
 
                     } else if (position == 3 && j >= 3 * fixListSize && j < 4 * fixListSize) {
                         noOfEmp4.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp4, "");
                         pieData = new PieData(dataSet);
 
                     } else if (position == 4 && j >= 4 * fixListSize && j < 5 * fixListSize) {
                         noOfEmp5.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp5, "");
                         pieData = new PieData(dataSet);
                     } else if (position == 5 && j >= 5 * fixListSize && j < 6 * fixListSize) {
                         noOfEmp6.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp6, "");
                         pieData = new PieData(dataSet);
                     } else if (position == 6 && j >= 6 * fixListSize && j < 7 * fixListSize) {
                         noOfEmp7.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp7, "");
                         pieData = new PieData(dataSet);
 
                     } else if (position == 7 && j >= 7 * fixListSize && j < 8 * fixListSize) {
                         noOfEmp8.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp8, "");
                         pieData = new PieData(dataSet);
                     } else if (position == 8 && j >= 8 * fixListSize && j < 9 * fixListSize) {
                         noOfEmp9.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp9, "");
                         pieData = new PieData(dataSet);
                     } else if (position == 9 && j >= 9 * fixListSize && j < 10 * fixListSize) {
                         noOfEmp10.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
-                                infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
+                                infraDetailData.get(j).getSecnamee() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                         dataSet = new PieDataSet(noOfEmp10, "");
                         pieData = new PieData(dataSet);
                     }
@@ -345,7 +348,7 @@ public class DistrictWiseInfraActivity extends BaseActivity {
             /*    Toast.makeText(mContext, ""
                         + infraDetailData.get(pos).getDistrictID(), Toast.LENGTH_SHORT).show();
 */
-                startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("infra_id", infra_id).putExtra("district_id", infraDetailData.get(pos).getDistrictID()));
+              //  startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("infra_id", infra_id).putExtra("district_id", infraDetailData.get(pos).getDistrictID()));
 
           /*  if (mListener != null) {
                 mListener.onItemClick(e.getData());
@@ -358,15 +361,5 @@ public class DistrictWiseInfraActivity extends BaseActivity {
             }
         }
     }
-
-
-/*    @Override
-    public void onItemClick(Object item) {
-
-        startActivity(new Intent(context, PieChartProjectActivity.class).putExtra("infra_id",infra_id)
-                .putExtra("district_id",infraDetailsData.getInfradata().get(0).getDistid()));
-
-        //
-    }*/
 
 }

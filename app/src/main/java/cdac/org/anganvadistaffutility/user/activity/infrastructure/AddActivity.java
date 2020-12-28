@@ -279,7 +279,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                     }
                 });
             } else {*/
-            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           /* holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
@@ -322,8 +322,51 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
 
                 }
             });
+*/
 
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //  if (tim_accept_status.equals("1")) {
+                    final boolean isChecked = holder.checkBox.isChecked();
+                    CheckBox cb = (CheckBox) view;
+                    int clickedPos = (Integer) cb.getTag();
+                    if (cb.isChecked()) {
+                        if (lastChecked != null) {
+                            lastChecked.setChecked(false);
+                        }
+                        lastChecked = cb;
+                        lastCheckedPos = clickedPos;
+                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
 
+                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                // TODO Auto-generated method stub
+                            }
+
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                // TODO Auto-generated method stub
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                                // Place the logic here for your output edittext
+                            }
+                        });
+
+                        //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
+                        //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                    } else {
+                        lastChecked = null;
+                    }
+
+                }
+            });
+            quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
             holder.setData(context, empdata.get(position));
 
         }

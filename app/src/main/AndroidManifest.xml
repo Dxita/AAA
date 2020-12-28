@@ -32,6 +32,10 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
+        <activity android:name=".admin.activity.Infrastructure.AanganwadiListActivity"></activity>
+        <activity
+            android:name=".admin.activity.Infrastructure.SectorWiseActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".user.activity.infrastructure.AvailableInfraDetailsActivity" />
         <activity
             android:name=".admin.activity.Infrastructure.DistrictWiseInfraActivity"

@@ -32,20 +32,19 @@ import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraProjectWiseData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
+/*
 
 public class ProjecttWiseInfrastructuretAdapter extends RecyclerView.Adapter<ProjecttWiseInfrastructuretAdapter.ViewHolder> {
 
     private Context mContext;
     protected List<InfraProjectWiseData> infraDetailData;
-    protected ItemClickListener mListener;
     protected int fixListSize = 7;
     private static int totalListSize = 0;
 
     public ProjecttWiseInfrastructuretAdapter(PieChartProjectActivity mContext,
-                                              List<InfraProjectWiseData> infraDetailProjectDataList, ItemClickListener itemClickListener) {
+                                              List<InfraProjectWiseData> infraDetailProjectDataList) {
         this.mContext = mContext;
         this.infraDetailData = infraDetailProjectDataList;
-        this.mListener = itemClickListener;
     }
 
     @NonNull
@@ -140,10 +139,12 @@ public class ProjecttWiseInfrastructuretAdapter extends RecyclerView.Adapter<Pro
 
                     noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
                             infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                  /*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
+                  */
+/*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
                             infraDetailData.get(j).getDistrict() + " (" + infraDetailData.get(j).getInfraCount() + ")"
                             , infraDetailData.get(j).getDistrictID()));
-                    */
+                    *//*
+
                     dataSet = new PieDataSet(noOfEmp1, "");
                     pieData = new PieData(dataSet);
 
@@ -225,15 +226,7 @@ public class ProjecttWiseInfrastructuretAdapter extends RecyclerView.Adapter<Pro
         @Override
         public void onValueSelected(Entry e, Highlight h) {
 
-            if (mListener != null) {
-                mListener.onItemClick(infraDetailData);
 
-            }
-            /*for (InfraProjectWiseData infraProjectWiseData: infraDetailData){
-                if (infraProjectWiseData.getProjectname().equalsIgnoreCase(e.toString())){
-                    Toast.makeText(mContext, "fjghfghghg", Toast.LENGTH_SHORT).show();
-                }
-            }*/
 
         }
 
@@ -243,3 +236,4 @@ public class ProjecttWiseInfrastructuretAdapter extends RecyclerView.Adapter<Pro
         }
     }
 }
+*/

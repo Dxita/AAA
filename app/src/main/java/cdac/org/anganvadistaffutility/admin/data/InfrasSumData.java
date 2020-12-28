@@ -1,6 +1,18 @@
 package cdac.org.anganvadistaffutility.admin.data;
 
-public class InfrasSumData {
+public class InfrasSumData implements Comparable<InfrasSumData> {
+
+    String count;
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+
     String infraSum;
 
     public String getInfraSum() {
@@ -31,6 +43,10 @@ public class InfrasSumData {
 
     String infraDetailID;
 
+    @Override
+    public int compareTo(InfrasSumData infrasSumData) {
+        return this.getInfraDetailID().compareTo(infrasSumData.infraDetailID);
+    }
 }
 
 

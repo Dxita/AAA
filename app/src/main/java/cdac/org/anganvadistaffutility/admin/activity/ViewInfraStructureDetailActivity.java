@@ -45,7 +45,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     private InfrastructureDetailSumData.Data infraDetailsData;
     private InfrasSumData infraDetailData;
-    private int infraCount = 0;
+    private int infraCount=0;
     private int previousInfraDetailID = -1;
     private int currentInfraDetailID = -1;
     private PieChart pieChart;
@@ -105,11 +105,16 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                 //    AppUtils.showToast(context, body.getMessage());
 
                 infraDetailsData = body.getData();
-                if (infraDetailsData.getInfradata().size() > 0) {
+
+                for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
                     if (pieChart.getVisibility() == View.GONE) {
                         pieChart.setVisibility(View.VISIBLE);
                     }
                     setInfraDetailData(infraDetailsData);
+                    /*if (infraDetailsData.getInfradata().size() > 0) {
+
+
+                    }*/
                 }
             }
 
@@ -132,11 +137,11 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
             // To make sum of all same infra detail data and finally add to list
             // add same id data only once
-            /*if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
+            if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
                 if (!infraDetailDataList.isEmpty()) {
                     infraDetailDataList.remove(infraDetailDataList.size() - 1);
                 }
-            }*/
+            }
             if (infraDetailData != null) {
                 infraDetailDataList.add(infraDetailData);
             }
@@ -183,8 +188,8 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
     @Override
     public void onValueSelected(Entry e, Highlight h) {
         int pos = (int) h.getX();
-        Toast.makeText(context, "" + infraDetailsData.getInfradata().get(pos).getTaidTidInfraDetailId(), Toast.LENGTH_SHORT).show();
-        //   startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id", infraDetailData.getInfraDetailID()));
+        //Toast.makeText(context, "" + infraDetailsData.getInfradata().get(pos).getTaidTidInfraDetailId(), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_id", infraDetailsData.getInfradata().get(pos).getTaidTimInfraId()).putExtra("infra_detail_id", infraDetailsData.getInfradata().get(pos).getTaidTidInfraDetailId()));
     }
 
     @Override

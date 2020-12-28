@@ -1,11 +1,13 @@
-package cdac.org.anganvadistaffutility.admin.adapter;
+/*package cdac.org.anganvadistaffutility.admin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,21 +27,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.Infrastructure.PieChartProjectActivity;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 
 public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<DistrictWiseInfrastructuretAdapter.ViewHolder> {
     private final Context mContext;
     protected List<InfraDetailData> infraDetailData;
-    protected ItemClickListener mListener;
+  //  protected ItemClickListener mListener;
     protected int fixListSize = 7;
     private int totalListSize = 0;
 
 
-    public DistrictWiseInfrastructuretAdapter(Context mContext, List<InfraDetailData> infraDetailDataList, ItemClickListener itemClickListener) {
+    public DistrictWiseInfrastructuretAdapter(Context mContext, List<InfraDetailData> infraDetailDataList) {
 
         this.mContext = mContext;
         this.infraDetailData = infraDetailDataList;
-        this.mListener = itemClickListener;
+      // this.mListener = itemClickListener;
 
     }
 
@@ -54,6 +57,7 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setData(position, infraDetailData);
+
     }
 
 
@@ -65,13 +69,16 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
         }
         return totalListSize;
     }
+*//*
 
     public interface ItemClickListener {
         void onItemClick(Object item);
     }
+*//*
 
     public class ViewHolder extends RecyclerView.ViewHolder implements OnChartValueSelectedListener {
-        protected PieChart pieChart;
+        private  PieChart pieChart;
+
         protected TextView txt_page_count;
         protected View layout;
         protected List<InfraDetailData> infraDetailData;
@@ -104,7 +111,6 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
 
             pieChart.setEntryLabelColor(Color.BLACK);
             pieChart.setEntryLabelTextSize(14f);
-            pieChart.setOnChartValueSelectedListener(this);
 
         }
 
@@ -136,10 +142,10 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
 
                     noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
                             infraDetailData.get(j).getDistrict() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
-                  /*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
+                  *//*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
                             infraDetailData.get(j).getDistrict() + " (" + infraDetailData.get(j).getInfraCount() + ")"
                             , infraDetailData.get(j).getDistrictID()));
-                    */
+                    *//*
                     dataSet = new PieDataSet(noOfEmp1, "");
                     pieData = new PieData(dataSet);
 
@@ -214,13 +220,21 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
 
             pieChart.highlightValues(null);
             pieChart.invalidate();
+            pieChart.setOnChartValueSelectedListener(this);
+
         }
 
         @Override
         public void onValueSelected(Entry e, Highlight h) {
-            if (mListener != null) {
+            int pos= (int) h.getX();
+            Toast.makeText(mContext, ""
+                    +infraDetailData.get(pos).getDistrictID(), Toast.LENGTH_SHORT).show();
+
+            Intent intent=new Intent(mContext, PieChartProjectActivity.class);
+
+          *//*  if (mListener != null) {
                 mListener.onItemClick(e.getData());
-            }
+            }*//*
         }
 
         @Override
@@ -228,4 +242,4 @@ public class DistrictWiseInfrastructuretAdapter extends RecyclerView.Adapter<Dis
 
         }
     }
-}
+}*/

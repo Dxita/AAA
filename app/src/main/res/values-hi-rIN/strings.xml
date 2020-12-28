@@ -250,4 +250,5 @@
     <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
     <string name="available_infra_details">उपलब्ध आधारभूत विवरण</string>
     <string name="avail_infra_and_deatils">उपलब्ध आधारभूत और उनके विवरण</string>
+    <string name="sector_wise">Sector Wise Infrastructure Dta</string>
 </resources>
