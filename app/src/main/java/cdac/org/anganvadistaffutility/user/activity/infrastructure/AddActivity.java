@@ -56,7 +56,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     AppCompatButton btn_submit;
     private static String infra_id;
-    private static String infra_detail_id,quantity;
+    private static String infra_detail_id, quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -245,10 +245,8 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                         CheckBox cb = (CheckBox) v;
                         int clickedPos = (Integer) cb.getTag();
                         if (cb.isChecked()) {
-
                             selectedPosition = position;
                             *//*    if (lastChecked != null) {
-
              *//**//*   lastChecked.setChecked(false);
                                 holder.edtx_qty.setText("1");*//**//*
                             }*//*
@@ -258,21 +256,17 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                             // Toast.makeText(context, empdata.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                             infra_id = empdata.get(position).getTidTimInfraId();
                             infra_detail_id = empdata.get(position).getTidInfraDetailId();
-
                             holder.edtx_qty.addTextChangedListener(new TextWatcher() {
                                 @Override
                                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                                     // TODO Auto-generated method stub
                                 }
-
                                 @Override
                                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                                     // TODO Auto-generated method stub
                                 }
-
                                 @Override
                                 public void afterTextChanged(Editable s) {
-
                                     quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
                                     //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
                                     //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
@@ -284,8 +278,6 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                         // lastChecked = null;
                     }
                 });
-
-
             } else {*/
             holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override

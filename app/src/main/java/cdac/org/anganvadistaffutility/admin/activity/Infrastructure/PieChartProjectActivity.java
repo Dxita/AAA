@@ -63,7 +63,7 @@ public class PieChartProjectActivity extends BaseActivity implements ProjecttWis
     private String district_id;
     private ProjecttWiseInfrastructuretAdapter.ItemClickListener itemClickListener;
     protected List<InfraProjectWiseData> infraDetailData;
-    private RelativeLayout relativeLayout;
+    //private RelativeLayout relativeLayout;
     private String cdpoMobile = "";
     private PieChart pieChart;
 
@@ -77,7 +77,7 @@ public class PieChartProjectActivity extends BaseActivity implements ProjecttWis
         setContentView(R.layout.activity_pie_chart_project);
 
 
-        relativeLayout = findViewById(R.id.relativeLayout);
+        //relativeLayout = findViewById(R.id.relativeLayout);
         district_id = getIntent().getStringExtra("district_id");
         TextView txt_title = findViewById(R.id.txt_title);
 
@@ -89,7 +89,7 @@ public class PieChartProjectActivity extends BaseActivity implements ProjecttWis
 
 
         if (AppUtils.isNetworkConnected(context)) {
-            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+           // AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
             getInfraDistrictData();
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
@@ -136,7 +136,7 @@ public class PieChartProjectActivity extends BaseActivity implements ProjecttWis
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
             @Override
             public void onSuccess(InfraDetailProjectData body) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+          //      AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 //  AppUtils.showToast(context, body.getMessage());
                 //  infraDetailsData = body.getData();
                /* if (infraDetailsData.getInfradata().size() > 0) {
@@ -155,7 +155,7 @@ public class PieChartProjectActivity extends BaseActivity implements ProjecttWis
 
             @Override
             public void onFailure(Throwable t) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+           //     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
@@ -202,12 +202,11 @@ public class PieChartProjectActivity extends BaseActivity implements ProjecttWis
         for (InfraDetailProjectData.Infradatum infraProjectWiseData: infraDetailsData.getInfradata()) {
             Toast.makeText(context, ""+infraProjectWiseData.getProjectname(), Toast.LENGTH_SHORT).show();
 
-            if (infraProjectWiseData.getCount().equalsIgnoreCase(e.toString())) {
                 /*if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }*/
 
-            }
+
         }
     }
 }

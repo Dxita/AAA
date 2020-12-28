@@ -246,7 +246,7 @@
     <string name="infra_district">डिस्ट्रिक्ट वाइज इन्फ्रास्ट्रक्चर रिक्वायरमेंट उपलब्धता</string>
     <string name="infra_detail">उपलब्ध इन्फ्रास्ट्रक्चर</string>
     <string name="go_back">पिछली स्क्रीन</string>
-    <string name="avail_infra_in_aw">उपलब्ध आधारभूत सुविधाएँ</string>
+    <string name="avail_infra_in_aw">आंगनवाड़ी में उपलब्ध आधारभूत सुविधाएँ</string>
     <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
     <string name="available_infra_details">उपलब्ध आधारभूत विवरण</string>
     <string name="avail_infra_and_deatils">उपलब्ध आधारभूत और उनके विवरण</string>

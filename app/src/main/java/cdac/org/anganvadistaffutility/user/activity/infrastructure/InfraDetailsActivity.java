@@ -186,13 +186,11 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
                 startActivity(new Intent(context, AddActivity.class).putExtra("infra_namee", item_nameE).
                         putExtra("infra_nameh", item_nameH).putExtra("infraID", infra_id));
             }
-
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
-
         }));
     }*/
 

@@ -245,7 +245,7 @@
     <string name="infra_district">District Wise Infrastructure Availability</string>
     <string name="infra_detail">Available Infrastructures</string>
     <string name="go_back">Go Back</string>
-    <string name="avail_infra_in_aw">Available infrastructue facilities</string>
+    <string name="avail_infra_in_aw">Available infrastructue facilities in Aanganwadi</string>
     <string name="select_available_facility">Select Available Infrastructure Facility</string>
     <string name="available_infra_details">Available Infrastructure Details</string>
     <string name="avail_infra_and_deatils">Available infrastructure &amp; their details</string>

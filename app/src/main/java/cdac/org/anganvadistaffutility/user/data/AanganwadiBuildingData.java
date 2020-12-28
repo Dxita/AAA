@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class AanganwadiBuildingData  {
+public class AanganwadiBuildingData {
 
     @SerializedName("status")
     @Expose
@@ -73,18 +73,18 @@ public class AanganwadiBuildingData  {
 
         public static class InfrastructureDatum implements Parcelable {
 
-            @SerializedName("tid_tim_infra_id")
-            @Expose
-            private String tidTimInfraId;
-            @SerializedName("tid_infra_detail_id")
-            @Expose
-            private String tidInfraDetailId;
             @SerializedName("tid_infra_namee")
             @Expose
             private String tidInfraNamee;
             @SerializedName("tid_infra_nameh")
             @Expose
             private String tidInfraNameh;
+            @SerializedName("tid_tim_infra_id")
+            @Expose
+            private String tidTimInfraId;
+            @SerializedName("tid_infra_detail_id")
+            @Expose
+            private String tidInfraDetailId;
             @SerializedName("tjaid_qty")
             @Expose
             private String tjaidQty;
@@ -93,10 +93,10 @@ public class AanganwadiBuildingData  {
             private String status;
 
             protected InfrastructureDatum(Parcel in) {
-                tidTimInfraId = in.readString();
-                tidInfraDetailId = in.readString();
                 tidInfraNamee = in.readString();
                 tidInfraNameh = in.readString();
+                tidTimInfraId = in.readString();
+                tidInfraDetailId = in.readString();
                 tjaidQty = in.readString();
                 status = in.readString();
             }
@@ -113,22 +113,6 @@ public class AanganwadiBuildingData  {
                 }
             };
 
-            public String getTidTimInfraId() {
-                return tidTimInfraId;
-            }
-
-            public void setTidTimInfraId(String tidTimInfraId) {
-                this.tidTimInfraId = tidTimInfraId;
-            }
-
-            public String getTidInfraDetailId() {
-                return tidInfraDetailId;
-            }
-
-            public void setTidInfraDetailId(String tidInfraDetailId) {
-                this.tidInfraDetailId = tidInfraDetailId;
-            }
-
             public String getTidInfraNamee() {
                 return tidInfraNamee;
             }
@@ -143,6 +127,22 @@ public class AanganwadiBuildingData  {
 
             public void setTidInfraNameh(String tidInfraNameh) {
                 this.tidInfraNameh = tidInfraNameh;
+            }
+
+            public String getTidTimInfraId() {
+                return tidTimInfraId;
+            }
+
+            public void setTidTimInfraId(String tidTimInfraId) {
+                this.tidTimInfraId = tidTimInfraId;
+            }
+
+            public String getTidInfraDetailId() {
+                return tidInfraDetailId;
+            }
+
+            public void setTidInfraDetailId(String tidInfraDetailId) {
+                this.tidInfraDetailId = tidInfraDetailId;
             }
 
             public String getTjaidQty() {
@@ -168,14 +168,13 @@ public class AanganwadiBuildingData  {
 
             @Override
             public void writeToParcel(Parcel dest, int flags) {
-                dest.writeString(tidTimInfraId);
-                dest.writeString(tidInfraDetailId);
                 dest.writeString(tidInfraNamee);
                 dest.writeString(tidInfraNameh);
+                dest.writeString(tidTimInfraId);
+                dest.writeString(tidInfraDetailId);
                 dest.writeString(tjaidQty);
                 dest.writeString(status);
             }
         }
-
     }
 }

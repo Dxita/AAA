@@ -229,6 +229,26 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
                         infradetail_id = infrastructureData.get(position).getTidInfraDetailId();
+
+                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                // TODO Auto-generated method stub
+                            }
+
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                // TODO Auto-generated method stub
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                                // Place the logic here for your output edittext
+                            }
+                        });
+
                         //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
@@ -238,24 +258,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                 }
             });
 
-            holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    // TODO Auto-generated method stub
-                }
-
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // TODO Auto-generated method stub
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                    //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
-                    // Place the logic here for your output edittext
-                }
-            });
 
             holder.setData(context, infrastructureData.get(position));
 

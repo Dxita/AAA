@@ -5,6 +5,7 @@ import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
+import cdac.org.anganvadistaffutility.admin.data.InfrastructureDetailSumData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
@@ -195,6 +196,13 @@ public interface ApiInterface {
                                                          @Field("infra_id")String infra_id,
                                                          @Field("infra_detail_id")String infra_detail_id,
                                                          @Field("quantity")String quantity);
+
+
+    @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<InfrastructureDetailSumData> infrastructureDetailSumData(@Field("filterby") String filterType,
+                                                                  @Field("infra_id") String infraID);
+
 
 
 }

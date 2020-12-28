@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class InfraStructureDetailData {
+public class InfrastructureDetailSumData {
 
     @SerializedName("status")
     @Expose
@@ -64,37 +64,25 @@ public class InfraStructureDetailData {
 
         public void setInfradata(List<Infradatum> infradata) {
             this.infradata = infradata;
-        }
+        }}
 
-    }
         public static class Infradatum {
 
-            @SerializedName("count")
-            @Expose
-            private String count;
             @SerializedName("tid_infra_namee")
             @Expose
             private String tidInfraNamee;
             @SerializedName("tim_infra_namee")
             @Expose
             private String timInfraNamee;
-            @SerializedName("tid_infra_detail_id")
+            @SerializedName("taid_tim_infra_id")
             @Expose
-            private String tidInfraDetailId;
-            @SerializedName("district")
+            private String taidTimInfraId;
+            @SerializedName("taid_tid_infra_detail_id")
             @Expose
-            private String district;
-            @SerializedName("distid")
+            private String taidTidInfraDetailId;
+            @SerializedName("sum")
             @Expose
-            private String distid;
-
-            public String getCount() {
-                return count;
-            }
-
-            public void setCount(String count) {
-                this.count = count;
-            }
+            private String sum;
 
             public String getTidInfraNamee() {
                 return tidInfraNamee;
@@ -112,29 +100,29 @@ public class InfraStructureDetailData {
                 this.timInfraNamee = timInfraNamee;
             }
 
-            public String getTidInfraDetailId() {
-                return tidInfraDetailId;
+            public String getTaidTimInfraId() {
+                return taidTimInfraId;
             }
 
-            public void setTidInfraDetailId(String tidInfraDetailId) {
-                this.tidInfraDetailId = tidInfraDetailId;
+            public void setTaidTimInfraId(String taidTimInfraId) {
+                this.taidTimInfraId = taidTimInfraId;
             }
 
-            public String getDistrict() {
-                return district;
+            public String getTaidTidInfraDetailId() {
+                return taidTidInfraDetailId;
             }
 
-            public void setDistrict(String district) {
-                this.district = district;
+            public void setTaidTidInfraDetailId(String taidTidInfraDetailId) {
+                this.taidTidInfraDetailId = taidTidInfraDetailId;
             }
 
-            public String getDistid() {
-                return distid;
+            public String getSum() {
+                return sum;
             }
 
-            public void setDistid(String distid) {
-                this.distid = distid;
+            public void setSum(String sum) {
+                this.sum = sum;
             }
-        }
 
+    }
 }
