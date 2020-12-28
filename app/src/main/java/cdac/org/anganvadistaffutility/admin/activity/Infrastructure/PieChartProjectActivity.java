@@ -385,7 +385,7 @@ public class PieChartProjectActivity extends BaseActivity {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 int pos = (int) h.getX();
-                startActivity(new Intent(context, SectorWiseActivity.class).putExtra("infra_id", infra_id).putExtra("project_id", infraDetailData.get(pos).getProjectcode()));
+              //  startActivity(new Intent(context, SectorWiseActivity.class).putExtra("infra_id", infra_id).putExtra("project_id", infraDetailData.get(pos).getProjectcode()));
 
 
             }
