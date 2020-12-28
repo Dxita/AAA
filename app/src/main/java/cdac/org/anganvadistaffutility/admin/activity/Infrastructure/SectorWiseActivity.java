@@ -74,14 +74,14 @@ public class SectorWiseActivity extends BaseActivity {
 
         if (AppUtils.isNetworkConnected(context)) {
             // AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            getInfraDistrictData();
+           // getInfraDistrictData();
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
 
     }
 
-    private void getInfraDistrictData() {
+ /*   private void getInfraDistrictData() {
 
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<InfrasDetailSectorData> call = apiInterface.getInfraDetailSectordata("sec", infra_id, project_id);
@@ -91,12 +91,12 @@ public class SectorWiseActivity extends BaseActivity {
                 //      AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 //  AppUtils.showToast(context, body.getMessage());
                 //  infraDetailsData = body.getData();
-               /* if (infraDetailsData.getInfradata().size() > 0) {
+               *//* if (infraDetailsData.getInfradata().size() > 0) {
                     if (pieChart.getVisibility() == View.GONE) {
                         pieChart.setVisibility(View.VISIBLE);
                     }
                     setUserData(infraDetailsData);
-                }*/
+                }*//*
 
                 infraDetailsData = body.getData();
 
@@ -111,7 +111,7 @@ public class SectorWiseActivity extends BaseActivity {
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
         }));
-    }
+    }*/
 
     private void setUserData(InfrasDetailSectorData.Data detailData) {
         int previousInfraDetailID;

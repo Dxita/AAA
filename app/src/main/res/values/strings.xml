@@ -250,6 +250,13 @@
     <string name="available_infra_details">Available Infrastructure Details</string>
     <string name="avail_infra_and_deatils">Available infrastructure &amp; their details</string>
     <string name="sector_wise">Sector Wise Infrastructure Data</string>
+    <string name="cdpo_name">CDPO Name:</string>
+    <string name="proj_code">Project Code:</string>
+    <string name="proj_name">Project Name:</string>
+    <string name="aw_worker_name">Anganwadi Worker Name</string>
+    <string name="aw_worker_number">Anganwadi Worker Number</string>
+    <string name="aw_data">"Anganwadi Data "</string>
+
 
     <string-array name="criteria">
         <item>Pregnant</item>

@@ -250,5 +250,14 @@
     <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
     <string name="available_infra_details">उपलब्ध आधारभूत विवरण</string>
     <string name="avail_infra_and_deatils">उपलब्ध आधारभूत और उनके विवरण</string>
+
     <string name="sector_wise">Sector Wise Infrastructure Dta</string>
+    <string name="cdpo_name">CDPO Name</string>
+    <string name="proj_code">Project Code</string>
+    <string name="proj_name">Project Name:</string>
+    <string name="aw_worker_name">Anganwadi Worker Name</string>
+    <string name="aw_worker_number">Anganwadi Worker Number</string>
+    <string name="aw_data">"Anganwadi Data "</string>
+
+
 </resources>

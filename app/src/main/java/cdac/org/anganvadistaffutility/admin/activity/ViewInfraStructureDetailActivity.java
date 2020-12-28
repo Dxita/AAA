@@ -46,7 +46,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
     private InfrastructureDetailSumData.Data infraDetailsData;
     private InfrasSumData infraDetailData;
     private int infraCount=0;
-    private int previousInfraDetailID = -1;
+    //private int previousInfraDetailID = -1;
     private int currentInfraDetailID = -1;
     private PieChart pieChart;
 
@@ -105,17 +105,27 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                 //    AppUtils.showToast(context, body.getMessage());
 
                 infraDetailsData = body.getData();
+                if(infraDetailsData.getInfradata()!=null){
+                    for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
 
-                for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
+                        if (pieChart.getVisibility() == View.GONE) {
+                            pieChart.setVisibility(View.VISIBLE);
+                        }
+                        setInfraDetailData(infraDetailsData);
+
+                    }
+                }
+
+             /*   for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
                     if (pieChart.getVisibility() == View.GONE) {
                         pieChart.setVisibility(View.VISIBLE);
                     }
                     setInfraDetailData(infraDetailsData);
-                    /*if (infraDetailsData.getInfradata().size() > 0) {
+                    *//*if (infraDetailsData.getInfradata().size() > 0) {
 
 
-                    }*/
-                }
+                    }*//*
+                }*/
             }
 
             @Override
@@ -127,6 +137,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
     }
 
     private void setInfraDetailData(InfrastructureDetailSumData.Data detailData) {
+        int previousInfraDetailID;
 
         List<InfrasSumData> infraDetailDataList = new ArrayList<>();
         List<PieEntry> chartInfraCount = new ArrayList<>();

@@ -1,7 +1,9 @@
 package cdac.org.anganvadistaffutility.common.retrofit;
 
+import cdac.org.anganvadistaffutility.admin.activity.Infrastructure.AanganwadiListActivity;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
+import cdac.org.anganvadistaffutility.admin.data.AnganwadiInfraData;
 import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
@@ -144,12 +146,12 @@ public interface ApiInterface {
     Call<InfraDetailProjectData> getInfrastructureProjectDetails(@Field("filterby") String filterType,
                                                                  @Field("infra_id") String infraID,
                                                                  @Field("distid") String district_id);
-//sector data(infra admin)
+//awc data(infra admin)
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
-    Call<InfrasDetailSectorData> getInfraDetailSectordata(@Field("filterby") String filterType,
-                                                          @Field("infra_id") String infraID,
-                                                          @Field("projid") String project_id);
+    Call<AnganwadiInfraData> getAnganwadiInfraData(@Field("filterby") String filterType,
+                                                      @Field("infra_id") String infraID,
+                                                      @Field("projid") String project_id);
 
 
     // Get Beneficiary Criteria List

@@ -188,6 +188,9 @@ public class PieChartProjectActivity extends BaseActivity {
                 infraDetailProjectData = new InfraProjectWiseData();
                 infraDetailProjectData.setProjectCode(infraDatum.getProjectcode());
                 infraDetailProjectData.setProjectName(infraDatum.getProjectname());
+                infraDetailProjectData.setCdpoName(infraDatum.getCdpoName());
+                infraDetailProjectData.setCdpoEmail(infraDatum.getCdpoEmail());
+                infraDetailProjectData.setCdpoNumber(infraDatum.getCdpoMobileno());
                 infraCount = Integer.parseInt(infraDatum.getCount());
             }
             infraDetailProjectData.setInfraCount("" + infraCount);
@@ -385,7 +388,14 @@ public class PieChartProjectActivity extends BaseActivity {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 int pos = (int) h.getX();
-              //  startActivity(new Intent(context, SectorWiseActivity.class).putExtra("infra_id", infra_id).putExtra("project_id", infraDetailData.get(pos).getProjectcode()));
+
+                startActivity(new Intent(context, AanganwadiListActivity.class)
+                        .putExtra("infra_id", infra_id)
+                        .putExtra("project_id", infraDetailData.get(pos).getProjectcode())
+                        .putExtra("project_name", infraDetailData.get(pos).getProjectname())
+                        .putExtra("cdpo_number",infraDetailData.get(pos).getCdpoNumber())
+                        .putExtra("cdpo_email",infraDetailData.get(pos).getCdpoEmail())
+                        .putExtra("cdpo_name",infraDetailData.get(pos).getCdpoName()));
 
 
             }
