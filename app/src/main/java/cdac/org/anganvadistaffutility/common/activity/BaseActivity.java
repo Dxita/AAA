@@ -82,7 +82,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     private final int EMAIL_RESOLVE_HINT = 3;
     private BroadcastReceiver br;
     private RelativeLayout relativeLay;
-    public AppPreferences appPreferences;
+    public static AppPreferences appPreferences;
     public Context context;
     public ApiInterface apiInterface;
     protected List<String> adminNumberList;

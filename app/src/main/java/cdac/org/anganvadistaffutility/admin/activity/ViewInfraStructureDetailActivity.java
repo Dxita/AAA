@@ -168,7 +168,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
         for (InfraDetailData infraDetailData : infraDetailDataList) {
             chartInfraCount.add(new PieEntry(Integer.parseInt(infraDetailData.getInfraCount()),
-                    infraDetailData.getInfraName() + "(" + infraDetailData.getInfraCount() + ")"));
+                    infraDetailData.getInfraName() + "(" + infraDetailData.getInfraCount() + ")" + infraDetailData.getInfraDetailID()));
         }
 
         PieDataSet dataSet = new PieDataSet(chartInfraCount, "");
@@ -196,17 +196,15 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
+        int pos= (int) e.getX();
+        Log.d("dncnndjcn", String.valueOf(pos));
+      /*  int position = (int) h.getX();
+      *//*  InfraStructureDetailData.Infradatum infradata = infraDetailsData.getInfradata().get((int)h.getX());
 
-     /*   int position = (int) h.getX();
-        Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();*/
-        if (e == null)
-            return;
-
-        Log.i("VAL SELECTED",
-                "Value: " + e.getY() + ", index: " + h.getX()
-                        + ", DataSet index: " + h.getDataSetIndex());
-
-        startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_detail_id", infraDetailData.getInfraDetailID()));
+        Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();*//*
+        InfraStructureDetailData.Infradatum infradatum = infraDetailsDataList.get(position).getInfradata().get(position);
+        Toast.makeText(context, "" + infradatum.getTidInfraDetailId(), Toast.LENGTH_SHORT).show();*/
+        startActivity(new Intent(context,DistrictWiseInfraActivity.class).putExtra("infra_detail_id",infraDetailData.getInfraDetailID()));
     }
 
     @Override

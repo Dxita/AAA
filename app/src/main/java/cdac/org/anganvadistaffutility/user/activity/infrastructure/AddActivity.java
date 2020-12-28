@@ -1,6 +1,7 @@
 package cdac.org.anganvadistaffutility.user.activity.infrastructure;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.TooManyListenersException;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -41,16 +43,20 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.beneficiary.MotherMappingActivity;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
+import cdac.org.anganvadistaffutility.user.data.AddInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
 import retrofit2.Call;
 
-public class AddActivity extends BaseActivity {
+public class AddActivity extends BaseActivity implements View.OnClickListener {
     SmartMaterialSpinner<String> sp_beneficiary_criteria;
     private RelativeLayout relativeLayout;
     List<RemainingInfraDetailData.Data.Empdatum> empdata;
-    RemainingInfraDetailAdapter remainingInfraDetailAdapter;
+    private RemainingInfraDetailAdapter remainingInfraDetailAdapter;
     RecyclerView recyclerView;
+    AppCompatButton btn_submit;
+    private static String infra_id;
+    private static String infra_detail_id,quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class AddActivity extends BaseActivity {
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
 
+        btn_submit = findViewById(R.id.btn_submit);
         empdata = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
@@ -73,6 +80,8 @@ public class AddActivity extends BaseActivity {
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
+
+        btn_submit.setOnClickListener(this);
     }
 
     private void getBeneficiaryCriteriaData() {
@@ -81,10 +90,8 @@ public class AddActivity extends BaseActivity {
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<RemainingInfrastructureData>() {
             @Override
             public void onSuccess(RemainingInfrastructureData body) {
-
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 List<String> addNewInfrastructureList = new ArrayList<>();
-
                 List<RemainingInfrastructureData.Empdatum> leaveTypeItems = body.getData().getEmpdata();
                 for (int i = 0; i < leaveTypeItems.size(); i++) {
                     String leaveType;
@@ -108,6 +115,15 @@ public class AddActivity extends BaseActivity {
                         if (AppUtils.isNetworkConnected(context)) {
                             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
                             getInfraDetailData(leaveTypeItems.get(position).getTimInfraId());
+                            if (infra_id != null) {
+                                infra_id.equals("");
+                            }
+                            if (infra_detail_id != null) {
+                                infra_detail_id.equals("");
+                            }
+                            if (quantity != null) {
+                                quantity.equals("");
+                            }
                         } else {
                             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
                         }
@@ -156,14 +172,45 @@ public class AddActivity extends BaseActivity {
         }));
     }
 
+    @Override
+    public void onClick(View view) {
+        if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            addInfrastructure();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+        }
+    }
+
+    private void addInfrastructure() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
+        Call<AddInfrastructureData> call = apiInterface.addInfrastructureData(appPreferences.getAwcId(), infra_id, infra_detail_id, quantity);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AddInfrastructureData>() {
+            @Override
+            public void onSuccess(AddInfrastructureData body) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+            }
+
+        }));
+    }
+
 
     private static class RemainingInfraDetailAdapter extends RecyclerView.Adapter<MyViewHolder> {
         Context context;
         List<RemainingInfraDetailData.Data.Empdatum> empdata;
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
-        private int selectedPosition;// no selection by default
+        private int selectedPosition = -1;// no selection by default
         MyViewHolder myViewHolder;
+
 
         public RemainingInfraDetailAdapter(Context context, List<RemainingInfraDetailData.Data.Empdatum> empdata) {
             this.context = context;
@@ -190,37 +237,66 @@ public class AddActivity extends BaseActivity {
             lastChecked = holder.checkBox;
             lastCheckedPos = 0;
 
-         /*
+/*
+            if (appPreferences.getStatus().equals("1")) {
                 holder.checkBox.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         CheckBox cb = (CheckBox) v;
                         int clickedPos = (Integer) cb.getTag();
                         if (cb.isChecked()) {
-                            if (lastChecked != null) {
-                                lastChecked.setChecked(false);
-                                holder.edtx_qty.setText("1");
-                            }
-                            lastChecked = cb;
+
+                            selectedPosition = position;
+                            *//*    if (lastChecked != null) {
+
+             *//**//*   lastChecked.setChecked(false);
+                                holder.edtx_qty.setText("1");*//**//*
+                            }*//*
+             *//*  lastChecked = cb;
                             lastCheckedPos = clickedPos;
+*//*
+                            // Toast.makeText(context, empdata.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                            infra_id = empdata.get(position).getTidTimInfraId();
+                            infra_detail_id = empdata.get(position).getTidInfraDetailId();
 
-                            Toast.makeText(context, empdata.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                            holder.edtx_qty.addTextChangedListener(new TextWatcher() {
+                                @Override
+                                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    // TODO Auto-generated method stub
+                                }
 
+                                @Override
+                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                    // TODO Auto-generated method stub
+                                }
+
+                                @Override
+                                public void afterTextChanged(Editable s) {
+
+                                    quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                                    //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                                    //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                                    // Place the logic here for your output edittext
+                                }
+                            });
                         } else
-                            lastChecked = null;
+                            selectedPosition = -1;
+                        // lastChecked = null;
                     }
                 });
 
-            */
 
+            } else {*/
             holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         selectedStrings.add(holder.checkBox.getText().toString());
-
                         holder.edtx_qty.setEnabled(true);
                         holder.edtx_qty.setText("1");
+                        infra_id = empdata.get(position).getTidTimInfraId();
+                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
+
                         holder.edtx_qty.addTextChangedListener(new TextWatcher() {
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -234,13 +310,19 @@ public class AddActivity extends BaseActivity {
 
                             @Override
                             public void afterTextChanged(Editable s) {
-                                String str = holder.edtx_qty.getText().toString();
-                                Toast.makeText(context, "" + str, Toast.LENGTH_SHORT).show();
+
+                                if (quantity == null) {
+                                    quantity = "1";
+                                } else {
+                                    quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+
+                                }
                                 //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
                                 //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
                                 // Place the logic here for your output edittext
                             }
                         });
+                        Toast.makeText(context, "" + infra_id + infra_detail_id + quantity, Toast.LENGTH_SHORT).show();
 
                     } else {
                         selectedStrings.remove(holder.checkBox.getText().toString());
