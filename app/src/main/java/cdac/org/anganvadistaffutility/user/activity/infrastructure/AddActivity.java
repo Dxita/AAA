@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
@@ -56,7 +57,8 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     AppCompatButton btn_submit;
     private static String infra_id;
-    private static String infra_detail_id, quantity;
+    private static String infra_detail_id;
+    private static String quantity = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +113,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                         appPreferences.setStatus(leaveTypeItems.get(position).getTimAcceptStatus());
-                        Toast.makeText(context, "" + appPreferences.getStatus(), Toast.LENGTH_SHORT).show();
+                        //     Toast.makeText(context, "" + appPreferences.getStatus(), Toast.LENGTH_SHORT).show();
                         if (AppUtils.isNetworkConnected(context)) {
                             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
                             getInfraDetailData(leaveTypeItems.get(position).getTimInfraId());
@@ -189,7 +191,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onSuccess(AddInfrastructureData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -233,7 +235,6 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
             empdata.get(position);
 
             holder.checkBox.setTag(position);
-            holder.edtx_qty.setTag(position);
             lastChecked = holder.checkBox;
             lastCheckedPos = 0;
 
@@ -323,7 +324,6 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                 }
             });
 */
-
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -337,8 +337,11 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
+                        infra_id = empdata.get(position).getTidTimInfraId();
                         infra_detail_id = empdata.get(position).getTidInfraDetailId();
 
+                        holder.edtx_qty.setEnabled(true);
+                        holder.edtx_qty.setText("1");
                         holder.edtx_qty.addTextChangedListener(new TextWatcher() {
                             @Override
                             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -348,6 +351,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                             @Override
                             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                                 // TODO Auto-generated method stub
+                                quantity = "1";
                             }
 
                             @Override
@@ -361,14 +365,80 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                         //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
                         //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
+                        quantity = "1";
+                        holder.edtx_qty.setEnabled(false);
                         lastChecked = null;
                     }
 
                 }
             });
             quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+       
             holder.setData(context, empdata.get(position));
 
+
+
+          /*  holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //  if (tim_accept_status.equals("1")) {
+                    final boolean isChecked = holder.checkBox.isChecked();
+                    CheckBox cb = (CheckBox) view;
+                    int clickedPos = (Integer) cb.getTag();
+                    holder.edtx_qty.setTag(position);
+                    if (cb.isChecked()) {
+                        if (lastChecked != null) {
+                            lastChecked.setChecked(false);
+                        }
+                        lastChecked = cb;
+                        lastCheckedPos = clickedPos;
+                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
+
+                        holder.edtx_qty.setEnabled(true);
+                        holder.edtx_qty.setText("1");
+                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                // TODO Auto-generated method stub
+                            }
+
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                // TODO Auto-generated method stub
+                                quantity="1";
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                notifyDataSetChanged();
+                                quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
+                                // Place the logic here for your output edittext
+                            }
+                        });
+
+                        //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
+                        //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
+                    } else {
+                        holder.edtx_qty.setClickable(false);
+                        holder.edtx_qty.setCursorVisible(false);
+                        holder.edtx_qty.setEnabled(false);
+                        lastChecked = null;
+                    }
+
+                }
+            });
+            quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
+            holder.setData(context, empdata.get(position));*/
+
+
+            if (appPreferences.getStatus().equals("1")) {
+
+                holder.edtx_qty.setVisibility(View.GONE);
+
+            } else {
+                holder.edtx_qty.setVisibility(View.VISIBLE);
+            }
         }
 
 

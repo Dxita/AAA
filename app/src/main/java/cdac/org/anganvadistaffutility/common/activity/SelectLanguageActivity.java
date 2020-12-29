@@ -122,7 +122,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
 
         ImageView image = layout.findViewById(R.id.fullimage);
         ImageView close  = layout.findViewById(R.id.close);
-        image.setImageResource(R.drawable.cv9);
+        image.setImageResource(R.drawable.fullimage);
         mAttacher = new PhotoViewAttacher(image);
         image.requestLayout();
         dialog.setContentView(layout);

@@ -146,14 +146,11 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
                 /*if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }*/
-
                 toggleBottomSheet(projectWiseEmployeeDetails.getProject_code(), projectWiseEmployeeDetails.getProject_name_english(),
                         projectWiseEmployeeDetails.getProject_head_name(), projectWiseEmployeeDetails.getProject_head_phone(),
                         projectWiseEmployeeDetails.getProject_head_email());
             }
         }
-
-
     }
 
     @Override

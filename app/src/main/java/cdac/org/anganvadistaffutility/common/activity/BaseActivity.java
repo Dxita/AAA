@@ -92,7 +92,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     private static Dialog mDialog;
     private AlarmManager alarmMgr; //TO CALL OUT THE CLASS OF THE ALARM SERVICE
     private PendingIntent alarmIntent;// FOR TARGET FUNCTION TO PERFORM WITH BROADCASTRECEIVER
-    public static final long DISCONNECT_TIMEOUT = 900000;
+    public static final long DISCONNECT_TIMEOUT = 300000;
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -457,7 +457,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
 
     }
 
- @Override
+    @Override
     public void onUserInteraction() {
         super.onUserInteraction();
         //App.myAutoLogoutApp.touch();
@@ -518,7 +518,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         builder.setIcon(R.drawable.app_logo);
         builder.setMessage(getString(R.string.session))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.yes), (dialog, id) -> logout());
+                .setPositiveButton(getString(R.string.okay), (dialog, id) -> logout());
         AlertDialog alert = builder.create();
         alert.show();
     }

@@ -36,6 +36,7 @@
                 android:textSize="@dimen/textsize_17sp" />
 
             <CheckBox
+
                 android:id="@+id/checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,9 +52,11 @@
                 android:layout_marginLeft="@dimen/margin_10"
                 android:layout_marginRight="@dimen/margin_10"
                 android:cursorVisible="true"
-                android:enabled="true"
+                android:enabled="false"
                 android:gravity="center"
                 android:hint="@string/qty"
+                android:text="1"
+
                 android:inputType="number"
                 android:padding="@dimen/margin_10"
                 android:singleLine="true"
@@ -61,10 +64,10 @@
                 android:textSize="@dimen/textsize_17sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/edit_icon"
                 android:layout_width="@dimen/margin_20"
                 android:layout_height="@dimen/margin_20"
                 android:layout_gravity="center_vertical"
+
                 android:layout_marginLeft="@dimen/margin_08"
                 android:layout_marginRight="@dimen/margin_08"
                 android:visibility="gone"

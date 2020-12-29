@@ -27,9 +27,9 @@ public class SplashActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        logo = (ImageView) findViewById(R.id.logo);
+        logo = (ImageView) findViewById(R.id.logo1);
 
-       /* new Handler().postDelayed(() -> {
+        new Handler().postDelayed(() -> {
             if (appPreferences.istypeuser()) {
                 startActivity(new Intent(this, UserSectionActivity.class));
             } else if (appPreferences.istypeadmin()) {
@@ -44,9 +44,9 @@ public class SplashActivity extends BaseActivity {
         }, splashTimeOut);
 
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.anim);
-        logo.startAnimation(myanim);*/
+        logo.startAnimation(myanim);
 
-        new Handler().postDelayed(() -> {
+     /*   new Handler().postDelayed(() -> {
             if (appPreferences.istypeuser()) {
                 startActivity(new Intent(this, UserSectionActivity.class));
             } else if (appPreferences.istypeadmin()) {
@@ -59,7 +59,7 @@ public class SplashActivity extends BaseActivity {
 
             finish();
         }, 3000);
-
+*/
 
     }
 

@@ -70,7 +70,6 @@
                 android:textSize="@dimen/textsize_17sp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/edit_icon"
                 android:layout_width="@dimen/margin_20"
                 android:layout_height="@dimen/margin_20"
                 android:layout_gravity="center_vertical"

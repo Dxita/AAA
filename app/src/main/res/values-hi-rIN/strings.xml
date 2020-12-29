@@ -130,7 +130,6 @@
     <string name="electricity">बिजली</string>
     <string name="kitchen">रसोई</string>
     <string name="sector">क्षेत्र</string>
-    <string name="creche_details">क्रेच विवरण</string>
     <string name="property_type">संपत्ति के प्रकार  </string>
 
     <string name="Commercial">व्यावसायिक</string>
@@ -140,7 +139,6 @@
 
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
-    <string name="cancel">रद्द करना</string>
 
     <string name="infra_data">आंगनवाडी आधारभूत सुविधा विवरण</string>
 
@@ -179,8 +177,6 @@
 
     <string name="item_name">वस्तु का नाम</string>
     <string name="session">सत्र मध्यांतर।</string>
-
-    <string name="aanganwadi_building">आंगनवाड़ी भवन</string>
 
     <string name="beneficiary_criteria">लाभार्थी मानदंड</string>
     <string name="fill_required_field">लाभार्थी का कोई भी एक विवरण दर्ज करें</string>
@@ -235,29 +231,26 @@
     <string name="payment_year">वित्तीय वर्ष का भुगतान डेटा: </string>
     <string name="employee_name">कर्मचारी का नाम: </string>
     <string name="add">नया रिकॉर्ड जोड़ें</string>
-    <string name="Availbility_in_Infrastructure">अवसंरचना अवहेलना</string>
-    <string name="facility">सुविधा</string>
     <string name="quantity">मात्रा</string>
-    <string name="AWC_Infrastructure_Facilities">AWC इन्फ्रास्ट्रक्चर सुविधाएं</string>
     <string name="edit_AWC_Infrastructure_Facilities">एडब्ल्यूसी इन्फ्रास्ट्रक्चर सुविधाएं संपादित करें</string>
     <string name="add_AWC_Infrastructure_Facilities">नई आंगनवाड़ी आधारभूत सुविधा जोड़ें</string>
     <string name="qty">मात्रा</string>
-    <string name="project_wise_available_infra_data">प्रोजेक्ट वाइज इन्फ्रास्ट्रक्चर उपलब्धता</string>
-    <string name="infra_district">डिस्ट्रिक्ट वाइज इन्फ्रास्ट्रक्चर रिक्वायरमेंट उपलब्धता</string>
+    <string name="project_wise_available_infra_data">परियोजना वाइज इन्फ्रास्ट्रक्चर डेटा</string>
+    <string name="infra_district">जिला वाइज इन्फ्रास्ट्रक्चर डेटा</string>
     <string name="infra_detail">उपलब्ध इन्फ्रास्ट्रक्चर</string>
     <string name="go_back">पिछली स्क्रीन</string>
     <string name="avail_infra_in_aw">आंगनवाड़ी में उपलब्ध आधारभूत सुविधाएँ</string>
     <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
-    <string name="available_infra_details">उपलब्ध आधारभूत विवरण</string>
     <string name="avail_infra_and_deatils">उपलब्ध आधारभूत और उनके विवरण</string>
 
     <string name="sector_wise">Sector Wise Infrastructure Dta</string>
-    <string name="cdpo_name">CDPO Name</string>
-    <string name="proj_code">Project Code</string>
-    <string name="proj_name">Project Name:</string>
-    <string name="aw_worker_name">Anganwadi Worker Name</string>
-    <string name="aw_worker_number">Anganwadi Worker Number</string>
-    <string name="aw_data">"Anganwadi Data "</string>
+    <string name="cdpo_name">सीडीपीओ का नाम: </string>
+    <string name="proj_code">परियोजना क्रमांक: </string>
+    <string name="proj_name">परियोजना का नाम: </string>
+    <string name="aw_worker_name">आंगनवाड़ी कार्यकर्ता का नाम</string>
+    <string name="aw_worker_number">आंगनवाड़ी कार्यकर्ता संख्या</string>
+    <string name="aw_data">आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
+    <string name="okay">ठीक है</string>
 
 
 </resources>

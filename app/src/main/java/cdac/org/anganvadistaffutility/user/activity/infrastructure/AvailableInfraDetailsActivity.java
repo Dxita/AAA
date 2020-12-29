@@ -70,16 +70,6 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
     }
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (AppUtils.isNetworkConnected(context)) {
-            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            getAvailableInfraDetailData();
-        } else {
-            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
-        }
-    }
 
     private void getAvailableInfraDetailData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
@@ -88,9 +78,6 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
             @Override
             public void onSuccess(AvailableAwInfraDetailData body) {
 
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                empdatumList = new ArrayList<>();
-                empdatumList = body.getData().getEmpdata();
 
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 empdatumList = new ArrayList<>();
@@ -135,20 +122,32 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
             @Override
             public void onSuccess(RemainingInfrastructureData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                startActivity(new Intent(context, AddActivity.class));
 
-                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+
+
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
 
         }));
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (AppUtils.isNetworkConnected(context)) {
+            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+            getAvailableInfraDetailData();
+        } else {
+            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+        }
 
+    }
     private static class AvailableInfraAdapter extends RecyclerView.Adapter<MyViewHold> {
 
         Context context;

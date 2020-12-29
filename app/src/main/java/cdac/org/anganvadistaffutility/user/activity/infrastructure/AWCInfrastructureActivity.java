@@ -140,7 +140,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
     @Override
     public void onItemClick(UserInfrastructureData.Data.InfrastructureDatum item) {
 
-        startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", item.getTimInfraId()).putExtra("item_nameE", item.getTimInfraNamee()).putExtra("item_nameH", item.getTimInfraNameh())
+        startActivity(new Intent(context, InfraDetailsActivity.class).putExtra("infra_id", item.getTimInfraId()).putExtra("item_nameE", item.getTimInfraNamee()).putExtra("item_nameH", item.getTimInfraNameh())
                 .putExtra("tim_accept_status", item.getTimAcceptStatus()));
 
         // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));

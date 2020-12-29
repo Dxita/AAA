@@ -44,7 +44,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     AwcBuildingAdapter awcBuildingAdapter;
     public static String infra_id, item_nameE, item_nameH, tim_accept_status, infradetail_id, last_infra_detail_id;
-    public static String quantity_edtx = "";
+    public static String quantity_edtx = "1";
   /*  AppCompatEditText facility, quantity, Availbility_in_Infrastructure;
     String infra_id;
     private RelativeLayout relativeLayout;
@@ -228,6 +228,8 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                         }
                         lastChecked = cb;
                         lastCheckedPos = clickedPos;
+                        holder.edtx_qty.setEnabled(true);
+                        holder.edtx_qty.setText("1");
                         infradetail_id = infrastructureData.get(position).getTidInfraDetailId();
 
                         holder.edtx_qty.addTextChangedListener(new TextWatcher() {
@@ -259,6 +261,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             });
 
 
+            quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
             holder.setData(context, infrastructureData.get(position));
 
             if (tim_accept_status.equals("1")) {
@@ -287,6 +290,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                 item_name = itemView.findViewById(R.id.item_tv);
                 checkBox = itemView.findViewById(R.id.checkbox);
                 edtx_qty = itemView.findViewById(R.id.qty_edtx);
+                edtx_qty.setEnabled(false);
                 // checkBox.setClickable(false);
             }
 

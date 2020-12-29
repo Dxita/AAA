@@ -66,118 +66,119 @@ public class RemainingInfrastructureData {
             this.empdata = empdata;
         }
     }
-        public static class Empdatum {
 
-            @SerializedName("tim_infra_id")
-            @Expose
-            private String timInfraId;
-            @SerializedName("tim_infra_namee")
-            @Expose
-            private String timInfraNamee;
-            @SerializedName("tim_infra_nameh")
-            @Expose
-            private String timInfraNameh;
-            @SerializedName("tim_created_date")
-            @Expose
-            private String timCreatedDate;
-            @SerializedName("tim_modified_date")
-            @Expose
-            private String timModifiedDate;
-            @SerializedName("tim_status")
-            @Expose
-            private String timStatus;
-            @SerializedName("tim_user_id")
-            @Expose
-            private String timUserId;
-            @SerializedName("tim_ip_address")
-            @Expose
-            private Object timIpAddress;
-            @SerializedName("tim_infra_icon")
-            @Expose
-            private Object timInfraIcon;
-            @SerializedName("tim_accept_status")
-            @Expose
-            private String timAcceptStatus;
+    public static class Empdatum {
 
-            public String getTimInfraId() {
-                return timInfraId;
-            }
+        @SerializedName("tim_infra_id")
+        @Expose
+        private String timInfraId;
+        @SerializedName("tim_infra_namee")
+        @Expose
+        private String timInfraNamee;
+        @SerializedName("tim_infra_nameh")
+        @Expose
+        private String timInfraNameh;
+        @SerializedName("tim_created_date")
+        @Expose
+        private String timCreatedDate;
+        @SerializedName("tim_modified_date")
+        @Expose
+        private String timModifiedDate;
+        @SerializedName("tim_status")
+        @Expose
+        private String timStatus;
+        @SerializedName("tim_user_id")
+        @Expose
+        private String timUserId;
+        @SerializedName("tim_ip_address")
+        @Expose
+        private Object timIpAddress;
+        @SerializedName("tim_infra_icon")
+        @Expose
+        private Object timInfraIcon;
+        @SerializedName("tim_accept_status")
+        @Expose
+        private String timAcceptStatus;
 
-            public void setTimInfraId(String timInfraId) {
-                this.timInfraId = timInfraId;
-            }
+        public String getTimInfraId() {
+            return timInfraId;
+        }
 
-            public String getTimInfraNamee() {
-                return timInfraNamee;
-            }
+        public void setTimInfraId(String timInfraId) {
+            this.timInfraId = timInfraId;
+        }
 
-            public void setTimInfraNamee(String timInfraNamee) {
-                this.timInfraNamee = timInfraNamee;
-            }
+        public String getTimInfraNamee() {
+            return timInfraNamee;
+        }
 
-            public String getTimInfraNameh() {
-                return timInfraNameh;
-            }
+        public void setTimInfraNamee(String timInfraNamee) {
+            this.timInfraNamee = timInfraNamee;
+        }
 
-            public void setTimInfraNameh(String timInfraNameh) {
-                this.timInfraNameh = timInfraNameh;
-            }
+        public String getTimInfraNameh() {
+            return timInfraNameh;
+        }
 
-            public String getTimCreatedDate() {
-                return timCreatedDate;
-            }
+        public void setTimInfraNameh(String timInfraNameh) {
+            this.timInfraNameh = timInfraNameh;
+        }
 
-            public void setTimCreatedDate(String timCreatedDate) {
-                this.timCreatedDate = timCreatedDate;
-            }
+        public String getTimCreatedDate() {
+            return timCreatedDate;
+        }
 
-            public String getTimModifiedDate() {
-                return timModifiedDate;
-            }
+        public void setTimCreatedDate(String timCreatedDate) {
+            this.timCreatedDate = timCreatedDate;
+        }
 
-            public void setTimModifiedDate(String timModifiedDate) {
-                this.timModifiedDate = timModifiedDate;
-            }
+        public String getTimModifiedDate() {
+            return timModifiedDate;
+        }
 
-            public String getTimStatus() {
-                return timStatus;
-            }
+        public void setTimModifiedDate(String timModifiedDate) {
+            this.timModifiedDate = timModifiedDate;
+        }
 
-            public void setTimStatus(String timStatus) {
-                this.timStatus = timStatus;
-            }
+        public String getTimStatus() {
+            return timStatus;
+        }
 
-            public String getTimUserId() {
-                return timUserId;
-            }
+        public void setTimStatus(String timStatus) {
+            this.timStatus = timStatus;
+        }
 
-            public void setTimUserId(String timUserId) {
-                this.timUserId = timUserId;
-            }
+        public String getTimUserId() {
+            return timUserId;
+        }
 
-            public Object getTimIpAddress() {
-                return timIpAddress;
-            }
+        public void setTimUserId(String timUserId) {
+            this.timUserId = timUserId;
+        }
 
-            public void setTimIpAddress(Object timIpAddress) {
-                this.timIpAddress = timIpAddress;
-            }
+        public Object getTimIpAddress() {
+            return timIpAddress;
+        }
 
-            public Object getTimInfraIcon() {
-                return timInfraIcon;
-            }
+        public void setTimIpAddress(Object timIpAddress) {
+            this.timIpAddress = timIpAddress;
+        }
 
-            public void setTimInfraIcon(Object timInfraIcon) {
-                this.timInfraIcon = timInfraIcon;
-            }
+        public Object getTimInfraIcon() {
+            return timInfraIcon;
+        }
 
-            public String getTimAcceptStatus() {
-                return timAcceptStatus;
-            }
+        public void setTimInfraIcon(Object timInfraIcon) {
+            this.timInfraIcon = timInfraIcon;
+        }
 
-            public void setTimAcceptStatus(String timAcceptStatus) {
-                this.timAcceptStatus = timAcceptStatus;
-            }
+        public String getTimAcceptStatus() {
+            return timAcceptStatus;
+        }
+
+        public void setTimAcceptStatus(String timAcceptStatus) {
+            this.timAcceptStatus = timAcceptStatus;
+        }
 
 
     }

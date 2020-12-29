@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,8 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_aanganwadi_list);
+
+
         infra_id = getIntent().getStringExtra("infra_id");
         project_id = getIntent().getStringExtra("project_id");
         p_name = getIntent().getStringExtra("project_name");
@@ -125,7 +128,6 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_call) {
-            makePhoneCall(cdponumber);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (AppUtils.hasPermissions(context, AppUtils.CALL_PERMISSIONS)) {
                     makePhoneCall(cdponumber);
@@ -152,11 +154,13 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         }
     }
 
-    private void makePhoneCall(String mobile) {
+    private void makePhoneCall(String cdponumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:" + mobile));
+        callIntent.setData(Uri.parse("tel:" + cdponumber));
         startActivity(callIntent);
+
     }
+
 
     private void sendEmail(String email) {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);

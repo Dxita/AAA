@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -65,10 +66,12 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onSuccess(VerifyUser body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
-                         AppUtils.showToast(context, body.getMessage());
+                    //    AppUtils.showToast(context, body.getMessage());
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     appPreferences.setAwcId(body.getData().getEmpdata().getAwcid());
+
                     if (body.getData().getEmpdata().getPasswordset()) {
+                        
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                         startActivity(new Intent(context, UserLoginActivity.class));
                     } else {
@@ -87,7 +90,8 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onFailure(Throwable t) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                Toast.makeText(context, "Number Not registered", Toast.LENGTH_SHORT).show();
+               // AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }
         }));
     }

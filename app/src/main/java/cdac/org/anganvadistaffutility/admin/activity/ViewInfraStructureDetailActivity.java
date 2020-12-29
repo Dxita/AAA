@@ -45,7 +45,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     private InfrastructureDetailSumData.Data infraDetailsData;
     private InfrasSumData infraDetailData;
-    private int infraCount=0;
+    private int infraCount = 0;
     //private int previousInfraDetailID = -1;
     private int currentInfraDetailID = -1;
     private PieChart pieChart;
@@ -105,8 +105,8 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                 //    AppUtils.showToast(context, body.getMessage());
 
                 infraDetailsData = body.getData();
-                if(infraDetailsData.getInfradata()!=null){
-                    for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
+                if (infraDetailsData.getInfradata() != null) {
+                    for (int i = 0; i < infraDetailsData.getInfradata().size(); i++) {
 
                         if (pieChart.getVisibility() == View.GONE) {
                             pieChart.setVisibility(View.VISIBLE);
@@ -114,7 +114,9 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                         setInfraDetailData(infraDetailsData);
 
                     }
+
                 }
+
 
              /*   for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
                     if (pieChart.getVisibility() == View.GONE) {
@@ -143,30 +145,32 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         List<PieEntry> chartInfraCount = new ArrayList<>();
 
         for (InfrastructureDetailSumData.Infradatum infraDatum : detailData.getInfradata()) {
-            previousInfraDetailID = currentInfraDetailID;
-            currentInfraDetailID = Integer.parseInt(infraDatum.getTaidTidInfraDetailId());
 
-            // To make sum of all same infra detail data and finally add to list
-            // add same id data only once
-            if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
-                if (!infraDetailDataList.isEmpty()) {
-                    infraDetailDataList.remove(infraDetailDataList.size() - 1);
+                previousInfraDetailID = currentInfraDetailID;
+                currentInfraDetailID = Integer.parseInt(infraDatum.getTaidTidInfraDetailId());
+
+                // To make sum of all same infra detail data and finally add to list
+                // add same id data only once
+                if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
+                    if (!infraDetailDataList.isEmpty()) {
+                        infraDetailDataList.remove(infraDetailDataList.size() - 1);
+                    }
                 }
-            }
-            if (infraDetailData != null) {
-                infraDetailDataList.add(infraDetailData);
+                if (infraDetailData != null) {
+                    infraDetailDataList.add(infraDetailData);
+                }
+
+                if (previousInfraDetailID == currentInfraDetailID) {
+                    infraCount = infraCount + Integer.parseInt(infraDatum.getSum());
+                } else {
+                    infraDetailData = new InfrasSumData();
+                    infraDetailData.setInfraDetailID(infraDatum.getTaidTidInfraDetailId());
+                    infraDetailData.setInfraName(infraDatum.getTidInfraNamee());
+                    infraCount = Integer.parseInt(infraDatum.getSum());
+                }
+                infraDetailData.setInfraSum(formatEmployeeCount("" + infraCount));
             }
 
-            if (previousInfraDetailID == currentInfraDetailID) {
-                infraCount = infraCount + Integer.parseInt(infraDatum.getSum());
-            } else {
-                infraDetailData = new InfrasSumData();
-                infraDetailData.setInfraDetailID(infraDatum.getTaidTidInfraDetailId());
-                infraDetailData.setInfraName(infraDatum.getTidInfraNamee());
-                infraCount = Integer.parseInt(infraDatum.getSum());
-            }
-            infraDetailData.setInfraSum("" + infraCount);
-        }
 
         for (InfrasSumData infraDetailData : infraDetailDataList) {
             chartInfraCount.add(new PieEntry(Integer.parseInt(infraDetailData.getInfraSum()),
@@ -196,11 +200,26 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         pieChart.invalidate();
     }
 
+    private String formatEmployeeCount(String s) {
+        int ec = Integer.parseInt(s);
+        if (ec < 9) {
+            return "0" + s;
+        } else {
+            return "" + s;
+        }
+    }
+
     @Override
     public void onValueSelected(Entry e, Highlight h) {
+
+
         int pos = (int) h.getX();
+
+        startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_id", infraDetailsData.getInfradata().get(pos).getTaidTimInfraId())
+                .putExtra("infra_detail_id", infraDetailsData.getInfradata().get(pos).getTaidTidInfraDetailId()));
+
+
         //Toast.makeText(context, "" + infraDetailsData.getInfradata().get(pos).getTaidTidInfraDetailId(), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(context, DistrictWiseInfraActivity.class).putExtra("infra_id", infraDetailsData.getInfradata().get(pos).getTaidTimInfraId()).putExtra("infra_detail_id", infraDetailsData.getInfradata().get(pos).getTaidTidInfraDetailId()));
     }
 
     @Override

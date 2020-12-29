@@ -21,7 +21,7 @@ public class App extends Application {
 
     private LogoutListener listener;
     private Timer timer;
-    private static final long INACTIVE_TIMEOUT = 900000;
+    private static final long INACTIVE_TIMEOUT = 300000;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
