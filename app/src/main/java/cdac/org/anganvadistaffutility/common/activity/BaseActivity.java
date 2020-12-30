@@ -92,7 +92,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     private static Dialog mDialog;
     private AlarmManager alarmMgr; //TO CALL OUT THE CLASS OF THE ALARM SERVICE
     private PendingIntent alarmIntent;// FOR TARGET FUNCTION TO PERFORM WITH BROADCASTRECEIVER
-    public static final long DISCONNECT_TIMEOUT = 300000;
+    public static final long DISCONNECT_TIMEOUT = 600000;
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

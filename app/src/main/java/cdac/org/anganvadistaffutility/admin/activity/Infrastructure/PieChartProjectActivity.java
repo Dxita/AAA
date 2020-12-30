@@ -66,7 +66,7 @@ public class PieChartProjectActivity extends BaseActivity {
     //private RelativeLayout relativeLayout;
     private String cdpoMobile = "";
     private PieChart pieChart;
-
+    TextView textView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,9 +80,25 @@ public class PieChartProjectActivity extends BaseActivity {
         //relativeLayout = findViewById(R.id.relativeLayout);
         infra_id = getIntent().getStringExtra("infra_id");
         district_id = getIntent().getStringExtra("district_id");
-        TextView txt_title = findViewById(R.id.txt_title);
+
 
         recyclerView = findViewById(R.id.recycler_view);
+        textView = findViewById(R.id.txt_title);
+        if (infra_id.equalsIgnoreCase("1")) {
+            textView.setText(getResources().getString(R.string.project_anganwadi));
+        } else if (infra_id.equalsIgnoreCase("2")) {
+            textView.setText(getResources().getString(R.string.project_electericity));
+        } else if (infra_id.equalsIgnoreCase("3")) {
+            textView.setText(getResources().getString(R.string.project_drinking_water));
+        } else if (infra_id.equalsIgnoreCase("4")) {
+            textView.setText(getResources().getString(R.string.project_toilet));
+        } else if (infra_id.equalsIgnoreCase("5")) {
+            textView.setText(getResources().getString(R.string.project_kitchen));
+        } else if (infra_id.equalsIgnoreCase("6")) {
+            textView.setText(getResources().getString(R.string.project_open_area));
+        } else if (infra_id.equalsIgnoreCase("7")) {
+            textView.setText(getResources().getString(R.string.project_creche));
+        }
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
@@ -300,7 +316,6 @@ public class PieChartProjectActivity extends BaseActivity {
 
                 for (int j = 0; j < infraDetailData.size(); j++) {
                     if (position == 0 && j < fixListSize) {
-
                         noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getInfraCount()),
                                 infraDetailData.get(j).getProjectname() + "(" + infraDetailData.get(j).getInfraCount() + ")"));
                   /*  noOfEmp1.add(new PieEntry(Integer.parseInt(infraDetailData.get(j).getDistrict()),
@@ -393,11 +408,9 @@ public class PieChartProjectActivity extends BaseActivity {
                         .putExtra("infra_id", infra_id)
                         .putExtra("project_id", infraDetailData.get(pos).getProjectcode())
                         .putExtra("project_name", infraDetailData.get(pos).getProjectname())
-                        .putExtra("cdpo_number",infraDetailData.get(pos).getCdpoNumber())
-                        .putExtra("cdpo_email",infraDetailData.get(pos).getCdpoEmail())
-                        .putExtra("cdpo_name",infraDetailData.get(pos).getCdpoName()));
-
-
+                        .putExtra("cdpo_number", infraDetailData.get(pos).getCdpoNumber())
+                        .putExtra("cdpo_email", infraDetailData.get(pos).getCdpoEmail())
+                        .putExtra("cdpo_name", infraDetailData.get(pos).getCdpoName()));
             }
 
             @Override

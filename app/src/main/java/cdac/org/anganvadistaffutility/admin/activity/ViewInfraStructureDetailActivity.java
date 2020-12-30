@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -42,13 +43,13 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
     private RelativeLayout relativeLayout;
     private String infraID = "";
-
     private InfrastructureDetailSumData.Data infraDetailsData;
     private InfrasSumData infraDetailData;
     private int infraCount = 0;
     //private int previousInfraDetailID = -1;
     private int currentInfraDetailID = -1;
     private PieChart pieChart;
+    TextView textView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,8 +61,25 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
         relativeLayout = findViewById(R.id.relativeLayout);
         pieChart = findViewById(R.id.pieChart);
-
         infraID = getIntent().getStringExtra("infra_id");
+
+        textView = findViewById(R.id.text);
+        if (infraID.equalsIgnoreCase("1")) {
+            textView.setText(getResources().getString(R.string.unavailable_anganwadi_infrastructure_facilities));
+        } else if (infraID.equalsIgnoreCase("2")) {
+            textView.setText(getResources().getString(R.string._electericity));
+        } else if (infraID.equalsIgnoreCase("3")) {
+            textView.setText(getResources().getString(R.string._drinking_water));
+        } else if (infraID.equalsIgnoreCase("4")) {
+            textView.setText(getResources().getString(R.string._toilet));
+        } else if (infraID.equalsIgnoreCase("5")) {
+            textView.setText(getResources().getString(R.string._kitchen));
+        } else if (infraID.equalsIgnoreCase("6")) {
+            textView.setText(getResources().getString(R.string._open_area));
+        } else if (infraID.equalsIgnoreCase("7")) {
+            textView.setText(getResources().getString(R.string._creche));
+        }
+
 
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
@@ -86,6 +104,7 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setEntryLabelTextSize(14f);
         pieChart.setOnChartValueSelectedListener(this);
+
 
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
@@ -138,7 +157,8 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
         }));
     }
 
-    private void setInfraDetailData(InfrastructureDetailSumData.Data detailData) {
+    private void setInfraDetailData(InfrastructureDetailSumData.Data
+                                            detailData) {
         int previousInfraDetailID;
 
         List<InfrasSumData> infraDetailDataList = new ArrayList<>();
@@ -146,30 +166,30 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
 
         for (InfrastructureDetailSumData.Infradatum infraDatum : detailData.getInfradata()) {
 
-                previousInfraDetailID = currentInfraDetailID;
-                currentInfraDetailID = Integer.parseInt(infraDatum.getTaidTidInfraDetailId());
+            previousInfraDetailID = currentInfraDetailID;
+            currentInfraDetailID = Integer.parseInt(infraDatum.getTaidTidInfraDetailId());
 
-                // To make sum of all same infra detail data and finally add to list
-                // add same id data only once
-                if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
-                    if (!infraDetailDataList.isEmpty()) {
-                        infraDetailDataList.remove(infraDetailDataList.size() - 1);
-                    }
+            // To make sum of all same infra detail data and finally add to list
+            // add same id data only once
+            if (previousInfraDetailID == -1 || previousInfraDetailID == currentInfraDetailID) {
+                if (!infraDetailDataList.isEmpty()) {
+                    infraDetailDataList.remove(infraDetailDataList.size() - 1);
                 }
-                if (infraDetailData != null) {
-                    infraDetailDataList.add(infraDetailData);
-                }
-
-                if (previousInfraDetailID == currentInfraDetailID) {
-                    infraCount = infraCount + Integer.parseInt(infraDatum.getSum());
-                } else {
-                    infraDetailData = new InfrasSumData();
-                    infraDetailData.setInfraDetailID(infraDatum.getTaidTidInfraDetailId());
-                    infraDetailData.setInfraName(infraDatum.getTidInfraNamee());
-                    infraCount = Integer.parseInt(infraDatum.getSum());
-                }
-                infraDetailData.setInfraSum(formatEmployeeCount("" + infraCount));
             }
+            if (infraDetailData != null) {
+                infraDetailDataList.add(infraDetailData);
+            }
+
+            if (previousInfraDetailID == currentInfraDetailID) {
+                infraCount = infraCount + Integer.parseInt(infraDatum.getSum());
+            } else {
+                infraDetailData = new InfrasSumData();
+                infraDetailData.setInfraDetailID(infraDatum.getTaidTidInfraDetailId());
+                infraDetailData.setInfraName(infraDatum.getTidInfraNamee());
+                infraCount = Integer.parseInt(infraDatum.getSum());
+            }
+            infraDetailData.setInfraSum(formatEmployeeCount("" + infraCount));
+        }
 
 
         for (InfrasSumData infraDetailData : infraDetailDataList) {

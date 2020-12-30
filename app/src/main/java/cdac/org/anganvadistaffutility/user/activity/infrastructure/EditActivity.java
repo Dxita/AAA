@@ -13,6 +13,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +40,7 @@ import retrofit2.Call;
 
 public class EditActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout relativeLayout;
-    AppCompatButton submit;
+    static AppCompatButton submit;
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
     AwcBuildingAdapter awcBuildingAdapter;
@@ -206,14 +207,20 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         public void onBindViewHolder(@NonNull AwcBuildingAdapter.MyViewHolders holder, int position) {
             myViewHolders = holder;
             infrastructureData.get(position);
-
             holder.checkBox.setTag(position);
-            lastChecked = holder.checkBox;
-            lastCheckedPos = 0;
 
+
+            if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+                lastChecked = holder.checkBox;
+                lastCheckedPos = 0;
+                holder.checkBox.setChecked(true);
+                holder.edtx_qty.setText(infrastructureData.get(position).getTjaidQty());
+                Log.d("last_infra_detail_id", last_infra_detail_id);
+            }
             if (holder.checkBox.isChecked()) {
 
             }
+
 
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -291,6 +298,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                 checkBox = itemView.findViewById(R.id.checkbox);
                 edtx_qty = itemView.findViewById(R.id.qty_edtx);
                 edtx_qty.setEnabled(false);
+
                 // checkBox.setClickable(false);
             }
 

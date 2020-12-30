@@ -46,7 +46,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     private RemainingInfraDetailAdapter remainingInfraDetailAdapter;
     String infra_id, project_id, cdponame, p_name, cdpoemail, cdponumber;
     AppCompatTextView project_name, cdpo_name, cdpo_number, project_code;
-    TextView awc_name, awc_code;
+    TextView awc_name, awc_code, textview;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -75,6 +75,22 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         email = findViewById(R.id.btn_email);
         recyclerView = findViewById(R.id.recycler_view);
 
+        textview = findViewById(R.id.text);
+        if (infra_id.equalsIgnoreCase("1")) {
+            textview.setText(getResources().getString(R.string.aw_anganwadi));
+        } else if (infra_id.equalsIgnoreCase("2")) {
+            textview.setText(getResources().getString(R.string.aw_electericity));
+        } else if (infra_id.equalsIgnoreCase("3")) {
+            textview.setText(getResources().getString(R.string.aw_drinking_water));
+        } else if (infra_id.equalsIgnoreCase("4")) {
+            textview.setText(getResources().getString(R.string.aw_toilet));
+        } else if (infra_id.equalsIgnoreCase("5")) {
+            textview.setText(getResources().getString(R.string.aw_kitchen));
+        } else if (infra_id.equalsIgnoreCase("6")) {
+            textview.setText(getResources().getString(R.string.aw_open_area));
+        } else if (infra_id.equalsIgnoreCase("7")) {
+            textview.setText(getResources().getString(R.string.aw_creche));
+        }
         call.setOnClickListener(this);
         email.setOnClickListener(this);
         cdpo_name.setText(getResources().getString(R.string.cdpo_name) + " " + cdponame);

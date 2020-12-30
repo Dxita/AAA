@@ -55,6 +55,7 @@ public class DistrictWiseInfraActivity extends BaseActivity {
     private int currentInfraDetailID = -1;
     private InfraDetailData infraDetailData;
     private String infra_detail_id, infra_id;
+    TextView textView;
     //  private DistrictWiseInfrastructuretAdapter.ItemClickListener itemClickListener;
 
     @Override
@@ -64,7 +65,6 @@ public class DistrictWiseInfraActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_demo);
-        TextView txt_title = findViewById(R.id.txt_title);
 
         infra_detail_id = getIntent().getStringExtra("infra_detail_id");
         infra_id = getIntent().getStringExtra("infra_id");
@@ -72,6 +72,25 @@ public class DistrictWiseInfraActivity extends BaseActivity {
         //  itemClickListener = this;
 
         recyclerView = findViewById(R.id.recycler_view);
+
+
+        textView= findViewById(R.id.txt_title);
+        if (infra_id.equalsIgnoreCase("1")) {
+            textView.setText(getResources().getString(R.string.district_anganwadi));
+        } else if (infra_id.equalsIgnoreCase("2")) {
+            textView.setText(getResources().getString(R.string.district_electericity));
+        } else if (infra_id.equalsIgnoreCase("3")) {
+            textView.setText(getResources().getString(R.string.district_drinking_water));
+        } else if (infra_id.equalsIgnoreCase("4")) {
+            textView.setText(getResources().getString(R.string.district_toilet));
+        } else if (infra_id.equalsIgnoreCase("5")) {
+            textView.setText(getResources().getString(R.string.district_kitchen));
+        } else if (infra_id.equalsIgnoreCase("6")) {
+            textView.setText(getResources().getString(R.string.district_open_area));
+        } else if (infra_id.equalsIgnoreCase("7")) {
+            textView.setText(getResources().getString(R.string.district_creche));
+        }
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);

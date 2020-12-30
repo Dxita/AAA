@@ -15,16 +15,17 @@
         android:id="@+id/largeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_10"
+        android:layout_margin="@dimen/margin_12"
         android:gravity="center"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/margin_60"
-            android:layout_height="@dimen/margin_60"
+            android:layout_width="@dimen/margin_40"
+            android:layout_height="@dimen/margin_40"
             android:src="@drawable/app_logo" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,17 +34,17 @@
             android:text="@string/aw_data"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_15sp"
+            android:textSize="@dimen/textsize_14sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_marginBottom="@dimen/margin_150"
-
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        android:layout_below="@id/largeLabel">
+        android:layout_below="@id/largeLabel"
+        android:layout_marginBottom="@dimen/margin_150">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,9 +65,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/margin_12"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize_17sp" />
+                    android:textSize="@dimen/textsize_15sp" />
 
                 <TextView
                     android:id="@+id/awc_code"
@@ -74,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize_17sp" />
+                    android:textSize="@dimen/textsize_15sp" />
 
 
                 <LinearLayout

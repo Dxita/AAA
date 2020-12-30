@@ -16,12 +16,12 @@ import cdac.org.anganvadistaffutility.common.utils.AppSignatureHelper;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class App extends Application {
-     public static App myAutoLogoutApp;
+    public static App myAutoLogoutApp;
 
 
     private LogoutListener listener;
     private Timer timer;
-    private static final long INACTIVE_TIMEOUT = 300000;
+    private static final long INACTIVE_TIMEOUT = 600000;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

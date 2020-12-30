@@ -124,7 +124,7 @@
     <string name="select_facilities_txt">अपने भवन में उपलब्ध सुविधाओं का चयन करें</string>
     <string name="open_area">खुली जगह</string>
     <string name="toilet">शौचालय</string>
-    <string name="submit_btn">प्रस्तुत</string>
+    <string name="submit_btn">रक्षित</string>
     <string name="year">साल</string>
     <string name="drinking_water">पीने का पानी</string>
     <string name="electricity">बिजली</string>
@@ -147,11 +147,11 @@
     <string name="call">कॉल</string>
     <string name="email">ईमेल</string>
 
-    <string name="district_wise_reg_users">जिला वाइज पंजीकृत उपयोगकर्ता</string>
-    <string name="district_wise_unreg_users">जिला वाइज अनरजिस्टर्ड यूजर्स</string>
+    <string name="district_wise_reg_users">जिलानुसार पंजीकृत कार्यकर्ता</string>
+    <string name="district_wise_unreg_users">जिलानुसार अनरजिस्टर्ड कार्यकर्ता</string>
 
-    <string name="project_wise_reg_users">परियोजना समझदार पंजीकृत उपयोगकर्ता</string>
-    <string name="project_wise_unreg_users">परियोजना समझदार अपंजीकृत उपयोगकर्ता</string>
+    <string name="project_wise_reg_users">परियोजनानुसार पंजीकृत कार्यकर्ता</string>
+    <string name="project_wise_unreg_users">परियोजनानुसार अपंजीकृत कार्यकर्ता</string>
 
     <string name="enter_valid_otp">कृपया मान्य OTP दर्ज करें</string>
     <string name="otp_verified">OTP सफलतापूर्वक सत्यापित किया गया</string>
@@ -251,6 +251,41 @@
     <string name="aw_worker_number">आंगनवाड़ी कार्यकर्ता संख्या</string>
     <string name="aw_data">आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
     <string name="okay">ठीक है</string>
+
+
+    <string name="unavailable_anganwadi_infrastructure_facilities">आंगनवाड़ी आधारभूत सुविधाएं</string>
+    <string name="_electericity">बिजली की आधारभूत सुविधाएं</string>
+    <string name="_drinking_water">पीने का पानी की आधारभूत सुविधाएं</string>
+    <string name="_toilet">शौचालय की आधारभूत सुविधाएं</string>
+    <string name="_kitchen">रसोई की आधारभूत सुविधाएं</string>
+    <string name="_open_area">खुली जगह की आधारभूत सुविधाएं</string>
+    <string name="_creche">क्रेच की आधारभूत सुविधाएं</string>
+
+
+    <string name="district_anganwadi">जिलानुसार अनुपलब्ध आंगनवाड़ी </string>
+    <string name="district_electericity"> जिलानुसार अनुपलब्ध बिजली</string>
+    <string name="district_drinking_water"> जिलानुसार अनुपलब्ध पीने का पानी</string>
+    <string name="district_toilet"> जिलानुसार अनुपलब्ध शौचालय </string>
+    <string name="district_kitchen"> जिलानुसार अनुपलब्ध रसोई </string>
+    <string name="district_open_area">जिलानुसार अनुपलब्ध खुली जगह</string>
+    <string name="district_creche">जिलानुसार अनुपलब्ध क्रेच</string>
+
+
+    <string name="project_anganwadi"> परियोजनानुसार अनुपलब्ध आंगनवाड़ी </string>
+    <string name="project_electericity">परियोजनानुसार अनुपलब्ध बिजली</string>
+    <string name="project_drinking_water">परियोजनानुसार अनुपलब्ध पीने का पानी</string>
+    <string name="project_toilet">परियोजनानुसार अनुपलब्ध शौचालय</string>
+    <string name="project_kitchen"> परियोजनानुसार अनुपलब्ध रसोई</string>
+    <string name="project_open_area"> परियोजनानुसार अनुपलब्ध खुली जगह</string>
+    <string name="project_creche"> परियोजनानुसार अनुपलब्ध क्रेच</string>
+
+    <string name="aw_anganwadi">अनुपलब्ध आंगनवाड़ी डेटा</string>
+    <string name="aw_electericity">अनुपलब्ध बिजली डेटा</string>
+    <string name="aw_drinking_water">अनुपलब्ध पीने का पानी डेटा</string>
+    <string name="aw_toilet">अनुपलब्ध शौचालय डेटा</string>
+    <string name="aw_kitchen">अनुपलब्ध रसोई डेटा</string>
+    <string name="aw_open_area">अनुपलब्ध खुली जगह डेटा</string>
+    <string name="aw_creche">अनुपलब्ध क्रेच डेटा</string>
 
 
 </resources>

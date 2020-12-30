@@ -250,6 +250,34 @@
     <string name="aw_worker_number">Anganwadi Worker Number</string>
     <string name="aw_data">Aanganwadi Infrastructure Data</string>
     <string name="okay" />
+    <string name="unavailable_anganwadi_infrastructure_facilities">Anganwadi Infrastructure Facilities</string>
+    <string name="_electericity">Electricity Infrastructure Facilities</string>
+    <string name="_drinking_water">Drinking Water Infrastructure Facilities</string>
+    <string name="_toilet">Toilet Infrastructure Facilities</string>
+    <string name="_kitchen">Kitchen Infrastructure Facilities</string>
+    <string name="_open_area">Open Area Infrastructure Facilities</string>
+    <string name="_creche">Creche Infrastructure Facilities</string>
+    <string name="district_anganwadi">District Wise Not Available Anganwadi Infrastructure Facilities</string>
+    <string name="district_electericity">District Wise Not Available Electricity Infrastructure Facilities</string>
+    <string name="district_drinking_water">District Wise Not Available Drinking Water Infrastructure Facilities</string>
+    <string name="district_toilet">District Wise Not Available Toilet Infrastructure Facilities</string>
+    <string name="district_kitchen">District Wise Not Available Kitchen Infrastructure Facilities</string>
+    <string name="district_open_area">District Wise Not Available Open Area Infrastructure Facilities</string>
+    <string name="district_creche">District Wise Not Available Creche Infrastructure Facilities</string>
+    <string name="project_anganwadi">Project Wise Not Available Anganwadi Infrastructure Facilities</string>
+    <string name="project_electericity">Project Wise Not Available Electricity Infrastructure Facilities</string>
+    <string name="project_drinking_water">Project Wise Not Available Drinking Water Infrastructure Facilities</string>
+    <string name="project_toilet">Project Wise Not Available Toilet Infrastructure Facilities</string>
+    <string name="project_kitchen">Project Wise Not Available Kitchen Infrastructure Facilities</string>
+    <string name="project_open_area">Project Wise Not Available Open Area Infrastructure Facilities</string>
+    <string name="project_creche">Project Wise Not Available Creche Infrastructure Facilities</string>
+    <string name="aw_anganwadi">Not Available Anganwadi Data</string>
+    <string name="aw_electericity">Not Available Electricity Data</string>
+    <string name="aw_drinking_water">Not Available Drinking Water Data</string>
+    <string name="aw_toilet">Not Available Toilet Data</string>
+    <string name="aw_kitchen">Not Available Kitchen Data</string>
+    <string name="aw_open_area">Not Available Open Data</string>
+    <string name="aw_creche">Not Available Creche Data</string>
 
 
     <string-array name="criteria">
