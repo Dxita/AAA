@@ -181,10 +181,10 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:id="@+id/beneficiary_data_card"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_150"
+                    android:layout_height="@dimen/margin_170dp"
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:clickable="true"
                     android:focusable="true"
