@@ -17,15 +17,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/margin_80"
-                android:layout_height="@dimen/margin_80"
+                android:layout_width="@dimen/margin_60"
+                android:layout_height="@dimen/margin_60"
                 android:src="@drawable/app_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginTop="@dimen/margin_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -241,8 +240,6 @@
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
-
-
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

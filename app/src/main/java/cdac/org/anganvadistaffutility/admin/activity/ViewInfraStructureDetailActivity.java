@@ -122,18 +122,14 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
             public void onSuccess(InfrastructureDetailSumData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 //    AppUtils.showToast(context, body.getMessage());
-
                 infraDetailsData = body.getData();
                 if (infraDetailsData.getInfradata() != null) {
                     for (int i = 0; i < infraDetailsData.getInfradata().size(); i++) {
-
                         if (pieChart.getVisibility() == View.GONE) {
                             pieChart.setVisibility(View.VISIBLE);
                         }
                         setInfraDetailData(infraDetailsData);
-
                     }
-
                 }
 
 
