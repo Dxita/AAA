@@ -46,6 +46,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
     AwcBuildingAdapter awcBuildingAdapter;
     public static String infra_id, item_nameE, item_nameH, tim_accept_status, infradetail_id, last_infra_detail_id;
     public static String quantity_edtx = "1";
+
   /*  AppCompatEditText facility, quantity, Availbility_in_Infrastructure;
     String infra_id;
     private RelativeLayout relativeLayout;
@@ -76,15 +77,14 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                 item_nameH = extras.getString("item_nameH");
                 item_nameE = extras.getString("item_nameE");
                 tim_accept_status = extras.getString("tim_accept_status");
-
             }
         } else {
+
             infra_id = (String) savedInstanceState.getSerializable("infra_id");
             item_nameH = (String) savedInstanceState.getSerializable("item_nameH");
             item_nameE = (String) savedInstanceState.getSerializable("item_nameE");
             tim_accept_status = (String) savedInstanceState.getSerializable("tim_accept_status");
         }
-
 
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
@@ -161,7 +161,8 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<UpdateInfrastructureData>() {
             @Override
             public void onSuccess(UpdateInfrastructureData body) {
-                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(context, "" + getResources().getString(R.string.infra_updated_successfully), Toast.LENGTH_SHORT).show();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                /* infrastructureData = new ArrayList<>();
                 infrastructureData = body.getData().getInfrastructureData();
@@ -179,7 +180,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-
     public static class AwcBuildingAdapter extends RecyclerView.Adapter<AwcBuildingAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
@@ -196,11 +196,8 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         @NonNull
         @Override
         public AwcBuildingAdapter.MyViewHolders onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-
             View view = LayoutInflater.from(context).inflate(R.layout.toilet_rv_items, null);
             return new AwcBuildingAdapter.MyViewHolders(view);
-
         }
 
         @Override
@@ -209,18 +206,19 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             infrastructureData.get(position);
             holder.checkBox.setTag(position);
 
-
             if (infrastructureData.get(position).getStatus().equalsIgnoreCase("yes")) {
+
                 lastChecked = holder.checkBox;
                 lastCheckedPos = 0;
                 holder.checkBox.setChecked(true);
                 holder.edtx_qty.setText(infrastructureData.get(position).getTjaidQty());
                 Log.d("last_infra_detail_id", last_infra_detail_id);
+
             }
+
             if (holder.checkBox.isChecked()) {
 
             }
-
 
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override

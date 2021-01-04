@@ -140,8 +140,8 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
 
         List<PieEntry> NoOfEmp = new ArrayList<>();
 
-        NoOfEmp.add(new PieEntry(totalRegisteredEmployees, "Registered Employees " + "(" + totalRegisteredEmployees + ")"));
-        NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, "UnRegistered Employees " + "(" + totalUnRegisteredEmployees + ")"));
+        NoOfEmp.add(new PieEntry(totalRegisteredEmployees, getResources().getString(R.string.registered_emp) + "(" + totalRegisteredEmployees + ")"));
+        NoOfEmp.add(new PieEntry(totalUnRegisteredEmployees, getResources().getString(R.string.unregistered_emp) + "(" + totalUnRegisteredEmployees + ")"));
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
         dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
@@ -170,6 +170,7 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         // undo all highlights
         pieChart.highlightValues(null);
         pieChart.invalidate();
+
     }
 
     @Override
@@ -178,14 +179,15 @@ public class UsersPieChartActivity extends BaseActivity implements OnChartValueS
         ArrayList<AdminUserData.Empdatum> empDatumArrayList = new ArrayList<>(empDatumList);
 
         if (h.getX() == 0.0) {
+
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "registered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
+        } else {
 
-        }
-        else {
             startActivity(new Intent(context, DistrictWisePieChartActivity.class).putExtra("user_type", "unregistered_user")
                     .putExtra("emp_data", AppUtils.convertUserToPut(empDatumArrayList)));
         }
+
     }
 
     @Override

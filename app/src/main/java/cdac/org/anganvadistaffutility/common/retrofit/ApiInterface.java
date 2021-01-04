@@ -140,18 +140,19 @@ public interface ApiInterface {
                                                             @Field("infra_id") String infraID,
                                                             @Field("infra_detail_id") String infra_detail_id);
 
-    //Infra details)project wise in admin side)
+    //Infra details project wise in admin side)
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<InfraDetailProjectData> getInfrastructureProjectDetails(@Field("filterby") String filterType,
                                                                  @Field("infra_id") String infraID,
                                                                  @Field("distid") String district_id);
-//awc data(infra admin)
+
+    //awc data(infra admin)
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AnganwadiInfraData> getAnganwadiInfraData(@Field("filterby") String filterType,
-                                                      @Field("infra_id") String infraID,
-                                                      @Field("projid") String project_id);
+                                                   @Field("infra_id") String infraID,
+                                                   @Field("projid") String project_id);
 
 
     // Get Beneficiary Criteria List
@@ -167,6 +168,7 @@ public interface ApiInterface {
                                                         @Field("janadhar_number") String janadhar_number,
                                                         @Field("bhamasha_number") String bhamasha_number);
 
+    //update infra details in user side
     @POST("api_js_infrastructur_update_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<UpdateInfrastructureData> updateInfrastructureData(@Field("infra_id") String infra_id,
@@ -193,25 +195,25 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<RemainingInfrastructureData> remainingInfrastructureData(@Field("tjaid_awc_id") String tjaid_awc_id);
 
-//add remaining infra detail
+    //add remaining infra detail
     @POST("api_reaming_infradetail_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<RemainingInfraDetailData> remainingInfraDetailData(@Field("tjaid_awc_id") String tjaid_awc_id,
-                                                            @Field("tjaid_tim_infra_id")String tjaid_tim_infra_id);
+                                                            @Field("tjaid_tim_infra_id") String tjaid_tim_infra_id);
 
+    //add remaining infra details in user side
     @POST("api_add_reaming_infradetail_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AddInfrastructureData> addInfrastructureData(@Field("awc_id") String awc_id,
-                                                         @Field("infra_id")String infra_id,
-                                                         @Field("infra_detail_id")String infra_detail_id,
-                                                         @Field("quantity")String quantity);
+                                                      @Field("infra_id") String infra_id,
+                                                      @Field("infra_detail_id") String infra_detail_id,
+                                                      @Field("quantity") String quantity);
 
 
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<InfrastructureDetailSumData> infrastructureDetailSumData(@Field("filterby") String filterType,
                                                                   @Field("infra_id") String infraID);
-
 
 
 }

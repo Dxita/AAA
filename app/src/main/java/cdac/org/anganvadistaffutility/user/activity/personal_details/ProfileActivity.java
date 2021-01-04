@@ -46,21 +46,29 @@ public class ProfileActivity extends BaseActivity {
         Log.d("check", String.valueOf(profileDetails));
         if (profileDetails != null) {
 
-           /* if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                name.setText(profileDetails.getEmployeeNameHindi() + " (" + profileDetails.getEmployeeNameEnglish() + ")");
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                name.setText(profileDetails.getEmployeeNameHindi());
+                awc_name.setText(profileDetails.getAwcNameHindi());
                 dob.setText(profileDetails.getDateOfBirth());
+                category.setText(profileDetails.getCategory());
+                awc_id.setText(profileDetails.getAwcid());
+                mobile_no.setText(profileDetails.getMoblieNumber());
+                //    father_husband_name.setText(profileDetails.getHusbandFatherName());
+                father_husband_name.setText(profileDetails.getHusbandFatherName().replaceAll("Name", ""));
+                awc_address.setText(profileDetails.getAwcAddress());
 
             } else {
-                name.setText(profileDetails.getEmployeeNameEnglish() + " (" + profileDetails.getEmployeeNameHindi() + ")");
-            }*/
-            name.setText(profileDetails.getEmployeeNameEnglish());
-            dob.setText(profileDetails.getDateOfBirth());
-            category.setText(profileDetails.getCategory());
-            awc_id.setText(profileDetails.getAwcid());
-            mobile_no.setText(profileDetails.getMoblieNumber());
-            father_husband_name.setText(profileDetails.getHusbandFatherName());
-            awc_address.setText(profileDetails.getAwcAddress());
-            awc_name.setText(profileDetails.getAwcNameEnglish());
+                name.setText(profileDetails.getEmployeeNameEnglish());
+                dob.setText(profileDetails.getDateOfBirth());
+                category.setText(profileDetails.getCategory());
+                awc_id.setText(profileDetails.getAwcid());
+                mobile_no.setText(profileDetails.getMoblieNumber());
+                //    father_husband_name.setText(profileDetails.getHusbandFatherName());
+                father_husband_name.setText(profileDetails.getHusbandFatherName().replaceAll("Name", ""));
+                awc_address.setText(profileDetails.getAwcAddress());
+                awc_name.setText(profileDetails.getAwcNameEnglish());
+            }
+
 
         }
     }

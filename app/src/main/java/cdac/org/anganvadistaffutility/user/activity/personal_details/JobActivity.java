@@ -13,6 +13,7 @@ import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 
 public class JobActivity extends BaseActivity {
@@ -43,11 +44,17 @@ public class JobActivity extends BaseActivity {
             } else {
                 employment_status.setText(getString(R.string.employed));
             }
-
-            doj.setText(jobDetails.getDateOfJoining());
-            payslab_amount.setText(jobDetails.getPayslabAmount());
-            qualification.setText(jobDetails.getEducationalQualification());
-            designation.setText(jobDetails.getDesignationNameEnglish());
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                designation.setText(jobDetails.getDesignationNameHindi());
+                doj.setText(jobDetails.getDateOfJoining());
+                payslab_amount.setText(jobDetails.getPayslabAmount());
+                qualification.setText(jobDetails.getEducationalQualification());
+            } else {
+                doj.setText(jobDetails.getDateOfJoining());
+                payslab_amount.setText(jobDetails.getPayslabAmount());
+                qualification.setText(jobDetails.getEducationalQualification());
+                designation.setText(jobDetails.getDesignationNameEnglish());
+            }
         }
     }
 

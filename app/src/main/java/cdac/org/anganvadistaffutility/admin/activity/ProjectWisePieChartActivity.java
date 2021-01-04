@@ -36,6 +36,7 @@ import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 
 public class ProjectWisePieChartActivity extends BaseActivity implements OnChartValueSelectedListener {
@@ -100,16 +101,21 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
         List<PieEntry> projectDetails = new ArrayList<>();
         if (userType.equalsIgnoreCase("registered_user")) {
             for (ProjectWiseEmployeeDetails projectWiseEmployeeDetail : projectWiseEmployeeDetailsList) {
-                projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_registered_users()),
-                        projectWiseEmployeeDetail.getProject_name_english() + " (" + projectWiseEmployeeDetail.getProject_registered_users() + ")"
-                        , projectWiseEmployeeDetail.getProject_code()));
+                if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                    projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_registered_users()),
+                            projectWiseEmployeeDetail.getProject_name_hindi() + " (" + projectWiseEmployeeDetail.getProject_registered_users() + ")"
+                            , projectWiseEmployeeDetail.getProject_code()));
+                }
 
             }
         } else {
             for (ProjectWiseEmployeeDetails projectWiseEmployeeDetail : projectWiseEmployeeDetailsList) {
-                projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_unregistered_users()),
-                        projectWiseEmployeeDetail.getProject_name_english() + " (" + projectWiseEmployeeDetail.getProject_unregistered_users() + ")"
-                        , projectWiseEmployeeDetail.getProject_code()));
+
+                if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                    projectDetails.add(new PieEntry(Integer.parseInt(projectWiseEmployeeDetail.getProject_unregistered_users()),
+                            projectWiseEmployeeDetail.getProject_name_hindi() + " (" + projectWiseEmployeeDetail.getProject_unregistered_users() + ")"
+                            , projectWiseEmployeeDetail.getProject_code()));
+                }
             }
         }
 
@@ -147,7 +153,9 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }*/
                 toggleBottomSheet(projectWiseEmployeeDetails.getProject_code(), projectWiseEmployeeDetails.getProject_name_english(),
-                        projectWiseEmployeeDetails.getProject_head_name(), projectWiseEmployeeDetails.getProject_head_phone(),
+                        projectWiseEmployeeDetails.getProject_name_hindi(),
+                        projectWiseEmployeeDetails.getProject_head_name(),
+                        projectWiseEmployeeDetails.getProject_head_phone(),
                         projectWiseEmployeeDetails.getProject_head_email());
             }
         }
@@ -190,7 +198,7 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
     }
 
     @SuppressLint("SetTextI18n")
-    private void toggleBottomSheet(String projectCode, String projectName, String name, String mobile, String email) {
+    private void toggleBottomSheet(String projectCode, String projectName,String projectNamHindi ,String name, String mobile, String email) {
         if (ll_bottom_sheet.getVisibility() == View.GONE) {
             ll_bottom_sheet.setVisibility(View.VISIBLE);
         }
@@ -207,9 +215,17 @@ public class ProjectWisePieChartActivity extends BaseActivity implements OnChart
         Button btn_call = ll_bottom_sheet.findViewById(R.id.btn_call);
         Button btn_email = ll_bottom_sheet.findViewById(R.id.btn_email);
 
-        txt_cdpo_name.setText("CDPO Name: " + name);
-        txt_project_name.setText("Project Name: " + projectName);
-        txt_project_code.setText("Project Code: " + projectCode);
+        txt_cdpo_name.setText(getResources().getString(R.string.cdpo_name)+" " + name);
+
+        if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+            txt_project_name.setText(getResources().getString(R.string.proj_name)+" " + projectNamHindi);
+
+        }
+        else {
+            txt_project_name.setText(getResources().getString(R.string.proj_name)+" " + projectName);
+        }
+
+        txt_project_code.setText(getResources().getString(R.string.proj_code)+" " + projectCode);
 
         btn_call.setOnClickListener(view -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

@@ -22,6 +22,7 @@ import cdac.org.anganvadistaffutility.admin.data.DistrictWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class DistrictWisePieChartActivity extends BaseActivity implements DistrictWisePieChartAdapter.ItemClickListener {
 
@@ -85,7 +86,13 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                 } else {
                     districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
                     districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
-                    districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
+
+                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameHindi());
+                    } else {
+                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
+                    }
+
                     districtWiseEmployees = Integer.parseInt(empDatum.getRegistered());
                     Log.d("emp", String.valueOf(districtWiseEmployees));
                        /* if ((!empDatum.getRegistered().equalsIgnoreCase("0")))
@@ -116,7 +123,13 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                 } else {
                     districtWiseEmployeeDetails = new DistrictWiseEmployeeDetails();
                     districtWiseEmployeeDetails.setDistrict_id(empDatum.getTjdmDistrictId());
-                    districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
+
+                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameHindi());
+                    } else {
+                        districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
+                    }
+                 //   districtWiseEmployeeDetails.setDistrict_name_english(empDatum.getTjdmDistrictNameEnglish());
                     districtWiseEmployees = Integer.parseInt(empDatum.getUnregistered());
                 }
                 districtWiseEmployeeDetails.setDistrict_employees(formatEmployeeCount("" + districtWiseEmployees));
@@ -145,6 +158,7 @@ public class DistrictWisePieChartActivity extends BaseActivity implements Distri
                 ProjectWiseEmployeeDetails projectWiseEmployeeDetails = new ProjectWiseEmployeeDetails();
                 projectWiseEmployeeDetails.setProject_code(empDatum.getTjpmProjectCode());
                 projectWiseEmployeeDetails.setProject_name_english(empDatum.getTjpmProjectNameEnglish());
+                projectWiseEmployeeDetails.setProject_name_hindi((String) empDatum.getTjpmProjectNameHindi());
                 projectWiseEmployeeDetails.setProject_head_name(empDatum.getTjpmProjectInchargeCdpo());
                 projectWiseEmployeeDetails.setProject_head_email(empDatum.getTjpmCdpoEmail());
                 projectWiseEmployeeDetails.setProject_head_phone(empDatum.getTjpmCdpoMobileNo());

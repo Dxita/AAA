@@ -29,9 +29,11 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity;
 import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
 import retrofit2.Call;
 
 public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View.OnClickListener {
@@ -40,7 +42,9 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
     private RelativeLayout relativeLayout;
     String mobileNumber, aadharNumber, janadharNumber, bhamashahNumber;
     String spinner_item;
+    private static List<BeneficiaryCriteria.Beneficiary> leaveTypeItems;
     SmartMaterialSpinner<String> sp_beneficiary_criteria;
+    private static String Code;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,22 +80,34 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 List<String> beneficiaryCriteriaList = new ArrayList<>();
 
+                leaveTypeItems = body.getData().getBeneficiary();
+                for (int i = 0; i < leaveTypeItems.size(); i++) {
+                    String leaveType;
 
-                for (BeneficiaryCriteria.Beneficiary beneficiary : body.getData().getBeneficiary()) {
-                    beneficiaryCriteriaList.add(beneficiary.getTbmBeneficiaryNamee());
-                    sp_beneficiary_criteria.setItem(beneficiaryCriteriaList);
+                    //  Code = leaveTypeItems.get(i).getTbmBeneficiaryId(); // I want to show this when Selected
+                    if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
+                        leaveType = leaveTypeItems.get(i).getTbmBeneficiaryNamee();
+                    } else {
+                        leaveType = leaveTypeItems.get(i).getTbmBeneficiaryNameh();
+                    }
 
-                    sp_beneficiary_criteria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                            Toast.makeText(context, beneficiaryCriteriaList.get(position), Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-                        }
-                    });
+                    beneficiaryCriteriaList.add(leaveType);
                 }
+
+
+                sp_beneficiary_criteria.setItem(beneficiaryCriteriaList);
+
+                sp_beneficiary_criteria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                        Code = leaveTypeItems.get(position).getTbmBeneficiaryId();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+
                 //initBeneficiaryCriteriaSpinner(beneficiaryCriteriaList);
             }
 
@@ -137,7 +153,7 @@ public class ViewBeneficiaryDetailsActivity extends BaseActivity implements View
             public void onSuccess(BeneficiarySearchData body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    AppUtils.showToast(context, body.getMessage());
+                    //     AppUtils.showToast(context, body.getMessage());
 
                     BeneficiarySearchData.Data data = body.getData();
                     appPreferences.setMobileNumber(body.getData().getTjmMobileno());

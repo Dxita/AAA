@@ -278,6 +278,20 @@
     <string name="aw_kitchen">Not Available Kitchen Data</string>
     <string name="aw_open_area">Not Available Open Data</string>
     <string name="aw_creche">Not Available Creche Data</string>
+    <string name="success_msg">success</string>
+
+    <string name="error_msg">error in fetching data</string>
+    <string name="infra_added_successfully">Infrastructure added successfully</string>
+    <string name="infra_updated_successfully">Infrastructure updated successfully</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="no_record_found">No Record Found</string>
+
+    <string name="registered_emp">Registered Employees</string>
+    <string name="unregistered_emp">Unregistered Employees</string>
+    <string name="project_name">Project Name</string>
+
+    <string name="number_not_registered">Number not registered</string>
+    <string name="unauthorized_user">Unauthorized User</string>
 
 
     <string-array name="criteria">

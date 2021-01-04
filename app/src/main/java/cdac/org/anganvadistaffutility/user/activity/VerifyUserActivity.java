@@ -71,9 +71,10 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     appPreferences.setAwcId(body.getData().getEmpdata().getAwcid());
 
                     if (body.getData().getEmpdata().getPasswordset()) {
-                        
+
                         AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                         startActivity(new Intent(context, UserLoginActivity.class));
+
                     } else {
                         if (AppUtils.isNetworkConnected(context)) {
                             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
@@ -90,8 +91,8 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(context, "Number Not registered", Toast.LENGTH_SHORT).show();
-               // AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
+                Toast.makeText(context, getResources().getString(R.string.number_not_registered), Toast.LENGTH_SHORT).show();
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }
         }));
     }

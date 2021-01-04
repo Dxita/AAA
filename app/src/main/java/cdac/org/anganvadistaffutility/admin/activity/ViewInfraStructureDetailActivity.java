@@ -131,8 +131,6 @@ public class ViewInfraStructureDetailActivity extends BaseActivity implements On
                         setInfraDetailData(infraDetailsData);
                     }
                 }
-
-
              /*   for (int i=0; i< infraDetailsData.getInfradata().size(); i++) {
                     if (pieChart.getVisibility() == View.GONE) {
                         pieChart.setVisibility(View.VISIBLE);

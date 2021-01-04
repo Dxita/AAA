@@ -70,7 +70,6 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
     }
 
 
-
     private void getAvailableInfraDetailData() {
         ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
         Call<AvailableAwInfraDetailData> call = apiInterface.availableInfrastructureData(appPreferences.getAwcId());
@@ -99,8 +98,6 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.add) {
-
-
             if (AppUtils.isNetworkConnected(context)) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
                 getAvailableInfra();
@@ -122,15 +119,20 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
             @Override
             public void onSuccess(RemainingInfrastructureData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                startActivity(new Intent(context, AddActivity.class));
+
+
+                if (body.getStatus().equalsIgnoreCase("false")){
+                    Toast.makeText(context, getResources().getString(R.string.no_data_found), Toast.LENGTH_SHORT).show();
+                }else{
+                    startActivity(new Intent(context, AddActivity.class));
+                }
+
 
             }
 
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-
-
                 AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
             }
 
@@ -148,6 +150,7 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
         }
 
     }
+
     private static class AvailableInfraAdapter extends RecyclerView.Adapter<MyViewHold> {
 
         Context context;

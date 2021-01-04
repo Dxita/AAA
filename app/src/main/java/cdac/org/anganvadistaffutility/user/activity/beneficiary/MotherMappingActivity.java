@@ -78,7 +78,7 @@ public class MotherMappingActivity extends BaseActivity {
             public void onSuccess(BeneficiarySearchData body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    AppUtils.showToast(context, body.getMessage());
+                //    AppUtils.showToast(context, body.getMessage());
 
                     data = body.getData();
                     Log.d("check", String.valueOf(data));

@@ -76,8 +76,6 @@ import static android.content.pm.PackageManager.GET_META_DATA;
 public class BaseActivity extends AppCompatActivity implements LogoutListener {
     //implement LogoutListner
     public static final String TAG = BaseActivity.class.getSimpleName();
-
-
     private final int PHONE_RESOLVE_HINT = 2;
     private final int EMAIL_RESOLVE_HINT = 3;
     private BroadcastReceiver br;
@@ -105,6 +103,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     };
 
     public BaseActivity() {
+
     }
 
     @Override
@@ -301,7 +300,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
             @Override
             public void onSuccess(VerifyAdmin body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, body.getMessage());
+                //     AppUtils.showToast(context, body.getMessage());
 
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     appPreferences.setUserLoggedIn(true);
@@ -314,7 +313,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
             @Override
             public void onFailure(Throwable t) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
+                AppUtils.showToast(context, getResources().getString(R.string.unauthorized_user));
             }
         }));
     }
@@ -486,7 +485,8 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context c, Intent i) {
-                alertbox();
+                //alertbox();
+                logout();
             }
         };
         registerReceiver(br, new IntentFilter("com.myapp.logout"));
@@ -506,8 +506,8 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     private final Runnable disconnectCallback = new Runnable() {
         @Override
         public void run() {
-
-            alertbox();
+            //  alertbox();
+            logout();
             // Perform any required operation on disconnect
         }
     };
@@ -523,21 +523,23 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         alert.show();
     }
 
+    @SuppressLint("NewApi")
     private void logout() {
+
+        AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+        ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+        SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
+        editor.clear();
+        editor.apply();
+        Intent intent = new Intent(context,
+                UserTypeActivity.class);
+        startActivity(intent);
+        finishAffinity();
         AppUtils.showToast(context, getResources().getString(R.string.logout_success));
 
-        if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
-            ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
-            SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-            editor.clear();
-            editor.apply();
-            Intent intent = new Intent(context,
-                    UserTypeActivity.class);
-            startActivity(intent);
-            finishAffinity();
+       /* if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
 
-            AppUtils.showToast(context, getResources().getString(R.string.logout_success));
-        }
+        }*/
     }
 
     public void resetDisconnectTimer() {
