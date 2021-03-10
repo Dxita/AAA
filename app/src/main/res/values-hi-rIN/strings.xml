@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">राजपोषण</string>
-
+    <string name="app_name">राजपोषण 0.1</string>
+    <string name="app_name_home">AAA 0.1</string>
     <string name="menu_home">मुख पृष्ठ</string>
 
     <string name="navigation_drawer_open">नेविगेशन दराज खोलें</string>
@@ -10,7 +10,7 @@
 
     <string name="category">वर्ग</string>
     <string name="address">पता</string>
-    <string name="welcome_text">"राजपोषण में आपका स्वागत है"</string>
+    <string name="welcome_text">"राजपोषण 0.1 में आपका स्वागत है"</string>
     <string name="public_text">जनता</string>
 
 
@@ -24,24 +24,24 @@
     <string name="name">नाम</string>
     <string name="dob_text">जन्म की तारीख</string>
     <string name="select_finincial_year">वित्तीय वर्ष दर्ज करें:</string>
-    <string name="generate_salary_slip">वेतन पर्ची उत्पन्न करें</string>
+    <string name="generate_salary_slip">मानदेय पर्ची उत्पन्न करें</string>
     <string name="employment_status">रोज़गार की स्थिति</string>
-    <string name="doj_text">शामिल होने की तिथि</string>
+    <string name="doj_text">कार्यग्रहण दिनांक</string>
     <string name="designation">पद</string>
-    <string name="payslab_amount">वेतनमान राशि</string>
-    <string name="qualification">शैक्षिक योग्यता</string>
+    <string name="payslab_amount">मानदेय राशि</string>
+    <string name="qualification">शैक्षणिक योग्यता</string>
     <string name="branch_code">शाखा क्र्मांक</string>
-    <string name="branch_name">शाखा का नाम</string>
+    <string name="branch_name">बैंक का नाम</string>
     <string name="ifsc_code">IFSC कोड</string>
     <string name="branch_address">शाखा का पता</string>
     <string name="bank_ac_no">बैंक खाता संख्या</string>
-    <string name="aadhar_acc_no">आधार संलग्न बैंक खाता संख्या</string>
+    <string name="aadhar_acc_no">आधार से लिंक बैंक खाता संख्या</string>
     <string name="pan_card_no">पैन कार्ड नंबर</string>
     <string name="bhamasha_no">भामाशाह नंबर</string>
     <string name="aadhar_no">आधार संख्या</string>
     <string name="asha_id">आशा आई.डी.</string>
     <string name="janaadhar_no">जनाधार संख्या</string>
-    <string name="janaadhar_self_no">जनाधार स्व संख्या</string>
+    <string name="janaadhar_self_no">स्वयं की जनाधार संख्या</string>
     <string name="enter_number">पंजीकृत मोबाइल नंबर दर्ज करें</string>
     <string name="required_field">आवश्यक क्षेत्र</string>
 
@@ -53,17 +53,18 @@
     <string name="otp_txt">OTP कोड सत्यापित किया जा रहा है</string>
     <string name="validate_text">ओटीपी सत्यापित करें</string>
     <string name="country_code">+91</string>
+    <string name="preferred_languagee">Choose your preferred language</string>
 
     <string name="your_info_is_safe_text">आपकी जानकारी हमारे पास सुरक्षित है</string>
     <string name="preferred_language">अपनी पसंदीदा भाषा चुनें</string>
-    <string name="english">अंग्रेज़ी</string>
+    <string name="english">English</string>
     <string name="hindi">हिन्दी</string>
     <string name="you_can_change_text">आप बाद में भाषा बदल सकते हैं</string>
 
     <string name="sms_code_sent_text">+91%1$s पर एसएमएस सत्यापन कोड भेजा गया है</string>
 
     <string name="profile_details">प्रोफ़ाइल विवरण </string>
-    <string name="job_details">नौकरी विवरण</string>
+    <string name="job_details">सेवा विवरण</string>
     <string name="bank_details">बैंक विवरण</string>
     <string name="card_details">पहचान विवरण</string>
     <string name="payment_details">भुगतान विवरण</string>
@@ -140,7 +141,7 @@
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
 
-    <string name="infra_data">आंगनवाडी आधारभूत सुविधा विवरण</string>
+    <string name="infra_data">आंगनवाडी आधारभूत संरचना का विवरण</string>
 
     <string name="personal_data">व्यक्तिगत्त विवरण</string>
 
@@ -165,7 +166,7 @@
 
     <string name="logout_success">लॉगआउट सफलतापूर्वक</string>
 
-    <string name="exit_text">क्या बाहर जाना चाहते हो?</string>
+    <string name="exit_text">क्या आप बाहर जाना चाहते है?</string>
 
     <string name="next_financial_year">वित्तीय वर्ष चालू वित्तीय वर्ष से अधिक नहीं हो सकता है</string>
     <string name="previous_financial_year">वित्तीय वर्ष 2015 से कम नहीं हो सकता है</string>
@@ -248,10 +249,10 @@
     <string name="proj_code">परियोजना क्रमांक: </string>
     <string name="proj_name">परियोजना का नाम: </string>
     <string name="aw_worker_name">आंगनवाड़ी कार्यकर्ता का नाम</string>
-    <string name="aw_worker_number">आंगनवाड़ी कार्यकर्ता संख्या</string>
+    <string name="aw_worker_number">आंगनवाड़ी कार्यकर्ता मोबाइल नंबर</string>
     <string name="aw_data">आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
     <string name="okay">ठीक है</string>
-
+    <string name="honorarium_name">मानदेयकर्मी का नाम</string>
     <string name="unavailable_anganwadi_infrastructure_facilities">आंगनवाड़ी आधारभूत सुविधाएं</string>
     <string name="_electericity">बिजली की आधारभूत सुविधाएं</string>
     <string name="_drinking_water">पीने का पानी की आधारभूत सुविधाएं</string>
@@ -260,29 +261,29 @@
     <string name="_open_area">खुली जगह की आधारभूत सुविधाएं</string>
     <string name="_creche">क्रेच की आधारभूत सुविधाएं</string>
 
-    <string name="district_anganwadi">जिलानुसार अनुपलब्ध आंगनवाड़ी </string>
-    <string name="district_electericity"> जिलानुसार अनुपलब्ध बिजली</string>
-    <string name="district_drinking_water"> जिलानुसार अनुपलब्ध पीने का पानी</string>
-    <string name="district_toilet"> जिलानुसार अनुपलब्ध शौचालय </string>
-    <string name="district_kitchen"> जिलानुसार अनुपलब्ध रसोई </string>
-    <string name="district_open_area">जिलानुसार अनुपलब्ध खुली जगह</string>
-    <string name="district_creche">जिलानुसार अनुपलब्ध क्रेच</string>
+    <string name="district_anganwadi">जिलानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="district_electericity"> जिलानुसार उपलब्ध बिजली</string>
+    <string name="district_drinking_water"> जिलानुसार उपलब्ध पीने का पानी</string>
+    <string name="district_toilet"> जिलानुसार उपलब्ध शौचालय </string>
+    <string name="district_kitchen"> जिलानुसार उपलब्ध रसोई </string>
+    <string name="district_open_area">जिलानुसार उपलब्ध खुली जगह</string>
+    <string name="district_creche">जिलानुसार उपलब्ध क्रेच</string>
 
-    <string name="project_anganwadi"> परियोजनानुसार अनुपलब्ध आंगनवाड़ी </string>
-    <string name="project_electericity">परियोजनानुसार अनुपलब्ध बिजली</string>
-    <string name="project_drinking_water">परियोजनानुसार अनुपलब्ध पीने का पानी</string>
-    <string name="project_toilet">परियोजनानुसार अनुपलब्ध शौचालय</string>
-    <string name="project_kitchen"> परियोजनानुसार अनुपलब्ध रसोई</string>
-    <string name="project_open_area"> परियोजनानुसार अनुपलब्ध खुली जगह</string>
-    <string name="project_creche"> परियोजनानुसार अनुपलब्ध क्रेच</string>
+    <string name="project_anganwadi"> परियोजनानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="project_electericity">परियोजनानुसार उपलब्ध बिजली</string>
+    <string name="project_drinking_water">परियोजनानुसार उपलब्ध पीने का पानी</string>
+    <string name="project_toilet">परियोजनानुसार उपलब्ध शौचालय</string>
+    <string name="project_kitchen"> परियोजनानुसार उपलब्ध रसोई</string>
+    <string name="project_open_area"> परियोजनानुसार उपलब्ध खुली जगह</string>
+    <string name="project_creche"> परियोजनानुसार उपलब्ध क्रेच</string>
 
-    <string name="aw_anganwadi">अनुपलब्ध आंगनवाड़ी डेटा</string>
-    <string name="aw_electericity">अनुपलब्ध बिजली डेटा</string>
-    <string name="aw_drinking_water">अनुपलब्ध पीने का पानी डेटा</string>
-    <string name="aw_toilet">अनुपलब्ध शौचालय डेटा</string>
-    <string name="aw_kitchen">अनुपलब्ध रसोई डेटा</string>
-    <string name="aw_open_area">अनुपलब्ध खुली जगह डेटा</string>
-    <string name="aw_creche">अनुपलब्ध क्रेच डेटा</string>
+    <string name="aw_anganwadi">उपलब्ध आंगनवाड़ी डेटा</string>
+    <string name="aw_electericity">उपलब्ध बिजली डेटा</string>
+    <string name="aw_drinking_water">उपलब्ध पीने का पानी डेटा</string>
+    <string name="aw_toilet">उपलब्ध शौचालय डेटा</string>
+    <string name="aw_kitchen">उपलब्ध रसोई डेटा</string>
+    <string name="aw_open_area">उपलब्ध खुली जगह डेटा</string>
+    <string name="aw_creche">उपलब्ध क्रेच डेटा</string>
 
     <string name="success_msg">सफलता</string>
     <string name="error_msg">डेटा लाने में त्रुटि</string>
@@ -293,9 +294,22 @@
 
     <string name="registered_emp">पंजीकृत कर्मचारी</string>
     <string name="unregistered_emp">अपंजीकृत कर्मचारी</string>
-    <string name="project_name">Project Name</string>
+    <string name="project_name">परियोजना का नाम</string>
 
     <string name="number_not_registered">नंबर पंजीकृत नहीं है</string>
     <string name="unauthorized_user">अनधिकृत उपयोगकर्ता</string>
+    <string name="status">विवरण</string>
+    <string name="count">संख्या</string>
+    <string name="view">विवरण</string>
+    <string name="one">1.</string>
+    <string name="two">2.</string>
+
+    <string name="district_name">जिला</string>
+    <string name="district_wise_count">संख्या</string>
+    <string name="infrastructure_detail">इन्फ्रास्ट्रक्चर विवरण</string>
+
+    <string name="swipe_up_for_more_details">अधिक जानकारी के लिए यहां क्लिक करें</string>
+
+    <string name="contact_cdpo">सीडीपीओ से संपर्क करें</string>
 
 </resources>

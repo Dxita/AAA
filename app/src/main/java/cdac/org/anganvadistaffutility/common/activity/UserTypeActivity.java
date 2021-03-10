@@ -15,7 +15,6 @@ import androidx.cardview.widget.CardView;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.public_u.activity.PublicLoginActivity;
 import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 
@@ -62,7 +61,6 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
             }
         } else if (view.getId() == R.id.user_type_public) {
             Toast.makeText(context, "under development", Toast.LENGTH_SHORT).show();
-         //   startActivity(new Intent(context, PublicLoginActivity.class));
         }
     }
 
@@ -79,7 +77,6 @@ public class UserTypeActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void onDestroy() {
-
         if (!appPreferences.isUserLoggedIn() && LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.ENGLISH)) {
             clearUserData();
         }

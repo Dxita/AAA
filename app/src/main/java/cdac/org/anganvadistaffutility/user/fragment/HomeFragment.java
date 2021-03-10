@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
@@ -28,7 +29,6 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.BankActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.CardActivity;
-import cdac.org.anganvadistaffutility.user.activity.HomeActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.JobActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.PaymentActivity;
 import cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity;
@@ -93,8 +93,6 @@ public class HomeFragment extends Fragment {
 
         CustomAdapter customAdapter = new CustomAdapter(getActivity(), personNames, personImages);
         recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
-
-
         return root;
     }
 
@@ -110,8 +108,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void getEmployeeData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
-        Call<EmployeeDetails> call = apiInterface.employeeDetails(((HomeActivity) context).appPreferences.getEmployeeId());
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        Call<EmployeeDetails> call = apiInterface.employeeDetails(BaseActivity.appPreferences.getEmployeeId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {
@@ -134,28 +132,6 @@ public class HomeFragment extends Fragment {
             }
         }));
     }
-
-
-   /* @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.profile_card:
-                startActivity(new Intent(getActivity(), ProfileActivity.class).putExtra("profile_details", profileDetails));
-                break;
-            case R.id.job_card:
-                startActivity(new Intent(getActivity(), JobActivity.class).putExtra("job_details", jobDetails));
-                break;
-            case R.id.payment_card:
-                startActivity(new Intent(getActivity(), PaymentActivity.class));
-                break;
-            case R.id.bank_card:
-                startActivity(new Intent(getActivity(), BankActivity.class).putExtra("bank_details", bankDetails));
-                break;
-            case R.id.card:
-                startActivity(new Intent(getActivity(), CardActivity.class).putExtra("card_details", cardDetails));
-                break;
-        }
-    }*/
 
     private class CustomAdapter extends RecyclerView.Adapter<ViewHolde> {
         ArrayList personNames;
@@ -203,13 +179,9 @@ public class HomeFragment extends Fragment {
 
                     if (position == 4) {
                         startActivity(new Intent(getActivity(), PaymentActivity.class));
-                    } else {
-
                     }
                 }
             });
-
-
         }
 
 
@@ -228,7 +200,6 @@ public class HomeFragment extends Fragment {
         public ViewHolde(@NonNull View itemView) {
 
             super(itemView);
-
 
             cardView_category = itemView.findViewById(R.id.cardv);
             text_category = itemView.findViewById(R.id.txt_infra_name);

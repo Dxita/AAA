@@ -9,41 +9,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.opengl.Visibility;
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.TooManyListenersException;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
-import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.activity.beneficiary.MotherMappingActivity;
-import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.AddInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
@@ -87,7 +75,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void getBeneficiaryCriteriaData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<RemainingInfrastructureData> call = apiInterface.remainingInfrastructureData(appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<RemainingInfrastructureData>() {
             @Override
@@ -129,7 +117,6 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                         } else {
                             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
                         }
-                        //  Toast.makeText(context,leaveTypeItems.get(position).getTimInfraId(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -148,7 +135,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void getInfraDetailData(String timInfraId) {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<RemainingInfraDetailData> call = apiInterface.remainingInfraDetailData(appPreferences.getAwcId(), timInfraId);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<RemainingInfraDetailData>() {
             @Override
@@ -176,22 +163,26 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (AppUtils.isNetworkConnected(context)) {
-            AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            addInfrastructure();
-        } else {
-            AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+        if (view.getId() == R.id.btn_submit) {
+            if (AppUtils.isNetworkConnected(context)) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                addInfrastructure();
+            } else {
+                AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+            }
         }
     }
 
     private void addInfrastructure() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<AddInfrastructureData> call = apiInterface.addInfrastructureData(appPreferences.getAwcId(), infra_id, infra_detail_id, quantity);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AddInfrastructureData>() {
             @Override
             public void onSuccess(AddInfrastructureData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                Toast.makeText(context, "" + body.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.infra_added_successfully), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(context, AvailableInfraDetailsActivity.class));
+                finish();
 
             }
 
@@ -210,7 +201,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
         List<RemainingInfraDetailData.Data.Empdatum> empdata;
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
-        private int selectedPosition = -1;// no selection by default
+        private final int selectedPosition = -1;// no selection by default
         MyViewHolder myViewHolder;
 
 
@@ -230,207 +221,13 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             ArrayList<String> selectedStrings = new ArrayList<String>();
-
+            holder.setData(context, empdata.get(position));
             myViewHolder = holder;
             empdata.get(position);
 
             holder.checkBox.setTag(position);
             lastChecked = holder.checkBox;
             lastCheckedPos = 0;
-
-/*
-            if (appPreferences.getStatus().equals("1")) {
-                holder.checkBox.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CheckBox cb = (CheckBox) v;
-                        int clickedPos = (Integer) cb.getTag();
-                        if (cb.isChecked()) {
-                            selectedPosition = position;
-                            *//*    if (lastChecked != null) {
-             *//**//*   lastChecked.setChecked(false);
-                                holder.edtx_qty.setText("1");*//**//*
-                            }*//*
-             *//*  lastChecked = cb;
-                            lastCheckedPos = clickedPos;
-*//*
-                            // Toast.makeText(context, empdata.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-                            infra_id = empdata.get(position).getTidTimInfraId();
-                            infra_detail_id = empdata.get(position).getTidInfraDetailId();
-                            holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-                                @Override
-                                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                    // TODO Auto-generated method stub
-                                }
-                                @Override
-                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                    // TODO Auto-generated method stub
-                                }
-                                @Override
-                                public void afterTextChanged(Editable s) {
-                                    quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                    //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                    //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
-                                    // Place the logic here for your output edittext
-                                }
-                            });
-                        } else
-                            selectedPosition = -1;
-                        // lastChecked = null;
-                    }
-                });
-            } else {*/
-           /* holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        selectedStrings.add(holder.checkBox.getText().toString());
-                        holder.edtx_qty.setEnabled(true);
-                        holder.edtx_qty.setText("1");
-                        infra_id = empdata.get(position).getTidTimInfraId();
-                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
-
-                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                // TODO Auto-generated method stub
-                            }
-
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                // TODO Auto-generated method stub
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-
-                                if (quantity == null) {
-                                    quantity = "1";
-                                } else {
-                                    quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-
-                                }
-                                //   quantity_edtx = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
-                                // Place the logic here for your output edittext
-                            }
-                        });
-                        Toast.makeText(context, "" + infra_id + infra_detail_id + quantity, Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        selectedStrings.remove(holder.checkBox.getText().toString());
-                    }
-
-                }
-            });
-*/
-            holder.checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //  if (tim_accept_status.equals("1")) {
-                    final boolean isChecked = holder.checkBox.isChecked();
-                    CheckBox cb = (CheckBox) view;
-                    int clickedPos = (Integer) cb.getTag();
-                    if (cb.isChecked()) {
-                        if (lastChecked != null) {
-                            lastChecked.setChecked(false);
-                        }
-                        lastChecked = cb;
-                        lastCheckedPos = clickedPos;
-                        infra_id = empdata.get(position).getTidTimInfraId();
-                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
-
-                        holder.edtx_qty.setEnabled(true);
-                        holder.edtx_qty.setText("1");
-                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                // TODO Auto-generated method stub
-                            }
-
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                // TODO Auto-generated method stub
-                                quantity = "1";
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-                                quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
-                                // Place the logic here for your output edittext
-                            }
-                        });
-
-                        //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
-                        //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-                    } else {
-                        quantity = "1";
-                        holder.edtx_qty.setEnabled(false);
-                        lastChecked = null;
-                    }
-
-                }
-            });
-            quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-       
-            holder.setData(context, empdata.get(position));
-
-
-
-          /*  holder.checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //  if (tim_accept_status.equals("1")) {
-                    final boolean isChecked = holder.checkBox.isChecked();
-                    CheckBox cb = (CheckBox) view;
-                    int clickedPos = (Integer) cb.getTag();
-                    holder.edtx_qty.setTag(position);
-                    if (cb.isChecked()) {
-                        if (lastChecked != null) {
-                            lastChecked.setChecked(false);
-                        }
-                        lastChecked = cb;
-                        lastCheckedPos = clickedPos;
-                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
-
-                        holder.edtx_qty.setEnabled(true);
-                        holder.edtx_qty.setText("1");
-                        holder.edtx_qty.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                // TODO Auto-generated method stub
-                            }
-
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                // TODO Auto-generated method stub
-                                quantity="1";
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-                                notifyDataSetChanged();
-                                quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-                                //  Toast.makeText(context, ""+quantity_edtx, Toast.LENGTH_SHORT).show();
-                                // Place the logic here for your output edittext
-                            }
-                        });
-
-                        //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
-                        //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
-                    } else {
-                        holder.edtx_qty.setClickable(false);
-                        holder.edtx_qty.setCursorVisible(false);
-                        holder.edtx_qty.setEnabled(false);
-                        lastChecked = null;
-                    }
-
-                }
-            });
-            quantity = Objects.requireNonNull(holder.edtx_qty.getText()).toString();
-            holder.setData(context, empdata.get(position));*/
-
 
             if (appPreferences.getStatus().equals("1")) {
 
@@ -440,6 +237,8 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                 holder.edtx_qty.setVisibility(View.VISIBLE);
             }
         }
+
+
 
 
         @Override
@@ -469,12 +268,13 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
             String qty = "";
 
             if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
-                name = empdatum.getTidInfraNamee();
+               // name = empdatum.getTidInfraNamee();
+                item_name.setText(empdatum.getTidInfraNamee());
             } else {
-                name = empdatum.getTidInfraNameh();
+                item_name.setText(empdatum.getTidInfraNameh());
+
             }
-            //  name = infrastructureData.getTidInfraNamee();
-            item_name.setText(name);
+            //item_name.setText(name);
         }
     }
 }

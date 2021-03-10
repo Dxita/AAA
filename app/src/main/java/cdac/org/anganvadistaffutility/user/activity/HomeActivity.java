@@ -78,14 +78,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     private void getEmployeeData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<EmployeeDetails> call = apiInterface.employeeDetails(appPreferences.getEmployeeId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<EmployeeDetails>() {
             @Override
             public void onSuccess(EmployeeDetails body) {
                 if (body.getStatus().equalsIgnoreCase(AppUtils.successStatus)) {
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                    //AppUtils.showToast(context, body.getMessage());
 
                     EmployeeDetails.Data data = body.getData();
                     profileDetails = data.getProfile();
@@ -133,12 +132,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }*/
 
     private void setMyFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -150,7 +143,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId( );
+        int id = item.getItemId();
         if (id == R.id.nav_home) {
             HomeFragment homeFragment = new HomeFragment();
             setMyFragment(homeFragment);
@@ -171,9 +164,3 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         return true;
     }
 }
-/*else if (id == R.id.change_language) {
-            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
-            } else {
-                changeAppLocale((AppCompatActivity) context, LocaleManager.HINDI);
-            }*/

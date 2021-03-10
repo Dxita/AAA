@@ -1,18 +1,17 @@
 package cdac.org.anganvadistaffutility.common.retrofit;
 
-import cdac.org.anganvadistaffutility.admin.activity.Infrastructure.AanganwadiListActivity;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.AnganwadiInfraData;
 import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
+import cdac.org.anganvadistaffutility.admin.data.DistrictEmployeesCount;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
-import cdac.org.anganvadistaffutility.admin.data.InfrasDetailSectorData;
 import cdac.org.anganvadistaffutility.admin.data.InfrastructureDetailSumData;
+import cdac.org.anganvadistaffutility.admin.data.ProjectEmployeeData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.public_u.activity.data.VerifyPublicData;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import cdac.org.anganvadistaffutility.user.data.AddInfrastructureData;
@@ -93,6 +92,25 @@ public interface ApiInterface {
     @GET("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     Call<AdminUserData> getAdminUserData();
 
+    // Get pie chart of registered and unregistered user (for total count)
+    @POST("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AdminUserData> getAdminUsersData(@Field("parm") String parm);
+
+
+    // dist wise employee count
+
+    @POST("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<DistrictEmployeesCount> getDistrictEmployees(@Field("parm") String parm);
+
+    // poject wise employee count
+
+    @POST("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<ProjectEmployeeData> getProjectEmployeeData(@Field("distid") String distid,
+                                                     @Field("parm") String parm);
+
     // Get aanganwadi details
 
     @POST("api_js_app_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
@@ -145,15 +163,16 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<InfraDetailProjectData> getInfrastructureProjectDetails(@Field("filterby") String filterType,
                                                                  @Field("infra_id") String infraID,
-                                                                 @Field("distid") String district_id);
+                                                                 @Field("distid") String district_id,
+                                                                 @Field("infra_detail_id") String infra_detail_id);
 
     //awc data(infra admin)
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<AnganwadiInfraData> getAnganwadiInfraData(@Field("filterby") String filterType,
                                                    @Field("infra_id") String infraID,
+                                                   @Field("infra_detail_id") String infra_detail_id,
                                                    @Field("projid") String project_id);
-
 
     // Get Beneficiary Criteria List
 
@@ -180,10 +199,10 @@ public interface ApiInterface {
 
 
     //public side
-    @POST("api_js_public_user_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+  /*  @POST("api_js_public_user_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
-    Call<VerifyPublicData> verifyPublic(@Field("mobileno") String mobileNumber);
-
+    //Call<VerifyPublicData> verifyPublic(@Field("mobileno") String mobileNumber);
+*/
 
     //available infrastructure detail data as per AWC(user side)
     @POST("api_available_infrastructure_master_by_awcid_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
@@ -214,6 +233,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<InfrastructureDetailSumData> infrastructureDetailSumData(@Field("filterby") String filterType,
                                                                   @Field("infra_id") String infraID);
+
+
 
 
 }

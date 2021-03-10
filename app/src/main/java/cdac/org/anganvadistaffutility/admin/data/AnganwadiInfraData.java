@@ -90,9 +90,15 @@ public class AnganwadiInfraData {
             @SerializedName("awcnamee")
             @Expose
             private String awcnamee;
+            @SerializedName("awcnameh")
+            @Expose
+            private String awcnameh;
             @SerializedName("emp_name")
             @Expose
             private String empName;
+            @SerializedName("emp_nameh")
+            @Expose
+            private String empNameh;
             @SerializedName("emp_mob")
             @Expose
             private String empMob;
@@ -165,12 +171,28 @@ public class AnganwadiInfraData {
                 this.awcnamee = awcnamee;
             }
 
+            public String getAwcnameh() {
+                return awcnameh;
+            }
+
+            public void setAwcnameh(String awcnameh) {
+                this.awcnameh = awcnameh;
+            }
+
             public String getEmpName() {
                 return empName;
             }
 
             public void setEmpName(String empName) {
                 this.empName = empName;
+            }
+
+            public String getEmpNameh() {
+                return empNameh;
+            }
+
+            public void setEmpNameh(String empNameh) {
+                this.empNameh = empNameh;
             }
 
             public String getEmpMob() {

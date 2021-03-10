@@ -17,7 +17,6 @@ import cdac.org.anganvadistaffutility.common.activity.UserLoginActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
 import retrofit2.Call;
 

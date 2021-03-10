@@ -3,7 +3,6 @@ package cdac.org.anganvadistaffutility.user.activity.personal_details;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;

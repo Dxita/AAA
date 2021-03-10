@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -28,17 +28,17 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.activity.beneficiary.MotherMappingActivity;
 import cdac.org.anganvadistaffutility.user.data.AvailableAwInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
 import retrofit2.Call;
 
 public class AvailableInfraDetailsActivity extends BaseActivity implements View.OnClickListener {
-    AppCompatButton add_btn, edit_btn;
-    RecyclerView recyclerView;
+    private AppCompatButton add_btn, edit_btn;
+    private RecyclerView recyclerView;
     private RelativeLayout relativeLayout;
-    List<AvailableAwInfraDetailData.Data.Empdatum> empdatumList;
-    AvailableInfraAdapter availableInfraAdapter;
+    private List<AvailableAwInfraDetailData.Data.Empdatum> empdatumList;
+    private AvailableInfraAdapter availableInfraAdapter;
+    private LinearLayout buttons_layout, main_layout;
 
 
     @Override
@@ -50,6 +50,9 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
         setContentView(R.layout.activity_available_infra_details);
         relativeLayout = findViewById(R.id.relativeLayout);
         recyclerView = findViewById(R.id.recycler_view);
+        buttons_layout=findViewById(R.id.buttons);
+
+        main_layout=findViewById(R.id.main_layout);
         add_btn = findViewById(R.id.add);
         edit_btn = findViewById(R.id.edit);
 
@@ -71,18 +74,18 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
 
 
     private void getAvailableInfraDetailData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<AvailableAwInfraDetailData> call = apiInterface.availableInfrastructureData(appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AvailableAwInfraDetailData>() {
             @Override
             public void onSuccess(AvailableAwInfraDetailData body) {
-
-
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 empdatumList = new ArrayList<>();
                 empdatumList = body.getData().getEmpdata();
                 availableInfraAdapter = new AvailableInfraAdapter(context, empdatumList);
                 recyclerView.setAdapter(availableInfraAdapter);
+                main_layout.setVisibility(View.VISIBLE);
+                buttons_layout.setVisibility(View.VISIBLE);
 
             }
 
@@ -109,11 +112,12 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
 
         if (v.getId() == R.id.edit) {
             startActivity(new Intent(context, AWCInfrastructureActivity.class));
+            finish();
         }
     }
 
     private void getAvailableInfra() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<RemainingInfrastructureData> call = apiInterface.remainingInfrastructureData(appPreferences.getAwcId());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<RemainingInfrastructureData>() {
             @Override
@@ -121,10 +125,11 @@ public class AvailableInfraDetailsActivity extends BaseActivity implements View.
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
 
 
-                if (body.getStatus().equalsIgnoreCase("false")){
+                if (body.getStatus().equalsIgnoreCase("false")) {
                     Toast.makeText(context, getResources().getString(R.string.no_data_found), Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     startActivity(new Intent(context, AddActivity.class));
+                    finish();
                 }
 
 

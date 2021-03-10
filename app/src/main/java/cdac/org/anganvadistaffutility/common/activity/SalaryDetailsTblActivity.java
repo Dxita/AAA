@@ -85,9 +85,9 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         TextView txt_emp_id = findViewById(R.id.txt_emp_id);
         TextView txt_emp_name = findViewById(R.id.txt_emp_name);
 
-        txt_financial_year.setText(getResources().getString(R.string.payment_year) + " " +fromYear + "-" + toYear.substring(2, 4));
-        txt_emp_id.setText( getResources().getString(R.string.employee_id) +" "+empDatumList.get(0).getEmployeeId());
-        txt_emp_name.setText(getResources().getString(R.string.employee_name)  +" "+ empDatumList.get(0).getEmployeeNameEnglish());
+        txt_financial_year.setText(getResources().getString(R.string.payment_year) + " " + fromYear + "-" + toYear.substring(2, 4));
+        txt_emp_id.setText(getResources().getString(R.string.employee_id) + " " + empDatumList.get(0).getEmployeeId());
+        txt_emp_name.setText(getResources().getString(R.string.honorarium_name) + " " + empDatumList.get(0).getEmployeeNameEnglish());
         btn_download_salary_slip.setOnClickListener(this);
     }
 
@@ -129,9 +129,11 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
         int serialNo = 0;
         String outPath = "";
 
-        // String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
-        String[] headers = new String[]{getResources().getString(R.string.sr_no), getResources().getString(R.string.payment_month),
-                getResources().getString(R.string.bil_name), getResources().getString(R.string.amount)};
+        //String[] headers = new String[]{"Serial No.", "Employee ID", "Employee Name", "Salary Month", "Salary Amount"};
+/*        String[] headers = new String[]{getResources().getString(R.string.sr_no), getResources().getString(R.string.payment_month),
+                getResources().getString(R.string.bil_name), getResources().getString(R.string.amount)};*/
+
+        String[] headers = new String[]{"Sr. No.", "Payment Month", "Bill Name", "Amount (Rs.)"};
         Document document = new Document();
         document.setPageSize(PageSize.A4);
         //   document.setMargins(16, 14, 14, 14);
@@ -141,8 +143,6 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
             PdfWriter writer = PdfWriter.getInstance(document,
                     new FileOutputStream(new File(outPath)));
             document.open();
-            //   document.setPageSize(PageSize.LETTER);
-            // document.setMargins(16, 14, 42, 38);
 
             Font fontHeader = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD);
             Font fontRow = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.NORMAL);
@@ -268,6 +268,7 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
             return new ViewHolder(view);
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             if (payment_list != null && payment_list.size() > 0) {
@@ -275,11 +276,6 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
                 holder.txt_sr_no.setText("" + (position + 1));
                 holder.txt_bill_name.setText(empDatum.getSubbillname().trim().replace(" ", ""));
                 holder.txt_payment_month.setText(empDatum.getMonth().trim().replace(" ", ""));
-
-               /* holder.txt_payment_month.setText(empDatum.getMonth().trim()
-                        .substring(0, empDatum.getMonth().indexOf(",")).substring(0, 3).replace(" ", "") + ".,"
-                        + empDatum.getMonth().trim().replace(" ", "")
-                        .substring(empDatum.getMonth().trim().indexOf(",") + 1));*/
                 holder.txt_amount.setText(empDatum.getSalary().trim().replace(" ", ""));
             }
         }

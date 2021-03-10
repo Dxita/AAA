@@ -33,6 +33,16 @@ public class InfrasSumData implements Comparable<InfrasSumData> {
 
     String infraName;
 
+    public String getInfraNameh() {
+        return infraNameh;
+    }
+
+    public void setInfraNameh(String infraNameh) {
+        this.infraNameh = infraNameh;
+    }
+
+    String infraNameh;
+
     public String getInfraDetailID() {
         return infraDetailID;
     }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.Infrastructure.ViewInfraDetailTableActivity;
 import cdac.org.anganvadistaffutility.admin.adapter.InfraStructureAdapter;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -61,7 +62,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
     }
 
     private void getAaGanWadiInfrastructureData() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.INFRASTRUCTURE_BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<AaganwadiInfraStructure> call = apiInterface.getInfrastructureData();
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AaganwadiInfraStructure>() {
             @Override
@@ -83,7 +84,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
 
     @Override
     public void onItemClick(AaganwadiInfraStructure.Data.InfrastructureDatum item) {
-        startActivity(new Intent(context, ViewInfraStructureDetailActivity.class).putExtra("infra_id", "" + item.getTimInfraId()));
+        startActivity(new Intent(context, ViewInfraDetailTableActivity.class).putExtra("infra_id", "" + item.getTimInfraId()));
     }
 
     private void setCustomInfraImages() {
@@ -97,7 +98,7 @@ public class ViewInfraStructureActivity extends BaseActivity implements InfraStr
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("toilet")) {
                 infraStructureImageList.add(R.drawable.ic_toilet_new);
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("water")) {
-                infraStructureImageList.add(R.drawable.ic_drinking_water);
+                infraStructureImageList.add(R.drawable.drinking_water);
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("kitchen")) {
                 infraStructureImageList.add(R.drawable.ic_kitchen);
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("area")) {

@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
-import androidx.multidex.MultiDex;
 
 import java.util.Timer;
 import java.util.TimerTask;

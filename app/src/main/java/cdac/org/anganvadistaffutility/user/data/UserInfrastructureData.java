@@ -52,9 +52,6 @@ public class UserInfrastructureData {
         this.data = data;
     }
 
-
-
-
     public static class Data {
 
         @SerializedName("infrastructureData")

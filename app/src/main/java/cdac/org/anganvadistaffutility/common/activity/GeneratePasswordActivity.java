@@ -74,7 +74,7 @@ public class GeneratePasswordActivity extends BaseActivity implements View.OnCli
     }
 
     private void setUserPassword() {
-        apiInterface = ApiUtils.getApiInterface(ApiUtils.SET_USER_PASSWORD);
+        apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<SetUserPassword> call = apiInterface.setUserPassword(appPreferences.getEmployeeId(), userMobileNumber,
                 Objects.requireNonNull(pwd.getText()).toString());
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<SetUserPassword>() {

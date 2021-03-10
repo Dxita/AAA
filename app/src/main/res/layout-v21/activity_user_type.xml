@@ -25,23 +25,23 @@
                 android:src="@drawable/app_logo" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_marginTop="@dimen/margin_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
                 android:layout_marginStart="@dimen/margin_08"
+                android:layout_marginTop="@dimen/margin_10"
                 android:text="@string/welcome_text"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_18" />
+                android:textSize="@dimen/font_18"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/margin_100"
             android:fillViewport="true">
 
@@ -176,7 +176,6 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:visibility="gone"
                     android:id="@+id/user_type_public"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_150"
@@ -184,6 +183,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/lightgreen"
                     app:cardCornerRadius="@dimen/margin_05"
                     app:cardElevation="@dimen/margin_05">

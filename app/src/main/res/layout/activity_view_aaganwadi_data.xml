@@ -23,14 +23,14 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_user_type"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_05"
                 android:text="@string/admin_text"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_18" />
+                android:textSize="@dimen/font_18"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

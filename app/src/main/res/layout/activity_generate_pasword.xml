@@ -17,40 +17,33 @@
             android:layout_centerInParent="true"
             android:orientation="vertical">
 
-            <!--  <androidx.appcompat.widget.AppCompatImageView
-                  android:layout_gravity="center"
-                  android:src="@drawable/app_logo"
-                  android:layout_width="@dimen/margin_120"
-                  android:layout_height="@dimen/margin_120">
-
-              </androidx.appcompat.widget.AppCompatImageView>-->
 
             <androidx.appcompat.widget.AppCompatTextView
 
                 android:layout_width="match_parent"
-                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_20"
                 android:gravity="center"
                 android:text="@string/setup_text"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_30sp" />
+                android:textSize="@dimen/textsize_30sp"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/margin_35"
-                android:textColor="@color/black"
                 android:layout_marginTop="@dimen/margin_05"
                 android:layout_marginRight="@dimen/margin_35"
-                android:drawableLeft="@drawable/ic_baseline_lens_24"
+                android:drawableStart="@drawable/ic_baseline_lens_24"
                 android:drawablePadding="@dimen/margin_10"
                 android:gravity="left"
                 android:text="@string/password_guidelines"
+                android:textColor="@color/black"
                 android:textSize="@dimen/textsize_13sp"
-                tools:ignore="RtlCompat" />
+                tools:ignore="RtlCompat,RtlHardcoded" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -58,13 +51,14 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/margin_35"
                 android:layout_marginTop="@dimen/margin_05"
-                android:textColor="@color/black"
                 android:layout_marginRight="@dimen/margin_35"
-                android:drawableLeft="@drawable/ic_baseline_lens_24"
+                android:drawableStart="@drawable/ic_baseline_lens_24"
                 android:drawablePadding="@dimen/margin_10"
                 android:gravity="left"
                 android:text="@string/password_guidelines2"
-                android:textSize="@dimen/textsize_13sp" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_13sp"
+                tools:ignore="RtlHardcoded" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -73,12 +67,13 @@
                 android:layout_marginLeft="@dimen/margin_35"
                 android:layout_marginTop="@dimen/margin_05"
                 android:layout_marginRight="@dimen/margin_35"
-                android:textColor="@color/black"
-                android:drawableLeft="@drawable/ic_baseline_lens_24"
+                android:drawableStart="@drawable/ic_baseline_lens_24"
                 android:drawablePadding="@dimen/margin_10"
                 android:gravity="left"
                 android:text="@string/password_guidelines1"
-                android:textSize="@dimen/textsize_13sp" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_13sp"
+                tools:ignore="RtlHardcoded" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -86,13 +81,14 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/margin_35"
                 android:layout_marginTop="@dimen/margin_05"
-                android:textColor="@color/black"
                 android:layout_marginRight="@dimen/margin_35"
-                android:drawableLeft="@drawable/ic_baseline_lens_24"
+                android:drawableStart="@drawable/ic_baseline_lens_24"
                 android:drawablePadding="@dimen/margin_10"
                 android:gravity="left"
                 android:text="@string/password_guidelines3"
-                android:textSize="@dimen/textsize_13sp" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_13sp"
+                tools:ignore="RtlHardcoded" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -116,7 +112,8 @@
                     android:padding="@dimen/margin_10"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_16" />
+                    android:textSize="@dimen/font_16"
+                    tools:ignore="RtlHardcoded" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -127,7 +124,6 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/confirm_pswd"
-
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_50"
                     android:layout_gravity="center"
@@ -142,7 +138,8 @@
                     android:padding="@dimen/margin_10"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/font_16" />
+                    android:textSize="@dimen/font_16"
+                    tools:ignore="RtlHardcoded" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 

@@ -1,7 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.activity.Infrastructure;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,13 +13,14 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,21 +32,21 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.AddActivity;
-import cdac.org.anganvadistaffutility.user.data.RemainingInfraDetailData;
+import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import retrofit2.Call;
 
 
 public class AanganwadiListActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout relativeLayout;
-    RecyclerView recyclerView;
-    AppCompatButton call, email;
-    List<AnganwadiInfraData.Data.Infradatum> empdata;
+    private LinearLayout main_layout;
+    private RecyclerView recyclerView;
+    private TextView call, email;
+    private List<AnganwadiInfraData.Data.Infradatum> empdata;
     private AnganwadiInfraData.Data.Infradatum infradatum;
     private RemainingInfraDetailAdapter remainingInfraDetailAdapter;
-    String infra_id, project_id, cdponame, p_name, cdpoemail, cdponumber;
-    AppCompatTextView project_name, cdpo_name, cdpo_number, project_code;
-    TextView awc_name, awc_code, textview;
+    private String infra_id, infra_detail_id, project_id, cdponame, p_name, cdpoemail, cdponumber, p_nameh;
+    private AppCompatTextView project_name, cdpo_name, cdpo_number, project_code;
+    private TextView awc_name, awc_code, textview;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -58,14 +58,17 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
 
 
         infra_id = getIntent().getStringExtra("infra_id");
+        infra_detail_id = getIntent().getStringExtra("infra_detail_id");
         project_id = getIntent().getStringExtra("project_id");
         p_name = getIntent().getStringExtra("project_name");
+        p_nameh = getIntent().getStringExtra("project_nameh");
 
         cdpoemail = getIntent().getStringExtra("cdpo_email");
         cdponumber = getIntent().getStringExtra("cdpo_number");
         cdponame = getIntent().getStringExtra("cdpo_name");
 
         relativeLayout = findViewById(R.id.relativeLayout);
+        main_layout = findViewById(R.id.main_layout);
         project_name = findViewById(R.id.txt_project_name);
         cdpo_name = findViewById(R.id.txt_cdpo_name);
         project_code = findViewById(R.id.txt_project_code);
@@ -93,9 +96,15 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         }
         call.setOnClickListener(this);
         email.setOnClickListener(this);
-        cdpo_name.setText(getResources().getString(R.string.cdpo_name) + " " + cdponame);
-        project_code.setText(getResources().getString(R.string.proj_code) + " " + project_id);
-        project_name.setText(getResources().getString(R.string.proj_name) + " " + p_name);
+        cdpo_name.setText(" " + cdponame);
+        project_code.setText(" " + project_id);
+
+        if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+            project_name.setText(" " + p_nameh);
+        } else {
+            project_name.setText(" " + p_name);
+        }
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -110,26 +119,32 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     }
 
     private void getAnganwadiList() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.AVAIL_INFRA_DETAILS_URL);
-        Call<AnganwadiInfraData> call = apiInterface.getAnganwadiInfraData("awc", infra_id, project_id);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        Call<AnganwadiInfraData> call = apiInterface.getAnganwadiInfraData("awc", infra_id, infra_detail_id, project_id);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AnganwadiInfraData>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(AnganwadiInfraData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-
                 empdata = new ArrayList<>();
                 empdata = body.getData().getInfradata();
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                empdata = new ArrayList<>();
-                empdata = body.getData().getInfradata();
-                remainingInfraDetailAdapter = new RemainingInfraDetailAdapter(context, empdata);
-                recyclerView.setAdapter(remainingInfraDetailAdapter);
 
-                awc_name.setText(getResources().getString(R.string.awc_name) + ":" + " " + empdata.get(0).getAwcnamee());
-                awc_code.setText(getResources().getString(R.string.awc_id) + ":" + " " + empdata.get(0).getPawcid());
+                if (empdata.size() > 0) {
+                    if (main_layout.getVisibility() == View.GONE) {
+                        main_layout.setVisibility(View.VISIBLE);
+                    }
+                    remainingInfraDetailAdapter = new RemainingInfraDetailAdapter(context, empdata);
+                    recyclerView.setAdapter(remainingInfraDetailAdapter);
 
-
+                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                        awc_name.setText(" " + empdata.get(0).getAwcnameh());
+                    } else {
+                        awc_name.setText(" " + empdata.get(0).getAwcnamee());
+                    }
+                    awc_code.setText(" " + empdata.get(0).getPawcid());
+                } else {
+                    Toast.makeText(AanganwadiListActivity.this, "" + getResources().getString(R.string.no_data_found), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -190,7 +205,6 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     }
 
     private static class RemainingInfraDetailAdapter extends RecyclerView.Adapter<MyHolder> {
-
         Context context;
         List<AnganwadiInfraData.Data.Infradatum> empdata;
 
@@ -206,16 +220,22 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
             return new MyHolder(view);
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull MyHolder holder, int position) {
             if (empdata != null && empdata.size() > 0) {
                 empdata.get(position);
                 holder.sr_no.setText("" + (position + 1));
-                holder.aw_worker.setText(empdata.get(position).getEmpName().trim().replace(" ", " "));
+                if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                    holder.aw_worker.setText(empdata.get(position).getEmpNameh().trim().replace(" ", " "));
+
+                } else {
+                    holder.aw_worker.setText(empdata.get(position).getEmpName().trim().replace(" ", " "));
+
+                }
                 holder.aw_number.setText(empdata.get(position).getEmpMob().trim().replace(" ", " "));
             }
         }
-
 
         @Override
         public int getItemCount() {
@@ -224,11 +244,10 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     }
 
     private static class MyHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView aw_name, aw_worker, aw_number, sr_no;
+        AppCompatTextView aw_worker, aw_number, sr_no;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            //  aw_name = itemView.findViewById(R.id.awc_name);
             sr_no = itemView.findViewById(R.id.sr_no);
             aw_number = itemView.findViewById(R.id.awc_number);
             aw_worker = itemView.findViewById(R.id.awc_worker);

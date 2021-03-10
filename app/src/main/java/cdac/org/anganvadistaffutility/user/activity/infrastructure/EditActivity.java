@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -47,11 +48,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
     public static String infra_id, item_nameE, item_nameH, tim_accept_status, infradetail_id, last_infra_detail_id;
     public static String quantity_edtx = "1";
 
-  /*  AppCompatEditText facility, quantity, Availbility_in_Infrastructure;
-    String infra_id;
-    private RelativeLayout relativeLayout;
-    List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
-    private List<UserInfrastructureData.Data.InfrastructureDatum> infrastructureDatum;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,11 +159,10 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
             public void onSuccess(UpdateInfrastructureData body) {
 
                 Toast.makeText(context, "" + getResources().getString(R.string.infra_updated_successfully), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(context, AvailableInfraDetailsActivity.class));
+                finish();
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-               /* infrastructureData = new ArrayList<>();
-                infrastructureData = body.getData().getInfrastructureData();
-                awcBuildingAdapter = new AwcBuildingAdapter(context, infrastructureData);
-                recyclerView.setAdapter(awcBuildingAdapter);*/
+
             }
 
             @Override
@@ -256,8 +251,6 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
                             }
                         });
 
-                        //       Toast.makeText(context, infrastructureData.get(position).getTidInfraDetailId() + "", Toast.LENGTH_SHORT).show();
-                        //   Toast.makeText(context, infrastructureData.get(position).getTidInfraNamee() + "", Toast.LENGTH_SHORT).show();
                     } else {
                         lastChecked = null;
                     }

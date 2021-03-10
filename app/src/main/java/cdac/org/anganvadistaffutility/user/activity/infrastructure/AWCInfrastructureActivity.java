@@ -142,27 +142,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
 
         startActivity(new Intent(context, EditActivity.class).putExtra("infra_id", item.getTimInfraId()).putExtra("item_nameE", item.getTimInfraNamee()).putExtra("item_nameH", item.getTimInfraNameh())
                 .putExtra("tim_accept_status", item.getTimAcceptStatus()));
-
-        // startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
-        // Log.d("id_infra",item.getTimInfraId());
-       /* if (item.getTimInfraNamee().toLowerCase().contains("building")) {
-            startActivity(new Intent(context,AanganwadiBuildingActivity.class).putExtra("infra_id",item.getTimInfraId()));
-        } else if (item.getTimInfraNamee().toLowerCase().contains("creche")) {
-            startActivity(new Intent(context, CrecheActivity.class).putExtra("infra_id", item.getTimInfraId()));
-        } else if (item.getTimInfraNamee().toLowerCase().contains("electricity")) {
-            startActivity(new Intent(context, ElectricityActivity.class).putExtra("infra_id", item.getTimInfraId()));
-        } else if (item.getTimInfraNamee().toLowerCase().contains("toilet")) {
-            startActivity(new Intent(context, ToiletActivity.class).putExtra("infra_id", item.getTimInfraId()));
-        } else if (item.getTimInfraNamee().toLowerCase().contains("water")) {
-            startActivity(new Intent(context, WaterActivity.class).putExtra("infra_id", item.getTimInfraId()));
-        } else if (item.getTimInfraNamee().toLowerCase().contains("kitchen")) {
-            startActivity(new Intent(context, KitchenActivity.class).putExtra("infra_id", item.getTimInfraId()));
-        } else if (item.getTimInfraNamee().toLowerCase().contains("area")) {
-            startActivity(new Intent(context, AreaActivity.class).putExtra("infra_id", item.getTimInfraId()));
-        }
-*/
-        //     AppUtils.showToast(context, "" + item.getTimInfraId() + ": " + item.getTimInfraNamee());
-
+        finish();
 
     }
 
@@ -177,7 +157,7 @@ public class AWCInfrastructureActivity extends BaseActivity implements UserInfra
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("toilet")) {
                 infraStructureImageList.add(R.drawable.ic_toilet_new);
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("water")) {
-                infraStructureImageList.add(R.drawable.ic_drinking_water);
+                infraStructureImageList.add(R.drawable.drinking_water);
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("kitchen")) {
                 infraStructureImageList.add(R.drawable.ic_kitchen);
             } else if (infrastructureDatum.getTimInfraNamee().toLowerCase().contains("area")) {

@@ -30,7 +30,7 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_password);
+        setContentView(R.layout.activity_user_login);
 
         relativeLayout = findViewById(R.id.relativeLayout);
         et_user_password = findViewById(R.id.et_user_password);
@@ -59,13 +59,12 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void loginUser(String employeeID, String password) {
-        apiInterface = ApiUtils.getApiInterface(ApiUtils.LOGIN_USER);
+        apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<SetUserLogin> call = apiInterface.setUserLogin(employeeID, password);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<SetUserLogin>() {
             @Override
             public void onSuccess(SetUserLogin body) {
                 if (body.getStatus().getStatusCode().equalsIgnoreCase(AppUtils.successStatus)) {
-                 //   AppUtils.showToast(context, body.getStatus().getMessage());
                     AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                     appPreferences.setUserLoggedIn(true);
                     appPreferences.setTypeUser(true);

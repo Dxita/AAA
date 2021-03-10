@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="cdac.org.anganvadistaffutility"
-    android:installLocation="preferExternal">
+    android:installLocation="preferExternal"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,11 +22,11 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".App"
+        android:name="cdac.org.anganvadistaffutility.App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/app_logo"
-        android:label="@string/app_name"
+        android:label="@string/app_name_home"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/app_logo"
@@ -32,69 +34,68 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".admin.activity.Infrastructure.AanganwadiListActivity"
 
+        <activity android:name="cdac.org.anganvadistaffutility.admin.activity.Infrastructure.ProjectWiseInfraTableActivity" />
+        <activity android:name="cdac.org.anganvadistaffutility.admin.activity.Infrastructure.DistrictWiseInfraTableActivity" />
+        <activity android:name="cdac.org.anganvadistaffutility.admin.activity.Infrastructure.ViewInfraDetailTableActivity" />
+        <activity android:name="cdac.org.anganvadistaffutility.admin.activity.ProjectWiseTableActivity" />
+        <activity android:name="cdac.org.anganvadistaffutility.admin.activity.DistrictWiseTableActivity" />
+        <activity
+            android:name="cdac.org.anganvadistaffutility.admin.activity.Infrastructure.AanganwadiListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name="cdac.org.anganvadistaffutility.user.activity.infrastructure.AvailableInfraDetailsActivity" />
+        <activity
+            android:name="cdac.org.anganvadistaffutility.user.activity.infrastructure.EditActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.activity.Infrastructure.SectorWiseActivity"
-            android:screenOrientation="landscape" />
-        <activity android:name=".user.activity.infrastructure.AvailableInfraDetailsActivity" />
-        <activity
-            android:name=".admin.activity.Infrastructure.DistrictWiseInfraActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".admin.activity.Infrastructure.PieChartProjectActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".user.activity.infrastructure.EditActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.infrastructure.AddActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.infrastructure.AddActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.infrastructure.InfraDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.infrastructure.InfraDetailsActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.SplashActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".common.activity.SplashActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.BasicInformationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.BasicInformationActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.InfantDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.InfantDetailsActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.BenefeciaryBankDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.BenefeciaryBankDetailsActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.IdCardDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.IdCardDetailsActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.CategoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.CategoryActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.MotherDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.MotherDetailsActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.MotherMappingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.MotherMappingActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.BeneficiarySearchResultActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.LanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".common.LanguageActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.infrastructure.AWCInfrastructureActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cdac.org.anganvadistaffutility.user.activity.UserSectionActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.infrastructure.AWCInfrastructureActivity"
+            android:name="cdac.org.anganvadistaffutility.admin.activity.KpiTableActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".public_u.activity.PublicOTPVerificationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.UserSectionActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".common.AppPosterActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.AppPosterActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action
@@ -107,101 +108,67 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".common.activity.SalaryDetailsTblActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.SalaryDetailsTblActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.personal_details.CardActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.personal_details.CardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.personal_details.BankActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.personal_details.BankActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.personal_details.PaymentActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.personal_details.PaymentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.personal_details.JobActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.personal_details.JobActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.personal_details.ProfileActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.personal_details.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".common.activity.UserTypeActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.UserTypeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".common.activity.SelectLanguageActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.SelectLanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".common.activity.BaseActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.BaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.VerifyUserActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.VerifyOTPActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user.activity.HomeActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.activity.ViewAaGanWadiDataActivity"
+            android:name="cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.activity.ViewInfraStructureActivity"
+            android:name="cdac.org.anganvadistaffutility.admin.activity.ViewInfraStructureActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.activity.ViewInfraStructureDetailActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".admin.activity.EmployeePaymentDetailActivity"
+            android:name="cdac.org.anganvadistaffutility.admin.activity.EmployeePaymentDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.activity.ShowKPIActivity"
+            android:name="cdac.org.anganvadistaffutility.admin.activity.ShowKPIActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+
         <activity
-            android:name=".admin.activity.UsersGraphActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".admin.activity.UsersPieChartActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".admin.activity.DistrictWisePieChartActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".admin.activity.ProjectWisePieChartActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".public_u.activity.BuildingDetailsActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.GeneratePasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".public_u.activity.PublicInfraActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.UserLoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".public_u.activity.PublicLoginActivity"
+            android:name="cdac.org.anganvadistaffutility.user.activity.beneficiary.ViewBeneficiaryDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".public_u.activity.PublicRegistrationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".common.activity.GeneratePasswordActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".common.activity.UserLoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.ViewBeneficiaryDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".common.activity.NoInternetActivity"
+            android:name="cdac.org.anganvadistaffutility.common.activity.NoInternetActivity"
             android:screenOrientation="portrait" />
         <!--
   <service
@@ -216,7 +183,7 @@
                android:exported="false" />
         -->
         <receiver
-            android:name=".common.receiver.ServiceRestart"
+            android:name="cdac.org.anganvadistaffutility.common.receiver.ServiceRestart"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -224,7 +191,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".common.receiver.AlarmReceiver"
+            android:name="cdac.org.anganvadistaffutility.common.receiver.AlarmReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -232,7 +199,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".common.receiver.SmsBroadcastReceiver"
+            android:name="cdac.org.anganvadistaffutility.common.receiver.SmsBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.gms.auth.api.phone.permission.SEND">
             <intent-filter>

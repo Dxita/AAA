@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,7 +93,7 @@ PaymentActivity extends BaseActivity implements TextWatcher {
     }
 
     private void getPaymentData(String fromYear, String toYear) {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PAYMENT_BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<PaymentDetails> call = apiInterface.paymentDetails(appPreferences.getEmployeeId(), fromYear, toYear);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<PaymentDetails>() {
             @Override
@@ -115,6 +114,7 @@ PaymentActivity extends BaseActivity implements TextWatcher {
 
                         startActivity(intent);
                     }
+
                 } else {
                     AppUtils.showToast(context, body.getMessage());
                 }

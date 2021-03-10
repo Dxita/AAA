@@ -1,10 +1,6 @@
 package cdac.org.anganvadistaffutility.admin.data;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class DistrictWiseInfraData  implements Comparable<DistrictWiseInfraData>{
-
 
     private String count;
 

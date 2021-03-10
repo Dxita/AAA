@@ -35,7 +35,6 @@ import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
-import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 

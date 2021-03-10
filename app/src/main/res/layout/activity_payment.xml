@@ -19,8 +19,7 @@
         tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true" >
+        android:background="@color/colorPrimary">
 
     </androidx.appcompat.widget.Toolbar>
 

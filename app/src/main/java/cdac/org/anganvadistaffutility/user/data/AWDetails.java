@@ -102,7 +102,7 @@ public class AWDetails {
 
     }
 
-    public class Data_ {
+    public static class Data_ {
 
         @SerializedName("empdata")
         @Expose

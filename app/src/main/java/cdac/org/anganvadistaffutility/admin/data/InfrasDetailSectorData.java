@@ -65,7 +65,6 @@ public class InfrasDetailSectorData {
         public void setInfradata(List<Infradatum> infradata) {
             this.infradata = infradata;
         }
-
     }
 
     public static class Infradatum {

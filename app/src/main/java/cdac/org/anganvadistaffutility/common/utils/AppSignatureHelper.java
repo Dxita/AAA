@@ -1,5 +1,6 @@
 package cdac.org.anganvadistaffutility.common.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.PackageManager;
@@ -30,13 +31,13 @@ public class AppSignatureHelper extends ContextWrapper {
      * Get all the app signatures for the current package
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public ArrayList<String> getAppSignatures() {
+    public void getAppSignatures() {
         ArrayList<String> appCodes = new ArrayList<>();
         try {
             // Get all package signatures for the current package
             String packageName = getPackageName();
             PackageManager packageManager = getPackageManager();
-            Signature[] signatures = packageManager.getPackageInfo(packageName,
+            @SuppressLint("PackageManagerGetSignatures") Signature[] signatures = packageManager.getPackageInfo(packageName,
                     PackageManager.GET_SIGNATURES).signatures;
             // For each signature create a compatible hash
             for (Signature signature : signatures) {
@@ -48,7 +49,6 @@ public class AppSignatureHelper extends ContextWrapper {
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Unable to find package to obtain hash.", e);
         }
-        return appCodes;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

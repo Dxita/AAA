@@ -52,7 +52,7 @@ public class RemainingInfraDetailData {
         this.data = data;
     }
 
-    public class Data {
+    public static class Data {
 
         @SerializedName("empdata")
         @Expose
@@ -66,7 +66,7 @@ public class RemainingInfraDetailData {
             this.empdata = empdata;
         }
 
-        public class Empdatum {
+        public static class Empdatum {
 
             @SerializedName("tid_tim_infra_id")
             @Expose

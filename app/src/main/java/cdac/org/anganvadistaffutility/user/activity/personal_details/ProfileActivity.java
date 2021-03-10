@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -50,7 +49,7 @@ public class ProfileActivity extends BaseActivity {
                 name.setText(profileDetails.getEmployeeNameHindi());
                 awc_name.setText(profileDetails.getAwcNameHindi());
                 dob.setText(profileDetails.getDateOfBirth());
-                category.setText(profileDetails.getCategory());
+                category.setText(profileDetails.getCategoryHindi());
                 awc_id.setText(profileDetails.getAwcid());
                 mobile_no.setText(profileDetails.getMoblieNumber());
                 //    father_husband_name.setText(profileDetails.getHusbandFatherName());

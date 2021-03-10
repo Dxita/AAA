@@ -27,11 +27,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
-            android:textStyle="bold"
             android:text="@string/infra_data"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_14sp" />
+            android:textSize="@dimen/textsize_14sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

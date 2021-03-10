@@ -1,79 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-   >
+    android:layout_height="wrap_content">
 
-  <!--  <TextView
-        android:id="@+id/awc_code"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.12"
-        android:background="@drawable/border"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:padding="@dimen/margin_05"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textsize_14sp" />
+    <!--  <TextView
+          android:id="@+id/awc_code"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="0.12"
+          android:background="@drawable/border"
+          android:ellipsize="end"
+          android:gravity="center"
+          android:padding="@dimen/margin_05"
+          android:singleLine="true"
+          android:textColor="@color/black"
+          android:textSize="@dimen/textsize_14sp" />
 
-    <TextView
-        android:id="@+id/awc_name"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.30"
-        android:background="@drawable/border"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:padding="@dimen/margin_05"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textsize_14sp" />
--->
-<LinearLayout
-   android:background="@drawable/custom_app_bg"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_50">
-    <TextView
-        android:id="@+id/sr_no"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/admin_border"
-        android:ellipsize="end"
-        android:layout_weight="0.20"
-        android:gravity="center"
-        android:padding="@dimen/margin_05"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textsize_14sp" />
-    <TextView
-        android:id="@+id/awc_worker"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/admin_border"
-        android:ellipsize="end"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="@dimen/margin_05"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textsize_14sp" />
+      <TextView
+          android:id="@+id/awc_name"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="0.30"
+          android:background="@drawable/border"
+          android:ellipsize="end"
+          android:gravity="center"
+          android:padding="@dimen/margin_05"
+          android:singleLine="true"
+          android:textColor="@color/black"
+          android:textSize="@dimen/textsize_14sp" />
+  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_45"
+        android:background="@drawable/custom_app_bg"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
-    <TextView
-        android:id="@+id/awc_number"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/admin_border"
-        android:ellipsize="end"
-        android:gravity="center|end"
-        android:padding="@dimen/margin_05"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textsize_14sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/sr_no"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.20"
+            android:background="@drawable/admin_tbl_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="@dimen/margin_02"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_13sp" />
+
+        <TextView
+            android:id="@+id/awc_worker"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/admin_tbl_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="@dimen/margin_02"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_13sp" />
+
+        <TextView
+            android:id="@+id/awc_number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/admin_tbl_bg"
+            android:ellipsize="end"
+            android:gravity="center|end"
+            android:padding="@dimen/margin_02"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_13sp" />
+
+    </LinearLayout>
 </RelativeLayout>

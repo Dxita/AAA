@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,12 +24,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_05"
-            android:textStyle="bold"
-            android:layout_marginLeft="@dimen/margin_05"
             android:text="@string/welcome_text"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/font_18" />
+            android:textSize="@dimen/font_18"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -42,7 +42,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/enter_employee_id"
             android:textColor="@color/black"
@@ -69,7 +68,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/enter_financial_year"
             android:textColor="@color/black"
@@ -86,7 +84,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_05"
-                android:layout_marginRight="@dimen/margin_05"
                 android:layout_weight="1"
                 android:background="@drawable/otpbg"
                 android:enabled="true"
@@ -102,7 +99,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_05"
-                android:layout_marginLeft="@dimen/margin_05"
                 android:layout_weight="1"
                 android:background="@drawable/otpbg"
                 android:enabled="false"

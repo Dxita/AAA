@@ -3,10 +3,8 @@ package cdac.org.anganvadistaffutility.admin.activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -69,18 +67,5 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
             ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
         }
 
-        /*SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        mPreferences.edit().clear().apply();
-
-        SharedPreferences.Editor editor = appPreferences.getAppPreference().edit();
-        editor.clear();
-        editor.apply();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finishAffinity();*/
     }
 }

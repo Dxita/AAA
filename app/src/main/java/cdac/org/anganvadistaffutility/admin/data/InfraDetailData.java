@@ -43,6 +43,18 @@ public class InfraDetailData implements Comparable<InfraDetailData>{
 
     String district;
 
+
+    public String getDistricth() {
+        return districth;
+    }
+
+    public void setDistricth(String districth) {
+        this.districth = districth;
+    }
+
+    String districth;
+
+
     public String getDistrictID() {
         return districtID;
     }

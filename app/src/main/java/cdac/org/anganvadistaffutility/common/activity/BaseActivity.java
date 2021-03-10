@@ -11,7 +11,6 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
@@ -26,13 +25,9 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,26 +40,21 @@ import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.AccountPicker;
 
-import org.spongycastle.math.ntru.polynomial.Constants;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.TimerTask;
 
 import cdac.org.anganvadistaffutility.App;
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.admin.activity.ViewAaGanWadiDataActivity;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.preferences.AppPreferences;
-import cdac.org.anganvadistaffutility.common.receiver.ServiceRestart;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.service.UserLogoutService;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.activity.UserSectionActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyOTPActivity;
 import cdac.org.anganvadistaffutility.user.activity.VerifyUserActivity;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
@@ -161,7 +151,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     }
 
     protected void sendOtpToServer(RelativeLayout relativeLayout, String mobileNumber, String otp) {
-        apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
+        apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyOTPDetails>() {
             @Override
@@ -194,7 +184,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     }
 
     protected void sendOtpToServerPublic(RelativeLayout relativeLayout, String mobileNumber, String otp) {
-        apiInterface = ApiUtils.getApiInterface(ApiUtils.SEND_OTP_TO_SERVER_BASE_URL);
+        apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<VerifyOTPDetails> call = apiInterface.sendOtpToServer(mobileNumber, otp);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyOTPDetails>() {
             @Override
@@ -248,8 +238,6 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
                 }
             }
         }
-        //  adminNumberList.add("9784544208");
-        //  adminNumberList.add("7014259658");
 
         if (adminNumberList.isEmpty() || adminNumberList.size() == 1) {
             if (!adminNumberList.isEmpty()) {
@@ -294,7 +282,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     }
 
     public void verifyAdmin(RelativeLayout relativeLayout, String email) {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.VERIFY_ADMIN_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<VerifyAdmin> call = apiInterface.verifyAdmin(android.text.TextUtils.join(",", adminNumberList), email);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<VerifyAdmin>() {
             @Override
@@ -353,36 +341,8 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-       /* if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            AppUtils.showToast(context, "landscape");
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            AppUtils.showToast(context, "portrait");
-        }*/
-    }
 
-   /* @Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
-        App.myAutoLogoutApp.touch();
     }
-*/
-    /*@Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
-
-        if (appPreferences.isUserLoggedIn()) {
-            if (AppUtils.isLogoutServiceRunning(context, AppUtils.serviceName)) {
-                Intent intent = new Intent(context, UserLogoutService.class);
-                intent.setAction(UserLogoutService.ACTION_STOP_FOREGROUND_SERVICE);
-                startService(intent);
-            } else {
-                Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction("restartservice");
-                broadcastIntent.setClass(this, ServiceRestart.class);
-                this.sendBroadcast(broadcastIntent);
-            }
-        }
-    }*/
 
 
     protected boolean isClassAvailable() {
@@ -436,9 +396,6 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
             startService(intent);
         }
 
-
-       /* alarmMgr.cancel(alarmIntent);
-        unregisterReceiver(br);*/
 
     }
 
@@ -537,9 +494,6 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
         finishAffinity();
         AppUtils.showToast(context, getResources().getString(R.string.logout_success));
 
-       /* if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
-
-        }*/
     }
 
     public void resetDisconnectTimer() {

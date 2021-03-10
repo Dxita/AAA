@@ -20,11 +20,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
                 android:gravity="center"
                 android:text="@string/otp_txt"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_25" />
+                android:textSize="@dimen/textsize_25"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/mobile_number_text"
@@ -74,7 +74,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_05"
-                android:layout_marginLeft="@dimen/margin_05"
                 android:text="@string/resend_code"
                 android:textColor="@color/dark_peach_bg"
                 android:textSize="@dimen/font_16" />
@@ -101,7 +100,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_05"
-                android:layout_marginLeft="@dimen/margin_05"
                 android:textColor="@color/dark_peach_bg"
                 android:textSize="@dimen/font_16" />
 

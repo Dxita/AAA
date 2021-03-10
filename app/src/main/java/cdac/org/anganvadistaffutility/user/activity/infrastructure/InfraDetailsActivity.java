@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +20,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,18 +32,13 @@ import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiUtils;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.AddActivity;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.EditActivity;
-import cdac.org.anganvadistaffutility.user.activity.infrastructure.InfrastructureDetailListner;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
 import retrofit2.Call;
 
 public class InfraDetailsActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout relativeLayout;
-
     RecyclerView recyclerView;
     List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
-
     public static String infra_id, item_nameE, item_nameH, tim_accept_status, last_infra_detail_id;
     AppCompatButton goback, edit;
     AwcBuildingAdapter awcBuildingAdapter;
@@ -173,28 +166,6 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-  /*  private void gotoAddScreen() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<AanganwadiBuildingData> call = apiInterface.aanganwadiBuildingData(infra_id, appPreferences.getAwcId());
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AanganwadiBuildingData>() {
-            @Override
-            public void onSuccess(AanganwadiBuildingData body) {
-                ;
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                infrastructureData = new ArrayList<>();
-                infrastructureData = body.getData().getInfrastructureData();
-                startActivity(new Intent(context, AddActivity.class).putExtra("infra_namee", item_nameE).
-                        putExtra("infra_nameh", item_nameH).putExtra("infraID", infra_id));
-            }
-            @Override
-            public void onFailure(Throwable t) {
-                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
-                AppUtils.showToast(context, getResources().getString(R.string.error_in_fetch_data));
-            }
-        }));
-    }*/
-
-
     public static class AwcBuildingAdapter extends RecyclerView.Adapter<AwcBuildingAdapter.MyViewHolders> {
         Context context;
         List<AanganwadiBuildingData.Data.InfrastructureDatum> infrastructureData;
@@ -309,8 +280,5 @@ public class InfraDetailsActivity extends BaseActivity implements View.OnClickLi
             }
         }
 
-
     }
-
-
 }

@@ -86,6 +86,9 @@ public class InfraDetailProjectData {
         @SerializedName("projectname")
         @Expose
         private String projectname;
+        @SerializedName("projectnameh")
+        @Expose
+        private String projectnameh;
         @SerializedName("projectcode")
         @Expose
         private String projectcode;
@@ -137,6 +140,14 @@ public class InfraDetailProjectData {
 
         public void setProjectname(String projectname) {
             this.projectname = projectname;
+        }
+
+        public String getProjectnameh() {
+            return projectnameh;
+        }
+
+        public void setProjectnameh(String projectnameh) {
+            this.projectnameh = projectnameh;
         }
 
         public String getProjectcode() {

@@ -52,6 +52,7 @@ public class InfrastructureDetailSumData {
         this.data = data;
     }
 
+
     public static class Data {
 
         @SerializedName("infradata")
@@ -72,6 +73,9 @@ public class InfrastructureDetailSumData {
         @SerializedName("tid_infra_namee")
         @Expose
         private String tidInfraNamee;
+        @SerializedName("tid_infra_nameh")
+        @Expose
+        private String tidInfraNameh;
         @SerializedName("tim_infra_namee")
         @Expose
         private String timInfraNamee;
@@ -91,6 +95,14 @@ public class InfrastructureDetailSumData {
 
         public void setTidInfraNamee(String tidInfraNamee) {
             this.tidInfraNamee = tidInfraNamee;
+        }
+
+        public String getTidInfraNameh() {
+            return tidInfraNameh;
+        }
+
+        public void setTidInfraNameh(String tidInfraNameh) {
+            this.tidInfraNameh = tidInfraNameh;
         }
 
         public String getTimInfraNamee() {

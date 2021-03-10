@@ -35,8 +35,7 @@ public class ShowKPIActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.view_users_data:
-                //  startActivity(new Intent(context, UsersGraphActivity.class));
-                startActivity(new Intent(context, UsersPieChartActivity.class));
+                startActivity(new Intent(context, KpiTableActivity.class));
                 break;
             case R.id.view_infra_data:
                 startActivity(new Intent(context, ViewInfraStructureActivity.class));

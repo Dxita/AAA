@@ -43,6 +43,16 @@ public class InfraProjectWiseData implements  Comparable<InfraProjectWiseData> {
 
     String projectName;
 
+    public String getProjectnameh() {
+        return projectNameh;
+    }
+
+    public void setProjectNameh(String projectNameh) {
+        this.projectNameh = projectNameh;
+    }
+
+    String projectNameh;
+
 
     public String getProjectcode() {
         return projectCode;

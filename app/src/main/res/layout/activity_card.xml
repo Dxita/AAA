@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-
-    android:background="@drawable/custom_app_bg"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:tool="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/tools"
+    android:background="@drawable/custom_app_bg"
     app:ignore="NamespaceTypo">
 
 
     <androidx.appcompat.widget.Toolbar
 
-        android:theme="@style/ToolbarTheme"
         android:id="@+id/toolbar"
-        tool:title="@string/card_details"
         android:layout_width="match_parent"
-        tool:titleTextColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true" >
+        android:theme="@style/ToolbarTheme"
+        tool:title="@string/card_details"
+        tool:titleTextColor="@color/white">
 
     </androidx.appcompat.widget.Toolbar>
+
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,7 +141,6 @@
                 android:singleLine="false"
                 android:textColor="@color/grey"
                 android:textSize="@dimen/textsize_15sp" />
-
 
 
         </LinearLayout>

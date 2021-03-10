@@ -43,5 +43,6 @@
     <dimen name="margin_210">210dp</dimen>
     <dimen name="margin_170dp">170dp</dimen>
     <dimen name="margin_120">120dp</dimen>
+    <dimen name="margin_140">140dp</dimen>
 
 </resources>

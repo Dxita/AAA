@@ -52,6 +52,7 @@ public class InfraStructureDetailData {
         this.data = data;
     }
 
+
     public static class Data {
 
         @SerializedName("infradata")
@@ -67,74 +68,86 @@ public class InfraStructureDetailData {
         }
 
     }
-        public static class Infradatum {
 
-            @SerializedName("count")
-            @Expose
-            private String count;
-            @SerializedName("tid_infra_namee")
-            @Expose
-            private String tidInfraNamee;
-            @SerializedName("tim_infra_namee")
-            @Expose
-            private String timInfraNamee;
-            @SerializedName("tid_infra_detail_id")
-            @Expose
-            private String tidInfraDetailId;
-            @SerializedName("district")
-            @Expose
-            private String district;
-            @SerializedName("distid")
-            @Expose
-            private String distid;
+    public static class Infradatum {
 
-            public String getCount() {
-                return count;
-            }
+        @SerializedName("count")
+        @Expose
+        private String count;
+        @SerializedName("tid_infra_namee")
+        @Expose
+        private String tidInfraNamee;
+        @SerializedName("tim_infra_namee")
+        @Expose
+        private String timInfraNamee;
+        @SerializedName("tid_infra_detail_id")
+        @Expose
+        private String tidInfraDetailId;
+        @SerializedName("district")
+        @Expose
+        private String district;
+        @SerializedName("distnameh")
+        @Expose
+        private String distnameh;
+        @SerializedName("distid")
+        @Expose
+        private String distid;
 
-            public void setCount(String count) {
-                this.count = count;
-            }
-
-            public String getTidInfraNamee() {
-                return tidInfraNamee;
-            }
-
-            public void setTidInfraNamee(String tidInfraNamee) {
-                this.tidInfraNamee = tidInfraNamee;
-            }
-
-            public String getTimInfraNamee() {
-                return timInfraNamee;
-            }
-
-            public void setTimInfraNamee(String timInfraNamee) {
-                this.timInfraNamee = timInfraNamee;
-            }
-
-            public String getTidInfraDetailId() {
-                return tidInfraDetailId;
-            }
-
-            public void setTidInfraDetailId(String tidInfraDetailId) {
-                this.tidInfraDetailId = tidInfraDetailId;
-            }
-
-            public String getDistrict() {
-                return district;
-            }
-
-            public void setDistrict(String district) {
-                this.district = district;
-            }
-
-            public String getDistid() {
-                return distid;
-            }
-
-            public void setDistid(String distid) {
-                this.distid = distid;
-            }
+        public String getCount() {
+            return count;
         }
 
+        public void setCount(String count) {
+            this.count = count;
+        }
+
+        public String getTidInfraNamee() {
+            return tidInfraNamee;
+        }
+
+        public void setTidInfraNamee(String tidInfraNamee) {
+            this.tidInfraNamee = tidInfraNamee;
+        }
+
+        public String getTimInfraNamee() {
+            return timInfraNamee;
+        }
+
+        public void setTimInfraNamee(String timInfraNamee) {
+            this.timInfraNamee = timInfraNamee;
+        }
+
+        public String getTidInfraDetailId() {
+            return tidInfraDetailId;
+        }
+
+        public void setTidInfraDetailId(String tidInfraDetailId) {
+            this.tidInfraDetailId = tidInfraDetailId;
+        }
+
+        public String getDistrict() {
+            return district;
+        }
+
+        public void setDistrict(String district) {
+            this.district = district;
+        }
+
+        public String getDistnameh() {
+            return distnameh;
+        }
+
+        public void setDistnameh(String distnameh) {
+            this.distnameh = distnameh;
+        }
+
+        public String getDistid() {
+            return distid;
+        }
+
+        public void setDistid(String distid) {
+            this.distid = distid;
+        }
+
+    }
 }

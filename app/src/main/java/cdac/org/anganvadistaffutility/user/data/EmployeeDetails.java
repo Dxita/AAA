@@ -150,13 +150,13 @@ public class EmployeeDetails {
         }
 
         @Override
-        public void writeToParcel(Parcel parcel, int i) {
-            parcel.writeString(employeeStatus);
-            parcel.writeString(dateOfJoining);
-            parcel.writeString(designationNameEnglish);
-            parcel.writeString(designationNameHindi);
-            parcel.writeString(payslabAmount);
-            parcel.writeString(educationalQualification);
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(employeeStatus);
+            dest.writeString(dateOfJoining);
+            dest.writeString(designationNameEnglish);
+            dest.writeString(designationNameHindi);
+            dest.writeString(payslabAmount);
+            dest.writeString(educationalQualification);
         }
     }
 
@@ -189,6 +189,9 @@ public class EmployeeDetails {
         @SerializedName("category")
         @Expose
         private String category;
+        @SerializedName("category_hindi")
+        @Expose
+        private String categoryHindi;
         @SerializedName("husband father name")
         @Expose
         private String husbandFatherName;
@@ -203,6 +206,7 @@ public class EmployeeDetails {
             awcAddress = in.readString();
             moblieNumber = in.readString();
             category = in.readString();
+            categoryHindi = in.readString();
             husbandFatherName = in.readString();
         }
 
@@ -290,6 +294,14 @@ public class EmployeeDetails {
             this.category = category;
         }
 
+        public String getCategoryHindi() {
+            return categoryHindi;
+        }
+
+        public void setCategoryHindi(String categoryHindi) {
+            this.categoryHindi = categoryHindi;
+        }
+
         public String getHusbandFatherName() {
             return husbandFatherName;
         }
@@ -304,17 +316,18 @@ public class EmployeeDetails {
         }
 
         @Override
-        public void writeToParcel(Parcel parcel, int i) {
-            parcel.writeString(employeeNameEnglish);
-            parcel.writeString(employeeNameHindi);
-            parcel.writeString(dateOfBirth);
-            parcel.writeString(awcid);
-            parcel.writeString(awcNameEnglish);
-            parcel.writeString(awcNameHindi);
-            parcel.writeString(awcAddress);
-            parcel.writeString(moblieNumber);
-            parcel.writeString(category);
-            parcel.writeString(husbandFatherName);
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(employeeNameEnglish);
+            dest.writeString(employeeNameHindi);
+            dest.writeString(dateOfBirth);
+            dest.writeString(awcid);
+            dest.writeString(awcNameEnglish);
+            dest.writeString(awcNameHindi);
+            dest.writeString(awcAddress);
+            dest.writeString(moblieNumber);
+            dest.writeString(category);
+            dest.writeString(categoryHindi);
+            dest.writeString(husbandFatherName);
         }
     }
 
