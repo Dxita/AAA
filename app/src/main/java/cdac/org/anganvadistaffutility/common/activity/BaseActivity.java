@@ -62,7 +62,6 @@ import retrofit2.Call;
 
 import static android.content.pm.PackageManager.GET_META_DATA;
 
-
 public class BaseActivity extends AppCompatActivity implements LogoutListener {
     //implement LogoutListner
     public static final String TAG = BaseActivity.class.getSimpleName();
@@ -74,8 +73,6 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
     public Context context;
     public ApiInterface apiInterface;
     protected List<String> adminNumberList;
-
-
     private Boolean isUserTimedOut = false;
     private static Dialog mDialog;
     private AlarmManager alarmMgr; //TO CALL OUT THE CLASS OF THE ALARM SERVICE
