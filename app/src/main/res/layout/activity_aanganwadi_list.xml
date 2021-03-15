@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_05"
                 android:gravity="center"
-                android:text="@string/aw_data"
+                android:text="@string/aaganwadi_data"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_14sp"

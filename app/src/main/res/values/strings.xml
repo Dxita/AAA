@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">RajPoshan 0.1 </string>
-    <string name="app_name_home">AAA 0.1</string>
+    <string name="app_name">RajPoshan</string>
+    <string name="app_name_home">AAA</string>
     <string name="menu_home">Home</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -10,7 +10,7 @@
 
     <string name="category">Category</string>
     <string name="address">Address</string>
-    <string name="welcome_text">Welcome to Rajposhan 0.1</string>
+    <string name="welcome_text">Welcome to Rajposhan</string>
     <string name="public_text">Public</string>
 
     <string name="setup_text">Set up Password</string>
@@ -82,7 +82,8 @@
     <string name="employed">Working</string>
 
     <string name="view_aaganwadi_data">View Aaganwadi Data</string>
-    <string name="show_kpi">Key Performance Indicators</string>
+    <string name="aaganwadi_data">Aaganwadi Data</string>
+    <string name="show_kpi">Upyogkarta Data</string>
     <string name="payment_data">View Payment Data</string>
     <string name="error_in_fetch_data">Error in fetch data</string>
 

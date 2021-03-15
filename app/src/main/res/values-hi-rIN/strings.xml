@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">राजपोषण 0.1</string>
-    <string name="app_name_home">AAA 0.1</string>
+    <string name="app_name">राजपोषण</string>
+    <string name="app_name_home">AAA</string>
     <string name="menu_home">मुख पृष्ठ</string>
 
     <string name="navigation_drawer_open">नेविगेशन दराज खोलें</string>
@@ -10,7 +10,7 @@
 
     <string name="category">वर्ग</string>
     <string name="address">पता</string>
-    <string name="welcome_text">"राजपोषण 0.1 में आपका स्वागत है"</string>
+    <string name="welcome_text">"राजपोषण में आपका स्वागत है"</string>
     <string name="public_text">जनता</string>
 
 
@@ -82,7 +82,9 @@
 
 
     <string name="view_aaganwadi_data">आगनवाड़ी डेटा</string>
-    <string name="show_kpi">मुख्य प्रदर्शन संकेतक</string>
+    <string name="aaganwadi_data">आगनवाड़ी डेटा</string>
+
+    <string name="show_kpi">उपयोगकर्ता डेटा</string>
     <string name="payment_data">भुगतान डेटा </string>
     <string name="error_in_fetch_data">डेटा लाने में त्रुटि</string>
     <string name="view_users_data">उपयोगकर्ता डेटा</string>
