@@ -38,11 +38,11 @@ public class JobActivity extends BaseActivity {
         if (jobDetails != null) {
             employment_status.setText(jobDetails.getEmployeeStatus());
 
-            if (jobDetails.getEmployeeStatus().equals("0")) {
+          /*  if (jobDetails.getEmployeeStatus().equals("0")) {
                 employment_status.setText(getString(R.string.retired));
             } else {
                 employment_status.setText(getString(R.string.employed));
-            }
+            }*/
             if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
                 designation.setText(jobDetails.getDesignationNameHindi());
                 doj.setText(jobDetails.getDateOfJoining());

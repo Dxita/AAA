@@ -35,7 +35,6 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import retrofit2.Call;
 
-
 public class AanganwadiListActivity extends BaseActivity implements View.OnClickListener {
     private RelativeLayout relativeLayout;
     private LinearLayout main_layout;

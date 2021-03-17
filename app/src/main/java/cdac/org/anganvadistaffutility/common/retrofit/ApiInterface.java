@@ -44,6 +44,7 @@ public interface ApiInterface {
 
     // Get employee profile details
 
+
     @POST("api_js_app_employee_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<EmployeeDetails> employeeDetails(@Field("empid") String empID);
