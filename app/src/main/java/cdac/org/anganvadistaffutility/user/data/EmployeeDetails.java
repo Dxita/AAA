@@ -162,6 +162,24 @@ public class EmployeeDetails {
 
     public static class Profile implements Parcelable {
 
+        @SerializedName("district english")
+        @Expose
+        private String districtEnglish;
+        @SerializedName("district hindi")
+        @Expose
+        private String districtHindi;
+        @SerializedName("project english")
+        @Expose
+        private String projectEnglish;
+        @SerializedName("project hindi")
+        @Expose
+        private String projectHindi;
+        @SerializedName("sector english")
+        @Expose
+        private String sectorEnglish;
+        @SerializedName("sector hindi")
+        @Expose
+        private String sectorHindi;
         @SerializedName("employee name english")
         @Expose
         private String employeeNameEnglish;
@@ -197,6 +215,12 @@ public class EmployeeDetails {
         private String husbandFatherName;
 
         protected Profile(Parcel in) {
+            districtEnglish = in.readString();
+            districtHindi = in.readString();
+            projectEnglish = in.readString();
+            projectHindi = in.readString();
+            sectorEnglish = in.readString();
+            sectorHindi = in.readString();
             employeeNameEnglish = in.readString();
             employeeNameHindi = in.readString();
             dateOfBirth = in.readString();
@@ -221,6 +245,54 @@ public class EmployeeDetails {
                 return new Profile[size];
             }
         };
+
+        public String getDistrictEnglish() {
+            return districtEnglish;
+        }
+
+        public void setDistrictEnglish(String districtEnglish) {
+            this.districtEnglish = districtEnglish;
+        }
+
+        public String getDistrictHindi() {
+            return districtHindi;
+        }
+
+        public void setDistrictHindi(String districtHindi) {
+            this.districtHindi = districtHindi;
+        }
+
+        public String getProjectEnglish() {
+            return projectEnglish;
+        }
+
+        public void setProjectEnglish(String projectEnglish) {
+            this.projectEnglish = projectEnglish;
+        }
+
+        public String getProjectHindi() {
+            return projectHindi;
+        }
+
+        public void setProjectHindi(String projectHindi) {
+            this.projectHindi = projectHindi;
+        }
+
+        public String getSectorEnglish() {
+            return sectorEnglish;
+        }
+
+        public void setSectorEnglish(String sectorEnglish) {
+            this.sectorEnglish = sectorEnglish;
+        }
+
+        public String getSectorHindi() {
+            return sectorHindi;
+        }
+
+        public void setSectorHindi(String sectorHindi) {
+            this.sectorHindi = sectorHindi;
+        }
 
         public String getEmployeeNameEnglish() {
             return employeeNameEnglish;
@@ -317,6 +389,12 @@ public class EmployeeDetails {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(districtEnglish);
+            dest.writeString(districtHindi);
+            dest.writeString(projectEnglish);
+            dest.writeString(projectHindi);
+            dest.writeString(sectorEnglish);
+            dest.writeString(sectorHindi);
             dest.writeString(employeeNameEnglish);
             dest.writeString(employeeNameHindi);
             dest.writeString(dateOfBirth);

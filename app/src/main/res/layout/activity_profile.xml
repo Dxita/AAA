@@ -126,6 +126,59 @@
                 android:textColor="@color/grey"
                 android:textSize="@dimen/textsize_15sp" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/district"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:padding="@dimen/margin_10"
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/project"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:padding="@dimen/margin_10"
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/sector"
+                android:textColor="@color/peach"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/sector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:padding="@dimen/margin_10"
+                android:singleLine="false"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/textsize_15sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"

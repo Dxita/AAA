@@ -33,6 +33,9 @@ public class ProfileActivity extends BaseActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         AppCompatEditText name = findViewById(R.id.name);
+        AppCompatEditText district = findViewById(R.id.district);
+        AppCompatEditText project = findViewById(R.id.project);
+        AppCompatEditText sector = findViewById(R.id.sector);
         AppCompatEditText dob = findViewById(R.id.dob);
         AppCompatEditText category = findViewById(R.id.category);
         AppCompatEditText father_husband_name = findViewById(R.id.father_husband_name);
@@ -55,6 +58,9 @@ public class ProfileActivity extends BaseActivity {
                 //    father_husband_name.setText(profileDetails.getHusbandFatherName());
                 father_husband_name.setText(profileDetails.getHusbandFatherName().replaceAll("Name", ""));
                 awc_address.setText(profileDetails.getAwcAddress());
+                district.setText(profileDetails.getDistrictHindi());
+                project.setText(profileDetails.getProjectHindi());
+                sector.setText(profileDetails.getSectorHindi());
 
             } else {
                 name.setText(profileDetails.getEmployeeNameEnglish());
@@ -66,6 +72,9 @@ public class ProfileActivity extends BaseActivity {
                 father_husband_name.setText(profileDetails.getHusbandFatherName().replaceAll("Name", ""));
                 awc_address.setText(profileDetails.getAwcAddress());
                 awc_name.setText(profileDetails.getAwcNameEnglish());
+                district.setText(profileDetails.getDistrictEnglish());
+                project.setText(profileDetails.getProjectEnglish());
+                sector.setText(profileDetails.getSectorEnglish());
             }
 
 
