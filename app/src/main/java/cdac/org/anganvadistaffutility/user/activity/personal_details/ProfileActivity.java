@@ -76,8 +76,6 @@ public class ProfileActivity extends BaseActivity {
                 project.setText(profileDetails.getProjectEnglish());
                 sector.setText(profileDetails.getSectorEnglish());
             }
-
-
         }
     }
 
