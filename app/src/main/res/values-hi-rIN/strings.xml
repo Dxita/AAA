@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">राजपोषण</string>
+    <string name="app_name">राज आँगन</string>
     <string name="app_name_home">AAA</string>
     <string name="menu_home">मुख पृष्ठ</string>
 
@@ -10,7 +10,7 @@
 
     <string name="category">वर्ग</string>
     <string name="address">पता</string>
-    <string name="welcome_text">"राजपोषण में आपका स्वागत है"</string>
+    <string name="welcome_text">"राज आँगन में आपका स्वागत है"</string>
     <string name="public_text">जनता</string>
 
 
@@ -79,8 +79,6 @@
     <string name="employed">कार्यरत</string>
 
     <string name="change_your_language">अपनी भाषा बदलें</string>
-
-
     <string name="view_aaganwadi_data">आगनवाड़ी डेटा</string>
     <string name="aaganwadi_data">आगनवाड़ी डेटा</string>
 
@@ -91,14 +89,12 @@
     <string name="view_infra_data">इंफ्रास्ट्रक्चर डेटा</string>
     <string name="enter_employee_id">कर्मचारी पहचान संख्या दर्ज करें:</string>
     <string name="get_payment_details">भुगतान विवरण</string>
-
     <string name="enter_financial_year">वित्तीय वर्ष दर्ज करें:</string>
     <string name="from_year">वर्ष से</string>
     <string name="toYear">वर्ष के लिए</string>
     <string name="fill_required_fields">कृपया सभी आवश्यक फ़ील्ड भरें</string>
 
     <string name="should_have_4_digits">4 अंक होने चाहिए</string>
-
     <string name="download_salary_slip">वेतन पर्ची डाउनलोड करें</string>
 
 

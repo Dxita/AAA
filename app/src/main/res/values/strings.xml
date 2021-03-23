@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RajPoshan</string>
+    <string name="app_name">Raj Aangan</string>
     <string name="app_name_home">AAA</string>
     <string name="menu_home">Home</string>
 
@@ -10,7 +10,7 @@
 
     <string name="category">Category</string>
     <string name="address">Address</string>
-    <string name="welcome_text">Welcome to Rajposhan</string>
+    <string name="welcome_text">Welcome to Raj Aangan</string>
     <string name="public_text">Public</string>
 
     <string name="setup_text">Set up Password</string>
