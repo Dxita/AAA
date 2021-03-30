@@ -194,7 +194,7 @@ public class BaseActivity extends AppCompatActivity implements LogoutListener {
                         finish();
                     }
                     appPreferences.saveGeneratedOtp(body.getData().getOtp());
-                    startActivity(new Intent(context, VerifyOTPActivity.class)
+                    startActivity(new Intent(context, ForgetPwdOTPActivity.class)
                             .putExtra("mobile_number", body.getData().getMobile()));
 
                     if (context instanceof VerifyUserActivity) {

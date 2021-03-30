@@ -25,6 +25,7 @@ public class AppPreferences {
     private static final String INFRA_ID = "INFRAID";
 
     private static final String STATUS = "_STATUS";
+    private static final String MOBILE_NUMBER = "MOBILE";
 
     private static final String ADMIN_INFRA_ID = "ADMIN_INFRAID";
     private static final String LAST_CHECKED_POS = "LAST_CHECKED_POSITION";
@@ -200,4 +201,7 @@ public class AppPreferences {
         editor.putString(STATUS, status);
         editor.apply();
     }
+
+
+
 }

@@ -305,6 +305,11 @@
     <string name="swipe_up_for_more_details">Click here for more details</string>
 
     <string name="contact_cdpo">Contact CDPO</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="change_password">Change Your Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="old_pswd">Old Password</string>
+    <string name="new_pswd">New Password</string>
 
 
     <string-array name="criteria">

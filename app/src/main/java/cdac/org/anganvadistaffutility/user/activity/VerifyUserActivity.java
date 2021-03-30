@@ -2,6 +2,8 @@ package cdac.org.anganvadistaffutility.user.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -10,6 +12,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -33,7 +40,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_user);
-
+        getLocalIpAddress();
         relativeLayout = findViewById(R.id.relativeLayout);
         edt_user_mobile_no = findViewById(R.id.edt_user_mobile_no);
         AppCompatButton btn_verify_user = findViewById(R.id.btn_verify_user);
@@ -68,6 +75,7 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     //    AppUtils.showToast(context, body.getMessage());
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     appPreferences.setAwcId(body.getData().getEmpdata().getAwcid());
+                    appPreferences.setMobileNumber(body.getData().getEmpdata().getMobileno());
 
                     if (body.getData().getEmpdata().getPasswordset()) {
 
@@ -94,5 +102,24 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }
         }));
+    }
+
+    public String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        String ip = Formatter.formatIpAddress(inetAddress.hashCode());
+                        Log.i(TAG, "***** IP="+ ip);
+                        return ip;
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e(TAG, ex.toString());
+        }
+        return null;
     }
 }

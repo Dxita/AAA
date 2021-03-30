@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import java.util.Objects;
 
@@ -23,6 +24,8 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
 
     private RelativeLayout relativeLayout;
     private AppCompatEditText et_user_password;
+    private AppCompatTextView forgot_password, change_password;
+    private String userMobileNumber="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +35,16 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_login);
 
+        userMobileNumber= appPreferences.getMobileNumber();
         relativeLayout = findViewById(R.id.relativeLayout);
         et_user_password = findViewById(R.id.et_user_password);
+        forgot_password = findViewById(R.id.forgot_password);
+        change_password = findViewById(R.id.change_your_password);
 
         AppCompatButton btn_login_user = findViewById(R.id.btn_login_user);
         btn_login_user.setOnClickListener(this);
+        forgot_password.setOnClickListener(this);
+        change_password.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +63,16 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
                     AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
                 }
             }
+        } else if (view.getId() == R.id.forgot_password) {
+
+            if (AppUtils.isNetworkConnected(context)) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
+                sendOtpToServerPublic(relativeLayout, userMobileNumber, AppUtils.getRandomNumberString());
+            } else {
+                AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
+            }
+
+            startActivity(new Intent(context, ForgetPwdOTPActivity.class));
         }
     }
 

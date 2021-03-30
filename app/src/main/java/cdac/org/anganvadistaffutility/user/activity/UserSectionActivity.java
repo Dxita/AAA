@@ -41,7 +41,7 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
 
     private void initFabActionMenu() {
         fabWithOptions = findViewById(R.id.fab_menu);
-        fabWithOptions.setMiniFabsColors(R.color.sky, R.color.sky);
+        fabWithOptions.setMiniFabsColors(R.color.sky, R.color.sky, R.color.sky);
 
         fabWithOptions.setMainFabOnClickListener(view -> {
             if (fabWithOptions.isOptionsMenuOpened()) {
@@ -50,7 +50,10 @@ public class UserSectionActivity extends BaseActivity implements View.OnClickLis
         });
 
         fabWithOptions.setMiniFabSelectedListener(fabItem -> {
-            if (fabItem.getItemId() == R.id.fab_change_language) {
+            if (fabItem.getItemId() == R.id.fab_change_password){
+                startActivity(new Intent(context,ChangePasswordActivity.class));
+            }
+            else if (fabItem.getItemId() == R.id.fab_change_language) {
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
                     changeAppLocale((AppCompatActivity) context, LocaleManager.ENGLISH);
                 } else {

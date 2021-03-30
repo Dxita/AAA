@@ -309,5 +309,10 @@
     <string name="swipe_up_for_more_details">अधिक जानकारी के लिए यहां क्लिक करें</string>
 
     <string name="contact_cdpo">सीडीपीओ से संपर्क करें</string>
+    <string name="forgot_password">पासवर्ड भूल गए है? </string>
+    <string name="change_password">अपना पासवर्ड बदलें</string>
+    <string name="reset_password">पासवर्ड रीसेट करेंं</string>
+    <string name="old_pswd">Old Password</string>
+    <string name="new_pswd">New Password</string>
 
 </resources>

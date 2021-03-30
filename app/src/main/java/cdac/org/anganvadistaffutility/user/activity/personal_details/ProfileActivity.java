@@ -44,7 +44,7 @@ public class ProfileActivity extends BaseActivity {
         AppCompatEditText awc_name = findViewById(R.id.awc_name);
         AppCompatEditText awc_address = findViewById(R.id.awc_address);
 
-        EmployeeDetails.Profile  profileDetails = getIntent().getParcelableExtra("profile_details");
+        EmployeeDetails.Profile profileDetails = getIntent().getParcelableExtra("profile_details");
         Log.d("check", String.valueOf(profileDetails));
         if (profileDetails != null) {
 
