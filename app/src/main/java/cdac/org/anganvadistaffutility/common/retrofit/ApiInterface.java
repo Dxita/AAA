@@ -19,6 +19,7 @@ import cdac.org.anganvadistaffutility.user.data.AddNewInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.AvailableAwInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
+import cdac.org.anganvadistaffutility.user.data.ChangePasswordData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
@@ -236,6 +237,11 @@ public interface ApiInterface {
                                                                   @Field("infra_id") String infraID);
 
 
-
+    //change password in user side
+    @POST("rajposhan/rajposhan_2/api_js_app_reset_pwd_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<ChangePasswordData> changePassword(@Field("mobileno") String mobileno,
+                                            @Field("oldpassword") String infraID,
+                                            @Field("newpassword") String newpassword);
 
 }

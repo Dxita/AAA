@@ -48,7 +48,7 @@
     <string name="phone_verification">अपना मोबाइल सत्यापित करें</string>
     <string name="phone_verification_text">कोड प्राप्त करने के लिए अपना फ़ोन नंबर दर्ज करें</string>
     <string name="continue_text">जारी रखें</string>
-    <string name="admin_text">शासन प्रबंध</string>
+    <string name="admin_text">राज आँगन शासन प्रबंध</string>
     <string name="user_text">आंगनवाड़ी कार्यकर्ता</string>
     <string name="otp_txt">OTP कोड सत्यापित किया जा रहा है</string>
     <string name="validate_text">ओटीपी सत्यापित करें</string>

@@ -50,7 +50,7 @@
     <string name="phone_verification">Let\'s get your \n Mobile Verified</string>
     <string name="phone_verification_text">Enter your phone number \n to receive the code</string>
     <string name="continue_text">Continue</string>
-    <string name="admin_text">Administration</string>
+    <string name="admin_text"> RajAangan Administration</string>
     <string name="user_text">Anganwadi Worker</string>
     <string name="otp_txt">Verifying your code</string>
     <string name="validate_text">Validate OTP</string>

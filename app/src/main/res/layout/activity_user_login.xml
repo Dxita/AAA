@@ -70,6 +70,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:padding="@dimen/margin_08"
+                android:visibility="gone"
                 android:id="@+id/change_your_password"
                 android:textSize="@dimen/textsize_15sp"
                 android:gravity="center"

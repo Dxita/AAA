@@ -8,6 +8,7 @@ public class ApiUtils {
 
     // User Type: Employee
    public static final String BASE_URL = "http://rajposhan.rajasthan.gov.in/rajposhan/";
+    public static final String PROFILE_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     /*public static final String PROFILE_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String PAYMENT_BASE_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
     public static final String AVAIL_INFRA_DETAILS_URL = "http://164.100.222.241/rajposhan/rajposhan_2/";
