@@ -8,11 +8,19 @@
     android:background="@drawable/custom_app_bg"
     tools:context=".admin.activity.ViewInfraStructureActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/emblem"
+        android:layout_width="@dimen/margin_60"
+        android:layout_height="@dimen/margin_60"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_05"
+        android:src="@drawable/emblem" />
+
     <LinearLayout
         android:id="@+id/largeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/emblem"
         android:gravity="center"
         android:orientation="horizontal">
 

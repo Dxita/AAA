@@ -10,10 +10,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.AppCompatImageView
+          android:layout_gravity="center"
+            android:id="@+id/emblem"
+            android:src="@drawable/emblem"
+            android:padding="@dimen/margin_05"
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_60" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:orientation="horizontal">
 

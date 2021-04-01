@@ -10,10 +10,17 @@
         android:background="@drawable/custom_app_bg"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/emblem"
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_60"
+            android:layout_gravity="center"
+            android:padding="@dimen/margin_05"
+            android:src="@drawable/emblem" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -38,14 +45,14 @@
 
         <LinearLayout
 
-            android:visibility="gone"
             android:id="@+id/tbl_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_08"
             android:layout_marginRight="@dimen/margin_08"
             android:layout_marginBottom="@dimen/margin_10"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
 
@@ -108,10 +115,10 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginBottom="@dimen/margin_60"
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_60"
                 android:scrollbars="vertical" />
         </LinearLayout>
 

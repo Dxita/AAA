@@ -6,17 +6,18 @@
     android:orientation="vertical">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:gravity="center">
 
         <ImageView
-           android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:id="@+id/fullimage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/fullimage" />
+            android:layout_height="match_parent"
+            android:src="@drawable/map" />
 
         <ImageView
             android:layout_marginTop="@dimen/margin_80"

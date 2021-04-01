@@ -40,7 +40,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_select_language);
 
-        showImage();
+       // showImage();
 
         english_text = findViewById(R.id.english_text);
         hindi_text = findViewById(R.id.hindi_text);
@@ -109,7 +109,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         super.onDestroy();
     }
 
-    public void showImage() {
+   /* public void showImage() {
 
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -120,7 +120,7 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
 
         ImageView image = layout.findViewById(R.id.fullimage);
         ImageView close = layout.findViewById(R.id.close);
-        image.setImageResource(R.drawable.fullimage);
+        image.setImageResource(R.drawable.map);
         mAttacher = new PhotoViewAttacher(image);
         image.requestLayout();
         dialog.setContentView(layout);
@@ -137,5 +137,5 @@ public class SelectLanguageActivity extends BaseActivity implements View.OnClick
         });
 
 
-    }
+    }*/
 }

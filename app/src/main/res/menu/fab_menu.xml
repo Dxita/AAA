@@ -14,6 +14,7 @@
 
     <item
         android:id="@+id/fab_change_password"
-        android:icon="@drawable/languageicon"
+        android:icon="@drawable/ic_baseline_password_24"
         android:title="@string/change_password" />
+
 </menu>
