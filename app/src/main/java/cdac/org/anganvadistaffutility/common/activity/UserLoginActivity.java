@@ -25,7 +25,7 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
     private RelativeLayout relativeLayout;
     private AppCompatEditText et_user_password;
     private AppCompatTextView forgot_password, change_password;
-    private String userMobileNumber="";
+    private String userMobileNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class UserLoginActivity extends BaseActivity implements View.OnClickListe
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_login);
 
-        userMobileNumber= appPreferences.getMobileNumber();
+        userMobileNumber = appPreferences.getMobileNumber();
         relativeLayout = findViewById(R.id.relativeLayout);
         et_user_password = findViewById(R.id.et_user_password);
         forgot_password = findViewById(R.id.forgot_password);
