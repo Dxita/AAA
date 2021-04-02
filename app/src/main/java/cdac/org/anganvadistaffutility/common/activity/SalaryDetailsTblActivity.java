@@ -59,9 +59,7 @@ public class SalaryDetailsTblActivity extends BaseActivity implements View.OnCli
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_salary_details_tbl);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         String emdData = getIntent().getStringExtra("salary_data");
         fromYear = getIntent().getStringExtra("fromYear");

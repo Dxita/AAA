@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Raj Aangan</string>
-    <string name="app_name_home">AAA</string>
+    <string name="app_name">Raj AAAngan</string>
+    <string name="app_name_home">AAAngan</string>
     <string name="menu_home">Home</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -10,7 +10,7 @@
 
     <string name="category">Category</string>
     <string name="address">Address</string>
-    <string name="welcome_text">Welcome to Raj Aangan</string>
+    <string name="welcome_text">Welcome to Raj AAAngan</string>
     <string name="public_text">Public</string>
 
     <string name="setup_text">Set up Password</string>
@@ -51,7 +51,7 @@
     <string name="phone_verification_text">Enter your phone number \n to receive the code</string>
     <string name="continue_text">Continue</string>
     <string name="admin_text"> RajAangan Administration</string>
-    <string name="user_text">Anganwadi Worker</string>
+    <string name="user_text">Raj Aangan Anganwadi Worker</string>
     <string name="otp_txt">Verifying your code</string>
     <string name="validate_text">Validate OTP</string>
     <string name="country_code">+91</string>
@@ -82,8 +82,8 @@
     <string name="employed">Working</string>
 
     <string name="view_aaganwadi_data">View Aaganwadi Data</string>
-    <string name="aaganwadi_data">Aaganwadi Data</string>
-    <string name="show_kpi">Upyogkarta Data</string>
+    <string name="aaganwadi_data">Raj Aangan Aaganwadi Data</string>
+    <string name="show_kpi">Raj Aangan Upyogkarta Data</string>
     <string name="payment_data">View Payment Data</string>
     <string name="error_in_fetch_data">Error in fetch data</string>
 
@@ -146,17 +146,17 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
 
-    <string name="infra_data">Anganwadi Infrastructure Details</string>
+    <string name="infra_data">Raj Aangan Anganwadi Infrastructure Details</string>
     <string name="personal_data">Personal details</string>
 
     <string name="call">Call</string>
     <string name="email">E-Mail</string>
 
-    <string name="district_wise_reg_users">District Wise Registered Users</string>
-    <string name="district_wise_unreg_users">District Wise UnRegistered Users</string>
+    <string name="district_wise_reg_users">Raj Aangan District Wise Registered Users</string>
+    <string name="district_wise_unreg_users">Raj Aangan District Wise UnRegistered Users</string>
 
-    <string name="project_wise_reg_users">Project Wise Registered Users</string>
-    <string name="project_wise_unreg_users">Project Wise UnRegistered Users</string>
+    <string name="project_wise_reg_users">Raj Aangan Project Wise Registered Users</string>
+    <string name="project_wise_unreg_users">Raj Aangan Project Wise UnRegistered Users</string>
 
     <string name="enter_valid_otp">Please enter valid OTP</string>
     <string name="otp_verified">OTP Verified Successfully</string>
@@ -241,7 +241,7 @@
     <string name="infra_district">District Wise Infrastructure Data</string>
     <string name="infra_detail">Available Infrastructures</string>
     <string name="go_back">Go Back</string>
-    <string name="avail_infra_in_aw">Available infrastructue facilities in Anganwadi</string>
+    <string name="avail_infra_in_aw">Raj Aangan Available infrastructue facilities in Anganwadi</string>
     <string name="select_available_facility">Select Available Infrastructure Facility</string>
     <string name="avail_infra_and_deatils">Available infrastructure &amp; their details</string>
     <string name="sector_wise">Sector Wise Infrastructure Data</string>
@@ -252,34 +252,34 @@
     <string name="aw_worker_number">Anganwadi Worker Mobile Number</string>
     <string name="aw_data">Anganwadi Infrastructure Data</string>
     <string name="okay" />
-    <string name="unavailable_anganwadi_infrastructure_facilities">Anganwadi Infrastructure Facilities</string>
-    <string name="_electericity">Electricity Infrastructure Facilities</string>
-    <string name="_drinking_water">Drinking Water Infrastructure Facilities</string>
-    <string name="_toilet">Toilet Infrastructure Facilities</string>
-    <string name="_kitchen">Kitchen Infrastructure Facilities</string>
-    <string name="_open_area">Open Area Infrastructure Facilities</string>
-    <string name="_creche">Creche Infrastructure Facilities</string>
-    <string name="district_anganwadi">District Wise Available Anganwadi Infrastructure Facilities</string>
-    <string name="district_electericity">District Wise Available Electricity Infrastructure Facilities</string>
-    <string name="district_drinking_water">District Wise Available Drinking Water Infrastructure Facilities</string>
-    <string name="district_toilet">District Wise Available Toilet Infrastructure Facilities</string>
-    <string name="district_kitchen">District Wise Available Kitchen Infrastructure Facilities</string>
-    <string name="district_open_area">District Wise Available Open Area Infrastructure Facilities</string>
-    <string name="district_creche">District Wise Available Creche Infrastructure Facilities</string>
-    <string name="project_anganwadi">Project Wise Available Anganwadi Infrastructure Facilities</string>
-    <string name="project_electericity">Project Wise Available Electricity Infrastructure Facilities</string>
-    <string name="project_drinking_water">Project Wise Available Drinking Water Infrastructure Facilities</string>
-    <string name="project_toilet">Project Wise Available Toilet Infrastructure Facilities</string>
-    <string name="project_kitchen">Project Wise Available Kitchen Infrastructure Facilities</string>
-    <string name="project_open_area">Project Wise Available Open Area Infrastructure Facilities</string>
-    <string name="project_creche">Project Wise Available Creche Infrastructure Facilities</string>
-    <string name="aw_anganwadi">Available Anganwadi Data</string>
-    <string name="aw_electericity">Available Electricity Data</string>
-    <string name="aw_drinking_water">Available Drinking Water Data</string>
-    <string name="aw_toilet">Available Toilet Data</string>
-    <string name="aw_kitchen">Available Kitchen Data</string>
-    <string name="aw_open_area">Available Open Data</string>
-    <string name="aw_creche">Available Creche Data</string>
+    <string name="unavailable_anganwadi_infrastructure_facilities">Raj Aangan Anganwadi Infrastructure Facilities</string>
+    <string name="_electericity">Raj Aangan Electricity Infrastructure Facilities</string>
+    <string name="_drinking_water">Raj Aangan Drinking Water Infrastructure Facilities</string>
+    <string name="_toilet">Raj Aangan Toilet Infrastructure Facilities</string>
+    <string name="_kitchen">Raj Aangan Kitchen Infrastructure Facilities</string>
+    <string name="_open_area">Raj Aangan Open Area Infrastructure Facilities</string>
+    <string name="_creche">Raj Aangan Creche Infrastructure Facilities</string>
+    <string name="district_anganwadi">Raj Aangan District Wise Available Anganwadi Infrastructure Facilities</string>
+    <string name="district_electericity">Raj Aangan District Wise Available Electricity Infrastructure Facilities</string>
+    <string name="district_drinking_water">Raj Aangan District Wise Available Drinking Water Infrastructure Facilities</string>
+    <string name="district_toilet">Raj Aangan District Wise Available Toilet Infrastructure Facilities</string>
+    <string name="district_kitchen">Raj Aangan District Wise Available Kitchen Infrastructure Facilities</string>
+    <string name="district_open_area">Raj Aangan District Wise Available Open Area Infrastructure Facilities</string>
+    <string name="district_creche">Raj Aangan District Wise Available Creche Infrastructure Facilities</string>
+    <string name="project_anganwadi">Raj Aangan Project Wise Available Anganwadi Infrastructure Facilities</string>
+    <string name="project_electericity">Raj Aangan Project Wise Available Electricity Infrastructure Facilities</string>
+    <string name="project_drinking_water">Raj Aangan Project Wise Available Drinking Water Infrastructure Facilities</string>
+    <string name="project_toilet">Raj Aangan Project Wise Available Toilet Infrastructure Facilities</string>
+    <string name="project_kitchen">Raj Aangan Project Wise Available Kitchen Infrastructure Facilities</string>
+    <string name="project_open_area">Raj Aangan Project Wise Available Open Area Infrastructure Facilities</string>
+    <string name="project_creche">Raj Aangan Project Wise Available Creche Infrastructure Facilities</string>
+    <string name="aw_anganwadi">Raj Aangan Available Anganwadi Data</string>
+    <string name="aw_electericity">Raj Aangan Available Electricity Data</string>
+    <string name="aw_drinking_water">Raj Aangan Available Drinking Water Data</string>
+    <string name="aw_toilet">Raj Aangan Available Toilet Data</string>
+    <string name="aw_kitchen">Raj Aangan Available Kitchen Data</string>
+    <string name="aw_open_area">Raj Aangan Available Open Data</string>
+    <string name="aw_creche">Raj AanganAvailable Creche Data</string>
     <string name="success_msg">success</string>
 
     <string name="error_msg">error in fetching data</string>

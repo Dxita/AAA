@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 
+import android.app.ActivityManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -91,7 +93,10 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<ChangePasswordData>() {
             @Override
             public void onSuccess(ChangePasswordData body) {
+                AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 AppUtils.showToast(context, body.getMessage());
+
+                loginagain();
 
             }
 
@@ -100,5 +105,15 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
             }
         }));
+    }
+
+    private void loginagain() {
+            AppUtils.showToast(context, getResources().getString(R.string.logout_success));
+
+            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+            }
+
+
     }
 }

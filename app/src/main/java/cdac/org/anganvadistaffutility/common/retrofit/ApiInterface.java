@@ -238,7 +238,7 @@ public interface ApiInterface {
 
 
     //change password in user side
-    @POST("rajposhan/rajposhan_2/api_js_app_reset_pwd_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @POST("api_js_app_reset_pwd_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
     @FormUrlEncoded
     Call<ChangePasswordData> changePassword(@Field("mobileno") String mobileno,
                                             @Field("oldpassword") String infraID,

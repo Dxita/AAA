@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">राज आँगन</string>
-    <string name="app_name_home">AAA</string>
+    <string name="app_name_home">AAAngan</string>
     <string name="menu_home">मुख पृष्ठ</string>
 
     <string name="navigation_drawer_open">नेविगेशन दराज खोलें</string>
@@ -49,7 +49,7 @@
     <string name="phone_verification_text">कोड प्राप्त करने के लिए अपना फ़ोन नंबर दर्ज करें</string>
     <string name="continue_text">जारी रखें</string>
     <string name="admin_text">राज आँगन शासन प्रबंध</string>
-    <string name="user_text">आंगनवाड़ी कार्यकर्ता</string>
+    <string name="user_text">राज आँगन आंगनवाड़ी कार्यकर्ता</string>
     <string name="otp_txt">OTP कोड सत्यापित किया जा रहा है</string>
     <string name="validate_text">ओटीपी सत्यापित करें</string>
     <string name="country_code">+91</string>
@@ -80,9 +80,9 @@
 
     <string name="change_your_language">अपनी भाषा बदलें</string>
     <string name="view_aaganwadi_data">आगनवाड़ी डेटा</string>
-    <string name="aaganwadi_data">आगनवाड़ी डेटा</string>
+    <string name="aaganwadi_data">राज आँगन आगनवाड़ी डेटा</string>
 
-    <string name="show_kpi">उपयोगकर्ता डेटा</string>
+    <string name="show_kpi">राज आँगन उपयोगकर्ता डेटा</string>
     <string name="payment_data">भुगतान डेटा </string>
     <string name="error_in_fetch_data">डेटा लाने में त्रुटि</string>
     <string name="view_users_data">उपयोगकर्ता डेटा</string>
@@ -139,18 +139,18 @@
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
 
-    <string name="infra_data">आंगनवाडी आधारभूत संरचना का विवरण</string>
+    <string name="infra_data">राज आँगन आंगनवाडी आधारभूत संरचना का विवरण</string>
 
     <string name="personal_data">व्यक्तिगत्त विवरण</string>
 
     <string name="call">कॉल</string>
     <string name="email">ईमेल</string>
 
-    <string name="district_wise_reg_users">जिलानुसार पंजीकृत कार्यकर्ता</string>
-    <string name="district_wise_unreg_users">जिलानुसार अनरजिस्टर्ड कार्यकर्ता</string>
+    <string name="district_wise_reg_users">राज आँगन जिलानुसार पंजीकृत कार्यकर्ता</string>
+    <string name="district_wise_unreg_users">राज आँगन जिलानुसार अनरजिस्टर्ड कार्यकर्ता</string>
 
-    <string name="project_wise_reg_users">परियोजनानुसार पंजीकृत कार्यकर्ता</string>
-    <string name="project_wise_unreg_users">परियोजनानुसार अपंजीकृत कार्यकर्ता</string>
+    <string name="project_wise_reg_users">राज आँगन परियोजनानुसार पंजीकृत कार्यकर्ता</string>
+    <string name="project_wise_unreg_users">राज आँगन परियोजनानुसार अपंजीकृत कार्यकर्ता</string>
 
     <string name="enter_valid_otp">कृपया मान्य OTP दर्ज करें</string>
     <string name="otp_verified">OTP सफलतापूर्वक सत्यापित किया गया</string>
@@ -238,7 +238,7 @@
     <string name="infra_district">जिला वाइज इन्फ्रास्ट्रक्चर डेटा</string>
     <string name="infra_detail">उपलब्ध इन्फ्रास्ट्रक्चर</string>
     <string name="go_back">पिछली स्क्रीन</string>
-    <string name="avail_infra_in_aw">आंगनवाड़ी में उपलब्ध आधारभूत सुविधाएँ</string>
+    <string name="avail_infra_in_aw">राज आँगन आंगनवाड़ी में उपलब्ध आधारभूत सुविधाएँ</string>
     <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
     <string name="avail_infra_and_deatils">उपलब्ध आधारभूत और उनके विवरण</string>
 
@@ -248,40 +248,40 @@
     <string name="proj_name">परियोजना का नाम: </string>
     <string name="aw_worker_name">आंगनवाड़ी कार्यकर्ता का नाम</string>
     <string name="aw_worker_number">आंगनवाड़ी कार्यकर्ता मोबाइल नंबर</string>
-    <string name="aw_data">आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
+    <string name="aw_data">राज आँगन आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
     <string name="okay">ठीक है</string>
     <string name="honorarium_name">मानदेयकर्मी का नाम</string>
-    <string name="unavailable_anganwadi_infrastructure_facilities">आंगनवाड़ी आधारभूत सुविधाएं</string>
-    <string name="_electericity">बिजली की आधारभूत सुविधाएं</string>
-    <string name="_drinking_water">पीने का पानी की आधारभूत सुविधाएं</string>
-    <string name="_toilet">शौचालय की आधारभूत सुविधाएं</string>
-    <string name="_kitchen">रसोई की आधारभूत सुविधाएं</string>
-    <string name="_open_area">खुली जगह की आधारभूत सुविधाएं</string>
-    <string name="_creche">क्रेच की आधारभूत सुविधाएं</string>
+    <string name="unavailable_anganwadi_infrastructure_facilities">राज आँगन आंगनवाड़ी आधारभूत सुविधाएं</string>
+    <string name="_electericity">राज आँगन बिजली की आधारभूत सुविधाएं</string>
+    <string name="_drinking_water">राज आँगन पीने का पानी की आधारभूत सुविधाएं</string>
+    <string name="_toilet">राज आँगन शौचालय की आधारभूत सुविधाएं</string>
+    <string name="_kitchen">राज आँगन रसोई की आधारभूत सुविधाएं</string>
+    <string name="_open_area">राज आँगन खुली जगह की आधारभूत सुविधाएं</string>
+    <string name="_creche">राज आँगन क्रेच की आधारभूत सुविधाएं</string>
 
-    <string name="district_anganwadi">जिलानुसार उपलब्ध आंगनवाड़ी </string>
-    <string name="district_electericity"> जिलानुसार उपलब्ध बिजली</string>
-    <string name="district_drinking_water"> जिलानुसार उपलब्ध पीने का पानी</string>
-    <string name="district_toilet"> जिलानुसार उपलब्ध शौचालय </string>
-    <string name="district_kitchen"> जिलानुसार उपलब्ध रसोई </string>
-    <string name="district_open_area">जिलानुसार उपलब्ध खुली जगह</string>
-    <string name="district_creche">जिलानुसार उपलब्ध क्रेच</string>
+    <string name="district_anganwadi">राज आँगन िलानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="district_electericity">राज आँगन जिलानुसार उपलब्ध बिजली</string>
+    <string name="district_drinking_water">राज आँगन जिलानुसार उपलब्ध पीने का पानी</string>
+    <string name="district_toilet">राज आँगन जिलानुसार उपलब्ध शौचालय </string>
+    <string name="district_kitchen">राज आँगन जिलानुसार उपलब्ध रसोई </string>
+    <string name="district_open_area">राज आँगन जिलानुसार उपलब्ध खुली जगह</string>
+    <string name="district_creche">राज आँगन जिलानुसार  उपलब्ध क्रेच</string>
 
-    <string name="project_anganwadi"> परियोजनानुसार उपलब्ध आंगनवाड़ी </string>
-    <string name="project_electericity">परियोजनानुसार उपलब्ध बिजली</string>
-    <string name="project_drinking_water">परियोजनानुसार उपलब्ध पीने का पानी</string>
-    <string name="project_toilet">परियोजनानुसार उपलब्ध शौचालय</string>
-    <string name="project_kitchen"> परियोजनानुसार उपलब्ध रसोई</string>
-    <string name="project_open_area"> परियोजनानुसार उपलब्ध खुली जगह</string>
-    <string name="project_creche"> परियोजनानुसार उपलब्ध क्रेच</string>
+    <string name="project_anganwadi">राज आँगन परियोजनानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="project_electericity">राज आँगन परियोजनानुसार उपलब्ध बिजली</string>
+    <string name="project_drinking_water">राज आँगन परियोजनानुसार उपलब्ध पीने का पानी</string>
+    <string name="project_toilet">राज आँगन परियोजनानुसार उपलब्ध शौचालय</string>
+    <string name="project_kitchen">राज आँगन परियोजनानुसार उपलब्ध रसोई</string>
+    <string name="project_open_area">राज आँगन परियोजनानुसार उपलब्ध खुली जगह</string>
+    <string name="project_creche">राज आँगन परियोजनानुसार उपलब्ध क्रेच</string>
 
-    <string name="aw_anganwadi">उपलब्ध आंगनवाड़ी डेटा</string>
-    <string name="aw_electericity">उपलब्ध बिजली डेटा</string>
-    <string name="aw_drinking_water">उपलब्ध पीने का पानी डेटा</string>
-    <string name="aw_toilet">उपलब्ध शौचालय डेटा</string>
-    <string name="aw_kitchen">उपलब्ध रसोई डेटा</string>
-    <string name="aw_open_area">उपलब्ध खुली जगह डेटा</string>
-    <string name="aw_creche">उपलब्ध क्रेच डेटा</string>
+    <string name="aw_anganwadi">राज आँगन उपलब्ध आंगनवाड़ी डेटा</string>
+    <string name="aw_electericity">राज आँगन उपलब्ध बिजली डेटा</string>
+    <string name="aw_drinking_water">राज आँगन उपलब्ध पीने का पानी डेटा</string>
+    <string name="aw_toilet">राज आँगन उपलब्ध शौचालय डेटा</string>
+    <string name="aw_kitchen">राज आँगन उपलब्ध रसोई डेटा</string>
+    <string name="aw_open_area">राज आँगन उपलब्ध खुली जगह डेटा</string>
+    <string name="aw_creche">राज आँगन उपलब्ध क्रेच डेटा</string>
 
     <string name="success_msg">सफलता</string>
     <string name="error_msg">डेटा लाने में त्रुटि</string>
