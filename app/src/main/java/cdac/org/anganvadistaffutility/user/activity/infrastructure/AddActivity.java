@@ -44,9 +44,9 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     private RemainingInfraDetailAdapter remainingInfraDetailAdapter;
     RecyclerView recyclerView;
     AppCompatButton btn_submit;
-    private static String infra_id;
-    private static String infra_detail_id;
-    private static String quantity = "1";
+ String infra_id;
+   String infra_detail_id;
+ String quantity = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +149,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                 empdata = body.getData().getEmpdata();
                 remainingInfraDetailAdapter = new RemainingInfraDetailAdapter(context, empdata);
                 recyclerView.setAdapter(remainingInfraDetailAdapter);
+                infra_id=timInfraId;
 
             }
 
