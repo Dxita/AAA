@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.Infrastructure.AanganwadiListActivity;
 import cdac.org.anganvadistaffutility.admin.data.ProjectEmployeeData;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
@@ -74,7 +75,7 @@ public class ProjectWiseTableActivity extends BaseActivity {
             getAdminUserData();
         }
 
-        setBottomSheet();
+     //   setBottomSheet();
 
     }
 
@@ -135,11 +136,21 @@ public class ProjectWiseTableActivity extends BaseActivity {
             holder.view_data.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    toggleBottomSheet(empData.get(position).getTjpmProjectCode(), empData.get(position).getTjpmProjectNameEnglish(),
+
+                    Intent intent = new Intent(context, AwcDataActivity.class);
+                    intent.putExtra("district_id", distid);
+                    intent.putExtra("project_id", empdata.get(position).getTjpmProjectCode());
+                    intent.putExtra("project_name", empdata.get(position).getTjpmProjectNameEnglish());
+                    intent.putExtra("project_nameh", empdata.get(position).getTjpmProjectNameHindi());
+                    intent.putExtra("cdpo_number", empdata.get(position).getTjpmCdpoMobileNo());
+                    intent.putExtra("cdpo_email", empdata.get(position).getTjpmCdpoEmail());
+                    intent.putExtra("cdpo_name", empdata.get(position).getTjpmProjectInchargeCdpo());
+                    startActivity(intent);
+                  /*  toggleBottomSheet(empData.get(position).getTjpmProjectCode(), empData.get(position).getTjpmProjectNameEnglish(),
                             empData.get(position).getTjpmProjectNameHindi(),
                             empData.get(position).getTjpmProjectInchargeCdpo(),
                             empData.get(position).getTjpmCdpoMobileNo(),
-                            empData.get(position).getTjpmCdpoEmail());
+                            empData.get(position).getTjpmCdpoEmail());*/
                 }
             });
         }

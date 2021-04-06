@@ -53,80 +53,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/largeLabel"
-            android:layout_margin="@dimen/margin_08"
+            android:layout_margin="@dimen/margin_05"
             android:orientation="vertical"
-            android:visibility="gone">
-
-
-
+            android:visibility="visible">
+            <androidx.cardview.widget.CardView
+                app:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_10"
+                app:cardBackgroundColor="@color/green">
             <LinearLayout
+                android:layout_margin="@dimen/margin_10"
                 android:id="@+id/ll_emp_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="0.70"
-                        android:background="@drawable/admin_tbl_bg"
-                        android:padding="@dimen/margin_05"
-                        android:text="@string/awc_name"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/textsize_13sp"
-                        tools:ignore="RtlHardcoded" />
-
-                    <TextView
-                        android:id="@+id/awc_name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:background="@drawable/admin_tbl_bg"
-                        android:padding="@dimen/margin_05"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/textsize_13sp"
-                        tools:ignore="RtlHardcoded" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="0.70"
-                        android:background="@drawable/admin_tbl_bg"
-                        android:padding="@dimen/margin_05"
-                        android:text="@string/awc_id"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/textsize_13sp"
-                        tools:ignore="RtlHardcoded" />
-
-                    <TextView
-                        android:id="@+id/awc_code"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_weight="1"
-                        android:background="@drawable/admin_tbl_bg"
-                        android:padding="@dimen/margin_05"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/textsize_13sp"
-                        tools:ignore="RtlHardcoded" />
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -277,58 +218,13 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_45"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/sr_no"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.20"
-                        android:background="@drawable/admin_tbl_header_bg"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:padding="@dimen/margin_02"
-                        android:singleLine="true"
-                        android:text="@string/sr_no"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize_14sp" />
-
-                    <TextView
-                        android:id="@+id/awc_worker"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/admin_tbl_header_bg"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:padding="@dimen/margin_02"
-                        android:singleLine="true"
-                        android:text="@string/aw_worker_name"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize_14sp" />
-
-                    <TextView
-                        android:id="@+id/awc_number"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/admin_tbl_header_bg"
-                        android:ellipsize="end"
-                        android:gravity="center|end"
-                        android:padding="@dimen/margin_02"
-                        android:singleLine="true"
-                        android:text="@string/aw_worker_number"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize_14sp" />
-                </LinearLayout>
 
 
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/margin_10"
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

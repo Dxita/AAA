@@ -44,9 +44,9 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     private RemainingInfraDetailAdapter remainingInfraDetailAdapter;
     RecyclerView recyclerView;
     AppCompatButton btn_submit;
- String infra_id;
-   String infra_detail_id;
- String quantity = "1";
+    String infra_id;
+    String infra_detail_id;
+    String quantity = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +149,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
                 empdata = body.getData().getEmpdata();
                 remainingInfraDetailAdapter = new RemainingInfraDetailAdapter(context, empdata);
                 recyclerView.setAdapter(remainingInfraDetailAdapter);
-                infra_id=timInfraId;
+                infra_id = timInfraId;
 
             }
 
@@ -240,8 +240,6 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
         }
 
 
-
-
         @Override
         public int getItemCount() {
             return empdata.size();
@@ -269,7 +267,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
             String qty = "";
 
             if (LocaleManager.getLocale(context.getResources()).getLanguage().equalsIgnoreCase(LocaleManager.ENGLISH)) {
-               // name = empdatum.getTidInfraNamee();
+                // name = empdatum.getTidInfraNamee();
                 item_name.setText(empdatum.getTidInfraNamee());
             } else {
                 item_name.setText(empdatum.getTidInfraNameh());

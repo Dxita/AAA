@@ -3,6 +3,7 @@ package cdac.org.anganvadistaffutility.common.retrofit;
 import cdac.org.anganvadistaffutility.admin.data.AaganwadiInfraStructure;
 import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.AnganwadiInfraData;
+import cdac.org.anganvadistaffutility.admin.data.AwcData;
 import cdac.org.anganvadistaffutility.admin.data.BeneficiaryCriteria;
 import cdac.org.anganvadistaffutility.admin.data.DistrictEmployeesCount;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
@@ -112,6 +113,13 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<ProjectEmployeeData> getProjectEmployeeData(@Field("distid") String distid,
                                                      @Field("parm") String parm);
+
+    // get awc  wise employee count
+    @POST("api_js_total_employees_registered_and_unregistered_graph_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AwcData> getAwcData(@Field("distid") String distid,
+                             @Field("parm") String parm);
+
 
     // Get aanganwadi details
 

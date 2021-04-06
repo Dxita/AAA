@@ -34,7 +34,8 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".user.activity.ChangePasswordActivity"></activity>
+        <activity android:name=".admin.activity.AwcDataActivity"></activity>
+        <activity android:name=".user.activity.ChangePasswordActivity" />
         <activity android:name=".user.activity.ResetPasswordActivity" />
         <activity android:name=".common.activity.ForgetPwdOTPActivity" />
         <activity android:name=".admin.activity.Infrastructure.ProjectWiseInfraTableActivity" />

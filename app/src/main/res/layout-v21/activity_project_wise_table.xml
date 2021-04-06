@@ -127,8 +127,8 @@
     <!-- Adding bottom sheet after main content -->
 
 
-    <include
+ <!--   <include
         layout="@layout/cdpo_bottom_sheet"
         android:visibility="gone" />
-
+-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
