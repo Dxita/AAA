@@ -311,6 +311,13 @@
     <string name="old_pswd">Old Password</string>
     <string name="new_pswd">New Password</string>
 
+    <string name="sector_anganwadi">Raj Aangan Sector Wise Available Anganwadi Infrastructure Facilities</string>
+    <string name="sector_electericity">Raj Aangan Sector Wise Available Electricity Infrastructure Facilities</string>
+    <string name="sector_drinking_water">Raj Aangan Sector Wise Available Drinking Water Infrastructure Facilities</string>
+    <string name="sector_toilet">Raj Aangan Sector Wise Available Toilet Infrastructure Facilities</string>
+    <string name="sector_kitchen">Raj Aangan Sector Wise Available Kitchen Infrastructure Facilities</string>
+    <string name="sector_open_area">Raj Aangan Sector Wise Available Open Area Infrastructure Facilities</string>
+    <string name="sector_creche">Raj Aangan Sector Wise Available Creche Infrastructure Facilities</string>
 
     <string-array name="criteria">
         <item>Pregnant</item>

@@ -93,7 +93,7 @@ public class AwcDataActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void getAnganwadiList() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.LOCAL_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
         Call<AwcData> call = apiInterface.getAwcData(distid, "3");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AwcData>() {
             @SuppressLint("SetTextI18n")
@@ -176,10 +176,29 @@ public class AwcDataActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void onBindViewHolder(@NonNull AwcHolder holder, int position) {
             holder.setData(context, position, empdata);
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (AppUtils.hasPermissions(context, AppUtils.CALL_PERMISSIONS)) {
+                            callEmp(empdata.get(position).getTaemMoblieNumber());
+                        } else {
+                            requestPermissions(AppUtils.CALL_PERMISSIONS, AppUtils.CALL_PERMISSION_REQUEST_CODE);
+                        }
+                    } else {
+                        callEmp(empdata.get(position).getTaemMoblieNumber());
+                    }
+
+                }
+            });
         }
 
-
+        private void callEmp(String empMob) {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:" + empMob));
+            startActivity(callIntent);
+        }
         @Override
         public int getItemCount() {
             return empdata.size();

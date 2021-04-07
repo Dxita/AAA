@@ -259,7 +259,7 @@
     <string name="_open_area">राज आँगन खुली जगह की आधारभूत सुविधाएं</string>
     <string name="_creche">राज आँगन क्रेच की आधारभूत सुविधाएं</string>
 
-    <string name="district_anganwadi">राज आँगन िलानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="district_anganwadi">राज आँगन जिलानुसार उपलब्ध आंगनवाड़ी </string>
     <string name="district_electericity">राज आँगन जिलानुसार उपलब्ध बिजली</string>
     <string name="district_drinking_water">राज आँगन जिलानुसार उपलब्ध पीने का पानी</string>
     <string name="district_toilet">राज आँगन जिलानुसार उपलब्ध शौचालय </string>
@@ -314,5 +314,13 @@
     <string name="reset_password">पासवर्ड रीसेट करेंं</string>
     <string name="old_pswd">Old Password</string>
     <string name="new_pswd">New Password</string>
+
+    <string name="sector_anganwadi">राज आँगन क्षेत्रानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="sector_electericity">राज आँगन क्षेत्रानुसार उपलब्ध बिजली</string>
+    <string name="sector_drinking_water">राज आँगन क्षेत्रानुसार उपलब्ध पीने का पानी</string>
+    <string name="sector_toilet">राज आँगन क्षेत्रानुसार उपलब्ध शौचालय</string>
+    <string name="sector_kitchen">राज आँगन क्षेत्रानुसार उपलब्ध रसोई</string>
+    <string name="sector_open_area">राज आँगन क्षेत्रानुसार उपलब्ध खुली जगह</string>
+    <string name="sector_creche">राज आँगन क्षेत्रानुसार उपलब्ध क्रेच</string>
 
 </resources>

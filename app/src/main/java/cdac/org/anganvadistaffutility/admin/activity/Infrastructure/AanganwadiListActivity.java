@@ -44,7 +44,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     private AnganwadiInfraData.Data.Infradatum infradatum;
     private RemainingInfraDetailAdapter remainingInfraDetailAdapter;
     private String infra_id, infra_detail_id, project_id, cdponame, p_name, cdpoemail, cdponumber, p_nameh;
-    private AppCompatTextView project_name, cdpo_name, cdpo_number, project_code;
+    private AppCompatTextView txt_project_name, txt_project_code, txt_cdpo_name;
     private TextView awc_name, awc_code, textview;
 
     @SuppressLint("SetTextI18n")
@@ -58,27 +58,27 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
 
         infra_id = getIntent().getStringExtra("infra_id");
         infra_detail_id = getIntent().getStringExtra("infra_detail_id");
-        project_id = getIntent().getStringExtra("project_id");
-        p_name = getIntent().getStringExtra("project_name");
+        project_id = getIntent().getStringExtra("sector_id");
+       /* p_name = getIntent().getStringExtra("project_name");
         p_nameh = getIntent().getStringExtra("project_nameh");
 
         cdpoemail = getIntent().getStringExtra("cdpo_email");
         cdponumber = getIntent().getStringExtra("cdpo_number");
-        cdponame = getIntent().getStringExtra("cdpo_name");
+        cdponame = getIntent().getStringExtra("cdpo_name");*/
 
         relativeLayout = findViewById(R.id.relativeLayout);
         main_layout = findViewById(R.id.main_layout);
-        project_name = findViewById(R.id.txt_project_name);
-        cdpo_name = findViewById(R.id.txt_cdpo_name);
-        project_code = findViewById(R.id.txt_project_code);
+
+        txt_cdpo_name = findViewById(R.id.txt_cdpo_name);
+
         awc_name = findViewById(R.id.awc_name);
-        awc_code = findViewById(R.id.awc_code);
+
         call = findViewById(R.id.btn_call);
         email = findViewById(R.id.btn_email);
         recyclerView = findViewById(R.id.recycler_view);
 
         textview = findViewById(R.id.text);
-        if (infra_id.equalsIgnoreCase("1")) {
+        /*if (infra_id.equalsIgnoreCase("1")) {
             textview.setText(getResources().getString(R.string.aw_anganwadi));
         } else if (infra_id.equalsIgnoreCase("2")) {
             textview.setText(getResources().getString(R.string.aw_electericity));
@@ -92,17 +92,15 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
             textview.setText(getResources().getString(R.string.aw_open_area));
         } else if (infra_id.equalsIgnoreCase("7")) {
             textview.setText(getResources().getString(R.string.aw_creche));
-        }
+        }*/
         call.setOnClickListener(this);
         email.setOnClickListener(this);
-        cdpo_name.setText(" " + cdponame);
-        project_code.setText(" " + project_id);
 
-        if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+     /*   if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
             project_name.setText(" " + p_nameh);
         } else {
             project_name.setText(" " + p_name);
-        }
+        }*/
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
@@ -118,7 +116,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     }
 
     private void getAnganwadiList() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
         Call<AnganwadiInfraData> call = apiInterface.getAnganwadiInfraData("awc", infra_id, infra_detail_id, project_id);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AnganwadiInfraData>() {
             @SuppressLint("SetTextI18n")
@@ -135,12 +133,10 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
                     remainingInfraDetailAdapter = new RemainingInfraDetailAdapter(context, empdata);
                     recyclerView.setAdapter(remainingInfraDetailAdapter);
 
-                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                        awc_name.setText(" " + empdata.get(0).getAwcnameh());
-                    } else {
-                        awc_name.setText(" " + empdata.get(0).getAwcnamee());
-                    }
-                    awc_code.setText(" " + empdata.get(0).getPawcid());
+                    txt_cdpo_name.setText(empdata.get(0).getProjectincharge());
+                    cdpoemail=empdata.get(0).getEmailadd();
+                    cdponumber=empdata.get(0).getMobileno();
+
                 } else {
                     Toast.makeText(AanganwadiListActivity.this, "" + getResources().getString(R.string.no_data_found), Toast.LENGTH_SHORT).show();
                 }
@@ -203,7 +199,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         startActivity(Intent.createChooser(emailIntent, "Choose an Email client :"));
     }
 
-    private static class RemainingInfraDetailAdapter extends RecyclerView.Adapter<MyHolder> {
+    private class RemainingInfraDetailAdapter extends RecyclerView.Adapter<MyHolder> {
         Context context;
         List<AnganwadiInfraData.Data.Infradatum> empdata;
 
@@ -215,14 +211,32 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         @NonNull
         @Override
         public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.anganwadilist_rv, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.card_design, null);
             return new MyHolder(view);
         }
 
         @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-            if (empdata != null && empdata.size() > 0) {
+
+            holder.setData(context, position, empdata);
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (AppUtils.hasPermissions(context, AppUtils.CALL_PERMISSIONS)) {
+                            callEmp(empdata.get(position).getEmpMob());
+                        } else {
+                            requestPermissions(AppUtils.CALL_PERMISSIONS, AppUtils.CALL_PERMISSION_REQUEST_CODE);
+                        }
+                    } else {
+                        callEmp(empdata.get(position).getEmpMob());
+                    }
+
+                }
+            });
+          /*  if (empdata != null && empdata.size() > 0) {
                 empdata.get(position);
                 holder.sr_no.setText("" + (position + 1));
                 if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
@@ -233,7 +247,13 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
 
                 }
                 holder.aw_number.setText(empdata.get(position).getEmpMob().trim().replace(" ", " "));
-            }
+            }*/
+        }
+
+        private void callEmp(String empMob) {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:" + empMob));
+            startActivity(callIntent);
         }
 
         @Override
@@ -243,13 +263,29 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     }
 
     private static class MyHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView aw_worker, aw_number, sr_no;
+        TextView awc_worker, awc_id, awc_name, awc_number, call;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
-            sr_no = itemView.findViewById(R.id.sr_no);
-            aw_number = itemView.findViewById(R.id.awc_number);
-            aw_worker = itemView.findViewById(R.id.awc_worker);
+            awc_worker = itemView.findViewById(R.id.awc_worker);
+            awc_id = itemView.findViewById(R.id.awc_id);
+            awc_name = itemView.findViewById(R.id.awc_name);
+            awc_number = itemView.findViewById(R.id.awc_number);
+            call = itemView.findViewById(R.id.btn_call);
+        }
+
+        public void setData(Context context, int position, List<AnganwadiInfraData.Data.Infradatum> empdata) {
+            if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                awc_worker.setText(empdata.get(position).getEmpNameh());
+                awc_id.setText(empdata.get(position).getPawcid());
+                awc_number.setText(empdata.get(position).getEmpMob());
+                awc_name.setText(empdata.get(position).getAwcnameh());
+            } else {
+                awc_worker.setText(empdata.get(position).getEmpName());
+                awc_id.setText(empdata.get(position).getPawcid());
+                awc_number.setText(empdata.get(position).getEmpMob());
+                awc_name.setText(empdata.get(position).getAwcnamee());
+            }
         }
     }
 }

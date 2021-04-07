@@ -55,7 +55,7 @@
             android:layout_below="@id/largeLabel"
             android:layout_margin="@dimen/margin_05"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
             <androidx.cardview.widget.CardView
                 app:cardUseCompatPadding="true"
                 android:layout_width="match_parent"

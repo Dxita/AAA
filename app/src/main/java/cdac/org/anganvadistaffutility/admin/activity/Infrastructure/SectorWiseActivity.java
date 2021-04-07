@@ -1,10 +1,14 @@
 package cdac.org.anganvadistaffutility.admin.activity.Infrastructure;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +17,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.activity.AwcDataActivity;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailProjectData;
+import cdac.org.anganvadistaffutility.admin.data.SectorWiseData;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiInterface;
 import cdac.org.anganvadistaffutility.common.retrofit.ApiServiceOperator;
@@ -31,14 +32,14 @@ import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 import retrofit2.Call;
 
-public class ProjectWiseInfraTableActivity extends BaseActivity {
+public class SectorWiseActivity extends BaseActivity {
 
     private RelativeLayout relativeLayout;
-    private String infra_detail_id, infra_id, district_id;
+    private String infra_detail_id, infra_id, project_id;
     private RecyclerView recyclerView;
-    private List<InfraDetailProjectData.Infradatum> infraDetailsData;
+    private List<SectorWiseData.Infradatum> infraDetailsData;
     private TextView textView;
-    private ProjectWiseInfraDetailAdapter projectWiseInfraDetailAdapter;
+    private SectorWiseInfraDetailAdapter sectorWiseInfraDetailAdapter;
     private LinearLayout tbl_layout;
 
     @Override
@@ -46,10 +47,10 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_project_wise_infra_table);
+        setContentView(R.layout.activity_sector_wise2);
 
         infra_id = getIntent().getStringExtra("infra_id");
-        district_id = getIntent().getStringExtra("district_id");
+        project_id = getIntent().getStringExtra("project_id");
         infra_detail_id = getIntent().getStringExtra("infra_detail_id");
 
         relativeLayout = findViewById(R.id.relativeLayout);
@@ -58,19 +59,19 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
 
         textView = findViewById(R.id.txt_title);
         if (infra_id.equalsIgnoreCase("1")) {
-            textView.setText(getResources().getString(R.string.project_anganwadi));
+            textView.setText(getResources().getString(R.string.sector_anganwadi));
         } else if (infra_id.equalsIgnoreCase("2")) {
-            textView.setText(getResources().getString(R.string.project_electericity));
+            textView.setText(getResources().getString(R.string.sector_electericity));
         } else if (infra_id.equalsIgnoreCase("3")) {
-            textView.setText(getResources().getString(R.string.project_drinking_water));
+            textView.setText(getResources().getString(R.string.sector_drinking_water));
         } else if (infra_id.equalsIgnoreCase("4")) {
-            textView.setText(getResources().getString(R.string.project_toilet));
+            textView.setText(getResources().getString(R.string.sector_toilet));
         } else if (infra_id.equalsIgnoreCase("5")) {
-            textView.setText(getResources().getString(R.string.project_kitchen));
+            textView.setText(getResources().getString(R.string.sector_kitchen));
         } else if (infra_id.equalsIgnoreCase("6")) {
-            textView.setText(getResources().getString(R.string.project_open_area));
+            textView.setText(getResources().getString(R.string.sector_open_area));
         } else if (infra_id.equalsIgnoreCase("7")) {
-            textView.setText(getResources().getString(R.string.project_creche));
+            textView.setText(getResources().getString(R.string.sector_creche));
         }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -79,18 +80,18 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
 
         if (AppUtils.isNetworkConnected(context)) {
             AppUtils.setProgressBarVisibility(context, relativeLayout, View.VISIBLE);
-            getProjectWIseInfraDetailList();
+            getSectorWIseInfraDetailList();
         } else {
             AppUtils.showToast(context, getResources().getString(R.string.no_internet_connection));
         }
     }
 
-    private void getProjectWIseInfraDetailList() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
-        Call<InfraDetailProjectData> call = apiInterface.getInfrastructureProjectDetails("proj", infra_id, district_id, infra_detail_id);
-        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<InfraDetailProjectData>() {
+    private void getSectorWIseInfraDetailList() {
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
+        Call<SectorWiseData> call = apiInterface.getSectorWiseDetails("sec", infra_id, project_id, infra_detail_id);
+        call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<SectorWiseData>() {
             @Override
-            public void onSuccess(InfraDetailProjectData body) {
+            public void onSuccess(SectorWiseData body) {
                 AppUtils.setProgressBarVisibility(context, relativeLayout, View.GONE);
                 infraDetailsData = new ArrayList<>();
                 infraDetailsData = body.getData().getInfradata();
@@ -99,8 +100,8 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
                         tbl_layout.setVisibility(View.VISIBLE);
                     }
 
-                    projectWiseInfraDetailAdapter = new ProjectWiseInfraDetailAdapter(context, infraDetailsData);
-                    recyclerView.setAdapter(projectWiseInfraDetailAdapter);
+                    sectorWiseInfraDetailAdapter = new SectorWiseInfraDetailAdapter(context, infraDetailsData);
+                    recyclerView.setAdapter(sectorWiseInfraDetailAdapter);
                 }
             }
 
@@ -112,52 +113,45 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
         }));
     }
 
-    private class ProjectWiseInfraDetailAdapter extends RecyclerView.Adapter<MyViewHolers> {
+    private class SectorWiseInfraDetailAdapter extends RecyclerView.Adapter<SectorWiseHolder> {
         private final Context context;
-        private final List<InfraDetailProjectData.Infradatum> infradata;
+        private final List<SectorWiseData.Infradatum> infradata;
 
-        public ProjectWiseInfraDetailAdapter(Context context, List<InfraDetailProjectData.Infradatum> infraDetailsData) {
+        public SectorWiseInfraDetailAdapter(Context context, List<SectorWiseData.Infradatum> infraDetailsData) {
             this.context = context;
             this.infradata = infraDetailsData;
         }
 
         @NonNull
         @Override
-        public MyViewHolers onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+        public SectorWiseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             View v = inflater.inflate(R.layout.admin_district_rv_items, parent, false);
-            return new MyViewHolers(v);
+            return new SectorWiseHolder(v);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyViewHolers holder, int position) {
+        public void onBindViewHolder(@NonNull SectorWiseHolder holder, int position) {
             holder.setData(context, position, infradata);
 
             holder.view_data.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Intent intent = new Intent(context, SectorWiseActivity.class);
+                    Intent intent = new Intent(context, AanganwadiListActivity.class);
                     intent.putExtra("infra_id", infra_id);
                     intent.putExtra("infra_detail_id", infra_detail_id);
-                    intent.putExtra("project_id", infradata.get(position).getProjectcode());
+                    intent.putExtra("sector_id", infradata.get(position).getSectorid());
                     startActivity(intent);
-
-
-                   /* Intent intent = new Intent(context, AanganwadiListActivity.class);
-                    intent.putExtra("infra_id", infra_id);
-                    intent.putExtra("infra_detail_id", infra_detail_id);
-                    intent.putExtra("project_id", infradata.get(position).getProjectcode());
-                    intent.putExtra("project_name", infradata.get(position).getProjectname());
-                    intent.putExtra("project_nameh", infradata.get(position).getProjectnameh());
-                    intent.putExtra("cdpo_number", infradata.get(position).getCdpoMobileno());
-                    intent.putExtra("cdpo_email", infradata.get(position).getCdpoEmail());
-                    intent.putExtra("cdpo_name", infradata.get(position).getCdpoName());
-                    startActivity(intent);*/
                 }
             });
+           /* Intent intent = new Intent(context, AanganwadiListActivity.class);
+            intent.putExtra("infra_id", infra_id);
+            intent.putExtra("infra_detail_id", infra_detail_id);
+            intent.putExtra("sector_id", infradata.get(position).getSectorid());
+            startActivity(intent);*/
+
         }
+
 
         @Override
         public int getItemCount() {
@@ -165,10 +159,10 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
         }
     }
 
-    private static class MyViewHolers extends RecyclerView.ViewHolder {
+    private static class SectorWiseHolder extends RecyclerView.ViewHolder {
         TextView dist_name, dist_count, sr_no, view_data;
 
-        public MyViewHolers(@NonNull View itemView) {
+        public SectorWiseHolder(@NonNull View itemView) {
             super(itemView);
             dist_name = itemView.findViewById(R.id.name);
             dist_count = itemView.findViewById(R.id.count);
@@ -177,14 +171,14 @@ public class ProjectWiseInfraTableActivity extends BaseActivity {
         }
 
         @SuppressLint("SetTextI18n")
-        public void setData(Context context, int position, List<InfraDetailProjectData.Infradatum> infradata) {
+        public void setData(Context context, int position, List<SectorWiseData.Infradatum> infradata) {
             sr_no.setText("" + (position + 1));
 
             if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
-                dist_name.setText(infradata.get(position).getProjectnameh());
+                dist_name.setText(infradata.get(position).getSecnamee());
                 dist_count.setText(infradata.get(position).getCount());
             } else {
-                dist_name.setText(infradata.get(position).getProjectname());
+                dist_name.setText(infradata.get(position).getSecnamee());
                 dist_count.setText(infradata.get(position).getCount());
             }
         }

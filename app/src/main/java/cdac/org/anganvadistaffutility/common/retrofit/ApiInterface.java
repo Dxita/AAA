@@ -11,6 +11,7 @@ import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfrastructureDetailSumData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectEmployeeData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
+import cdac.org.anganvadistaffutility.admin.data.SectorWiseData;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
@@ -175,6 +176,14 @@ public interface ApiInterface {
                                                                  @Field("infra_id") String infraID,
                                                                  @Field("distid") String district_id,
                                                                  @Field("infra_detail_id") String infra_detail_id);
+    //Infra details sector wise in admin side)
+    @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SectorWiseData> getSectorWiseDetails(@Field("filterby") String filterType,
+                                                         @Field("infra_id") String infraID,
+                                                         @Field("projectid") String projectid,
+                                                         @Field("infra_detail_id") String infra_detail_id);
+
 
     //awc data(infra admin)
     @POST("api_js_infrastructure_detail_by_infra_id_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
@@ -182,7 +191,7 @@ public interface ApiInterface {
     Call<AnganwadiInfraData> getAnganwadiInfraData(@Field("filterby") String filterType,
                                                    @Field("infra_id") String infraID,
                                                    @Field("infra_detail_id") String infra_detail_id,
-                                                   @Field("projid") String project_id);
+                                                   @Field("sectorid") String sectorid);
 
     // Get Beneficiary Criteria List
 
