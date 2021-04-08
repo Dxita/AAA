@@ -43,7 +43,7 @@ public class AwcDataActivity extends BaseActivity implements View.OnClickListene
     private RecyclerView recyclerView;
     private TextView btn_call, btn_email;
     private AwcWiseDataAdapter awcWiseDataAdapter;
-
+    private String userType = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class AwcDataActivity extends BaseActivity implements View.OnClickListene
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_awc_data);
 
-
+        userType = getIntent().getStringExtra("user_type");
         distid = getIntent().getStringExtra("district_id");
         project_id = getIntent().getStringExtra("project_id");
         project_name = getIntent().getStringExtra("project_name");
@@ -76,6 +76,14 @@ public class AwcDataActivity extends BaseActivity implements View.OnClickListene
         } else {
             txt_project_name.setText(project_name);
         }
+
+        TextView txt_title = findViewById(R.id.text);
+        if (userType.equalsIgnoreCase("registered_user")) {
+            txt_title.setText(getResources().getString(R.string.registered_aaganwadi_data));
+        } else {
+            txt_title.setText(getResources().getString(R.string.unregistered_aaganwadi_data));
+        }
+
         btn_call.setOnClickListener(this);
         btn_email.setOnClickListener(this);
 

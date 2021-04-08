@@ -139,6 +139,7 @@ public class ProjectWiseTableActivity extends BaseActivity {
 
                     Intent intent = new Intent(context, AwcDataActivity.class);
                     intent.putExtra("district_id", distid);
+                    intent.putExtra("user_type",userType);
                     intent.putExtra("project_id", empdata.get(position).getTjpmProjectCode());
                     intent.putExtra("project_name", empdata.get(position).getTjpmProjectNameEnglish());
                     intent.putExtra("project_nameh", empdata.get(position).getTjpmProjectNameHindi());

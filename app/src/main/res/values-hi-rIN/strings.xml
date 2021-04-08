@@ -18,7 +18,7 @@
     <string name="confirm_text">पासवर्ड की पुष्टि कीजिये</string>
     <string name="generate_text">पासवर्ड उत्पन्न करें</string>
     <string name="login_txt">लॉग इन करें</string>
-    <string name="awc_id">आंगनवाड़ी केन्द्र आईडी</string>
+    <string name="awc_id">आँगनबाडी केन्द्र आईडी</string>
     <string name="fatherhusband_name">पिता / पति का नाम</string>
     <string name="mobile_no">मोबाइल नंबर</string>
     <string name="name">नाम</string>
@@ -49,7 +49,7 @@
     <string name="phone_verification_text">कोड प्राप्त करने के लिए अपना फ़ोन नंबर दर्ज करें</string>
     <string name="continue_text">जारी रखें</string>
     <string name="admin_text">राज आँगन शासन प्रबंध</string>
-    <string name="user_text">राज आँगन आंगनवाड़ी कार्यकर्ता</string>
+    <string name="user_text">राज आँगन आँगनबाडी कार्यकर्ता</string>
     <string name="otp_txt">OTP कोड सत्यापित किया जा रहा है</string>
     <string name="validate_text">ओटीपी सत्यापित करें</string>
     <string name="country_code">+91</string>
@@ -72,8 +72,8 @@
 
     <string name="employee_id">कर्मचारी पहचान संख्या: </string>
     <string name="download">डाउनलोड</string>
-    <string name="awc_name">आंगनवाड़ी केंद्र का नाम</string>
-    <string name="awc_address">आंगनवाड़ी केंद्र का पता</string>
+    <string name="awc_name">आँगनबाडी केंद्र का नाम</string>
+    <string name="awc_address">आँगनबाडी केंद्र का पता</string>
 
     <string name="retired">सेवा निवृत </string>
     <string name="employed">कार्यरत</string>
@@ -85,6 +85,7 @@
     <string name="show_kpi">राज आँगन उपयोगकर्ता डेटा</string>
     <string name="payment_data">भुगतान डेटा </string>
     <string name="error_in_fetch_data">डेटा लाने में त्रुटि</string>
+
     <string name="view_users_data">उपयोगकर्ता डेटा</string>
     <string name="view_infra_data">इंफ्रास्ट्रक्चर डेटा</string>
     <string name="enter_employee_id">कर्मचारी पहचान संख्या दर्ज करें:</string>
@@ -147,10 +148,13 @@
     <string name="email">ईमेल</string>
 
     <string name="district_wise_reg_users">राज आँगन जिलानुसार पंजीकृत कार्यकर्ता</string>
-    <string name="district_wise_unreg_users">राज आँगन जिलानुसार अनरजिस्टर्ड कार्यकर्ता</string>
+    <string name="district_wise_unreg_users">राज आँगन जिलानुसार अपंजीकृत कार्यकर्ता</string>
 
     <string name="project_wise_reg_users">राज आँगन परियोजनानुसार पंजीकृत कार्यकर्ता</string>
     <string name="project_wise_unreg_users">राज आँगन परियोजनानुसार अपंजीकृत कार्यकर्ता</string>
+
+    <string name="unregistered_aaganwadi_data">राज आँगन आंगनवाडी अपंजीकृत कार्यकर्ता डेटा</string>
+    <string name="registered_aaganwadi_data">राज आँगन आंगनवाडी पंजीकृत कार्यकर्ता डेटा</string>
 
     <string name="enter_valid_otp">कृपया मान्य OTP दर्ज करें</string>
     <string name="otp_verified">OTP सफलतापूर्वक सत्यापित किया गया</string>
@@ -198,7 +202,7 @@
 
 
     <string name="basic_info">मूलभूत जानकारी</string>
-    <string name="aanganwadi_center">आंगनवाड़ी केंद्र</string>
+    <string name="aanganwadi_center">आँगनबाडी केंद्र</string>
     <string name="beneficiary_type">लाभार्थी प्रकार</string>
     <string name="mother_name">मां का नाम</string>
     <string name="age_of_mother">माता की आयु</string>
@@ -232,13 +236,13 @@
     <string name="add">नया रिकॉर्ड जोड़ें</string>
     <string name="quantity">मात्रा</string>
     <string name="edit_AWC_Infrastructure_Facilities">एडब्ल्यूसी इन्फ्रास्ट्रक्चर सुविधाएं संपादित करें</string>
-    <string name="add_AWC_Infrastructure_Facilities">नई आंगनवाड़ी आधारभूत सुविधा जोड़ें</string>
+    <string name="add_AWC_Infrastructure_Facilities">नई आँगनबाडी आधारभूत सुविधा जोड़ें</string>
     <string name="qty">मात्रा</string>
     <string name="project_wise_available_infra_data">परियोजना वाइज इन्फ्रास्ट्रक्चर डेटा</string>
     <string name="infra_district">जिला वाइज इन्फ्रास्ट्रक्चर डेटा</string>
     <string name="infra_detail">उपलब्ध इन्फ्रास्ट्रक्चर</string>
     <string name="go_back">पिछली स्क्रीन</string>
-    <string name="avail_infra_in_aw">राज आँगन आंगनवाड़ी में उपलब्ध आधारभूत सुविधाएँ</string>
+    <string name="avail_infra_in_aw">राज आँगन आँगनबाडी में उपलब्ध आधारभूत सुविधाएँ</string>
     <string name="select_available_facility">उपलब्ध आधारभूत सुविधा का चयन करेंं</string>
     <string name="avail_infra_and_deatils">उपलब्ध आधारभूत और उनके विवरण</string>
 
@@ -246,12 +250,12 @@
     <string name="cdpo_name">सीडीपीओ का नाम: </string>
     <string name="proj_code">परियोजना क्रमांक: </string>
     <string name="proj_name">परियोजना का नाम: </string>
-    <string name="aw_worker_name">आंगनवाड़ी कार्यकर्ता का नाम</string>
-    <string name="aw_worker_number">आंगनवाड़ी कार्यकर्ता मोबाइल नंबर</string>
+    <string name="aw_worker_name">आँगनबाडी कार्यकर्ता का नाम</string>
+    <string name="aw_worker_number">आँगनबाडी कार्यकर्ता मोबाइल नंबर</string>
     <string name="aw_data">राज आँगन आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
     <string name="okay">ठीक है</string>
     <string name="honorarium_name">मानदेयकर्मी का नाम</string>
-    <string name="unavailable_anganwadi_infrastructure_facilities">राज आँगन आंगनवाड़ी आधारभूत सुविधाएं</string>
+    <string name="unavailable_anganwadi_infrastructure_facilities">राज आँगन आँगनबाडी आधारभूत सुविधाएं</string>
     <string name="_electericity">राज आँगन बिजली की आधारभूत सुविधाएं</string>
     <string name="_drinking_water">राज आँगन पीने का पानी की आधारभूत सुविधाएं</string>
     <string name="_toilet">राज आँगन शौचालय की आधारभूत सुविधाएं</string>
@@ -259,7 +263,7 @@
     <string name="_open_area">राज आँगन खुली जगह की आधारभूत सुविधाएं</string>
     <string name="_creche">राज आँगन क्रेच की आधारभूत सुविधाएं</string>
 
-    <string name="district_anganwadi">राज आँगन जिलानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="district_anganwadi">राज आँगन जिलानुसार उपलब्ध आँगनबाडी </string>
     <string name="district_electericity">राज आँगन जिलानुसार उपलब्ध बिजली</string>
     <string name="district_drinking_water">राज आँगन जिलानुसार उपलब्ध पीने का पानी</string>
     <string name="district_toilet">राज आँगन जिलानुसार उपलब्ध शौचालय </string>
@@ -267,7 +271,7 @@
     <string name="district_open_area">राज आँगन जिलानुसार उपलब्ध खुली जगह</string>
     <string name="district_creche">राज आँगन जिलानुसार  उपलब्ध क्रेच</string>
 
-    <string name="project_anganwadi">राज आँगन परियोजनानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="project_anganwadi">राज आँगन परियोजनानुसार उपलब्ध आँगनबाडी </string>
     <string name="project_electericity">राज आँगन परियोजनानुसार उपलब्ध बिजली</string>
     <string name="project_drinking_water">राज आँगन परियोजनानुसार उपलब्ध पीने का पानी</string>
     <string name="project_toilet">राज आँगन परियोजनानुसार उपलब्ध शौचालय</string>
@@ -275,7 +279,7 @@
     <string name="project_open_area">राज आँगन परियोजनानुसार उपलब्ध खुली जगह</string>
     <string name="project_creche">राज आँगन परियोजनानुसार उपलब्ध क्रेच</string>
 
-    <string name="aw_anganwadi">राज आँगन उपलब्ध आंगनवाड़ी डेटा</string>
+    <string name="aw_anganwadi">राज आँगन उपलब्ध आँगनबाडी डेटा</string>
     <string name="aw_electericity">राज आँगन उपलब्ध बिजली डेटा</string>
     <string name="aw_drinking_water">राज आँगन उपलब्ध पीने का पानी डेटा</string>
     <string name="aw_toilet">राज आँगन उपलब्ध शौचालय डेटा</string>
@@ -315,7 +319,7 @@
     <string name="old_pswd">Old Password</string>
     <string name="new_pswd">New Password</string>
 
-    <string name="sector_anganwadi">राज आँगन क्षेत्रानुसार उपलब्ध आंगनवाड़ी </string>
+    <string name="sector_anganwadi">राज आँगन क्षेत्रानुसार उपलब्ध आँगनबाडी </string>
     <string name="sector_electericity">राज आँगन क्षेत्रानुसार उपलब्ध बिजली</string>
     <string name="sector_drinking_water">राज आँगन क्षेत्रानुसार उपलब्ध पीने का पानी</string>
     <string name="sector_toilet">राज आँगन क्षेत्रानुसार उपलब्ध शौचालय</string>

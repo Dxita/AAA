@@ -83,6 +83,9 @@
 
     <string name="view_aaganwadi_data">View Aaganwadi Data</string>
     <string name="aaganwadi_data">Raj Aangan Aaganwadi Data</string>
+    <string name="unregistered_aaganwadi_data">Raj Aangan Aaganwadi Unregistered Employees Data</string>
+    <string name="registered_aaganwadi_data">Raj Aangan Aaganwadi Registered Employees Data</string>
+
     <string name="show_kpi">Raj Aangan Upyogkarta Data</string>
     <string name="payment_data">View Payment Data</string>
     <string name="error_in_fetch_data">Error in fetch data</string>
