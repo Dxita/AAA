@@ -78,7 +78,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         recyclerView = findViewById(R.id.recycler_view);
 
         textview = findViewById(R.id.text);
-        /*if (infra_id.equalsIgnoreCase("1")) {
+        if (infra_id.equalsIgnoreCase("1")) {
             textview.setText(getResources().getString(R.string.aw_anganwadi));
         } else if (infra_id.equalsIgnoreCase("2")) {
             textview.setText(getResources().getString(R.string.aw_electericity));
@@ -92,7 +92,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
             textview.setText(getResources().getString(R.string.aw_open_area));
         } else if (infra_id.equalsIgnoreCase("7")) {
             textview.setText(getResources().getString(R.string.aw_creche));
-        }*/
+        }
         call.setOnClickListener(this);
         email.setOnClickListener(this);
 

@@ -79,8 +79,8 @@
     <string name="employed">कार्यरत</string>
 
     <string name="change_your_language">अपनी भाषा बदलें</string>
-    <string name="view_aaganwadi_data">आगनवाड़ी डेटा</string>
-    <string name="aaganwadi_data">राज आँगन आगनवाड़ी डेटा</string>
+    <string name="view_aaganwadi_data">आँगनबाडी डेटा</string>
+    <string name="aaganwadi_data">राज आँगन आँगनबाडी डेटा</string>
 
     <string name="show_kpi">राज आँगन उपयोगकर्ता डेटा</string>
     <string name="payment_data">भुगतान डेटा </string>
@@ -140,7 +140,7 @@
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
 
-    <string name="infra_data">राज आँगन आंगनवाडी आधारभूत संरचना का विवरण</string>
+    <string name="infra_data">राज आँगन आँगनबाडी आधारभूत संरचना का विवरण</string>
 
     <string name="personal_data">व्यक्तिगत्त विवरण</string>
 
@@ -153,8 +153,8 @@
     <string name="project_wise_reg_users">राज आँगन परियोजनानुसार पंजीकृत कार्यकर्ता</string>
     <string name="project_wise_unreg_users">राज आँगन परियोजनानुसार अपंजीकृत कार्यकर्ता</string>
 
-    <string name="unregistered_aaganwadi_data">राज आँगन आंगनवाडी अपंजीकृत कार्यकर्ता डेटा</string>
-    <string name="registered_aaganwadi_data">राज आँगन आंगनवाडी पंजीकृत कार्यकर्ता डेटा</string>
+    <string name="unregistered_aaganwadi_data">राज आँगन आँगनबाडी अपंजीकृत कार्यकर्ता डेटा</string>
+    <string name="registered_aaganwadi_data">राज आँगन आँगनबाडी पंजीकृत कार्यकर्ता डेटा</string>
 
     <string name="enter_valid_otp">कृपया मान्य OTP दर्ज करें</string>
     <string name="otp_verified">OTP सफलतापूर्वक सत्यापित किया गया</string>
@@ -252,7 +252,7 @@
     <string name="proj_name">परियोजना का नाम: </string>
     <string name="aw_worker_name">आँगनबाडी कार्यकर्ता का नाम</string>
     <string name="aw_worker_number">आँगनबाडी कार्यकर्ता मोबाइल नंबर</string>
-    <string name="aw_data">राज आँगन आंगनवाड़ी इंफ्रास्ट्रक्चर डाटा</string>
+    <string name="aw_data">राज आँगन आँगनबाडी इंफ्रास्ट्रक्चर डाटा</string>
     <string name="okay">ठीक है</string>
     <string name="honorarium_name">मानदेयकर्मी का नाम</string>
     <string name="unavailable_anganwadi_infrastructure_facilities">राज आँगन आँगनबाडी आधारभूत सुविधाएं</string>
@@ -280,12 +280,12 @@
     <string name="project_creche">राज आँगन परियोजनानुसार उपलब्ध क्रेच</string>
 
     <string name="aw_anganwadi">राज आँगन उपलब्ध आँगनबाडी डेटा</string>
-    <string name="aw_electericity">राज आँगन उपलब्ध बिजली डेटा</string>
-    <string name="aw_drinking_water">राज आँगन उपलब्ध पीने का पानी डेटा</string>
-    <string name="aw_toilet">राज आँगन उपलब्ध शौचालय डेटा</string>
-    <string name="aw_kitchen">राज आँगन उपलब्ध रसोई डेटा</string>
-    <string name="aw_open_area">राज आँगन उपलब्ध खुली जगह डेटा</string>
-    <string name="aw_creche">राज आँगन उपलब्ध क्रेच डेटा</string>
+    <string name="aw_electericity">राज आँगन आँगनबाडी में उपलब्ध बिजली डेटा</string>
+    <string name="aw_drinking_water">राज आँगन आँगनबाडी में उपलब्ध पीने का पानी डेटा</string>
+    <string name="aw_toilet">राज आँगन आँगनबाडी में उपलब्ध शौचालय डेटा</string>
+    <string name="aw_kitchen">राज आँगन आँगनबाडी में उपलब्ध रसोई डेटा</string>
+    <string name="aw_open_area">राज आँगन आँगनबाडी में उपलब्ध खुली जगह डेटा</string>
+    <string name="aw_creche">राज आँगन आँगनबाडी में उपलब्ध क्रेच डेटा</string>
 
     <string name="success_msg">सफलता</string>
     <string name="error_msg">डेटा लाने में त्रुटि</string>
