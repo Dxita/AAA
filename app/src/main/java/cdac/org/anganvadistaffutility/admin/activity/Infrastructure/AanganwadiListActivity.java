@@ -118,7 +118,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
     }
 
     private void getAnganwadiList() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<AnganwadiInfraData> call = apiInterface.getAnganwadiInfraData("awc", infra_id, infra_detail_id, project_id);
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AnganwadiInfraData>() {
             @SuppressLint("SetTextI18n")

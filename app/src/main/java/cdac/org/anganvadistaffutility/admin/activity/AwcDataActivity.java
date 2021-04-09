@@ -101,7 +101,7 @@ public class AwcDataActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void getAnganwadiList() {
-        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.PROFILE_BASE_URL);
+        ApiInterface apiInterface = ApiUtils.getApiInterface(ApiUtils.BASE_URL);
         Call<AwcData> call = apiInterface.getAwcData(distid, "3");
         call.enqueue(new ApiServiceOperator<>(new ApiServiceOperator.OnResponseListener<AwcData>() {
             @SuppressLint("SetTextI18n")
