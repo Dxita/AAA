@@ -84,6 +84,66 @@
                             android:layout_weight="0.70"
                             android:background="@drawable/admin_tbl_bg"
                             android:padding="@dimen/margin_05"
+                            android:text="@string/proj_name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize_13sp"
+                            tools:ignore="RtlHardcoded" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_project_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:background="@drawable/admin_tbl_bg"
+                            android:padding="@dimen/margin_05"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize_13sp"
+                            tools:ignore="RtlHardcoded" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="0.70"
+                            android:background="@drawable/admin_tbl_bg"
+                            android:padding="@dimen/margin_05"
+                            android:text="@string/proj_code"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize_13sp"
+                            tools:ignore="RtlHardcoded" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_project_code"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:background="@drawable/admin_tbl_bg"
+                            android:padding="@dimen/margin_05"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textsize_13sp"
+                            tools:ignore="RtlHardcoded" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="0.70"
+                            android:background="@drawable/admin_tbl_bg"
+                            android:padding="@dimen/margin_05"
                             android:text="@string/cdpo_name"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize_13sp"

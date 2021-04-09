@@ -19,6 +19,7 @@
 
     <color name="new_public_bg">#33c4b3</color>
     <color name="new_user_bg">#D1804F</color>
+    <color name="light_orange">#C6987C</color>
     <color name="darkorange">#773E1C</color>
     <color name="darkpurple">#1F5481</color>
     <color name="purple">#6290B6</color>

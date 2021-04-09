@@ -59,17 +59,19 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         infra_id = getIntent().getStringExtra("infra_id");
         infra_detail_id = getIntent().getStringExtra("infra_detail_id");
         project_id = getIntent().getStringExtra("sector_id");
-       /* p_name = getIntent().getStringExtra("project_name");
+        p_name = getIntent().getStringExtra("project_name");
         p_nameh = getIntent().getStringExtra("project_nameh");
 
         cdpoemail = getIntent().getStringExtra("cdpo_email");
         cdponumber = getIntent().getStringExtra("cdpo_number");
-        cdponame = getIntent().getStringExtra("cdpo_name");*/
+        cdponame = getIntent().getStringExtra("cdpo_name");
 
         relativeLayout = findViewById(R.id.relativeLayout);
         main_layout = findViewById(R.id.main_layout);
 
         txt_cdpo_name = findViewById(R.id.txt_cdpo_name);
+        txt_project_name=findViewById(R.id.txt_project_name);
+        txt_project_code=findViewById(R.id.txt_project_code);
 
         awc_name = findViewById(R.id.awc_name);
 
@@ -134,8 +136,16 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
                     recyclerView.setAdapter(remainingInfraDetailAdapter);
 
                     txt_cdpo_name.setText(empdata.get(0).getProjectincharge());
-                    cdpoemail=empdata.get(0).getEmailadd();
-                    cdponumber=empdata.get(0).getMobileno();
+                    cdpoemail = empdata.get(0).getEmailadd();
+                    txt_project_code.setText(" " + empdata.get(0).getProjectcode());
+                    cdponumber = empdata.get(0).getMobileno();
+                    if (LocaleManager.getLanguagePref(context).equalsIgnoreCase(LocaleManager.HINDI)) {
+                        txt_project_name.setText(" " + empdata.get(0).getProjectnameh());
+
+                    } else {
+                        txt_project_name.setText(" " + empdata.get(0).getProjectname());
+                    }
+
 
                 } else {
                     Toast.makeText(AanganwadiListActivity.this, "" + getResources().getString(R.string.no_data_found), Toast.LENGTH_SHORT).show();
@@ -211,7 +221,7 @@ public class AanganwadiListActivity extends BaseActivity implements View.OnClick
         @NonNull
         @Override
         public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.card_design, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.infra_card, null);
             return new MyHolder(view);
         }
 

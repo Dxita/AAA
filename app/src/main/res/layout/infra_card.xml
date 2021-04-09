@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10"
+        app:cardBackgroundColor="@color/light_orange">
+
+
+        <LinearLayout
+
+            android:id="@+id/ll_emp_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_10"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.80"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:text="@string/aw_worker_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/awc_worker"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.80"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:text="@string/awc_id"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/awc_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.80"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:text="@string/awc_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/awc_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:text="@string/mobile_no"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/awc_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.85"
+                    android:background="@drawable/admin_tbl_bg"
+                    android:padding="@dimen/margin_05"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:id="@+id/btn_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.40"
+                    android:background="@drawable/header_border"
+                    android:gravity="center"
+                    android:padding="@dimen/margin_05"
+                    android:text="@string/call"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_13sp"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

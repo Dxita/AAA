@@ -105,6 +105,12 @@ public class AnganwadiInfraData {
             @SerializedName("projectcode")
             @Expose
             private String projectcode;
+            @SerializedName("projectname")
+            @Expose
+            private String projectname;
+            @SerializedName("projectnameh")
+            @Expose
+            private String projectnameh;
             @SerializedName("projectincharge")
             @Expose
             private String projectincharge;
@@ -211,6 +217,22 @@ public class AnganwadiInfraData {
                 this.projectcode = projectcode;
             }
 
+            public String getProjectname() {
+                return projectname;
+            }
+
+            public void setProjectname(String projectname) {
+                this.projectname = projectname;
+            }
+
+            public String getProjectnameh() {
+                return projectnameh;
+            }
+
+            public void setProjectnameh(String projectnameh) {
+                this.projectnameh = projectnameh;
+            }
+
             public String getProjectincharge() {
                 return projectincharge;
             }
@@ -234,6 +256,7 @@ public class AnganwadiInfraData {
             public void setMobileno(String mobileno) {
                 this.mobileno = mobileno;
             }
+
         }
     }
 }
