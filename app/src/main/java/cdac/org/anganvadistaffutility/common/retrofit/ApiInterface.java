@@ -13,6 +13,11 @@ import cdac.org.anganvadistaffutility.admin.data.ProjectEmployeeData;
 import cdac.org.anganvadistaffutility.admin.data.RegisteredUserKPI;
 import cdac.org.anganvadistaffutility.admin.data.SectorWiseData;
 import cdac.org.anganvadistaffutility.admin.data.VerifyAdmin;
+import cdac.org.anganvadistaffutility.admin.igmpy.data.AwcList;
+import cdac.org.anganvadistaffutility.admin.igmpy.data.DistList;
+import cdac.org.anganvadistaffutility.admin.igmpy.data.ProjList;
+import cdac.org.anganvadistaffutility.admin.igmpy.data.SearchResultData;
+import cdac.org.anganvadistaffutility.admin.igmpy.data.SecList;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
 import cdac.org.anganvadistaffutility.user.data.AWDetails;
 import cdac.org.anganvadistaffutility.user.data.AanganwadiBuildingData;
@@ -31,6 +36,8 @@ import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
+import cdac.org.anganvadistaffutility.user.pctsMapping.data.SinglePageList;
+import cdac.org.anganvadistaffutility.user.pctsMapping.data.VerifyStatusData;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -260,5 +267,51 @@ public interface ApiInterface {
     Call<ChangePasswordData> changePassword(@Field("mobileno") String mobileno,
                                             @Field("oldpassword") String infraID,
                                             @Field("newpassword") String newpassword);
+
+
+    //mother mapping single page list (user side)
+    @POST("api_singlepage_mapping/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SinglePageList> getSinglePageList(@Field("mother_type") String mother_type,
+                                           @Field("mothername") String mothername,
+                                           @Field("pctsashaid") String pctsashaid,
+                                           @Field("pctsanmid") String pctsanmid,
+                                           @Field("aadharno") String aadharno,
+                                           @Field("mobileno") String mobileno,
+                                           @Field("icdscode") String icdscode);
+
+    @POST("api_update_singlepage_mapping/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<VerifyStatusData> updateVerifyFlag(@Field("mother_id") String mother_id,
+                                            @Field("mother_type") String mother_type,
+                                            @Field("verify_flag") String verify_flag);
+
+    @GET("api_igmpy_district/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    Call<DistList> getDistrictList();
+
+    @POST("api_igmpy_project_by_district/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<ProjList> getProjectList(@Field("dist_id") String dist_id);
+
+    @POST("api_igmpy_sector_by_project/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SecList> getSectorList(@Field("project_id") String project_id);
+
+    @POST("api_igmpy_awc_by_sector/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<AwcList> getAwcList(@Field("sector_id") String sector_id);
+
+    @POST("api_igmpy_view_status_details/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SearchResultData> getSearchResult(@Field("district_id") String district_id,
+                                           @Field("project_id") String project_id,
+                                           @Field("sector_id") String sector_id,
+                                           @Field("awc_id") String awc_id,
+                                           @Field("motherName") String motherName,
+                                           @Field("motherId") String motherId,
+                                           @Field("mobileNo") String mobileNo,
+                                           @Field("aadharNo") String aadharNo,
+                                           @Field("accountNo") String accountNo,
+                                           @Field("sector_id") String janadharNumber);
 
 }

@@ -328,4 +328,34 @@
         <item>DEF</item>
         <item>GHI</item>
     </string-array>
+
+    ///// v2 strings
+
+    <string name="food_beneficiary_cat">Food Beneficiary Category</string>
+    <string name="food_beneficiary_sub_cat">Food Beneficiary Sub Category</string>
+    <string name="available">Available</string>
+    <string name="not_avail">Not Available</string>
+    <string name="not_intrested">Not Interested</string>
+    <string name="mother_mapping">Mother Mapping</string>
+    <string name="mother_mapping_singlepage">Mother Mapping Single Page</string>
+    <string name="pcts_district_mapping">PCTS District Mapping</string>
+    <string name="pcts_id">PCTS Asha ID</string>
+    <string name="icds_code">ICDS Code</string>
+    <string name="update_details">Update Details</string>
+    <string name="view_details">Mother Details</string>
+    <string name="set_status">Set Status</string>
+    <string name="mother_id">Mother ID</string>
+    <string name="account_no">Account Number</string>
+    <string name="lmp_date">LMP Date</string>
+    <string name="v_status">Status</string>
+    <string name="pending_at_LS">Pending at LS Level</string>
+    <string name="select_any_search_criteria">Select any search criteria</string>
+    <string name="pcts_mapping">PCTS Mapping</string>
+    <string name="husband_name">Husband Name</string>
+    <string name="verify_status">Verify Status</string>
+    <string name="igmpy">Indra Gandhi Matra Poshan Yojna</string>
+    <string name="verified_beneficiary_for_sanction">Verified Beneficiary for Sanction</string>
+    <string name="mapping">Mapping</string>
+    <string name="infrastructure_data">Infrastructure Detail</string>
+
 </resources>

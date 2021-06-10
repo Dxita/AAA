@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/time_chooser_bottom_sheet_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8sp"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:cardCornerRadius="@dimen/margin_10"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_08"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_gravity="center"
+            android:id="@+id/mother_name_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_05"
+            android:text="@string/mother_name_id"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textsize_17sp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/husband_father_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_02"
+                android:text="@string/husband_father_name"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/textsize_13sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/mobile_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_02"
+                android:text="@string/mobile_no"
+                android:textColor="@color/charcoal"
+                android:textSize="@dimen/textsize_13sp" />
+
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_02"
+            android:id="@+id/aadhar_no"
+            android:text="@string/aadhar_no"
+            android:textColor="@color/charcoal"
+            android:textSize="@dimen/textsize_13sp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_margin="@dimen/margin_10"
+            android:background="@color/charcoal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/set_status"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/margin_02"
+            android:padding="@dimen/margin_10"
+            android:textSize="@dimen/textsize_15sp"
+            android:drawablePadding="@dimen/margin_08"
+            android:drawableStart="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:text="@string/set_status"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/status_layout"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_marginBottom="@dimen/margin_10"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:orientation="vertical"
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:text="@string/available"
+                    android:id="@+id/rb_0"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/textsize_14sp"
+                    android:layout_height="wrap_content"
+                    tools:ignore="RtlSymmetry" />
+                <RadioButton
+                    android:id="@+id/rb_1"
+                    android:text="@string/not_avail"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/textsize_14sp"
+                    android:layout_height="wrap_content"
+
+                    tools:ignore="RtlSymmetry" />
+                <RadioButton
+                    android:id="@+id/rb_2"
+                    android:text="@string/not_intrested"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/textsize_14sp"
+                    android:layout_height="wrap_content"
+                    tools:ignore="RtlSymmetry" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

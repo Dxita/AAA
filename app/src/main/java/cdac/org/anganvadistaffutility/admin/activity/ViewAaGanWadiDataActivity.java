@@ -2,21 +2,40 @@ package cdac.org.anganvadistaffutility.admin.activity;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import cdac.org.anganvadistaffutility.R;
+import cdac.org.anganvadistaffutility.admin.igmpy.IgmpyStatusActivity;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
+import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
+
 
 public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnClickListener {
+    ArrayList personNames;
+    RecyclerView recyclerView;
+    double latitude;
+    double longitude;
+    private RelativeLayout relativeLayout;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,23 +44,22 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_view_aaganwadi_data);
+        relativeLayout = findViewById(R.id.relativeLayout);
+        recyclerView = findViewById(R.id.recycler_view);
+        //relativeLayout = findViewById(R.id.relativeLayout);
+        personNames = new ArrayList<>(Arrays.asList((getResources()
+                        .getString(R.string.view_aaganwadi_data)), getResources().getString(R.string.payment_details),getResources().getString(R.string.igmpy)));
+        AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setHasFixedSize(true);
 
-        TextView txt_user_type = findViewById(R.id.txt_user_type);
-        CardView view_aw_data = findViewById(R.id.view_aaganwadi_data);
-        CardView view_payment_data = findViewById(R.id.view_payment_data);
-
-        txt_user_type.setText(getResources().getString(R.string.admin_text).toUpperCase());
-        view_aw_data.setOnClickListener(this);
-        view_payment_data.setOnClickListener(this);
+        AdminSectionAdapter adminSectionAdapter = new AdminSectionAdapter(context, personNames);
+        recyclerView.setAdapter(adminSectionAdapter); // set the Adapter to RecyclerView
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.view_aaganwadi_data) {
-            startActivity(new Intent(context, ShowKPIActivity.class));
-        } else if (view.getId() == R.id.view_payment_data) {
-            startActivity(new Intent(context, EmployeePaymentDetailActivity.class));
-        }
+
     }
 
     @Override
@@ -67,5 +85,58 @@ public class ViewAaGanWadiDataActivity extends BaseActivity implements View.OnCl
             ((ActivityManager) context.getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
         }
 
+    }
+
+    private class AdminSectionAdapter extends RecyclerView.Adapter<AdminVieHolder> {
+        ArrayList personNames;
+        Context context;
+        public AdminSectionAdapter(Context context, ArrayList personNames) {
+            this.context = context;
+            this.personNames = personNames;
+        }
+
+        @NonNull
+        @Override
+        public AdminVieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.admib_dashboard_rv_items, parent, false);
+            return new AdminVieHolder(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull AdminVieHolder holder, int position) {
+            holder.text_category.setText((CharSequence) personNames.get(position));
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (position == 0) {
+                        startActivity(new Intent(context, ShowKPIActivity.class));
+                    }
+                    if (position == 1) {
+                        startActivity(new Intent(context, EmployeePaymentDetailActivity.class));
+                    }
+                    if (position == 2) {
+                        startActivity(new Intent(context, IgmpyStatusActivity.class));
+                    }
+
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return personNames.size();
+        }
+    }
+
+    private static class AdminVieHolder extends RecyclerView.ViewHolder {
+        CardView cardView_category;
+        TextView text_category;
+        public AdminVieHolder(@NonNull View itemView) {
+            super(itemView);
+            cardView_category = itemView.findViewById(R.id.cardv);
+            text_category = itemView.findViewById(R.id.txt_infra_name);
+        }
     }
 }

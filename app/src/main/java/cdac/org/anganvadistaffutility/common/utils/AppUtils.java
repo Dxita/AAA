@@ -34,7 +34,9 @@ import cdac.org.anganvadistaffutility.admin.data.AdminUserData;
 import cdac.org.anganvadistaffutility.admin.data.InfraDetailData;
 import cdac.org.anganvadistaffutility.admin.data.InfraStructureDetailData;
 import cdac.org.anganvadistaffutility.admin.data.ProjectWiseEmployeeDetails;
+import cdac.org.anganvadistaffutility.admin.igmpy.data.SearchResultData;
 import cdac.org.anganvadistaffutility.common.data.PaymentDetails;
+import cdac.org.anganvadistaffutility.user.pctsMapping.data.SinglePageList;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 
@@ -42,6 +44,7 @@ import static android.content.Context.ACTIVITY_SERVICE;
 public class AppUtils {
 
     public static final String successStatus = "true";
+    public static final String successFail = "false";
 
     // public static final String empMobileNumber = "9982471586";
     //public static final String empMobileNumber = "7062613314";
@@ -195,6 +198,31 @@ public class AppUtils {
         int number = random.nextInt(9000) + 1000;
         // return String.format(Locale.ENGLISH, "%06d", number);
         return String.format(Locale.ENGLISH, "%04d", number);
+    }
+
+    public static String convertSinglePageListToPut(List<SinglePageList.IgmpyMotherDatum> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<SinglePageList.IgmpyMotherDatum> convertSinglePageListToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<SinglePageList.IgmpyMotherDatum>>() {
+        }.getType();
+        return gson.fromJson(list, type);
+    }
+
+
+    public static String convertSearchResultDataToPut(List<SearchResultData.IgmpyStatusDatum> list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    public static List<SearchResultData.IgmpyStatusDatum> convertSearchResultDataToGet(String list) {
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<SearchResultData.IgmpyStatusDatum>>() {
+        }.getType();
+        return gson.fromJson(list, type);
     }
 
     public static boolean isValidPassword(final String password) {

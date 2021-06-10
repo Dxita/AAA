@@ -25,7 +25,13 @@
     <color name="purple">#6290B6</color>
     <color name="lightgreen">#718F4E</color>
     <color name="darkgreen">#3D5028</color>
+    <color name="charcoal">#616161</color>
+    <color name="card_color">#B2DBED</color>
 
+    <color name="darksea">#1A635C</color>
+    <color name="card_background">#03A9F4</color>
+    <color name="lightsea">#4F8E88</color>
+    <color name="cardbg">#778064</color>
 
 
 

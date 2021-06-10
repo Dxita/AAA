@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_app_bg">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/emblem"
+        android:layout_width="@dimen/margin_60"
+        android:layout_height="@dimen/margin_60"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_05"
+        android:src="@drawable/emblem" />
+    <LinearLayout
+        android:layout_below="@id/emblem"
+        android:id="@+id/largeLabel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_60"
+            android:src="@drawable/app_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_05"
+            android:text="@string/verify_status"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_below="@id/largeLabel1"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/largeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_10"
+            android:orientation="vertical">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                app:smsp_floatingLabelColor="@color/black"
+                app:smsp_floatingLabelSize="@dimen/textsize_14sp"
+                app:smsp_floatingLabelText="@string/district"
+                app:smsp_hint="@string/district"
+                app:smsp_hintColor="@color/black"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
+
+            <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/district"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/textsize_14sp"
+                android:visibility="gone"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                app:smsp_floatingLabelColor="@color/black"
+                app:smsp_floatingLabelSize="@dimen/textsize_14sp"
+                app:smsp_floatingLabelText="@string/district"
+                app:smsp_hint="@string/project"
+                app:smsp_hintColor="@color/black"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
+
+            <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/project"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/textsize_14sp"
+                android:visibility="gone"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_sector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                app:smsp_floatingLabelColor="@color/black"
+                app:smsp_floatingLabelSize="@dimen/textsize_14sp"
+                app:smsp_floatingLabelText="@string/sector"
+                app:smsp_hint="@string/sector"
+                app:smsp_hintColor="@color/black"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
+
+            <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/sector"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/textsize_14sp"
+                android:visibility="gone"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_awc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                app:smsp_floatingLabelColor="@color/black"
+                app:smsp_floatingLabelSize="@dimen/textsize_14sp"
+                app:smsp_floatingLabelText="@string/awc_name"
+                app:smsp_hint="@string/awc_name"
+                app:smsp_hintColor="@color/black"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
+
+            <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/awc_name"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/textsize_14sp"
+                android:visibility="gone"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_05"
+                android:text="@string/or_end"
+                android:textColor="@color/red"
+                android:textSize="@dimen/font_12" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_1"
+                    android:textSize="@dimen/textsize_13sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mother_name" />
+
+                <RadioButton
+                    android:id="@+id/rb_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mother_id" />
+
+                <RadioButton
+                    android:id="@+id/rb_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/mobile_no" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/aadhar_no" />
+
+                <RadioButton
+                    android:id="@+id/rb_5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/account_no" />
+
+                <RadioButton
+                    android:id="@+id/rb_6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/janaadhar_no" />
+
+            </LinearLayout>
+
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:background="@drawable/white_stroke"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:visibility="gone"
+                    android:padding="@dimen/margin_10"
+                    android:id="@+id/enter_value_here"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textsize_15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_10"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/search"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

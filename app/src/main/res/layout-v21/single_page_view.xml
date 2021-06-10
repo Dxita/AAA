@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    app:cardCornerRadius="@dimen/margin_08"
+    android:id="@+id/cardv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:padding="@dimen/margin_05"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@color/sky"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:padding="@dimen/margin_05"
+            app:srcCompat="@drawable/ic_user_admin"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/margin_45"
+            android:layout_height="@dimen/margin_45" />
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/mother_name_id"
+                android:padding="@dimen/margin_02"
+                android:textSize="@dimen/textsize_15sp"
+                android:drawablePadding="@dimen/margin_10"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pcts_anm_id"
+            android:textSize="@dimen/textsize_14sp"
+            android:drawablePadding="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_02"
+            android:layout_marginLeft="@dimen/margin_02"
+            android:textColor="@color/charcoal"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginRight="@dimen/margin_02"
+                android:layout_marginTop="@dimen/margin_02"
+                android:layout_marginLeft="@dimen/margin_02"
+                android:id="@+id/pcts_asha_id"
+                android:textSize="@dimen/textsize_14sp"
+                android:drawablePadding="@dimen/margin_10"
+                android:textColor="@color/charcoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginRight="@dimen/margin_02"
+                android:layout_marginTop="@dimen/margin_02"
+                android:layout_marginLeft="@dimen/margin_02"
+                android:id="@+id/verify_status"
+
+                android:textSize="@dimen/textsize_14sp"
+                android:drawablePadding="@dimen/margin_10"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/more_img"
+            app:srcCompat="@drawable/ic_baseline_more_vert_24"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/margin_30"
+            android:layout_height="@dimen/margin_30" />
+    </LinearLayout>
+</RelativeLayout>
+

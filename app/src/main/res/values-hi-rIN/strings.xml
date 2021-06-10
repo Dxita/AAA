@@ -327,4 +327,31 @@
     <string name="sector_open_area">राज आँगन क्षेत्रानुसार उपलब्ध खुली जगह</string>
     <string name="sector_creche">राज आँगन क्षेत्रानुसार उपलब्ध क्रेच</string>
 
+    ////v2 strings
+    <string name="food_beneficiary_cat">खाद्य लाभार्थी श्रेणी</string>
+    <string name="food_beneficiary_sub_cat">खाद्य लाभार्थी उप श्रेणी</string>
+    <string name="mother_mapping">मदर मैपिंग</string>
+    <string name="mother_mapping_singlepage">मदर मैपिंग सिंगल पेज</string>
+    <string name="pcts_district_mapping">पीसीटीएस जिला मैपिंग</string>
+    <string name="pcts_id">PCTS आशा आईडी</string>
+    <string name="icds_code">आईसीडीएस कोड</string>
+    <string name="update_details">अद्यतन विवरण</string>
+    <string name="view_details">माँ का विवरण</string>
+    <string name="set_status">स्थिति सेट करें</string>
+    <string name="mother_id">मदर आईडी</string>
+    <string name="account_no">खाता संख्या</string>
+    <string name="lmp_date">एलएमपी तिथि</string>
+    <string name="v_status">स्थिति</string>
+    <string name="pending_at_LS">एलएस स्तर पर लंबित</string>
+    <string name="select_any_search_criteria">Select any search criteria</string>
+    <string name="pcts_mapping">पीसीटीएस मैपिंग</string>
+    <string name="available">उपलब्ध</string>
+    <string name="not_avail">उपलब्ध नहीं है</string>
+    <string name="not_intrested">रुचि नहीं</string>
+    <string name="husband_name">पति का नाम</string>
+    <string name="verify_status">सत्यापन की स्थितिं</string>
+    <string name="igmpy">इन्दिरा गाँधी मातृ पोषण योजना</string>
+    <string name="verified_beneficiary_for_sanction">स्वीकृति के लिए सत्यापित लाभार्थी</string>
+    <string name="mapping">मैपिंग</string>
+    <string name="infrastructure_data">आँगनबाडी आधारभूत संरचना का विवरण</string>
 </resources>

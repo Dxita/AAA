@@ -43,7 +43,7 @@
                 android:text="@string/welcome_text"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="@dimen/textsize_14sp"
+                android:textSize="@dimen/font_16"
                 android:textStyle="bold" />
 
         </LinearLayout>

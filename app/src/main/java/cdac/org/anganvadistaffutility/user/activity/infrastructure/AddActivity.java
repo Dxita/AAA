@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import cdac.org.anganvadistaffutility.R;
 import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
@@ -45,7 +48,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     AppCompatButton btn_submit;
     String infra_id;
-    String infra_detail_id;
+    static String infra_detail_id;
     String quantity = "1";
 
     @Override
@@ -202,6 +205,7 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
         List<RemainingInfraDetailData.Data.Empdatum> empdata;
         private CheckBox lastChecked = null;
         private int lastCheckedPos = 0;
+
         private final int selectedPosition = -1;// no selection by default
         MyViewHolder myViewHolder;
 
@@ -229,6 +233,30 @@ public class AddActivity extends BaseActivity implements View.OnClickListener {
             holder.checkBox.setTag(position);
             lastChecked = holder.checkBox;
             lastCheckedPos = 0;
+
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //  if (tim_accept_status.equals("1")) {
+                    final boolean isChecked = holder.checkBox.isChecked();
+                    CheckBox cb = (CheckBox) view;
+                    int clickedPos = (Integer) cb.getTag();
+                    if (cb.isChecked()) {
+                        if (lastChecked != null) {
+                            lastChecked.setChecked(false);
+                        }
+                        lastChecked = cb;
+                        lastCheckedPos = clickedPos;
+                        holder.edtx_qty.setEnabled(true);
+                        holder.edtx_qty.setText("1");
+                        infra_detail_id = empdata.get(position).getTidInfraDetailId();
+
+                    } else {
+                        lastChecked = null;
+                    }
+
+                }
+            });
 
             if (appPreferences.getStatus().equals("1")) {
 

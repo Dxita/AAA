@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cdac.org.anganvadistaffutility"
     android:installLocation="preferExternal"
-    android:versionCode="1"
-    android:versionName="1.0">
+    android:versionCode="2"
+    android:versionName="2.0">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -34,7 +34,13 @@
         android:theme="@style/AppTheme"
         tools:node="replace"
         tools:targetApi="q">
-        <activity android:name=".admin.activity.Infrastructure.SectorWiseActivity"></activity>
+        <activity android:name=".admin.igmpy.StatusResultActivity" />
+        <activity android:name=".admin.igmpy.VerifyStatusActivity" />
+        <activity android:name=".admin.igmpy.IgmpyStatusActivity" />
+        <activity android:name=".user.pctsMapping.activity.SinglePageListActivity" />
+        <activity android:name=".user.pctsMapping.activity.MmSinglePageActivity" />
+        <activity android:name=".user.pctsMapping.activity.MappingModuleActivity" />
+        <activity android:name=".admin.activity.Infrastructure.SectorWiseActivity" />
         <activity android:name=".admin.activity.AwcDataActivity" />
         <activity android:name=".user.activity.ChangePasswordActivity" />
         <activity android:name=".user.activity.ResetPasswordActivity" />
@@ -60,30 +66,7 @@
         <activity
             android:name=".common.activity.SplashActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.BasicInformationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.InfantDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.BenefeciaryBankDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.IdCardDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.CategoryActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.MotherDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.MotherMappingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".user.activity.beneficiary.BeneficiarySearchResultActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".common.activity.LanguageActivity"
             android:screenOrientation="portrait" />

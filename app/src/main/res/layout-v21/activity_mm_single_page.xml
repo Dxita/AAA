@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.activity.ViewAaGanWadiDataActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_app_bg">
+
+        <LinearLayout
+
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginEnd="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/margin_60"
+                android:layout_height="@dimen/margin_60"
+                android:src="@drawable/app_logo" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_05"
+                android:text="@string/mother_mapping_singlepage"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/margin_15"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_layout"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/margin_08"
+                android:orientation="vertical">
+
+
+                <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+
+                    android:id="@+id/beneficiary_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:smsp_floatingLabelColor="@color/colorPrimaryDark"
+                    app:smsp_floatingLabelSize="@dimen/textsize_15sp"
+                    app:smsp_floatingLabelText="@string/avail_infra_in_aw"
+                    app:smsp_hint="@string/beneficiary_criteria"
+                    android:layout_margin="@dimen/margin_10"
+                    app:smsp_itemColor="@color/black"
+                    app:smsp_itemListColor="@color/black"
+                    app:smsp_multilineError="false"
+                    app:smsp_selectedItemListColor="@color/red" />
+
+                <com.skydoves.powerspinner.PowerSpinnerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/peach"
+                    android:gravity="start"
+                    android:hint="@string/beneficiary_criteria"
+                    android:padding="@dimen/margin_10"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/font_16"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:spinner_arrow_gravity="end"
+                    app:spinner_arrow_padding="@dimen/margin_10"
+                    app:spinner_divider_color="@color/white"
+                    app:spinner_divider_show="true"
+                    app:spinner_divider_size="0.4dp"
+                    app:spinner_item_array="@array/criteria"
+                    app:spinner_popup_animation="dropdown"
+                    app:spinner_popup_background="@color/peach"
+                    app:spinner_popup_elevation="@dimen/margin_10" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_08"
+
+                    android:hint="@string/mother_name_id">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mother_name_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_08"
+                    android:hint="@string/pcts_id">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pcts_id"
+                        android:inputType="number"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_08"
+                    android:hint="@string/pcts_asha_id">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pcts_asha_id"
+                        android:inputType="number"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_08"
+                    android:hint="@string/aadhar_no">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aadhar_no"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="@dimen/margin_08"
+                    android:hint="@string/mobile_no">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/mobile_no"
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_08"
+                    android:hint="@string/icds_code">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/icds_code"
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:background="@drawable/buttonbg"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/search"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
