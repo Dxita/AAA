@@ -16,8 +16,6 @@ import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
 
 public class App extends Application {
     public static App myAutoLogoutApp;
-
-
     private LogoutListener listener;
     private Timer timer;
     private static final long INACTIVE_TIMEOUT = 600000;
