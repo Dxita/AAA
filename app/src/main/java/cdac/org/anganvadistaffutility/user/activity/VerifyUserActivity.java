@@ -76,6 +76,8 @@ public class VerifyUserActivity extends BaseActivity implements View.OnClickList
                     appPreferences.setEmployeeId(body.getData().getEmpdata().getEmpid());
                     appPreferences.setAwcId(body.getData().getEmpdata().getAwcid());
                     appPreferences.setMobileNumber(body.getData().getEmpdata().getMobileno());
+                    appPreferences.setAwcNamee(body.getData().getEmpdata().getAwcnamee());
+                    appPreferences.setAwcNameh(body.getData().getEmpdata().getAwcnameh());
 
                     if (body.getData().getEmpdata().getPasswordset()) {
 

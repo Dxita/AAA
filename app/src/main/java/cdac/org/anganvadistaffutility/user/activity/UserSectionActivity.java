@@ -38,15 +38,16 @@ import cdac.org.anganvadistaffutility.common.activity.BaseActivity;
 import cdac.org.anganvadistaffutility.common.utils.AppUtils;
 import cdac.org.anganvadistaffutility.common.utils.AutoFitGridLayoutManager;
 import cdac.org.anganvadistaffutility.common.utils.LocaleManager;
+import cdac.org.anganvadistaffutility.user.activity.Food.FoodDistributionActivity;
 import cdac.org.anganvadistaffutility.user.activity.infrastructure.AvailableInfraDetailsActivity;
 import cdac.org.anganvadistaffutility.user.pctsMapping.activity.MappingModuleActivity;
 
 public class UserSectionActivity extends BaseActivity {
     ArrayList personNames;
     RecyclerView recyclerView;
-    ArrayList personImages = new ArrayList<>(Arrays.asList(R.drawable.profile, R.drawable.building, R.drawable.mapping));
+    ArrayList personImages = new ArrayList<>(Arrays.asList(R.drawable.profile, R.drawable.building, R.drawable.mapping, R.drawable.food));
 
-     RelativeLayout relativeLayout;
+    RelativeLayout relativeLayout;
     private OptionsFabLayout fabWithOptions;
 
     @Override
@@ -64,7 +65,7 @@ public class UserSectionActivity extends BaseActivity {
 
         //relativeLayout = findViewById(R.id.relativeLayout);
         personNames = new ArrayList<>(Arrays.asList(getResources().getString(R.string.profile_details), getResources().getString(R.string.infrastructure_data),
-                getResources().getString(R.string.mapping)));
+                getResources().getString(R.string.mapping), getResources().getString(R.string.food_distribution)));
 
         AutoFitGridLayoutManager manager = new AutoFitGridLayoutManager(context, 500);
         recyclerView.setLayoutManager(manager);
@@ -158,6 +159,9 @@ public class UserSectionActivity extends BaseActivity {
                     }
                     if (position == 2) {
                         startActivity(new Intent(context, MappingModuleActivity.class));
+                    }
+                    if (position == 3) {
+                        startActivity(new Intent(context, FoodDistributionActivity.class));
                     }
 
                 }

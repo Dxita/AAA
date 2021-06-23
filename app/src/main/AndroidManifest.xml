@@ -77,6 +77,12 @@
             android:name=".user.activity.UserSectionActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".user.activity.Food.FoodDistributionDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.activity.Food.FoodDistributionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".admin.activity.KpiTableActivity"
             android:screenOrientation="portrait" />
         <activity

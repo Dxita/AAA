@@ -50,6 +50,7 @@ public class VerifyUser {
         this.data = data;
     }
 
+
     public static class Data {
 
         @SerializedName("empdata")
@@ -63,6 +64,7 @@ public class VerifyUser {
         public void setEmpdata(Empdata empdata) {
             this.empdata = empdata;
         }
+
     }
 
     public static class Empdata {
@@ -79,25 +81,15 @@ public class VerifyUser {
         @SerializedName("awcid")
         @Expose
         private String awcid;
+        @SerializedName("awcnamee")
+        @Expose
+        private String awcnamee;
+        @SerializedName("awcnameh")
+        @Expose
+        private String awcnameh;
         @SerializedName("passwordset")
         @Expose
         private Boolean passwordset;
-
-        public String getAwcid() {
-            return awcid;
-        }
-
-        public void setAwcid(String awcid) {
-            this.awcid = awcid;
-        }
-
-        public Boolean getPasswordset() {
-            return passwordset;
-        }
-
-        public void setPasswordset(Boolean passwordset) {
-            this.passwordset = passwordset;
-        }
 
         public String getEmpid() {
             return empid;
@@ -122,5 +114,38 @@ public class VerifyUser {
         public void setMobileno(String mobileno) {
             this.mobileno = mobileno;
         }
+
+        public String getAwcid() {
+            return awcid;
+        }
+
+        public void setAwcid(String awcid) {
+            this.awcid = awcid;
+        }
+
+        public String getAwcnamee() {
+            return awcnamee;
+        }
+
+        public void setAwcnamee(String awcnamee) {
+            this.awcnamee = awcnamee;
+        }
+
+        public String getAwcnameh() {
+            return awcnameh;
+        }
+
+        public void setAwcnameh(String awcnameh) {
+            this.awcnameh = awcnameh;
+        }
+
+        public Boolean getPasswordset() {
+            return passwordset;
+        }
+
+        public void setPasswordset(Boolean passwordset) {
+            this.passwordset = passwordset;
+        }
+
     }
 }

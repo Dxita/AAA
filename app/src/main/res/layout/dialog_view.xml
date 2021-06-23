@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:paddingBottom="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_margin="@dimen/margin_10"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_05"
+            android:layout_marginTop="@dimen/margin_05"
+            android:text="@string/verified_beneficiary"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/textsize_15sp"
+            android:textStyle="bold" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/verified_beneficiary"
+            android:gravity="center"
+            android:layout_width="@dimen/margin_100"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_05"
+            android:background="@drawable/otpbg"
+            android:enabled="false"
+            android:hint="@string/count"
+            android:inputType="number"
+            android:padding="@dimen/margin_10"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_14sp" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="@dimen/margin_10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:layout_marginTop="@dimen/margin_05"
+                android:text="@string/extra_beneficiary"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/unverified_beneficiary"
+                android:gravity="center"
+                android:layout_width="@dimen/margin_100"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:enabled="false"
+                android:hint="@string/count"
+                android:inputType="number"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/notok"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_05"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/margin_10"
+                android:text="@string/not_okay"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize_14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/okbtn"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_05"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/margin_10"
+            android:text="@string/okay"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_14sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

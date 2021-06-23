@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_app_bg">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/emblem"
+        android:layout_width="@dimen/margin_60"
+        android:layout_height="@dimen/margin_60"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_05"
+        android:src="@drawable/emblem" />
+
+
+    <LinearLayout
+        android:id="@+id/largeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emblem"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_60"
+            android:src="@drawable/app_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_05"
+            android:gravity="center"
+            android:text="@string/food_distribution"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/largeLabel"
+        android:layout_marginBottom="@dimen/margin_80">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_10"
+            android:orientation="vertical">
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/sp_beneficiary_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                app:smsp_floatingLabelColor="@color/colorPrimaryDark"
+                app:smsp_floatingLabelSize="@dimen/textsize_15sp"
+                app:smsp_floatingLabelText="@string/food_name"
+                app:smsp_hint="@string/select_food_name"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/red" />
+
+            <com.skydoves.powerspinner.PowerSpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/peach"
+                android:gravity="start"
+                android:hint="@string/food_name"
+                android:padding="@dimen/margin_10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/font_16"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="@dimen/margin_10"
+                app:spinner_divider_color="@color/white"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_array="@array/criteria"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/peach"
+                app:spinner_popup_elevation="@dimen/margin_10" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_05"
+                android:text="@string/food_supplier_id"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/food_supplier_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:enabled="false"
+                android:hint="@string/food_supplier_id"
+                android:inputType="number"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:padding="@dimen/margin_05"
+                android:text="@string/food_category"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/food_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:enabled="false"
+                android:hint="@string/food_category"
+                android:inputType="number"
+
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:padding="@dimen/margin_05"
+                android:text="@string/food_unit"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/food_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:enabled="false"
+                android:hint="@string/food_unit"
+                android:inputType="number"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:padding="@dimen/margin_05"
+                android:text="@string/food_price"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/food_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:enabled="false"
+                android:hint="@string/food_price"
+                android:inputType="number"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:padding="@dimen/margin_05"
+                android:text="@string/approved_food_qty"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/approved_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:enabled="false"
+                android:hint="@string/approved_food_qty"
+                android:inputType="number"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_05"
+                android:padding="@dimen/margin_05"
+                android:text="@string/food_qty"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/textsize_15sp"
+                android:textStyle="bold" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_05"
+                android:background="@drawable/otpbg"
+                android:hint="@string/enter_food_qty"
+                android:inputType="number"
+                android:padding="@dimen/margin_10"
+                android:singleLine="true"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_14sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_15"
+        android:orientation="horizontal">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_05"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/margin_10"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_14sp" />
+
+
+        <!--<androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_05"
+            android:layout_weight="1"
+            android:background="@color/peach"
+            android:padding="@dimen/margin_10"
+            android:text="@string/view_Status"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_14sp" />-->
+    </LinearLayout>
+
+
+</RelativeLayout>

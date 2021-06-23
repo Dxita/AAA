@@ -12,7 +12,8 @@ public class AppPreferences {
     private static final String IS_LOGGED_IN = "IS_LOGGED_IN";
     private static final String LANGUAGE_SET = "IS_LANGUAGE_SET";
     private static final String AWCID = "AWC_ID";
-
+    private static final String AWCNAMEE = "AWC_NAMEE";
+    private static final String AWCNAMEH = "AWC_NAMEH";
     private static final String TYPE_USER = "IS_TYPE_USER";
 
     private static final String TYPE_ADMIN = "IS_TYPE_ADMIN";
@@ -202,6 +203,25 @@ public class AppPreferences {
         editor.apply();
     }
 
+    public void setAwcNamee(String awcNamee) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AWCNAMEE, awcNamee);
+        editor.apply();
+    }
+
+    public String getAwcnamee() {
+        return sharedPreferences.getString(AWCNAMEE, "");
+    }
+
+    public void setAwcNameh(String awcNameh) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AWCNAMEH, awcNameh);
+        editor.apply();
+    }
+
+    public String getAwcnameh() {
+        return sharedPreferences.getString(AWCNAMEH, "");
+    }
 
 
 }

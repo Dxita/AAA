@@ -254,7 +254,7 @@
     <string name="aw_worker_name">Anganwadi Worker Name</string>
     <string name="aw_worker_number">Anganwadi Worker Mobile Number</string>
     <string name="aw_data">Anganwadi Infrastructure Data</string>
-    <string name="okay" />
+    <string name="okay">Ok</string>
     <string name="unavailable_anganwadi_infrastructure_facilities">Raj Aangan Anganwadi Infrastructure Facilities</string>
     <string name="_electericity">Raj Aangan Electricity Infrastructure Facilities</string>
     <string name="_drinking_water">Raj Aangan Drinking Water Infrastructure Facilities</string>
@@ -357,5 +357,34 @@
     <string name="verified_beneficiary_for_sanction">Verified Beneficiary for Sanction</string>
     <string name="mapping">Mapping</string>
     <string name="infrastructure_data">Infrastructure Detail</string>
-
+    <string name="food_distribution">Food Distribution</string>
+    <string name="enter_distribution_period">Enter Distribution Period</string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="today_date_day">Today\'s Date &amp; Time</string>
+    <string name="select_Week">Select Week</string>
+    <string name="verified_beneficiary">Verified Beneficiary</string>
+    <string name="accept_unverified_beneficiary">Accept Unverified Beneficiary</string>
+    <string name="select_beneficiary_cat">Select Beneficiary Category</string>
+    <string name="select_beneficiary_sub_cat">Select Beneficiary Sub Category</string>
+    <string name="extra_beneficiary">Unverified Beneficiary</string>
+    <string name="actual_count">Actual Count</string>
+    <string name="enter_number_of_extrabeneficiary">Enter Number of Unverified Beneficiary</string>
+    <string name="upload_img">Upload Image</string>
+    <string name="food_name">Food Name</string>
+    <string name="select_food_name">Select Food Name</string>
+    <string name="food_supplier_id">Food Supplier Name</string>
+    <string name="select_food_category">Select Category</string>
+    <string name="food_category">Food Category</string>
+    <string name="food_unit">Food Unit</string>
+    <string name="food_price">Food Price</string>
+    <string name="approved_food_qty">Approved Food Quantity</string>
+    <string name="food_qty">Food Quantity</string>
+    <string name="enter_food_qty">Enter Food Quantity</string>
+    <string name="save">Save</string>
+    <string name="Rs">\u20B9</string>
+    <string name="count_validation">Entered count should not be greater than Actual count</string>
+    <string name="not_okay">Not ok</string>
+    <string name="please_select_image">Please Select Image</string>
+    <string name="next">Next</string>
 </resources>

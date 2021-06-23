@@ -26,14 +26,19 @@ import cdac.org.anganvadistaffutility.user.data.AddNewInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.AvailableAwInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.AwcItemsData;
 import cdac.org.anganvadistaffutility.user.data.BeneficiarySearchData;
+import cdac.org.anganvadistaffutility.user.data.BeneficiarySubCategory;
 import cdac.org.anganvadistaffutility.user.data.ChangePasswordData;
 import cdac.org.anganvadistaffutility.user.data.EmployeeDetails;
+import cdac.org.anganvadistaffutility.user.data.FoodConsolidateData;
+import cdac.org.anganvadistaffutility.user.data.FoodNameData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfraDetailData;
 import cdac.org.anganvadistaffutility.user.data.RemainingInfrastructureData;
+import cdac.org.anganvadistaffutility.user.data.SaveFFoodRequirement;
 import cdac.org.anganvadistaffutility.user.data.SetUserLogin;
 import cdac.org.anganvadistaffutility.user.data.SetUserPassword;
 import cdac.org.anganvadistaffutility.user.data.UpdateInfrastructureData;
 import cdac.org.anganvadistaffutility.user.data.UserInfrastructureData;
+import cdac.org.anganvadistaffutility.user.data.VerifiedUnverifiedBeneficiaryData;
 import cdac.org.anganvadistaffutility.user.data.VerifyOTPDetails;
 import cdac.org.anganvadistaffutility.user.data.VerifyUser;
 import cdac.org.anganvadistaffutility.user.pctsMapping.data.SinglePageList;
@@ -313,5 +318,38 @@ public interface ApiInterface {
                                            @Field("aadharNo") String aadharNo,
                                            @Field("accountNo") String accountNo,
                                            @Field("sector_id") String janadharNumber);
+
+    //get food name in food distribution (user side)
+    @GET("api_js_food_name_master_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    Call<FoodNameData> getFoodName();
+
+    //get food name in food distribution (user side)
+    @POST("api_beneficiary_subcategory_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<BeneficiarySubCategory> getBeneficiarySubCategory(@Field("beneficiary_criteria_id") String beneficiary_criteria_id);
+
+    //get food data on base of food na,e id (user side)
+    @POST("api_js_awcwise_consolidated_beneficiary_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<FoodConsolidateData> getFoodData(@Field("tfn_id") String tfn_id);
+
+    @POST("api_js_awcwise_consolidated_beneficiary_verified_unverified_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<VerifiedUnverifiedBeneficiaryData> getVerifiedUnverifiedBeneficiaryData(@Field("awcid") String awcid);
+
+    @POST("api_saveFoodReq_json/saxcfdkjsajdf567LASKDJFlsakjdfiu")
+    @FormUrlEncoded
+    Call<SaveFFoodRequirement> saveFoodReequirement(@Field("awcid") String awcid,
+                                                    @Field("day") String day,
+                                                    @Field("week") String week,
+                                                    @Field("image") String image,
+                                                    @Field("verified_beneficiary") String verified_beneficiary,
+                                                    @Field("unverified_beneifciary") String unverified_beneifciary,
+                                                    @Field("quantity") String quantity,
+                                                    @Field("fnameid") String fnameid,
+                                                    @Field("supplierid") String supplierid,
+                                                    @Field("catid") String catid,
+                                                    @Field("unitid")String unitid);
+
 
 }
