@@ -146,7 +146,7 @@ public class FoodDistributionActivity extends BaseActivity implements View.OnCli
             int no_of_weeks = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH);
             for (int i = 0; i < no_of_weeks; i++) {
                 if (i >= (currentWeek() - 1)) {
-                    list.add(getMonth() + " Week " + String.valueOf((i + 1)));
+                    list.add(getMonth() + " "+getResources().getString(R.string.week)+" " + String.valueOf((i + 1)));
                 }
             }
         } catch (Exception exception) {
